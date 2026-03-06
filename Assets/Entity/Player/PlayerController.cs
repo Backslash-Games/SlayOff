@@ -646,7 +646,7 @@ public class PlayerController : EntityData
     #region String Processing
     public override string ToString()
     {
-        string output = "";
+        string output = base.ToString();
 
         output += $"Stats\n";
         output += $"{GetStatblock()}\n";

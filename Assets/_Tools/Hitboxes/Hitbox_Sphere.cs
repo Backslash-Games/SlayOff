@@ -16,6 +16,15 @@ public class Hitbox_Sphere : Hitbox
     {
         return Physics.CheckSphere(GetWorldPosition(), radius, GetLayerMask());
     }
+    /// <summary>
+    ///     Checks collision and outputs collided objects
+    /// </summary>
+    /// <param name="collided">List of colliders that the hitbox collided with</param>
+    /// <returns>CheckCollision()</returns>
+    public override bool GetColliding(out Collider[] collided)
+    {
+        return base.GetColliding(out collided);
+    }
 
     /// <summary>
     ///     Draw sphere gizmos

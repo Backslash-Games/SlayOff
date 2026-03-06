@@ -44,6 +44,12 @@ public class Hitbox
     /// </summary>
     /// <returns>True when a collision is found</returns>
     public virtual bool CheckCollision() { return false; }
+    /// <summary>
+    ///     Checks collision and outputs collided objects
+    /// </summary>
+    /// <param name="collided">List of colliders that the hitbox collided with</param>
+    /// <returns>CheckCollision()</returns>
+    public virtual bool GetColliding(out Collider[] collided) { collided = new Collider[0]; return CheckCollision(); }
 
 
     /// <summary>

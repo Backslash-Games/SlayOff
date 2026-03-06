@@ -127,6 +127,24 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ff055db-31ed-43c8-bdb3-7ae07a50bde5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ranged"",
+                    ""type"": ""Button"",
+                    ""id"": ""30131be8-e5d8-45d1-8b95-efae24e0c610"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -217,6 +235,28 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65dc3505-11cf-4ee6-96fc-581cec9859e6"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba05041c-7379-45fd-8d80-c64955e26436"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ranged"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -229,6 +269,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Control_Look = m_Control.FindAction("Look", throwIfNotFound: true);
         m_Control_Jump = m_Control.FindAction("Jump", throwIfNotFound: true);
         m_Control_Crouch = m_Control.FindAction("Crouch", throwIfNotFound: true);
+        m_Control_Melee = m_Control.FindAction("Melee", throwIfNotFound: true);
+        m_Control_Ranged = m_Control.FindAction("Ranged", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
@@ -313,6 +355,8 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Control_Look;
     private readonly InputAction m_Control_Jump;
     private readonly InputAction m_Control_Crouch;
+    private readonly InputAction m_Control_Melee;
+    private readonly InputAction m_Control_Ranged;
     /// <summary>
     /// Provides access to input actions defined in input action map "Control".
     /// </summary>
@@ -340,6 +384,14 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Control/Crouch".
         /// </summary>
         public InputAction @Crouch => m_Wrapper.m_Control_Crouch;
+        /// <summary>
+        /// Provides access to the underlying input action "Control/Melee".
+        /// </summary>
+        public InputAction @Melee => m_Wrapper.m_Control_Melee;
+        /// <summary>
+        /// Provides access to the underlying input action "Control/Ranged".
+        /// </summary>
+        public InputAction @Ranged => m_Wrapper.m_Control_Ranged;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -378,6 +430,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Crouch.started += instance.OnCrouch;
             @Crouch.performed += instance.OnCrouch;
             @Crouch.canceled += instance.OnCrouch;
+            @Melee.started += instance.OnMelee;
+            @Melee.performed += instance.OnMelee;
+            @Melee.canceled += instance.OnMelee;
+            @Ranged.started += instance.OnRanged;
+            @Ranged.performed += instance.OnRanged;
+            @Ranged.canceled += instance.OnRanged;
         }
 
         /// <summary>
@@ -401,6 +459,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Crouch.started -= instance.OnCrouch;
             @Crouch.performed -= instance.OnCrouch;
             @Crouch.canceled -= instance.OnCrouch;
+            @Melee.started -= instance.OnMelee;
+            @Melee.performed -= instance.OnMelee;
+            @Melee.canceled -= instance.OnMelee;
+            @Ranged.started -= instance.OnRanged;
+            @Ranged.performed -= instance.OnRanged;
+            @Ranged.canceled -= instance.OnRanged;
         }
 
         /// <summary>
@@ -469,5 +533,19 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCrouch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Melee" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMelee(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ranged" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRanged(InputAction.CallbackContext context);
     }
 }

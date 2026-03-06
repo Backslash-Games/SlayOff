@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Collider))]
@@ -10,6 +11,37 @@ public class EntityData : MonoBehaviour
     [SerializeField] private Collider collision = null;
     [SerializeField] private Rigidbody physicsBody = null;
 
+    #region Object Interaction Definition
+    [System.Serializable]
+    private struct ObjectInteration
+    {
+        [SerializeField] private string source;
+        [SerializeField] private string action;
+        [SerializeField] private float time;
+
+        public ObjectInteration(string source, string action, float time)
+        {
+            this.source = source;
+            this.action = action;
+            this.time = time;
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+
+            output += $"{time}: {source} did {action}";
+
+            return output;
+        }
+    }
+    private List<ObjectInteration> interactions = new List<ObjectInteration>();
+    private void AddInteraction(string source, string action)
+    {
+        interactions.Add(new ObjectInteration(source, action, Time.time));
+    }
+    #endregion
+
     #region Unity Methods
     private void OnEnable()
     {
@@ -17,7 +49,7 @@ public class EntityData : MonoBehaviour
         statblock.Recalculate();
 
         // Heal full when enabled
-        HealFull();
+        HealFull("Entity.OnEnable");
         // Run on enable
         OnEnabled();
     }
@@ -40,8 +72,11 @@ public class EntityData : MonoBehaviour
     ///     Heals the entity
     /// </summary>
     /// <param name="amount">Heal amount</param>
-    public void Heal(float amount) 
+    public void Heal(string source, float amount)
     {
+        // Add interaction
+        AddInteraction(source, $"Entity.Heal({amount})");
+
         // Find the allowed increase amount
         float mHealth = GetStatblock().GetHealth() - health;
 
@@ -57,16 +92,22 @@ public class EntityData : MonoBehaviour
     /// <summary>
     ///     Heals the entity to full
     /// </summary>
-    public void HealFull() 
+    public void HealFull(string source)
     {
-        Heal(GetStatblock().GetHealth());
+        // Add interaction
+        AddInteraction(source, "Entity.HealFull");
+
+        Heal(source, GetStatblock().GetHealth());
     }
     /// <summary>
     ///     Hurts the entity
     /// </summary>
     /// <param name="amount">Hurt amount</param>
-    public void Hurt(float amount) 
+    public void Hurt(string source, float amount)
     {
+        // Add interaction
+        AddInteraction(source, $"Entity.Hurt({amount})");
+
         // Hurt the entity by amount
         health -= amount;
 
@@ -80,9 +121,11 @@ public class EntityData : MonoBehaviour
     /// <summary>
     ///     Kills the entity
     /// </summary>
-    public void Kill()
+    public void Kill(string source)
     {
-        Hurt(GetStatblock().GetHealth());
+        // Add interaction
+        AddInteraction(source, "Entity.Kill");
+        Hurt(source, GetStatblock().GetHealth());
     }
 
 
@@ -150,7 +193,7 @@ public class EntityData : MonoBehaviour
     #endregion
 
 
-    private static readonly bool WriteToConsole = true;
+    private static readonly bool WriteToConsole = false;
     /// <summary>
     ///     Runs whenever the entity has a force applied to them
     /// </summary>
@@ -167,7 +210,22 @@ public class EntityData : MonoBehaviour
 
         // Debug
         if(WriteToConsole)
-            Debug.Log($"Force: {source} > {direction.normalized * strength} > {mode}\nLinear Velocity: {GetLinearVelocity()}");
+            Debug.Log($"Force: {source} > {direction.normalized * strength} > {mode}\nLinear Velocity: {GetLinearVelocity()}\nLog from {name}");
+    }
+    #endregion
+
+    #region Debug
+    public override string ToString()
+    {
+        string output = "";
+
+        output += $"Entity Name: {name}\n";
+        output += $"Interactions\n";
+        foreach (ObjectInteration interaction in interactions)
+            output += $". > {interaction}\n";
+        output += $"\n\n";
+
+        return output;
     }
     #endregion
 }
