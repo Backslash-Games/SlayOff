@@ -76,25 +76,13 @@ public class CameraFlair : MonoBehaviour
         // Get the current time for slerping speed
         float cTime = Mathf.Clamp01((cMagnitude - cameraFOV_minimumVelocity) / (cameraFOV_maximumVelocity - cameraFOV_minimumVelocity));
         //-> Scale our time by accuracy to ensure a stronger result when looking towards movement
-        cTime = cTime * Mathf.Clamp01(GetVectorAccuracy(horizontalVelocity, GetCameraForward_Horizontal()) / cameraFOV_accuracyMaxThreshold);
+        cTime = cTime * Mathf.Clamp01(Mathm.GetVectorAccuracy(horizontalVelocity, GetCameraForward_Horizontal()) / cameraFOV_accuracyMaxThreshold);
         // Get the current and new FOV
         float currentFOV = GetCinemachineCamera().Lens.FieldOfView;
         float newFOV = Mathf.Lerp(cameraFOV_range.x, cameraFOV_range.y, cTime);
 
         // Move towards the current FOV
         GetCinemachineCamera().Lens.FieldOfView = Mathf.Lerp(currentFOV, newFOV, Time.deltaTime * cameraFOV_deltaScale);
-    }
-
-    /// <summary>
-    ///     Gets the seperation percent between two vectors
-    /// </summary>
-    /// <returns>Value between 0-1, 1 being two identical vectors and 0 being opposites</returns>
-    private float GetVectorAccuracy(Vector3 primary, Vector3 other)
-    {
-        // Get the distance between the two vectors
-        float cDistance = Vector3.Distance(primary.normalized, other.normalized);
-        // Get the accuracy
-        return Mathf.Clamp01(1 - (cDistance / 2));
     }
     #endregion
 
@@ -118,7 +106,7 @@ public class CameraFlair : MonoBehaviour
 
         output += "FOV\n";
         output += $"Current FOV {GetCinemachineCamera().Lens.FieldOfView}\n";
-        float vva = GetVectorAccuracy(GetPlayer().GetHorizontalVelocity(), GetCameraForward_Horizontal());
+        float vva = Mathm.GetVectorAccuracy(GetPlayer().GetHorizontalVelocity(), GetCameraForward_Horizontal());
         output += $"Velocty-View Accuracy {vva} || Scaled with threshold({cameraFOV_accuracyMaxThreshold}) {Mathf.Clamp01(vva / cameraFOV_accuracyMaxThreshold)}\n";
         output += $"Range {cameraFOV_range} || Min-Velocity {cameraFOV_minimumVelocity} || Max-Velocity {cameraFOV_maximumVelocity} || Delta Scale {cameraFOV_deltaScale}\n";
 

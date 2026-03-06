@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MiningTools
@@ -17,7 +15,7 @@ namespace MiningTools
             // Return with error if weights has a null length
             if (weights.Length <= 0)
             {
-                CustomLogger.LogError("Length of weights is invalid (<= 0)");
+                Debug.LogError("Length of weights is invalid (<= 0)");
                 return 0;
             }
 
@@ -47,7 +45,7 @@ namespace MiningTools
             // Return with error if weights has a null length
             if(weights.Length <= 0)
             {
-                CustomLogger.LogError("Length of weights is invalid (<= 0)");
+                Debug.LogError("Length of weights is invalid (<= 0)");
                 return 0;
             }
 

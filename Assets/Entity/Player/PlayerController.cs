@@ -47,9 +47,17 @@ public class PlayerController : EntityData
     private float slidingCurrentSpeed = 0;
     [SerializeField] private float slidingFrictionRate = 1;
     [Space]
+    [SerializeField] private float slidingDownHillBonus = 1;
+    private float slidingMomentumAccuracy = 0;
+    private Vector3 slidingIdealMomentumNormal = Vector3.zero;
+    private Vector3 slidingIdealMomentumPivot = Vector3.zero;
+    private Vector3 slidingIdealMomentumDirection = Vector3.zero;
+    [Space]
     [SerializeField] private float slidingJumpOutSpeed = 10;
     [SerializeField] private float slidingJumpOutUpwardForce = 10;
     private Vector3 slidingDirection = Vector3.zero;
+    [Space]
+    [SerializeField] private float slidingBonusGravity = 10;
 
 
 
@@ -125,6 +133,13 @@ public class PlayerController : EntityData
 
         Gizmos.color = Color.blueViolet;
         Gizmos.DrawLine(Vector3.zero, Quaternion.Inverse(cameraYaw.rotation) * GetLinearVelocity());
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + slidingIdealMomentumNormal * 5);
+        Gizmos.color = Color.darkGreen;
+        Gizmos.DrawLine(transform.position, transform.position + slidingIdealMomentumPivot * 5);
+        Gizmos.color = Color.dodgerBlue;
+        Gizmos.DrawLine(transform.position, transform.position + slidingIdealMomentumDirection * 5);
     }
 
     /// <summary>
@@ -466,12 +481,18 @@ public class PlayerController : EntityData
             EndSliding();
 
         // Apply a constant force in the direction you are moving
-        ApplyForce(world_horizontalVelocity, slidingCurrentSpeed, ForceMode.Acceleration, "Player.Sliding");
+        ApplyForce(slidingDirection, slidingCurrentSpeed, ForceMode.Acceleration, "Player.Sliding");
 
         // Change the sliding speed
         // -> Pull information about current surface
-        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3);
-        slidingCurrentSpeed = Mathf.Clamp(slidingCurrentSpeed - slidingFrictionRate, 0, float.MaxValue);
+        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3, groundCheck.GetLayerMask());
+        // Find the slope downward
+        slidingIdealMomentumNormal = hit.normal;
+        slidingIdealMomentumPivot = Vector3.Cross(slidingIdealMomentumNormal, Vector3.up).normalized;
+        slidingIdealMomentumDirection = Vector3.Cross(slidingIdealMomentumNormal, slidingIdealMomentumPivot).normalized;
+        // Calculate accuracy
+        slidingMomentumAccuracy = Mathm.GetVectorAccuracy(Mathm.RemoveVerticalAxis(slidingDirection), Mathm.RemoveVerticalAxis(slidingIdealMomentumDirection));
+        slidingCurrentSpeed = Mathf.Clamp((slidingCurrentSpeed + (slidingMomentumAccuracy - 0.5f) * slidingDownHillBonus) - slidingFrictionRate, 0, float.MaxValue);
     }
     #endregion
     #endregion
@@ -501,6 +522,9 @@ public class PlayerController : EntityData
         // Speed up fall while crouching
         if (!standingState.Equals(StandingState.Standing) && !groundCheck.GetState())
             currentGravityScale += crouchGravityBonus;
+        // Speed up even more while sliding
+        if (standingState.Equals(StandingState.Sliding))
+            currentGravityScale += slidingBonusGravity;
 
         // Apply downward force
         ApplyForce(Vector3.down, Physics.gravity.y * -currentGravityScale, ForceMode.Acceleration, "Player.GravityCorrection.Acceleration");
@@ -635,6 +659,15 @@ public class PlayerController : EntityData
 
         Vector3 horizontalVelocity = new Vector3(linearVelocity.x, 0, linearVelocity.z);
         output += $"Current Horizontal Velocity: {horizontalVelocity} ({horizontalVelocity.magnitude})\n";
+        output += "\n";
+        output += $"Current Sliding Direction: {slidingDirection}\n";
+        output += "\n";
+        output += $"Current Sliding Normal: {slidingIdealMomentumNormal}\n";
+        output += $"Current Sliding Pivot: {slidingIdealMomentumPivot}\n";
+        output += $"Current Sliding Direction: {slidingIdealMomentumDirection}\n";
+        output += "\n";
+        output += $"Current Sliding Speed: {slidingCurrentSpeed}\n";
+        output += $"Sliding Movement Accuracy: {slidingMomentumAccuracy}\n";
         output += "\n";
 
         output += $"Player States\n";
