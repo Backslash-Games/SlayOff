@@ -1,0 +1,647 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerController : EntityData
+{
+    [Header("General")]
+    [SerializeField] private StandingState standingState = StandingState.Standing;
+    private enum StandingState { Standing, Crouching, Sliding }
+
+    [Header("Hitboxes")]
+    [SerializeField] private Hitbox_Sphere groundCheck;
+    [SerializeField] private Hitbox_Sphere crouch_headCheck;
+
+
+
+    [Header("Physics.Gravity")]
+    [SerializeField] private float gravityStrength;
+    private float currentGravityScale = 0;
+
+    [Header("Physics.Jumping")]
+    [SerializeField] private int jumpsAllowed = 2;
+    private int jumpsPreformed = 0;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpLunge;
+    private enum JumpLock { Ready, AwaitingRelease, SearchingGround};
+    private JumpLock jumpLock = 0;
+
+    [Header("Physics.Breaking")]
+    [SerializeField] private float breakingSpeed = 1;
+    [SerializeField] private float breakingVelocityThreshold = 1;
+
+    [Header("Physics.Crouching")]
+    [SerializeField] private float crouchSpeed = 1;
+    [Space]
+    [SerializeField] private float crouchHeight = 1;
+    [SerializeField] private Vector3 crouchCenter = Vector3.zero;
+    [SerializeField] private Vector3 crouchCameraCenter = Vector3.zero;
+    private float crouch_collisionInitialHeight = 2;
+    private Vector3 crouch_collisionInitialCenter = Vector3.zero;
+    [Space]
+    [SerializeField] private float crouchMovementScale = 1;
+    [SerializeField] private float crouchGravityBonus = 1;
+
+    [Header("Physics.Sliding")]
+    [SerializeField] private float slidingVelocityThreshold = 8;
+    [SerializeField] private float slidingSpeed = 10;
+    private float slidingCurrentSpeed = 0;
+    [SerializeField] private float slidingFrictionRate = 1;
+    [Space]
+    [SerializeField] private float slidingJumpOutSpeed = 10;
+    [SerializeField] private float slidingJumpOutUpwardForce = 10;
+    private Vector3 slidingDirection = Vector3.zero;
+
+
+
+    [Header("Camera")]
+    [SerializeField] private Transform cameraParent;
+    [Space]
+    [SerializeField] private Transform cameraYaw;
+    [SerializeField] private float cameraHorizontalSensitivity = 1;
+    [Space]
+    [SerializeField] private Transform cameraPitch;
+    [SerializeField] private float cameraVerticalSensitivity = 1;
+    private float cameraCurrentYaw = 0;
+    private float cameraCurrentPitch = 0;
+    private float cameraVerticalBounds = 87.5f;
+    private float cameraSmoothingScale = 25;
+    private Vector3 cameraInitialCenter = Vector3.zero;
+
+
+
+    [Header("Input")]
+    [SerializeField] private InputActionAsset PlayerActions;
+    private InputAction in_move;
+    private InputAction in_look;
+    private InputAction in_jump;
+    private InputAction in_crouch;
+
+
+
+    #region Unity Methods
+    private void Start()
+    {
+        // Run collision start
+        CollisionStart();
+        // Run camera start
+        CameraStart();
+    }
+    public override void OnEnabled()
+    {
+        // Runs the base on enabled method
+        base.OnEnabled();
+        // Binds player inputs
+        BindEvents();
+    }
+    private void OnDisable()
+    {
+        // Unbinds player inputs
+        UnbindEvents();
+    }
+
+    private void FixedUpdate()
+    {
+        // Updates hitboxes
+        UpdateHitboxes();
+        // Updates player inputs
+        FixedUpdateInput();
+
+        // Run physics updates
+        PhysicsUpdate();
+        // Run Collision updates
+        CollisionUpdate();
+    }
+    #endregion
+    #region Hitboxes
+    private void OnDrawGizmos()
+    {
+        // Draw grounded hitbox
+        groundCheck.DrawGizmos();
+        crouch_headCheck.DrawGizmos();
+
+        // Velocity testing
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(Vector3.zero, GetLinearVelocity());
+
+        Gizmos.color = Color.blueViolet;
+        Gizmos.DrawLine(Vector3.zero, Quaternion.Inverse(cameraYaw.rotation) * GetLinearVelocity());
+    }
+
+    /// <summary>
+    ///     Ticks forward all hitboxes... Called in both fixed and normal update
+    /// </summary>
+    private void UpdateHitboxes()
+    {
+        groundCheck.Tick();
+        // Update head check if we are crouching or sliding
+        if (standingState.Equals(StandingState.Crouching) || standingState.Equals(StandingState.Sliding))
+            crouch_headCheck.Tick();
+    }
+    #endregion
+
+    #region Bind Events
+    /// <summary>
+    ///     Binds inputs to the player
+    /// </summary>
+    private void BindEvents()
+    {
+        // Check if player actions are set
+        if (PlayerActions == null)
+            return;
+
+        // Lock cursor
+        Cursor.lockState = CursorLockMode.Locked;
+
+        // Setup actions
+        in_move = PlayerActions.FindAction("Move");
+        in_look = PlayerActions.FindAction("Look");
+        in_jump = PlayerActions.FindAction("Jump");
+        in_crouch = PlayerActions.FindAction("Crouch");
+
+        // External bind methods
+        BindCrouch();
+
+        // Enable input
+        PlayerActions.FindActionMap("Control").Enable();
+    }
+    /// <summary>
+    ///     Unbinds inputs from the player
+    /// </summary>
+    private void UnbindEvents()
+    {
+        // Check if player actions are set
+        if (PlayerActions == null)
+            return;
+
+        // Unlock cursor
+        Cursor.lockState = CursorLockMode.None;
+
+        // External unbind methods
+        UnbindCrouch();
+
+        // Disable input
+        PlayerActions.FindActionMap("Control").Disable();
+    }
+    #endregion
+    #region Inputs
+    /// <summary>
+    ///     Updates the players inputs through fixed update
+    /// </summary>
+    private void FixedUpdateInput()
+    {
+        Look(); // Updates look direction   
+        Movement(); // Updates movement
+        Jump(); // Updates Jump
+
+        UpdateStandingState();
+        UpdateSliding();
+    }
+
+    #region Look
+    private void Look()
+    {
+        // Store the input
+        Vector2 cInput = in_look.ReadValue<Vector2>();
+
+        // Rotate Yaw
+        // -> Modify yaw
+        cameraCurrentYaw += Time.deltaTime * cInput.x * cameraHorizontalSensitivity;
+        cameraCurrentYaw = cameraCurrentYaw % 360;
+        // -> Set the current yaw
+        cameraYaw.localRotation = Quaternion.Lerp(cameraYaw.localRotation, Quaternion.AngleAxis(cameraCurrentYaw, Vector3.up), Time.deltaTime * cameraSmoothingScale);
+
+        // Rotate Pitch
+        // -> Modify pitch
+        cameraCurrentPitch += Time.deltaTime * -cInput.y * cameraVerticalSensitivity;
+        cameraCurrentPitch = Mathf.Clamp(cameraCurrentPitch, -cameraVerticalBounds, cameraVerticalBounds);
+        // -> Set the current pitch
+        cameraPitch.localRotation = Quaternion.Lerp(cameraPitch.localRotation, Quaternion.AngleAxis(cameraCurrentPitch, Vector3.right), Time.deltaTime * cameraSmoothingScale);
+    }
+    #endregion
+    #region Move
+    /// <summary>
+    ///     Updates movement
+    /// </summary>
+    private void Movement()
+    {
+        // Skip movement when sliding
+        if (standingState.Equals(StandingState.Sliding))
+            return;
+
+        // Get the input
+        Vector3 worldForce = cameraYaw.rotation * GetInputToWorldSpace();
+
+        // Get the current speed
+        float currentSpeed = GetStatblock().GetSpeed();
+        // -> Check if we are crouched
+        if (standingState.Equals(StandingState.Crouching))
+            currentSpeed *= crouchMovementScale;
+
+        // Apply movement
+        ApplyForce(worldForce, currentSpeed, ForceMode.Acceleration, "Player.Movement");
+    }
+
+    /// <summary>
+    ///     Gets player input and converts it world world space
+    /// </summary>
+    /// <returns>World Space - Uneffected by camera rotation</returns>
+    private Vector3 GetInputToWorldSpace()
+    {
+        // Store input
+        Vector2 cInput = in_move.ReadValue<Vector2>();
+        // Calculate force that should be applied in world space
+        return new Vector3(cInput.x, 0, cInput.y);
+    }
+    #endregion
+    #region Jump
+    /// <summary>
+    ///     Updates Jumping
+    /// </summary>
+    private void Jump()
+    {
+        // Make sure we are standing
+        if(standingState.Equals(StandingState.Crouching))
+            return;
+        // Check if we are on the ground
+        // -> Unlock jump when in the air
+        if (!groundCheck.GetState() && jumpsPreformed >= jumpsAllowed)
+            return;
+        else if (jumpLock.Equals(JumpLock.SearchingGround))
+            jumpLock = JumpLock.AwaitingRelease;
+        else if (groundCheck.GetState() && jumpsPreformed < jumpsAllowed)
+            jumpsPreformed = 0;
+        // Check if we are inputting to jump
+        if (!in_jump.IsPressed())
+        {
+            if (jumpLock.Equals(JumpLock.AwaitingRelease))
+                UnlockJump();
+            return;
+        }
+        // Check if jump is locked
+        if (!jumpLock.Equals(JumpLock.Ready))
+            return;
+
+        // Reset the vertical velocity
+        ResetVerticalVelocity();
+
+        // Use a raycast to find the jump angle
+        bool groundFound = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 5, groundCheck.GetLayerMask());
+        // Calculate force that should be applied in world space
+        Vector3 worldForce = Vector3.up;
+        if (groundFound)
+            worldForce = hit.normal;
+
+        // Apply movement based on standing state
+        if (standingState.Equals(StandingState.Standing))
+        {
+            JumpLunge_Standing();
+            ApplyForce(worldForce, jumpForce, ForceMode.Impulse, "Player.Jump.Standing");
+        }
+        else if (standingState.Equals(StandingState.Sliding))
+        {
+            JumpLunge_Sliding();
+            ApplyForce(worldForce, slidingJumpOutUpwardForce, ForceMode.Impulse, "Player.Jump.Sliding");
+            EndCrouch();
+        }
+
+        // Increase jumps preformed
+        jumpsPreformed++;
+
+        // Lock jump when max allowed jumps have been preformed
+        if (jumpsPreformed >= jumpsAllowed)
+            jumpLock = JumpLock.SearchingGround;
+        else
+            jumpLock = JumpLock.AwaitingRelease;
+    }
+    /// <summary>
+    ///     Unlocks the jump
+    /// </summary>
+    private void UnlockJump()
+    {
+        jumpLock = JumpLock.Ready;
+
+        // Reset when we have preformed the max allocated jumps
+        if (jumpsPreformed >= jumpsAllowed)
+            jumpsPreformed = 0;
+    }
+    /// <summary>
+    ///     Does a minor lunge when the player jumps. Allows for bunny hopping
+    /// </summary>
+    private void JumpLunge_Standing()
+    {
+        // Get world force from input
+        Vector3 worldForce = cameraYaw.rotation * GetInputToWorldSpace();
+
+        // Apply movement
+        ApplyForce(worldForce, jumpLunge * GetHorizontalVelocity().magnitude, ForceMode.Impulse, "Player.JumpLunge");
+    }
+    /// <summary>
+    ///     Does a minor lunge when the player jumps. Allows for bunny hopping
+    /// </summary>
+    private void JumpLunge_Sliding()
+    {
+        // Calculate force that should be applied in world space
+        Vector2 local_horizontalVelocity = GetHorizontalVelocity();
+        Vector3 worldForce = new Vector3(local_horizontalVelocity.x, 0, local_horizontalVelocity.y);
+
+        // Apply movement
+        ApplyForce(worldForce, slidingJumpOutSpeed * GetHorizontalVelocity().magnitude, ForceMode.Impulse, "Player.JumpLunge");
+    }
+    #endregion
+
+    #region Standing
+    private StandingState targetStandingState = StandingState.Standing;
+    private void UpdateStandingState()
+    {
+        // Check if the target is equal to current, if so return
+        if (targetStandingState.Equals(standingState))
+            return;
+
+        bool ssChangeAllowed = false;
+        // Allow crouch and sliding to pass through
+        if (targetStandingState.Equals(StandingState.Crouching) || targetStandingState.Equals(StandingState.Sliding))
+            ssChangeAllowed = true;
+        else if (targetStandingState.Equals(StandingState.Standing))
+        {
+            // Make sure the players head isnt blocked
+            if (!crouch_headCheck.GetState())
+                ssChangeAllowed = true;
+        }
+
+        // Allow the state to change
+        if(ssChangeAllowed)
+            standingState = targetStandingState;
+    }
+    /// <summary>
+    ///     Sets up the target for a standing state change, establishes target
+    /// </summary>
+    /// <param name="state">New State</param>
+    private void RequestStandingStateChange(StandingState state)
+    {
+        targetStandingState = state;
+    }
+    #endregion
+    #region Crouch
+    /// <summary>
+    ///     Binds crouch functions to input
+    /// </summary>
+    private void BindCrouch()
+    {
+        in_crouch.started += _ => CheckCrouchState();
+        in_crouch.canceled += _ => EndCrouch();
+    }
+    /// <summary>
+    ///     Unbinds crouch to input
+    /// </summary>
+    private void UnbindCrouch()
+    {
+        in_crouch.started -= _ => CheckCrouchState();
+        in_crouch.canceled -= _ => EndCrouch();
+    }
+
+    /// <summary>
+    ///     Starts crouching to check for sliding
+    /// </summary>
+    private void StartCrouch()
+    {
+        // When we start crouching check if we need to shift to sliding instead
+        RequestStandingStateChange(StandingState.Crouching);
+    }
+    /// <summary>
+    ///     Stops crouching
+    /// </summary>
+    private void EndCrouch()
+    {
+        // Pass off functionality to start standing
+        RequestStandingStateChange(StandingState.Standing);
+    }
+
+    /// <summary>
+    ///     Checks if we continue with crouching, or if we pivot to sliding
+    /// </summary>
+    private void CheckCrouchState()
+    {
+        // Check if we have surpassed sliding threshold
+        if (GetHorizontalVelocity().magnitude >= slidingVelocityThreshold)
+            StartSliding();
+        else
+            StartCrouch();
+    }
+    #endregion
+    #region Sliding
+    /// <summary>
+    ///     Starts sliding
+    /// </summary>
+    private void StartSliding()
+    {
+        // Set up initial sliding variables
+        slidingDirection = cameraYaw.rotation * GetInputToWorldSpace();
+        slidingCurrentSpeed = slidingSpeed;
+
+        // Request a swap to slide
+        RequestStandingStateChange(StandingState.Sliding);
+    }
+    /// <summary>
+    ///     Ends sliding
+    /// </summary>
+    private void EndSliding()
+    {
+        StartCrouch();
+    }
+
+    /// <summary>
+    ///     Updates sliding
+    /// </summary>
+    private void UpdateSliding()
+    {
+        // Check if we are sliding
+        if (!standingState.Equals(StandingState.Sliding))
+            return;
+
+        // Get the current horizontal velocity
+        Vector2 local_horizontalVelocity = GetHorizontalVelocity();
+        Vector3 world_horizontalVelocity = new Vector3(local_horizontalVelocity.x, 0, local_horizontalVelocity.y);
+        // Continue to check the crouch state
+        if (world_horizontalVelocity.magnitude < slidingVelocityThreshold)
+            EndSliding();
+
+        // Apply a constant force in the direction you are moving
+        ApplyForce(world_horizontalVelocity, slidingCurrentSpeed, ForceMode.Acceleration, "Player.Sliding");
+
+        // Change the sliding speed
+        // -> Pull information about current surface
+        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 3);
+        slidingCurrentSpeed = Mathf.Clamp(slidingCurrentSpeed - slidingFrictionRate, 0, float.MaxValue);
+    }
+    #endregion
+    #endregion
+
+    #region Physics
+    /// <summary>
+    ///     General update for physics methods
+    /// </summary>
+    private void PhysicsUpdate()
+    {
+        GravityCorrection();
+        Braking();
+    }
+
+    /// <summary>
+    ///     Whenever the player isnt on the ground, there should be an amount of gravity applied to them to ensure their descent feels snappy
+    /// </summary>
+    private void GravityCorrection()
+    {
+        // Check if the player is on the ground
+        if (groundCheck.GetState() && currentGravityScale != 0)
+            currentGravityScale = 1;
+        // Apply an additional doward force to the player. This is our gravity correction
+        else
+            currentGravityScale += gravityStrength;
+
+        // Speed up fall while crouching
+        if (!standingState.Equals(StandingState.Standing) && !groundCheck.GetState())
+            currentGravityScale += crouchGravityBonus;
+
+        // Apply downward force
+        ApplyForce(Vector3.down, Physics.gravity.y * -currentGravityScale, ForceMode.Acceleration, "Player.GravityCorrection.Acceleration");
+    }
+
+
+    /// <summary>
+    ///     Applies breaking whenever there is no moement input from the player
+    /// </summary>
+    private void Braking()
+    {
+        // Read the player input
+        Vector2 cInput = in_move.ReadValue<Vector2>();
+        // Run breaking methods
+        // -> xAxis
+        BrakingDirectional(cInput.x, Vector3.right);
+        // -> zAxis
+        BrakingDirectional(cInput.y, Vector3.forward);
+    }
+    /// <summary>
+    ///     Handles breaking for the xAxis
+    /// </summary>
+    /// <param name="input">Player Input</param>
+    /// <param name="direction">Defined direction</param>
+    private void BrakingDirectional(float input, Vector3 direction)
+    {
+        // Check if our input is 0
+        if (input != 0)
+            return;
+
+        // Get the players linear velocity
+        Vector3 linearVelocity = Quaternion.Inverse(cameraYaw.rotation) * GetLinearVelocity();
+        linearVelocity = new Vector3(linearVelocity.x * direction.x, linearVelocity.y * direction.y, linearVelocity.z * direction.z);
+        // Check if our directional velocity exceedes the breaking threshold
+        if (linearVelocity.magnitude <= breakingVelocityThreshold)
+            return;
+
+        // Flip the direction velocity
+        Vector3 directionVelocity = cameraYaw.rotation * -linearVelocity;
+        // Apply movement
+        ApplyForce(directionVelocity, breakingSpeed, ForceMode.Force, $"Player.Breaking.{direction}");
+    }
+
+
+    /// <summary>
+    ///     Halts all vertical velocity while maintaining horizontal
+    /// </summary>
+    private void ResetVerticalVelocity()
+    {
+        // Pull horizontal velocity and force set it
+        Vector2 horizontalVelocity = GetHorizontalVelocity();
+        GetRigidbody().linearVelocity = new Vector3(horizontalVelocity.x, 0, horizontalVelocity.y);
+    }
+    #endregion
+    #region Collision
+    /// <summary>
+    ///     Method for tracking information on start
+    /// </summary>
+    private void CollisionStart()
+    {
+        CollisionStart_Crouch();
+    }
+    /// <summary>
+    ///     General collision update. Used for organization
+    /// </summary>
+    private void CollisionUpdate()
+    {
+        CollisionUpdate_Crouch();
+    }
+
+    /// <summary>
+    ///     Tracks crouch information on start
+    /// </summary>
+    private void CollisionStart_Crouch()
+    {
+        CapsuleCollider capsuleCollider = (CapsuleCollider)GetCollision();
+        crouch_collisionInitialHeight = capsuleCollider.height;
+        crouch_collisionInitialCenter = capsuleCollider.center;
+    }
+    /// <summary>
+    ///     Updates collision based on standing state
+    /// </summary>
+    private void CollisionUpdate_Crouch()
+    {
+        // Check our crouching state
+        // -> Standing Collision
+        if (standingState.Equals(StandingState.Standing))
+        {
+            Collision_MoveTowards(crouch_collisionInitialHeight, crouch_collisionInitialCenter, cameraInitialCenter);
+        }
+        // -> Crouching Collision
+        else
+        {
+            Collision_MoveTowards(crouchHeight, crouchCenter, crouchCameraCenter);
+        }
+    }
+    private void Collision_MoveTowards(float height, Vector3 center, Vector3 cameraCenter)
+    {
+        // Move Collision
+        CapsuleCollider capsuleCollider = (CapsuleCollider)GetCollision();
+        capsuleCollider.height = Mathf.Lerp(capsuleCollider.height, height, crouchSpeed * Time.deltaTime);
+        capsuleCollider.center = Vector3.Lerp(capsuleCollider.center, center, crouchSpeed * Time.deltaTime);
+
+        cameraParent.localPosition = Vector3.Lerp(cameraParent.localPosition, cameraCenter, crouchSpeed * Time.deltaTime);
+    }
+    #endregion
+    #region Camera
+    /// <summary>
+    ///     Initial camera method
+    /// </summary>
+    private void CameraStart()
+    {
+        // Make sure camera parent is set
+        if (cameraParent != null)
+            cameraInitialCenter = cameraParent.localPosition;
+    }
+    #endregion
+
+    #region String Processing
+    public override string ToString()
+    {
+        string output = "";
+
+        output += $"Stats\n";
+        output += $"{GetStatblock()}\n";
+        output += "\n";
+
+        output += $"Rigidbody\n";
+
+        Vector3 linearVelocity = GetRigidbody().linearVelocity;
+        output += $"Current Velocity: {linearVelocity} ({linearVelocity.magnitude})\n";
+
+        Vector3 horizontalVelocity = new Vector3(linearVelocity.x, 0, linearVelocity.z);
+        output += $"Current Horizontal Velocity: {horizontalVelocity} ({horizontalVelocity.magnitude})\n";
+        output += "\n";
+
+        output += $"Player States\n";
+        output += $"Standing State: {standingState}\n";
+
+
+        return output;
+    }
+    #endregion
+}
