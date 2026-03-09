@@ -100,4 +100,107 @@ public class Mathm
         return new Vector3(input.x, 0, input.z);
     }
     #endregion
+
+    #region Binary Calculations
+    /// <summary>
+    ///     Converts an integer into a binary string
+    /// </summary>
+    /// <param name="input">Integer</param>
+    /// <returns>Binary string</returns>
+    public static string IntToBinaryString(uint input)
+    {
+        string binaryString = System.Convert.ToString(input, 2);
+        int inserts = 0;
+
+        // Space every 4th character
+        for (int i = 0; i < binaryString.Length; i++)
+        {
+            // Check if we are pointing to the forth character
+            if((i - inserts) % 4 == 0 && i != 0)
+            {
+                binaryString = binaryString.Insert(i, " ");
+                inserts++;
+                i++;
+            }
+        }
+
+        return binaryString;
+    }
+    public static int GetBinaryLength(uint input)
+    {
+        // Track count
+        int count = 0;
+        uint modifided = input;
+        // Keep right shifting until 0
+        while (modifided != 0)
+        {
+            modifided >>= 1;
+            count++;
+        }
+        // Return count
+        return count;
+    }
+
+    /// <summary>
+    ///     Gets a set of bits from a range
+    /// </summary>
+    /// <param name="input">Input</param>
+    /// <param name="size">Binary Size</param>
+    /// <param name="startIndex">Start Index</param>
+    /// <param name="length">Range Length</param>
+    /// <returns>Binary</returns>
+    public static uint GetBinaryRange(uint input, int startIndex, int length)
+    {
+        // Shift the input right by the start index
+        var shiftedBinary = input >> startIndex;
+        // Get a mask defined by length
+        var mask = (1 << length) - 1;
+        // Get the final variable
+        var outputBinary = shiftedBinary & mask;
+        return (uint)outputBinary;
+    }
+    /// <summary>
+    ///     Sets the binary range
+    /// </summary>
+    /// <param name="startIndex">Start index of the ser</param>
+    /// <param name="set">Override integer</param>
+    /// <param name="parent">Variable to set</param>
+    /// <returns></returns>
+    public static void SetBinaryRange(int startIndex, uint set, ref uint parent)
+    {
+        var setLength = GetBinaryLength(set);
+        // Get the right and left side of the parent
+        var parentRight = (uint)((1 << startIndex) - 1) & parent;
+
+        // Get a modified final
+        var parentModified = parent >> startIndex + setLength; // Setup the left side
+        parentModified <<= setLength; // Reveal override bits
+        parentModified += set; // Apply new bits
+        parentModified <<= startIndex; // Reveal start index
+        parentModified += parentRight; // Restore right side
+
+        // Set the parent
+        parent = parentModified;
+    }
+    /// <summary>
+    ///     Clears a binary range
+    /// </summary>
+    /// <param name="startIndex">Start index</param>
+    /// <param name="length">Length</param>
+    /// <param name="parent">Variable to set</param>
+    public static void ClearBinaryRange(int startIndex, int length, ref uint parent)
+    {
+        // Get the right and left side of the parent
+        var parentRight = (uint)((1 << startIndex) - 1) & parent;
+
+        // Get a modified final
+        var parentModified = parent >> startIndex + length; // Setup the left side
+        parentModified <<= length; // Reveal override bits
+        parentModified <<= startIndex; // Reveal start index
+        parentModified += parentRight; // Restore right side
+
+        // Set the parent
+        parent = parentModified;
+    }
+    #endregion
 }
