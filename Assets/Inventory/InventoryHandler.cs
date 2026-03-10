@@ -13,6 +13,75 @@ public class InventoryHandler : MonoBehaviour
     /// </summary>
     [SerializeField] private Dictionary<uint, ushort> storedCollectibles = new Dictionary<uint, ushort>();
 
+    [SerializeField] private ComboObjective[] comboObjectives = new ComboObjective[0];
+    [SerializeField] private Dictionary<string, ushort> comboObjectiveIDs = new Dictionary<string, ushort>();
+    [SerializeField] private uint currentCombo = 0;
+    [Space]
+    [SerializeField] private bool writeStoredCollectibleString = true;
+    [SerializeField] private bool writeComboString = true;
+
+    #region Combo Struct
+    [System.Serializable]
+    private struct ComboObjective
+    {
+        [SerializeField] private string name; // Name of the objective
+        [SerializeField] private int quota; // Quota towards the objective
+        [Space]
+        [SerializeField] private int progress; // The current progress towards the objective
+
+        public ComboObjective(string name, int quota)
+        {
+            this.name = name;
+            this.quota = quota;
+
+            progress = 0;
+        }
+
+        /// <summary>
+        ///     Increases progress by 1
+        /// </summary>
+        public void IncreaseProgress() { IncreaseProgress(1); }
+        /// <summary>
+        ///     Increases progress by amount
+        /// </summary>
+        /// <param name="amount">Amount</param>
+        public void IncreaseProgress(int amount) { progress += amount; }
+        
+        /// <summary>
+        ///     Checks if the objective is complete, if so then compete objective
+        /// </summary>
+        /// <returns>True if complete</returns>
+        public bool isComplete() 
+        {
+            bool completion = progress >= quota;
+            if (completion)
+                CompleteObjective();
+            return completion; 
+        }
+
+        /// <summary>
+        ///     Completes the objective
+        /// </summary>
+        private void CompleteObjective() { progress -= quota; }
+
+        /// <summary>
+        ///     Gets the name of the objective
+        /// </summary>
+        /// <returns>Objective Name</returns>
+        public string GetName() { return name; }
+
+        // To String
+        public override string ToString()
+        {
+            string output = "";
+
+            output += $"{name} : {progress}/{quota}\n";
+
+            return output;
+        }
+    }
+    #endregion
+
     #region Unity Methods
     private void Awake()
     {
@@ -74,6 +143,64 @@ public class InventoryHandler : MonoBehaviour
             storedCollectibles[binary]++;
     }
     #endregion
+    #region Combo Management
+    public void RewardComboProgress()
+    {
+        currentCombo++;
+    }
+
+    #region Objective Management
+    /// <summary>
+    ///     Increases combo objective (by id) by 1
+    /// </summary>
+    /// <param name="id">String ID</param>
+    public void AddObjectiveProgress(string id)
+    {
+        // Gets the objective and increases progress
+        CreateObjectiveDictionary();
+        comboObjectives[comboObjectiveIDs[id]].IncreaseProgress();
+
+        // Check if the objective was complete
+        if (comboObjectives[comboObjectiveIDs[id]].isComplete())
+            RewardComboProgress();
+    }
+
+    /// <summary>
+    ///     Gets the objective from a predefined list... Doesnt work for some reason?
+    /// </summary>
+    /// <param name="id">String ID</param>
+    /// <returns>Combo Objective</returns>
+    private ComboObjective GetObjective(string id)
+    {
+        // Try and create objective dictionary
+        CreateObjectiveDictionary();
+        // Check if the objective exists
+        if (!comboObjectiveIDs.ContainsKey(id))
+        {
+            Debug.LogError($"Objective with name \"{id}\" does not exist");
+            return new ComboObjective("NULL", 0);
+        }
+
+        return comboObjectives[comboObjectiveIDs[id]];
+    }
+    /// <summary>
+    ///     Creates the objective dictionary if it has not yet been created
+    /// </summary>
+    private void CreateObjectiveDictionary()
+    {
+        // Check if dictionary is the right size
+        if (comboObjectiveIDs.Count == comboObjectives.Length)
+            return;
+
+        // Reset the dictionary
+        comboObjectiveIDs.Clear();
+        // Add all components to the dictionary
+        for (int i = 0; i < comboObjectives.Length; i++)
+            // Add dictionary entry
+            comboObjectiveIDs.Add(comboObjectives[i].GetName(), (ushort)i);
+    }
+    #endregion
+    #endregion
 
     #region Get Method
     private CollectibleFeedHandler feedHandler = null;
@@ -90,12 +217,17 @@ public class InventoryHandler : MonoBehaviour
         string output = "";
 
         output += StoredCollectiblesToString();
+        output += ComboToString();
+        output += ComboObjectivesToString();
 
         return output;
     }
 
     private string StoredCollectiblesToString()
     {
+        if (!writeStoredCollectibleString)
+            return "Write Stored Collectibles set to False\n\n";
+
         string output = "";
 
         Dictionary<uint, ushort>.KeyCollection keys = storedCollectibles.Keys;
@@ -103,6 +235,33 @@ public class InventoryHandler : MonoBehaviour
         output += "Stored Collectibles\n";
         foreach (uint key in keys)
             output += $". > {(new Collectible(key)).GetName()} [{storedCollectibles[key]}]({key})\n";
+        output += "\n";
+
+        return output;
+    }
+
+    private string ComboToString()
+    {
+        if (!writeComboString)
+            return "Write Combo String set to False\n\n";
+
+        string output = "";
+
+        output += $"Current Combo: {currentCombo}\n";
+        output += "\n";
+
+        return output;
+    }
+
+    private string ComboObjectivesToString()
+    {
+        if (!writeComboString)
+            return "Write Combo String set to False\n\n";
+
+        string output = "";
+
+        for (int i = 0; i < comboObjectives.Length; i++)
+            output += $"{comboObjectives[i]}\n";
 
         return output;
     }

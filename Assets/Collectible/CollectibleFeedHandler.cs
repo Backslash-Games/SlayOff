@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class CollectibleFeedHandler : MonoBehaviour
@@ -13,6 +15,11 @@ public class CollectibleFeedHandler : MonoBehaviour
 
     private CollectibleFeedEntry[] collectibleFeedEntries;
     private bool[] awakeEntries;
+
+    private Queue<uint> queuedFeed = new Queue<uint>();
+    private static readonly float queueDelay = 0.2f;
+    private static readonly float queueCountDelayScale = 0.4f;
+    private bool queueActive = false;
 
     #region Unity Method
     private void Awake()
@@ -47,9 +54,29 @@ public class CollectibleFeedHandler : MonoBehaviour
 
     public void RequestNewFeed(uint binary)
     {
-        CreateNewFeed(binary);
+        // Enqueue Binary
+        queuedFeed.Enqueue(binary);
+
+        // Check if we need to run the feed
+        if (!queueActive)
+            StartCoroutine(RunFeed());
     }
 
+    private IEnumerator RunFeed()
+    {
+        // Mark queue as active
+        queueActive = true;
+
+        // Display information
+        while(queuedFeed.Count > 0)
+        {
+            CreateNewFeed(queuedFeed.Dequeue());
+            yield return new WaitForSecondsRealtime(queueDelay / Mathf.Clamp(queuedFeed.Count * queueCountDelayScale, 1, int.MaxValue));
+        }
+
+        // Unlock queue
+        queueActive = false;
+    }
     private void CreateNewFeed(uint binary)
     {
         // Pull the index for the current active feed member

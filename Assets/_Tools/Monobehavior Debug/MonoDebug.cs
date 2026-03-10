@@ -5,7 +5,7 @@ public class MonoDebug : MonoBehaviour
 {
     [SerializeField] private bool suppressAllMonoDebug = false; // Controls all mono debug suppression. If one is enabled then it will notify the user where the suppression source is
     [SerializeField] private bool suppressLocalMonoDebug = false; // Controls suppression for only this mono debug script
-    private static bool suppressDebug = false;
+    public static bool suppressDebug = false;
     [Space]
     [SerializeField] private Vector3 offset;
     private static Vector3 defaultOffset = new Vector3(0, 2.5f, 0);
@@ -30,7 +30,9 @@ public class MonoDebug : MonoBehaviour
         // Right out of the gates check our suppression
         // -> This needs to stay as the first call in awake
         CheckSuppression();
-
+    }
+    private void Start()
+    {
         // Build the inital components
         Initialize();
     }
@@ -50,14 +52,14 @@ public class MonoDebug : MonoBehaviour
         if(suppressAllMonoDebug && !suppressDebug)
         {
             suppressDebug = true;
-            Debug.LogError($"{name} has suppressed all Mono Debug Scripts");
+            Debug.LogWarning($"{name} has suppressed all Mono Debug Scripts");
         }
 
         // Check for a local suppression
         if(source == null)
         {
             suppressLocalMonoDebug = true;
-            Debug.LogError($"{name} has no defined source");
+            Debug.LogWarning($"{name} has no defined source");
         }
     }
     /// <summary>

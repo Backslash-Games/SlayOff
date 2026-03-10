@@ -9,7 +9,7 @@ public class CardboardBox : EntityData
     private static readonly float deathTimerRandom = 0.075f;
 
     private static readonly float cleanupTimer = 3;
-    private static readonly float fadeOutTimerScale = 1;
+    private static readonly float cleanupVelocityThreshold = 0.025f;
     private bool boxDead = false;
 
     [Space]
@@ -17,6 +17,8 @@ public class CardboardBox : EntityData
     [SerializeField] private MeshRenderer flattenedRenderer;
     [Space]
     [SerializeField] private VisualEffect peanutEffect;
+
+    private static readonly string comboObjective_BreakKey = "Break Cardboard";
 
     #region Unity Methods
     private void FixedUpdate()
@@ -43,8 +45,13 @@ public class CardboardBox : EntityData
     {
         yield return new WaitForSecondsRealtime(deathTimer + Random.Range(-deathTimerRandom, deathTimerRandom));
         RunDeathVisuals();
+
         InventoryHandler.Instance.RewardRandomCollectible();
+        InventoryHandler.Instance.AddObjectiveProgress(comboObjective_BreakKey);
+
         yield return new WaitForSecondsRealtime(cleanupTimer);
+        while(GetLinearVelocity().magnitude >= cleanupVelocityThreshold)
+            yield return new WaitForEndOfFrame();
         GetRigidbody().isKinematic = true;
         GetCollision().enabled = false;
     }

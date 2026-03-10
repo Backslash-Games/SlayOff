@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class PlayerHands : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private PlayerController player;
+    private TimeControl _timeControl;
 
     [Header("Melee")]
     [SerializeField] private float maxMeleeWeaponLengthBonus = 0;
@@ -13,6 +15,13 @@ public class PlayerHands : MonoBehaviour
     [Space]
     [SerializeField] private float meleeWeaponKnockback = 5;
     [SerializeField] private float meleeWeaponDamage = 1;
+    [Space]
+    [SerializeField] private Animator meleeWeaponAnimationController;
+    [SerializeField] private float meleeWeaponAnimationDelay = 0.1f;
+    private static readonly string meleeAttackAnimationName = "MeleeStrike_1";
+    [Space]
+    [SerializeField] private float meleeWeaponHitTimeScale = 1;
+    [SerializeField] private float meleeWeaponHitTimeScaleResetDelay = 1;
     [Space]
     [SerializeField] private Hitbox_Cube weaponHitbox;
     private Vector3 weaponHitboxDefault_Offset;
@@ -25,6 +34,10 @@ public class PlayerHands : MonoBehaviour
     private InputAction in_ranged;
 
     #region Unity Methods
+    private void Awake()
+    {
+        _timeControl = new TimeControl(this);
+    }
     private void OnDrawGizmos()
     {
         weaponHitbox.DrawGizmos();
@@ -139,11 +152,28 @@ public class PlayerHands : MonoBehaviour
     }
 
     #region Melee
+    private bool meleeAttackActive = false;
     /// <summary>
     ///     Called when we try to melee attack
     /// </summary>
     private void OnMeleeAttack()
     {
+        // Check if our lock is active
+        if (meleeAttackActive)
+            return;
+        // Play melee attack timed
+        StartCoroutine(MeleeAttackTimed());
+    }
+    private IEnumerator MeleeAttackTimed()
+    {
+        // Set Lock
+        meleeAttackActive = true;
+        // Run animation
+        Melee_PlayAnimation();
+
+        // -> Time
+        yield return new WaitForSecondsRealtime(meleeWeaponAnimationDelay);
+
         // Start by setting up hitbox based on values
         RecalculateHitbox();
         // Tick the hitbox
@@ -153,6 +183,13 @@ public class PlayerHands : MonoBehaviour
         EntityData[] hitEntities = PullEntityDataFromColliders(colliders);
         // Run logic
         HitEntities(hitEntities);
+        
+        // Check for impact stun
+        if (weaponHitbox.GetState())
+            _timeControl.SetScale_AutoReset_Delay(meleeWeaponHitTimeScale, meleeWeaponHitTimeScaleResetDelay);
+
+        // Set Lock
+        meleeAttackActive = false;
     }
     /// <summary>
     ///     Hits all entities in an array
@@ -186,6 +223,25 @@ public class PlayerHands : MonoBehaviour
         // Apply the knockback to the target
         target.Hurt("Player.Melee", meleeWeaponDamage);
     }
+
+    private void Melee_PlayAnimation()
+    {
+        if (meleeWeaponAnimationController == null)
+            return;
+        // Run animation
+        meleeWeaponAnimationController.Play(meleeAttackAnimationName);
+    }
     #endregion
+    #endregion
+
+    #region String Methods
+    public override string ToString()
+    {
+        string output = "";
+
+        output += $"{_timeControl}";
+
+        return output;
+    }
     #endregion
 }
