@@ -415,15 +415,15 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 1846.0,
-            "y": -88.0
+            "x": 1869.0001220703125,
+            "y": -23.0
         },
         "m_Blocks": []
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 1829.0,
-            "y": 62.0
+            "x": 1852.0001220703125,
+            "y": 96.00000762939453
         },
         "m_Blocks": [
             {
@@ -1209,7 +1209,7 @@
     "m_ObjectId": "44a6e1bc41444454a572eebd85f7be55",
     "m_Title": "Quality Processing",
     "m_Position": {
-        "x": -249.00010681152345,
+        "x": -249.0,
         "y": -308.0
     }
 }
@@ -2154,8 +2154,8 @@
     "m_ObjectId": "c3bde4b5a1584406af5f47616c4f9187",
     "m_Title": "Material Processing",
     "m_Position": {
-        "x": 568.0,
-        "y": -146.99993896484376
+        "x": 568.0000610351563,
+        "y": -147.0
     }
 }
 
@@ -2274,8 +2274,8 @@
     "m_ObjectId": "df1e08e25f2d4618b3ba0c8fd9cf9570",
     "m_Title": "Anomaly",
     "m_Position": {
-        "x": 1279.0,
-        "y": -205.99996948242188
+        "x": 1279.0001220703125,
+        "y": -206.0
     }
 }
 
@@ -2558,8 +2558,8 @@
     "m_ObjectId": "ffcb511df8874ad7a0e9efc404ada427",
     "m_Title": "Defect Processing",
     "m_Position": {
-        "x": -1106.000244140625,
-        "y": 408.00006103515627
+        "x": -1106.0001220703125,
+        "y": 408.0
     }
 }
 

@@ -43,7 +43,7 @@ public class CollectibleGenerator : MonoBehaviour
     /// <returns>Collectible</returns>
     public Collectible GenerateNewCollectible()
     {
-        storedCollectible = new Collectible(GetRandomCollectible());
+        storedCollectible = new Collectible(GetRandomCollectibleBinary());
         collectibleIdentifier = Collectible.CollectibleToBinary(storedCollectible);
         return storedCollectible;
     }
@@ -51,7 +51,15 @@ public class CollectibleGenerator : MonoBehaviour
     ///     Gets a random collectible from gameCollectibles
     /// </summary>
     /// <returns>CollectibleDefinition</returns>
-    private byte GetRandomCollectible() { return (byte)(Random.Range(0, gameCollectibles.Length)); }
+    private byte GetRandomCollectibleDefinition() { return (byte)(Random.Range(0, gameCollectibles.Length)); }
+    /// <summary>
+    ///     Creates a random binary for the collectible
+    /// </summary>
+    /// <returns>Collectible Binary</returns>
+    public uint GetRandomCollectibleBinary()
+    {
+        return Collectible.CollectibleToBinary((byte)Random.Range(0, gameCollectibles.Length), (byte)Collectible.GetRandomQuality(), (byte)Collectible.GetRandomMaterial(), (byte)Collectible.GetRandomDefect(), (byte)Collectible.GetRandomAnomaly());
+    }
     #endregion
     #region Get Methods
     /// <summary>

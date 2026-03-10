@@ -7,6 +7,7 @@ public class CollectibleRenderer : MonoBehaviour
     [SerializeField] private Collectible storedCollectible = null;
     [Space]
     [SerializeField] private Image renderImage = null;
+    private Material material = null;
 
     #region Rendering
     /// <summary>
@@ -60,7 +61,15 @@ public class CollectibleRenderer : MonoBehaviour
     /// <returns>Material</returns>
     private Material GetRenderMaterial()
     {
-        return GetRenderImage().material;
+        // Check if the material is null
+        if(material == null)
+        {
+            // Create
+            material = new Material(GetRenderImage().material);
+            GetRenderImage().material = material;
+        }
+
+        return material;
     }
     #endregion
 

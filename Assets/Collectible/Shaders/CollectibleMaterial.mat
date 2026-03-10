@@ -94,6 +94,8 @@ Material:
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Anomaly: 0
+    - _BUILTIN_QueueControl: -1
+    - _BUILTIN_QueueOffset: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -111,7 +113,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Material_ID: 6
+    - _Material_ID: 3
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

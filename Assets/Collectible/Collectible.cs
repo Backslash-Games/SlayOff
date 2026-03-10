@@ -8,8 +8,8 @@ public class Collectible
 
     private static readonly char charIgnore = '?';
 
-    private static readonly int[] qWeight = new int[] { 1000, 500, 250, 125, 62, 31, 15, 1};
-    private static readonly string[] qNames = new string[] { $"{charIgnore}", "Uncommon", "Rare", "Very Rare", "Super Rare", "Legendary", "Ultra Legendary", "Super Ultra Legendary"};
+    private static readonly int[] qWeight = new int[] { 1000, 500, 250, 125, 62, 31, 15, 1 };
+    private static readonly string[] qNames = new string[] { $"{charIgnore}", "Uncommon", "Rare", "Very Rare", "Super Rare", "Legendary", "Ultra Legendary", "Super Ultra Legendary" };
     private static readonly Color32[] qRenderOptions = new Color32[] {
         new Color32(255, 255, 255, 255), // White
         new Color32(144, 254, 132, 255), // Green
@@ -20,18 +20,18 @@ public class Collectible
         new Color32(254, 181, 132, 255), // Orange
         new Color32(254, 132, 132, 255) // Red
     };
-    public enum cQuality { Normal, Uncommon, Rare, VeryRare, SuperRare, Legendary, UltraLegendary, SuperUltraLegendary}
+    public enum cQuality { Normal, Uncommon, Rare, VeryRare, SuperRare, Legendary, UltraLegendary, SuperUltraLegendary }
     [SerializeField] private cQuality quality = cQuality.Normal;
 
 
     private static readonly int[] mWeight = new int[] { 30, 70, 150, 500, 160, 80, 40, 1 };
-    private static readonly string[] mNames = new string[] { "Dirty", "Slimy", "Infested", $"{charIgnore}", "Foiled", "Gilded", "Chroma", "Ethereal"};
+    private static readonly string[] mNames = new string[] { "Dirty", "Slimy", "Infested", $"{charIgnore}", "Foiled", "Gilded", "Chroma", "Ethereal" };
     public enum cMaterial { Dirty, Slimy, Infested, Normal, Foiled, Gilded, Chroma, Ethereal }
     [SerializeField] private cMaterial material = cMaterial.Normal;
 
 
     private static readonly int[] dWeight = new int[] { 1000, 300, 200, 100, 50, 25, 10, 1 };
-    private static readonly string[] dNames = new string[] { $"{charIgnore}", "Squashed", "Stretched", "Grown", "Shrunk", "Bloated", "Twirled", "Mirrored"};
+    private static readonly string[] dNames = new string[] { $"{charIgnore}", "Squashed", "Stretched", "Grown", "Shrunk", "Bloated", "Twirled", "Mirrored" };
     private static readonly Vector2[] dRenderOptions = new Vector2[]
     {
         new Vector2(1, 1),
@@ -47,21 +47,15 @@ public class Collectible
     [SerializeField] private cDefect defect = cDefect.Normal;
 
 
-    private static readonly int[] aWeight = new int[] { 2500, 1 };
-    private static readonly string[] aNames = new string[] { $"{charIgnore}", "Anomaly"};
+    private static readonly int[] aWeight = new int[] { 750, 1 };
+    private static readonly string[] aNames = new string[] { $"{charIgnore}", "Anomaly" };
     [SerializeField] private bool anomaly = false;
-
-    [SerializeField] private byte quantity = 1;
-
-    private static readonly byte[] attributeLengths = { 0, (byte)qNames.Length, (byte)mNames.Length, (byte)dNames.Length, (byte)aNames.Length, 255 }; // Length of each input attribute
 
     #region Constructor
     public Collectible(byte definitionID)
     {
         SetDefinition(definitionID);
         SetRandomAttributes();
-
-        quantity = 1;
     }
     public Collectible(Collectible collectible)
     {
@@ -71,8 +65,6 @@ public class Collectible
         material = collectible.GetMaterial();
         defect = collectible.GetDefect();
         anomaly = collectible.GetAnomaly();
-
-        quantity = GetQuantity();
     }
     public Collectible(uint binary)
     {
@@ -82,8 +74,6 @@ public class Collectible
         material = (cMaterial)Mathm.GetBinaryRange(binary, binary_materialIndex, 4);
         defect = (cDefect)Mathm.GetBinaryRange(binary, binary_defectIndex, 4);
         SetOtherFlagsFromInt((int)Mathm.GetBinaryRange(binary, binary_otherIndex, 4));
-
-        quantity = (byte)Mathm.GetBinaryRange(binary, binary_quantityIndex, 8);
     }
     #endregion
 
@@ -102,19 +92,23 @@ public class Collectible
     /// <summary>
     ///     Sets random quality
     /// </summary>
-    public void SetRandomQuality() { quality = (cQuality)Randomu.GetWeightedIndex(qWeight); }
+    private void SetRandomQuality() { quality = (cQuality)GetRandomQuality(); }
+    public static int GetRandomQuality() { return Randomu.GetWeightedIndex(qWeight); }
     /// <summary>
     ///     Sets random material
     /// </summary>
-    public void SetRandomMaterial() { material = (cMaterial)Randomu.GetWeightedIndex(mWeight); }
+    private void SetRandomMaterial() { material = (cMaterial)Randomu.GetWeightedIndex(mWeight); }
+    public static int GetRandomMaterial() { return Randomu.GetWeightedIndex(mWeight); }
     /// <summary>
     ///     Sets random defect
     /// </summary>
-    public void SetRandomDefect() { defect = (cDefect)Randomu.GetWeightedIndex(dWeight); }
+    private void SetRandomDefect() { defect = (cDefect)Randomu.GetWeightedIndex(dWeight); }
+    public static int GetRandomDefect() { return Randomu.GetWeightedIndex(dWeight); }
     /// <summary>
     ///     Sets random anomaly
     /// </summary>
-    public void SetRandomAnomaly() { anomaly = Randomu.GetWeightedIndex(aWeight) == 1; }
+    private void SetRandomAnomaly() { anomaly = Randomu.GetWeightedIndex(aWeight) == 1; }
+    public static int GetRandomAnomaly() { return Randomu.GetWeightedIndex(aWeight); }
     #endregion
     #region String Methods
     /// <summary>
@@ -172,7 +166,7 @@ public class Collectible
     public cQuality GetQuality() { return quality; }
     public cMaterial GetMaterial() { return material; }
     public cDefect GetDefect() { return defect; }
-    public bool GetAnomaly() { return anomaly; }    
+    public bool GetAnomaly() { return anomaly; }
     /// <summary>
     ///     For now returns anomaly as 1 if true or 0 if false
     /// </summary>
@@ -181,7 +175,6 @@ public class Collectible
     {
         return anomaly ? 1 : 0;
     }
-    public byte GetQuantity() { return quantity; }
 
 
     public CollectibleDefinition GetDefinition() { return definition; }
@@ -189,8 +182,6 @@ public class Collectible
     public string GetDefinitionName() { return GetDefinition().GetName(); }
     public int GetDefinitionPrice() { return GetDefinition().GetPrice(); }
     public Sprite GetDefinitionSprite() { return GetDefinition().GetSprite(); }
-
-    public static byte[] GetAttributeLengths() { return attributeLengths; }
     #endregion
     #region Set Methods
     private void SetDefinition(byte id)
@@ -214,7 +205,6 @@ public class Collectible
     static readonly byte binary_materialIndex = 12;
     static readonly byte binary_defectIndex = 16;
     static readonly byte binary_otherIndex = 20;
-    static readonly byte binary_quantityIndex = 24;
 
     public static uint CollectibleToBinary(Collectible input)
     {
@@ -227,7 +217,18 @@ public class Collectible
         Mathm.SetBinaryRange(binary_defectIndex, (uint)input.GetDefect(), ref binary); // Set Defect
         Mathm.SetBinaryRange(binary_otherIndex, (uint)input.GetOtherFlagsAsInt(), ref binary); // Set Other
 
-        Mathm.SetBinaryRange(binary_quantityIndex, input.GetQuantity(), ref binary); // Set Quantity
+        return binary;
+    }
+    public static uint CollectibleToBinary(byte definitionID, byte quality, byte material, byte defect, byte other)
+    {
+        uint binary = 0;
+
+        Mathm.SetBinaryRange(binary_definitionIndex, definitionID, ref binary); // Set Definition
+
+        Mathm.SetBinaryRange(binary_qualityIndex, quality, ref binary); // Set Quality
+        Mathm.SetBinaryRange(binary_materialIndex, material, ref binary); // Set Material
+        Mathm.SetBinaryRange(binary_defectIndex, defect, ref binary); // Set Defect
+        Mathm.SetBinaryRange(binary_otherIndex, other, ref binary); // Set Other
 
         return binary;
     }

@@ -43,6 +43,7 @@ public class CardboardBox : EntityData
     {
         yield return new WaitForSecondsRealtime(deathTimer + Random.Range(-deathTimerRandom, deathTimerRandom));
         RunDeathVisuals();
+        InventoryHandler.Instance.RewardRandomCollectible();
         yield return new WaitForSecondsRealtime(cleanupTimer);
         GetRigidbody().isKinematic = true;
         GetCollision().enabled = false;
