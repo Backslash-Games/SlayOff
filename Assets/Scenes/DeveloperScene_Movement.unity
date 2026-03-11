@@ -14238,17 +14238,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3556101287457143289, guid: f1889d759b3bf694b8131d8219c1bc20, type: 3}
-      propertyPath: writeStoredCollectibleString
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7440606740032102804, guid: f1889d759b3bf694b8131d8219c1bc20, type: 3}
       propertyPath: m_Name
       value: Inventory Hanlder
-      objectReference: {fileID: 0}
-    - target: {fileID: 8209492025513042385, guid: f1889d759b3bf694b8131d8219c1bc20, type: 3}
-      propertyPath: suppressLocalMonoDebug
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8702124565606518450, guid: f1889d759b3bf694b8131d8219c1bc20, type: 3}
       propertyPath: m_LocalPosition.x

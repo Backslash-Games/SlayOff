@@ -84,6 +84,15 @@ public class PlayerController : EntityData
     private InputAction in_jump;
     private InputAction in_crouch;
 
+    /// <summary>
+    ///     Objectives
+    /// </summary>
+    private static readonly string comboObjective_SlideKey = "Distance Slid";
+    private float co_SlideDistance = 0;
+    private static readonly string comboObjective_SlamKey = "Distance Slammed";
+    private float co_SlamDistance = 0;
+    private float co_SlamThreshold = 1f;
+    private static readonly string comboObjective_JumpKey = "Bunny Hops";
 
 
     #region Unity Methods
@@ -319,6 +328,9 @@ public class PlayerController : EntityData
             EndCrouch();
         }
 
+        // Updates combo objective
+        ComboObjective_TickJump();
+
         // Increase jumps preformed
         jumpsPreformed++;
 
@@ -453,6 +465,9 @@ public class PlayerController : EntityData
         slidingDirection = cameraYaw.rotation * GetInputToWorldSpace();
         slidingCurrentSpeed = slidingSpeed;
 
+        // Reset Slide Distance
+        co_SlideDistance = 0;
+
         // Request a swap to slide
         RequestStandingStateChange(StandingState.Sliding);
     }
@@ -479,6 +494,9 @@ public class PlayerController : EntityData
         // Continue to check the crouch state
         if (world_horizontalVelocity.magnitude < slidingVelocityThreshold)
             EndSliding();
+
+        // Update the sliding distance combo objective
+        ComboObjective_TickSliding();
 
         // Apply a constant force in the direction you are moving
         ApplyForce(slidingDirection, slidingCurrentSpeed, ForceMode.Acceleration, "Player.Sliding");
@@ -525,6 +543,9 @@ public class PlayerController : EntityData
         // Speed up even more while sliding
         if (standingState.Equals(StandingState.Sliding))
             currentGravityScale += slidingBonusGravity;
+
+        // Update combo objective
+        ComboObjective_TickSlam();
 
         // Apply downward force
         ApplyForce(Vector3.down, Physics.gravity.y * -currentGravityScale, ForceMode.Acceleration, "Player.GravityCorrection.Acceleration");
@@ -640,6 +661,57 @@ public class PlayerController : EntityData
         // Make sure camera parent is set
         if (cameraParent != null)
             cameraInitialCenter = cameraParent.localPosition;
+    }
+    #endregion
+
+    #region Combo Objectives
+    /// <summary>
+    ///     Updates the sliding combo objective
+    /// </summary>
+    private void ComboObjective_TickSliding()
+    {
+        // Adds horizontal magintude to the combo objective sliding distance
+        co_SlideDistance += GetHorizontalVelocity().magnitude;
+        // When we have moved a unit, tick
+        if (co_SlideDistance >= 1)
+        {
+            // Reduce Slide distance
+            co_SlideDistance--;
+            // Increase progress
+            InventoryHandler.Instance.AddObjectiveProgress(comboObjective_SlideKey);
+        }
+    }
+    /// <summary>
+    ///     Updates the slam combo objective
+    /// </summary>
+    private void ComboObjective_TickSlam()
+    {
+        // Check if the player is not standing
+        if (standingState.Equals(StandingState.Standing))
+            return;
+        // Check if the player is moving downward
+        float verticalVelocity = GetVerticalVelocity();
+        if (verticalVelocity >= -co_SlamThreshold)
+            return;
+
+        // Adds horizontal magintude to the combo objective sliding distance
+        co_SlamDistance += Mathf.Abs(verticalVelocity);
+        // When we have moved a unit, tick
+        if (co_SlamDistance >= 1)
+        {
+            // Reduce Slide distance
+            co_SlamDistance--;
+            // Increase progress
+            InventoryHandler.Instance.AddObjectiveProgress(comboObjective_SlamKey);
+        }
+    }
+    /// <summary>
+    ///     Updates the jump combo objective
+    /// </summary>
+    private void ComboObjective_TickJump()
+    {
+        // Increase progress
+        InventoryHandler.Instance.AddObjectiveProgress(comboObjective_JumpKey);
     }
     #endregion
 

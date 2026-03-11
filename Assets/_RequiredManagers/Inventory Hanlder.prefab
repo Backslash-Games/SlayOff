@@ -48,8 +48,29 @@ MonoBehaviour:
   comboObjectives:
   - name: Break Cardboard
     quota: 10
+    value: 1
     progress: 0
-  writeStoredCollectibleString: 1
+    timesCompleted: 0
+  - name: Distance Slid
+    quota: 115
+    value: 0.3
+    progress: 0
+    timesCompleted: 0
+  - name: Distance Slammed
+    quota: 25
+    value: 0.6
+    progress: 0
+    timesCompleted: 0
+  - name: Bunny Hops
+    quota: 10
+    value: 0.85
+    progress: 0
+    timesCompleted: 0
+  currentCombo: 0
+  currentComboTime: 0
+  comboTimeRange: {x: 3, y: 6.75}
+  comboTimeMinimumThreshold: 150
+  writeStoredCollectibleString: 0
   writeComboString: 1
 --- !u!114 &8209492025513042385
 MonoBehaviour:
@@ -64,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonoDebug
   suppressAllMonoDebug: 0
-  suppressLocalMonoDebug: 1
+  suppressLocalMonoDebug: 0
   offset: {x: 0, y: 0, z: 0}
   textColor: {r: 1, g: 1, b: 1, a: 1}
   debugStyle: 0

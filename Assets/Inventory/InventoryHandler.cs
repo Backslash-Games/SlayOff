@@ -15,7 +15,11 @@ public class InventoryHandler : MonoBehaviour
 
     [SerializeField] private ComboObjective[] comboObjectives = new ComboObjective[0];
     [SerializeField] private Dictionary<string, ushort> comboObjectiveIDs = new Dictionary<string, ushort>();
+    [Space]
     [SerializeField] private uint currentCombo = 0;
+    [SerializeField] private float currentComboTime = 0;
+    [SerializeField] private Vector2 comboTimeRange = Vector2.up;
+    [SerializeField] private uint comboTimeMinimumThreshold = 100;
     [Space]
     [SerializeField] private bool writeStoredCollectibleString = true;
     [SerializeField] private bool writeComboString = true;
@@ -26,15 +30,19 @@ public class InventoryHandler : MonoBehaviour
     {
         [SerializeField] private string name; // Name of the objective
         [SerializeField] private int quota; // Quota towards the objective
+        [SerializeField] private float value; // The percentage value of the combo
         [Space]
         [SerializeField] private int progress; // The current progress towards the objective
+        [SerializeField] private int timesCompleted; // The total times the player has completed an objective
 
-        public ComboObjective(string name, int quota)
+        public ComboObjective(string name, int quota, float value)
         {
             this.name = name;
             this.quota = quota;
+            this.value = value;
 
             progress = 0;
+            timesCompleted = 0;
         }
 
         /// <summary>
@@ -46,7 +54,11 @@ public class InventoryHandler : MonoBehaviour
         /// </summary>
         /// <param name="amount">Amount</param>
         public void IncreaseProgress(int amount) { progress += amount; }
-        
+        /// <summary>
+        ///     Resets the objective progress
+        /// </summary>
+        public void ResetProgress() { progress = 0; }
+
         /// <summary>
         ///     Checks if the objective is complete, if so then compete objective
         /// </summary>
@@ -62,20 +74,29 @@ public class InventoryHandler : MonoBehaviour
         /// <summary>
         ///     Completes the objective
         /// </summary>
-        private void CompleteObjective() { progress -= quota; }
+        private void CompleteObjective() 
+        { 
+            progress -= quota; 
+            timesCompleted++; 
+        }
 
         /// <summary>
         ///     Gets the name of the objective
         /// </summary>
         /// <returns>Objective Name</returns>
         public string GetName() { return name; }
+        /// <summary>
+        ///     Gets the value of the objective
+        /// </summary>
+        /// <returns>Objective Value</returns>
+        public float GetValue() { return value; }
 
         // To String
         public override string ToString()
         {
             string output = "";
 
-            output += $"{name} : {progress}/{quota}\n";
+            output += $"{name} : {progress}/{quota} : <{timesCompleted}>\n";
 
             return output;
         }
@@ -86,6 +107,11 @@ public class InventoryHandler : MonoBehaviour
     private void Awake()
     {
         CreateSingleton();
+    }
+
+    private void Update()
+    {
+        TickComboTime();
     }
     #endregion
     #region Singleton
@@ -144,9 +170,61 @@ public class InventoryHandler : MonoBehaviour
     }
     #endregion
     #region Combo Management
-    public void RewardComboProgress()
+    /// <summary>
+    ///     Adds progress to the current combo
+    /// </summary>
+    /// <param name="source">Completed combo</param>
+    public void RewardComboProgress(ushort source)
     {
+        // Reward combo progress
         currentCombo++;
+        // Reset combo timer if not running
+        if (currentComboTime <= 0)
+            ResetComboTime();
+        else
+            AddComboTime(comboObjectives[source].GetValue());
+    }
+    /// <summary>
+    ///     Resets the current combo
+    /// </summary>
+    private void ResetCombo() 
+    {
+        // Reset current combo
+        currentCombo = 0;
+        // Reset all objectives
+        ResetAllObjectiveProgress();
+    }
+
+    /// <summary>
+    ///     Updates the combo timer
+    /// </summary>
+    private void TickComboTime() 
+    {
+        // Check if our combo timer is set
+        if (currentComboTime <= 0)
+            return;
+        // Decrease combo time
+        currentComboTime -= Time.deltaTime;
+        // Check if the combo is done
+        if (currentComboTime <= 0)
+            ResetCombo();
+    }
+    /// <summary>
+    ///     Sets the current combo timer to max
+    /// </summary>
+    private void ResetComboTime() { currentComboTime = Mathf.Lerp(comboTimeRange.y, comboTimeRange.x, (float)currentCombo / comboTimeMinimumThreshold); }
+    /// <summary>
+    ///     Adds time to the combo timer
+    /// </summary>
+    /// <param name="value">The total value of the completed combo</param>
+    private void AddComboTime(float value) 
+    { 
+        // Get the current max time
+        float currentMaxTime = Mathf.Lerp(comboTimeRange.y, comboTimeRange.x, (float)currentCombo / comboTimeMinimumThreshold);
+        // Add time
+        currentComboTime += currentMaxTime * value;
+        // Clamp time
+        currentComboTime = Mathf.Clamp(currentComboTime, 0, currentMaxTime);
     }
 
     #region Objective Management
@@ -162,7 +240,16 @@ public class InventoryHandler : MonoBehaviour
 
         // Check if the objective was complete
         if (comboObjectives[comboObjectiveIDs[id]].isComplete())
-            RewardComboProgress();
+            RewardComboProgress(comboObjectiveIDs[id]);
+    }
+    /// <summary>
+    ///     Resets all objectives progress
+    /// </summary>
+    private void ResetAllObjectiveProgress()
+    {
+        // Roll through each objective and reset it
+        for (int i = 0; i < comboObjectives.Length; i++)
+            comboObjectives[i].ResetProgress();
     }
 
     /// <summary>
@@ -178,7 +265,7 @@ public class InventoryHandler : MonoBehaviour
         if (!comboObjectiveIDs.ContainsKey(id))
         {
             Debug.LogError($"Objective with name \"{id}\" does not exist");
-            return new ComboObjective("NULL", 0);
+            return new ComboObjective("NULL", 0, 0);
         }
 
         return comboObjectives[comboObjectiveIDs[id]];
@@ -248,6 +335,7 @@ public class InventoryHandler : MonoBehaviour
         string output = "";
 
         output += $"Current Combo: {currentCombo}\n";
+        output += $"Current Time: {currentComboTime}\n";
         output += "\n";
 
         return output;
@@ -261,7 +349,8 @@ public class InventoryHandler : MonoBehaviour
         string output = "";
 
         for (int i = 0; i < comboObjectives.Length; i++)
-            output += $"{comboObjectives[i]}\n";
+            output += $"{comboObjectives[i]}";
+        output += "\n";
 
         return output;
     }
