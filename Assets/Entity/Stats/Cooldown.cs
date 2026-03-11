@@ -233,4 +233,16 @@ public class Cooldown
         locked = false;
     }
     #endregion
+
+    #region String Methods
+    public override string ToString()
+    {
+        string output = "";
+
+        output += $"{basic}|{reductionRate} :: {timer}\n";
+        output += $"Locked:{locked} .. Cancled:{canceled} .. Paused:{paused}\n";
+
+        return output;
+    }
+    #endregion
 }

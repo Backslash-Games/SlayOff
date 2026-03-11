@@ -7,26 +7,14 @@ public class PlayerHands : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] private PlayerController player;
-    private TimeControl _timeControl;
 
     [Header("Melee")]
-    [SerializeField] private float maxMeleeWeaponLengthBonus = 0;
-    [SerializeField] private float maxMeleeWeaponLengthVelocity = 0;
-    [Space]
-    [SerializeField] private float meleeWeaponKnockback = 5;
-    [SerializeField] private float meleeWeaponDamage = 1;
-    [Space]
-    [SerializeField] private Animator meleeWeaponAnimationController;
-    [SerializeField] private float meleeWeaponAnimationDelay = 0.1f;
-    private static readonly string meleeAttackAnimationName = "MeleeStrike_1";
-    [Space]
-    [SerializeField] private float meleeWeaponHitTimeScale = 1;
-    [SerializeField] private float meleeWeaponHitTimeScaleResetDelay = 1;
-    [Space]
-    [SerializeField] private Hitbox_Cube weaponHitbox;
-    private Vector3 weaponHitboxDefault_Offset;
-    private Vector3 weaponHitboxDefault_Size;
-    private Vector3 weaponHitboxDefault_LocalEuler;
+    [SerializeField] private Weapon melee;
+    [SerializeField] private bool drawMeleeHitbox = false;
+
+    [Header("Ranged")]
+    [SerializeField] private Weapon ranged;
+    [SerializeField] private bool drawRangedHitbox = false;
 
     [Header("Input")]
     [SerializeField] private InputActionAsset PlayerActions;
@@ -36,22 +24,33 @@ public class PlayerHands : MonoBehaviour
     #region Unity Methods
     private void Awake()
     {
-        _timeControl = new TimeControl(this);
+        melee.Setup(this, player);
+        ranged.Setup(this, player);
+    }
+    private void OnDestroy()
+    {
+        melee.Cleanup();
+        ranged.Cleanup();
     }
     private void OnDrawGizmos()
     {
-        weaponHitbox.DrawGizmos();
+        if(drawMeleeHitbox)
+            melee.GetHitbox().DrawGizmos();
+        if (drawRangedHitbox)
+            ranged.GetHitbox().DrawGizmos();
     }
 
     private void OnEnable()
     {
-        StoreHitboxDefault();
-        RecalculateHitbox();
         BindEvents();
     }
     private void OnDisable()
     {
         UnbindEvents();
+    }
+    private void Update()
+    {
+        TickAttacks();
     }
     #endregion
     #region Bind Events
@@ -83,9 +82,9 @@ public class PlayerHands : MonoBehaviour
 
         // Setup actions
         in_melee = PlayerActions.FindAction("Melee");
-        in_melee.performed += _ => OnMeleeAttack();
 
         in_ranged = PlayerActions.FindAction("Ranged");
+        in_ranged.performed += _ => OnRangedAttack();
     }
     /// <summary>
     ///     Unbinds Input
@@ -95,6 +94,134 @@ public class PlayerHands : MonoBehaviour
         // Check if player actions are set
         if (PlayerActions == null)
             return;
+        if(in_ranged != null)
+            in_ranged.performed -= _ => OnRangedAttack();
+    }
+    #endregion
+    #region Attacks
+    private void TickAttacks()
+    {
+        // Update melee to be pressed
+        melee.Tick(in_melee.IsPressed());
+    }
+
+    /// <summary>
+    ///     Called when we try to melee attack
+    /// </summary>
+    private void OnRangedAttack()
+    {
+        // Run our melee attack
+        ranged.OnAttack();
+    }
+    #endregion
+
+    #region String Methods
+    public override string ToString()
+    {
+        string output = "";
+
+        output += $"Melee:{melee}\n";
+        output += $"Ranged:{ranged}\n";
+
+        return output;
+    }
+    #endregion
+}
+[System.Serializable]
+public class Weapon
+{
+    [Header("Main Attributes")]
+    [SerializeField] private float knockback = 15;
+    [SerializeField] private float damage = 1;
+    [Space]
+
+    [Header("Hitbox")]
+    [SerializeField] private Hitbox_Cube hitbox;
+    private Vector3 hitboxDefault_Offset;
+    private Vector3 hitboxDefault_Size;
+    private Vector3 hitboxDefault_LocalEuler;
+    [Space]
+
+    [Header("Cooldown")]
+    [SerializeField] private Cooldown cooldown;
+    [SerializeField] private float cooldownTime = 1;
+    [SerializeField] private float cooldownReductionRate = 1;
+    [Space]
+
+
+    [Header("Consecutive Attack")]
+    [SerializeField] private int csc_Current = 0;
+    private int csc_Max = 0;
+    [Space]
+
+    [Header("Vecolity Bonus")]
+    [SerializeField] private float maxLengthBonus = 5;
+    [SerializeField] private float maxLengthVelocity = 24;
+    [Space]
+
+    [Header("Animation")]
+    [SerializeField] private Animator animationController;
+    [SerializeField] private float a_ExecutionDelay = 0.215f;
+    [SerializeField] private string a_RestingID = "MeleeResting";
+    [SerializeField] private string a_RestingLockID = "LockRest";
+    [SerializeField] private string a_InitialAttackID = "MeleeStrike_i";
+    private bool a_InitialAttackFlag = false;
+    [SerializeField] private string[] a_AttackIDs = new string[0];
+    [Space]
+
+    [Header("Slow Down")]
+    [SerializeField] private float hitTimeScale = 0.05f;
+    [SerializeField] private float hitTimeScaleResetDelay = 0.0875f;
+    [Space]
+
+    [Header("Flags")]
+    [SerializeField] private bool attacking = false;
+    private bool attackingPrevious = false;
+
+    /// <summary>
+    ///     Delegate to help track attacking state
+    /// </summary>
+    /// <param name="state">Current state</param>
+    private delegate void AttackingState(bool state);
+    /// <summary
+    ///     Event called whenever the state changes
+    /// </summary>
+    private AttackingState OnStateChanged;
+
+    private MonoBehaviour monoBehaviour;
+    private PlayerController player = null;
+    private TimeControl _timeControl;
+
+    #region Sequencing
+    public void Setup(MonoBehaviour mono, PlayerController player)
+    {
+        // Set variables
+        this.player = player;
+        monoBehaviour = mono;
+        // Create time control
+        _timeControl = new TimeControl(monoBehaviour);
+        // Create cooldown
+        cooldown = new Cooldown(monoBehaviour, cooldownTime, cooldownReductionRate);
+
+        // Setup information
+        SetupConsecutiveAttacks();
+        SetUpAnimation();
+
+        // Store defaults
+        StoreHitboxDefault();
+    }
+    public void Cleanup()
+    {
+        // Cleanup information
+        CleanupConsecutiveAttacks();
+        CleanUpAnimation();
+    }
+
+    public void Tick(bool state)
+    {
+        // Set the attacking state for now
+        SetAttackingState(state);
+        OnAttack();
     }
     #endregion
     #region Hitbox Management
@@ -103,33 +230,270 @@ public class PlayerHands : MonoBehaviour
     /// </summary>
     private void StoreHitboxDefault()
     {
-        weaponHitboxDefault_Offset = weaponHitbox.GetOffset();
-        weaponHitboxDefault_Size = weaponHitbox.GetSize();
-        weaponHitboxDefault_LocalEuler = weaponHitbox.GetLocalEuler();
+        hitboxDefault_Offset = hitbox.GetOffset();
+        hitboxDefault_Size = hitbox.GetSize();
+        hitboxDefault_LocalEuler = hitbox.GetLocalEuler();
+
+        RecalculateHitbox();
     }
     /// <summary>
     ///     Recalculates the hitbox based on different player variables
     /// </summary>
-    private void RecalculateHitbox()
+    public void RecalculateHitbox()
     {
         // Get the camera transform
         Transform cameraTransform = Camera.main.transform;
 
-        // Melee
         // -> Rotate Box
-        weaponHitbox.SetLocalEuler(cameraTransform.eulerAngles + weaponHitboxDefault_LocalEuler);
+        hitbox.SetLocalEuler(cameraTransform.eulerAngles + hitboxDefault_LocalEuler);
         // -> Scale box
         Vector3 linearVelocity = player.GetLinearVelocity();
-        float hitboxSpeedScaleBonus = Mathf.Lerp(0, maxMeleeWeaponLengthBonus, (linearVelocity.magnitude / maxMeleeWeaponLengthVelocity) * Mathm.GetVectorAccuracy(linearVelocity, cameraTransform.forward));
-        Vector3 meleeBoxScale = weaponHitboxDefault_Size + (Vector3.forward * hitboxSpeedScaleBonus);
-        weaponHitbox.SetSize(meleeBoxScale);
+        float hitboxSpeedScaleBonus = Mathf.Lerp(0, maxLengthBonus, (linearVelocity.magnitude / maxLengthVelocity) * Mathm.GetVectorAccuracy(linearVelocity, cameraTransform.forward));
+        Vector3 cHitboxScale = hitboxDefault_Size + (Vector3.forward * hitboxSpeedScaleBonus);
+        hitbox.SetSize(cHitboxScale);
         // -> Position Box
-        Vector3 meleeBoxPosition = cameraTransform.rotation * (weaponHitboxDefault_Offset + (Vector3.forward * hitboxSpeedScaleBonus / 2f));
-        weaponHitbox.SetOffset(meleeBoxPosition);
+        Vector3 cHitboxPosition = cameraTransform.rotation * (hitboxDefault_Offset + (Vector3.forward * hitboxSpeedScaleBonus / 2f));
+        hitbox.SetOffset(cHitboxPosition);
     }
     #endregion
 
-    #region Attacks
+    #region Attack State
+    /// <summary>
+    ///     Sets the attacking state, runs OnStateChanged when the state changes
+    /// </summary>
+    /// <param name="state">New state</param>
+    private void SetAttackingState(bool state) 
+    {
+        // Set our attacking state
+        attacking = state;
+        // Check if our new state equals our last state
+        if(attacking != attackingPrevious)
+        {
+            // Run event
+            OnStateChanged?.Invoke(attacking);
+        }
+
+        // Set previous attacking
+        attackingPrevious = attacking;
+    }
+
+    /// <summary>
+    ///     Returns the attacking state
+    /// </summary>
+    /// <returns>Attacking (Bool)</returns>
+    public bool GetAttacking() { return attacking; }
+    #endregion
+    #region Attack Actions
+    /// <summary>
+    ///     Run attack
+    /// </summary>
+    public void OnAttack()
+    {
+        // Check if we are on cooldown
+        if (cooldown.Active())
+            return;
+        // Check if we are holding input
+        if (!GetAttacking())
+            return;
+        // Play melee attack timed
+        monoBehaviour.StartCoroutine(AttackTimed());
+    }
+
+    /// <summary>
+    ///     Coroutine used for timing the melee attacck
+    /// </summary>
+    /// <returns>Wait</returns>
+    private IEnumerator AttackTimed()
+    {
+        // Run animation
+        LockRest();
+        PlayAnimation(GetCurrentAnimationID());
+        // Start cooldown
+        cooldown.Start();
+
+        // -> Wait for a bit within the animation to execute attack
+        yield return new WaitForSecondsRealtime(a_ExecutionDelay);
+
+        // Start by setting up hitbox based on values
+        RecalculateHitbox();
+        // Tick the hitbox
+        hitbox.Tick();
+        // Get colliding objects
+        hitbox.GetColliding(out Collider[] colliders);
+        EntityData[] hitEntities = PullEntityDataFromColliders(colliders);
+        // Run logic
+        HitEntities(hitEntities);
+
+        // Check for impact stun
+        if (hitbox.GetState())
+            _timeControl.SetScale_AutoReset_Delay(hitTimeScale, hitTimeScaleResetDelay);
+    }
+    /// <summary>
+    ///     Hits all entities in an array
+    /// </summary>
+    /// <param name="targets">List of Entity Datas</param>
+    private void HitEntities(EntityData[] targets)
+    {
+        foreach (EntityData entity in targets)
+        {
+            ApplyKnockback(entity);
+            ApplyDamage(entity);
+        }
+    }
+    /// <summary>
+    ///     Applies melee knockback to entity
+    /// </summary>
+    /// <param name="target">EntityData</param>
+    private void ApplyKnockback(EntityData target)
+    {
+        // Gets the knockback direction
+        Vector3 knockbackDirection = target.transform.position - Camera.main.transform.position;
+        // Apply the knockback to the target
+        target.ApplyForce(knockbackDirection, knockback, ForceMode.Impulse, "Weapon.Knockback");
+    }
+    /// <summary>
+    ///     Applies melee damage to entity
+    /// </summary>
+    /// <param name="target">EntityData</param>
+    private void ApplyDamage(EntityData target)
+    {
+        // Apply the knockback to the target
+        target.Hurt("Player.Melee", damage);
+    }
+
+    #endregion
+    #region Consecutive Handling
+    /// <summary>
+    ///     Sets up structures for consecutive attacks
+    /// </summary>
+    private void SetupConsecutiveAttacks()
+    {
+        csc_Max = a_AttackIDs.Length;
+        ResetConsecutiveAttack();
+
+        OnStateChanged += _ => ResetConsecutiveAttack();
+        cooldown.OnCooldownSuccess += IncreaseAtCooldownEnd;
+    }
+    /// <summary>
+    ///     Cleans up structures for consecutive attacks
+    /// </summary>
+    private void CleanupConsecutiveAttacks()
+    {
+        OnStateChanged -= _ => ResetConsecutiveAttack();
+        cooldown.OnCooldownSuccess -= IncreaseAtCooldownEnd;
+    }
+
+    /// <summary>
+    ///     Increase consecutive if we are still holding attacking after cooldown ends
+    /// </summary>
+    private void IncreaseAtCooldownEnd()
+    {
+        if (GetAttacking())
+            IncreaseConsecutiveAttack();
+    }
+
+    /// <summary>
+    ///     Increases the current consecutive attack by 1
+    /// </summary>
+    private void IncreaseConsecutiveAttack() 
+    {
+        csc_Current = (csc_Current + 1) % csc_Max;
+    }
+
+    /// <summary>
+    ///     Resets the current 
+    /// </summary>
+    private void ResetConsecutiveAttack() { csc_Current = 0; }
+    #endregion
+    #region Animation
+    /// <summary>
+    ///     Sets up structures for animations
+    /// </summary>
+    private void SetUpAnimation()
+    {
+        OnStateChanged += UnlockRestOnRelease;
+        OnStateChanged += SetInitialAnimationFlag;
+    }
+    /// <summary>
+    ///     Cleans up structures for animations
+    /// </summary>
+    private void CleanUpAnimation()
+    {
+        OnStateChanged -= UnlockRestOnRelease;
+        OnStateChanged -= SetInitialAnimationFlag;
+    }
+
+    /// <summary>
+    ///     Plays the attack animation
+    /// </summary>
+    private void PlayAnimation(string name)
+    {
+        if (animationController == null)
+            return;
+        // Run animation
+        animationController.Play(name, -1, 0);
+    }
+    /// <summary>
+    ///     Locks the resting id on the animator
+    /// </summary>
+    private void LockRest()
+    {
+        if (animationController == null)
+            return;
+        // Run animation
+        animationController.SetBool(a_RestingLockID, true);
+    }
+    /// <summary>
+    ///     Unlocks the resting id on the animator
+    /// </summary>
+    private void UnlockRest()
+    {
+        if (animationController == null)
+            return;
+        // Run animation
+        animationController.SetBool(a_RestingLockID, false);
+    }
+
+    /// <summary>
+    ///     Gets the current animation ID
+    /// </summary>
+    /// <returns>Animation ID</returns>
+    private string GetCurrentAnimationID()
+    {
+        // Check if we are running initial
+        if (a_InitialAttackFlag)
+        {
+            SetInitialAnimationFlag(false);
+            return a_InitialAttackID;
+        }
+        // Return current consecutive ID
+        return a_AttackIDs[csc_Current];
+    }
+
+    /// <summary>
+    ///     Sets the initial animation flag
+    /// </summary>
+    /// <param name="value">Input value</param>
+    private void SetInitialAnimationFlag(bool value) { a_InitialAttackFlag = value; }
+    /// <summary>
+    ///     Unlocks rest when state is false
+    /// </summary>
+    /// <param name="state">Input state</param>
+    private void UnlockRestOnRelease(bool state)
+    {
+        if (state)
+            return;
+        UnlockRest();
+    }
+    #endregion
+
+    #region Get Methods
+    /// <summary>
+    ///     Gets the hitbox
+    /// </summary>
+    /// <returns>Hitbox</returns>
+    public Hitbox GetHitbox() { return hitbox; }
+
     /// <summary>
     ///     Get the entity datas from a list of colliders
     /// </summary>
@@ -140,7 +504,7 @@ public class PlayerHands : MonoBehaviour
         // Create temporary data structure
         List<EntityData> foundEntities = new List<EntityData>();
         // Find each entity data
-        for(int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < colliders.Length; i++)
         {
             EntityData cData = colliders[i].GetComponent<EntityData>();
             // Check if it is null
@@ -150,96 +514,13 @@ public class PlayerHands : MonoBehaviour
         // Return the found list
         return foundEntities.ToArray();
     }
-
-    #region Melee
-    private bool meleeAttackActive = false;
-    /// <summary>
-    ///     Called when we try to melee attack
-    /// </summary>
-    private void OnMeleeAttack()
-    {
-        // Check if our lock is active
-        if (meleeAttackActive)
-            return;
-        // Play melee attack timed
-        StartCoroutine(MeleeAttackTimed());
-    }
-    private IEnumerator MeleeAttackTimed()
-    {
-        // Set Lock
-        meleeAttackActive = true;
-        // Run animation
-        Melee_PlayAnimation();
-
-        // -> Time
-        yield return new WaitForSecondsRealtime(meleeWeaponAnimationDelay);
-
-        // Start by setting up hitbox based on values
-        RecalculateHitbox();
-        // Tick the hitbox
-        weaponHitbox.Tick();
-        // Get colliding objects
-        weaponHitbox.GetColliding(out Collider[] colliders);
-        EntityData[] hitEntities = PullEntityDataFromColliders(colliders);
-        // Run logic
-        HitEntities(hitEntities);
-        
-        // Check for impact stun
-        if (weaponHitbox.GetState())
-            _timeControl.SetScale_AutoReset_Delay(meleeWeaponHitTimeScale, meleeWeaponHitTimeScaleResetDelay);
-
-        // Set Lock
-        meleeAttackActive = false;
-    }
-    /// <summary>
-    ///     Hits all entities in an array
-    /// </summary>
-    /// <param name="targets">List of Entity Datas</param>
-    private void HitEntities(EntityData[] targets)
-    {
-        foreach(EntityData entity in targets)
-        {
-            ApplyMeleeKnockback(entity);
-            ApplyMeleeDamage(entity);
-        }
-    }
-    /// <summary>
-    ///     Applies melee knockback to entity
-    /// </summary>
-    /// <param name="target">EntityData</param>
-    private void ApplyMeleeKnockback(EntityData target)
-    {
-        // Gets the knockback direction
-        Vector3 knockbackDirection = target.transform.position - Camera.main.transform.position;
-        // Apply the knockback to the target
-        target.ApplyForce(knockbackDirection, meleeWeaponKnockback, ForceMode.Impulse, "Weapon.Knockback");
-    }
-    /// <summary>
-    ///     Applies melee damage to entity
-    /// </summary>
-    /// <param name="target">EntityData</param>
-    private void ApplyMeleeDamage(EntityData target)
-    {
-        // Apply the knockback to the target
-        target.Hurt("Player.Melee", meleeWeaponDamage);
-    }
-
-    private void Melee_PlayAnimation()
-    {
-        if (meleeWeaponAnimationController == null)
-            return;
-        // Run animation
-        meleeWeaponAnimationController.Play(meleeAttackAnimationName);
-    }
     #endregion
-    #endregion
-
     #region String Methods
     public override string ToString()
     {
         string output = "";
 
-        output += $"{_timeControl}";
+        output += $"{cooldown}\n";
 
         return output;
     }
