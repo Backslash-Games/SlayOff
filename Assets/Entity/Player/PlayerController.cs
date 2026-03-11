@@ -309,7 +309,7 @@ public class PlayerController : EntityData
         ResetVerticalVelocity();
 
         // Use a raycast to find the jump angle
-        bool groundFound = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 5, groundCheck.GetLayerMask());
+        bool groundFound = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 1.5f, groundCheck.GetLayerMask());
         // Calculate force that should be applied in world space
         Vector3 worldForce = Vector3.up;
         if (groundFound)

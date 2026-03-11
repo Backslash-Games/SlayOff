@@ -1209,8 +1209,8 @@
     "m_ObjectId": "44a6e1bc41444454a572eebd85f7be55",
     "m_Title": "Quality Processing",
     "m_Position": {
-        "x": -249.0,
-        "y": -308.0
+        "x": -249.0000457763672,
+        "y": -308.0000305175781
     }
 }
 
@@ -2155,7 +2155,7 @@
     "m_Title": "Material Processing",
     "m_Position": {
         "x": 568.0000610351563,
-        "y": -147.0
+        "y": -146.99998474121095
     }
 }
 
@@ -2274,8 +2274,8 @@
     "m_ObjectId": "df1e08e25f2d4618b3ba0c8fd9cf9570",
     "m_Title": "Anomaly",
     "m_Position": {
-        "x": 1279.0001220703125,
-        "y": -206.0
+        "x": 1279.0,
+        "y": -205.99996948242188
     }
 }
 
@@ -2558,8 +2558,8 @@
     "m_ObjectId": "ffcb511df8874ad7a0e9efc404ada427",
     "m_Title": "Defect Processing",
     "m_Position": {
-        "x": -1106.0001220703125,
-        "y": 408.0
+        "x": -1106.0,
+        "y": 408.00006103515627
     }
 }
 

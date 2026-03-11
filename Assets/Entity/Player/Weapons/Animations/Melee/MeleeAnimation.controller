@@ -33,7 +33,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MeleeStrike_1
-  m_Speed: 1.7
+  m_Speed: 1.6
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1825943779566879661}
@@ -182,9 +182,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.10815348
+  m_TransitionDuration: 0.053940922
   m_TransitionOffset: 0
-  m_ExitTime: 0.69227767
+  m_ExitTime: 0.70928526
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -207,9 +207,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.11570743
   m_TransitionOffset: 0
-  m_ExitTime: 0.57142854
+  m_ExitTime: 0.8016443
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0

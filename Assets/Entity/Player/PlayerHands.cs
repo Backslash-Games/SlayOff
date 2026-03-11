@@ -84,7 +84,6 @@ public class PlayerHands : MonoBehaviour
         in_melee = PlayerActions.FindAction("Melee");
 
         in_ranged = PlayerActions.FindAction("Ranged");
-        in_ranged.performed += _ => OnRangedAttack();
     }
     /// <summary>
     ///     Unbinds Input
@@ -94,8 +93,6 @@ public class PlayerHands : MonoBehaviour
         // Check if player actions are set
         if (PlayerActions == null)
             return;
-        if(in_ranged != null)
-            in_ranged.performed -= _ => OnRangedAttack();
     }
     #endregion
     #region Attacks
@@ -103,15 +100,7 @@ public class PlayerHands : MonoBehaviour
     {
         // Update melee to be pressed
         melee.Tick(in_melee.IsPressed());
-    }
-
-    /// <summary>
-    ///     Called when we try to melee attack
-    /// </summary>
-    private void OnRangedAttack()
-    {
-        // Run our melee attack
-        ranged.OnAttack();
+        ranged.Tick(in_ranged.IsPressed());
     }
     #endregion
 
@@ -151,6 +140,11 @@ public class Weapon
 
     [Header("Consecutive Attack")]
     [SerializeField] private int csc_Current = 0;
+    [Space]
+    [SerializeField] private int csc_Total = 0;
+    [SerializeField] private int csc_AllowedAttacks = 1;
+    [Space]
+    [SerializeField] private bool csc_Active = false;
     private int csc_Max = 0;
     [Space]
 
@@ -161,12 +155,12 @@ public class Weapon
 
     [Header("Animation")]
     [SerializeField] private Animator animationController;
-    [SerializeField] private float a_ExecutionDelay = 0.215f;
-    [SerializeField] private string a_RestingID = "MeleeResting";
     [SerializeField] private string a_RestingLockID = "LockRest";
     [SerializeField] private string a_InitialAttackID = "MeleeStrike_i";
     private bool a_InitialAttackFlag = false;
     [SerializeField] private string[] a_AttackIDs = new string[0];
+    [Space]
+    [SerializeField] private AnimationEvent a_Event;
     [Space]
 
     [Header("Slow Down")]
@@ -284,11 +278,18 @@ public class Weapon
     public bool GetAttacking() { return attacking; }
     #endregion
     #region Attack Actions
+    private bool coroutineLock = false;
     /// <summary>
     ///     Run attack
     /// </summary>
     public void OnAttack()
     {
+        // Check for an early rest unlock
+        if (!isConsecutiveAllowed() && csc_Active && !coroutineLock)
+        {
+            UnlockRest();
+            return;
+        }
         // Check if we are on cooldown
         if (cooldown.Active())
             return;
@@ -305,6 +306,8 @@ public class Weapon
     /// <returns>Wait</returns>
     private IEnumerator AttackTimed()
     {
+        // Set lock
+        coroutineLock = true;
         // Run animation
         LockRest();
         PlayAnimation(GetCurrentAnimationID());
@@ -312,7 +315,8 @@ public class Weapon
         cooldown.Start();
 
         // -> Wait for a bit within the animation to execute attack
-        yield return new WaitForSecondsRealtime(a_ExecutionDelay);
+        while(!a_Event.GetFlagState())
+            yield return new WaitForEndOfFrame();
 
         // Start by setting up hitbox based on values
         RecalculateHitbox();
@@ -327,6 +331,9 @@ public class Weapon
         // Check for impact stun
         if (hitbox.GetState())
             _timeControl.SetScale_AutoReset_Delay(hitTimeScale, hitTimeScaleResetDelay);
+
+        // Set lock
+        coroutineLock = false;
     }
     /// <summary>
     ///     Hits all entities in an array
@@ -398,12 +405,27 @@ public class Weapon
     private void IncreaseConsecutiveAttack() 
     {
         csc_Current = (csc_Current + 1) % csc_Max;
+        csc_Total++;
+        csc_Active = true;
     }
+
+    /// <summary>
+    ///     Checks if consecutive acctacks are allowed
+    /// </summary>
+    /// <returns>True if we can keep attacking</returns>
+    private bool isConsecutiveAllowed() { return csc_Total < csc_AllowedAttacks || csc_AllowedAttacks <= -1; }
 
     /// <summary>
     ///     Resets the current 
     /// </summary>
-    private void ResetConsecutiveAttack() { csc_Current = 0; }
+    private void ResetConsecutiveAttack() 
+    {
+        cooldown.Cancel();
+
+        csc_Current = 0;
+        csc_Total = 0;
+        csc_Active = false; 
+    }
     #endregion
     #region Animation
     /// <summary>
