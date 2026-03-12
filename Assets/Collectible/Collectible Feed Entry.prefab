@@ -182,14 +182,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6551360602133018870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0906f3824b5f604cb173957e22f7fdd, type: 3}
+  m_Script: {fileID: 11500000, guid: fd2a2381407ea574fbc8ebe4b0deb086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleFeedEntry
   canvas: {fileID: 328044584606489117}
   containedImages:
   - {fileID: 4467971236646140022}
   - {fileID: 6823190338430586203}
-  collectibleRenderer: {fileID: 3167477911146039044}
   currentTime: 0
   rotationRange: {x: 180, y: 120}
   scaleRange: {x: 1, y: 0.3}
@@ -223,6 +222,8 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 5
     m_NumAlphaKeys: 2
+  targetTransform: {fileID: 1329383204902411105}
+  collectibleRenderer: {fileID: 3167477911146039044}
 --- !u!1001 &3557068417254626186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +321,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 771a99fa6ac373f40b0e5dd3e8ec03b9, type: 3}
+--- !u!224 &1329383204902411105 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2535478324955515115, guid: 771a99fa6ac373f40b0e5dd3e8ec03b9, type: 3}
+  m_PrefabInstance: {fileID: 3557068417254626186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2944404972088835241 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1837924231389032227, guid: 771a99fa6ac373f40b0e5dd3e8ec03b9, type: 3}

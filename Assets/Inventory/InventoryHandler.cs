@@ -29,15 +29,17 @@ public class InventoryHandler : MonoBehaviour
     private struct ComboObjective
     {
         [SerializeField] private string name; // Name of the objective
+        [SerializeField] private string feedDescription; // Description that is displayed on feed
         [SerializeField] private int quota; // Quota towards the objective
         [SerializeField] private float value; // The percentage value of the combo
         [Space]
         [SerializeField] private int progress; // The current progress towards the objective
         [SerializeField] private int timesCompleted; // The total times the player has completed an objective
 
-        public ComboObjective(string name, int quota, float value)
+        public ComboObjective(string name, string feedDescription, int quota, float value)
         {
             this.name = name;
+            this.feedDescription = feedDescription;
             this.quota = quota;
             this.value = value;
 
@@ -85,6 +87,11 @@ public class InventoryHandler : MonoBehaviour
         /// </summary>
         /// <returns>Objective Name</returns>
         public string GetName() { return name; }
+        /// <summary>
+        ///     Gets the feed description of the objective
+        /// </summary>
+        /// <returns>Feed Description</returns>
+        public string GetFeedDescription() { return feedDescription; }
         /// <summary>
         ///     Gets the value of the objective
         /// </summary>
@@ -156,7 +163,7 @@ public class InventoryHandler : MonoBehaviour
     public void RewardCollectible(uint binary)
     {
         AddBinaryCollectible(binary); // Adds the binary to stored collectibles
-        GetCollectibleFeedHandler().RequestNewFeed(binary); // Requests pop up feed for binary
+        GetCollectibleFeedHandler().RequestNewFeed(binary.ToString()); // Requests pop up feed for binary
     }
 
     private void AddBinaryCollectible(uint binary)
@@ -178,6 +185,8 @@ public class InventoryHandler : MonoBehaviour
     {
         // Reward combo progress
         currentCombo++;
+        GetComboFeedHandler().RequestNewFeed(comboObjectives[source].GetFeedDescription()); // Requests pop up feed for binary
+
         // Reset combo timer if not running
         if (currentComboTime <= 0)
             ResetComboTime();
@@ -193,6 +202,9 @@ public class InventoryHandler : MonoBehaviour
         currentCombo = 0;
         // Reset all objectives
         ResetAllObjectiveProgress();
+
+        // Reset feed display
+        GetComboFeedHandler().OnFeedChanged.Invoke();
     }
 
     /// <summary>
@@ -226,6 +238,12 @@ public class InventoryHandler : MonoBehaviour
         // Clamp time
         currentComboTime = Mathf.Clamp(currentComboTime, 0, currentMaxTime);
     }
+
+    /// <summary>
+    ///     Gets the current combo
+    /// </summary>
+    /// <returns>uInteger current combo</returns>
+    public uint GetCurrentCombo() { return currentCombo; }
 
     #region Objective Management
     /// <summary>
@@ -265,7 +283,7 @@ public class InventoryHandler : MonoBehaviour
         if (!comboObjectiveIDs.ContainsKey(id))
         {
             Debug.LogError($"Objective with name \"{id}\" does not exist");
-            return new ComboObjective("NULL", 0, 0);
+            return new ComboObjective("NULL", "NONE", 0, 0);
         }
 
         return comboObjectives[comboObjectiveIDs[id]];
@@ -289,13 +307,20 @@ public class InventoryHandler : MonoBehaviour
     #endregion
     #endregion
 
-    #region Get Method
-    private CollectibleFeedHandler feedHandler = null;
-    private CollectibleFeedHandler GetCollectibleFeedHandler()
+    #region Get Feed Handlers
+    private FeedHandler collectibleFeedHandler = null;
+    private FeedHandler GetCollectibleFeedHandler()
     {
-        if (feedHandler == null)
-            feedHandler = FindAnyObjectByType<CollectibleFeedHandler>();
-        return feedHandler;
+        if (collectibleFeedHandler == null)
+            collectibleFeedHandler = GameObject.Find("Collectible Feed").GetComponent<FeedHandler>();
+        return collectibleFeedHandler;
+    }
+    private FeedHandler comboFeedHandler = null;
+    private FeedHandler GetComboFeedHandler()
+    {
+        if (comboFeedHandler == null)
+            comboFeedHandler = GameObject.Find("Combo Feed").GetComponent<FeedHandler>();
+        return comboFeedHandler;
     }
     #endregion
     #region Debug
