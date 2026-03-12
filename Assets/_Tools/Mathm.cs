@@ -126,6 +126,11 @@ public class Mathm
 
         return binaryString;
     }
+    /// <summary>
+    ///     Takes in a uint and gets the physical length in Base2 
+    /// </summary>
+    /// <param name="input">Input Value</param>
+    /// <returns>Physical Length</returns>
     public static int GetBinaryLength(uint input)
     {
         // Track count

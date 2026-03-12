@@ -7466,10 +7466,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2256783042755847696, guid: 15eff41acbd6e8c43887c274235865cd, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5558321194583629175, guid: 15eff41acbd6e8c43887c274235865cd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7553,10 +7549,6 @@ PrefabInstance:
     - target: {fileID: 6528498828366805909, guid: 15eff41acbd6e8c43887c274235865cd, type: 3}
       propertyPath: m_Name
       value: PlayerGUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8173615726975738113, guid: 15eff41acbd6e8c43887c274235865cd, type: 3}
-      propertyPath: m_Material
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18200,7 +18192,7 @@ MonoBehaviour:
       offset: {x: 0, y: 0, z: 2}
       size: {x: 0.1, y: 0.1, z: 3}
       localEuler: {x: 0, y: 0, z: 0}
-    cooldownTime: 0.4
+    cooldownTime: 0.5
     cooldownReductionRate: 1
     csc_Current: 0
     csc_Total: 0
