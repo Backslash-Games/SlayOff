@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonoDebug
   suppressAllMonoDebug: 0
-  suppressLocalMonoDebug: 0
+  suppressLocalMonoDebug: 1
   offset: {x: 0, y: 0, z: 0}
   textColor: {r: 1, g: 1, b: 1, a: 1}
   debugStyle: 0

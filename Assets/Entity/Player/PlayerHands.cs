@@ -122,6 +122,7 @@ public class Weapon
     [Header("Main Attributes")]
     [SerializeField] private float knockback = 15;
     [SerializeField] private float damage = 1;
+    [SerializeField] private Transform orientationTransform;
     [Space]
 
     [Header("Hitbox")]
@@ -149,6 +150,7 @@ public class Weapon
     [Space]
 
     [Header("Vecolity Bonus")]
+    [SerializeField] private bool calculateLengthBonus = false;
     [SerializeField] private float maxLengthBonus = 5;
     [SerializeField] private float maxLengthVelocity = 24;
     [Space]
@@ -236,18 +238,23 @@ public class Weapon
     /// </summary>
     public void RecalculateHitbox()
     {
-        // Get the camera transform
-        Transform cameraTransform = Camera.main.transform;
+        // Check if our orientation transform is set
+        if (orientationTransform == null)
+            return;
 
         // -> Rotate Box
-        hitbox.SetLocalEuler(cameraTransform.eulerAngles + hitboxDefault_LocalEuler);
+        hitbox.SetLocalEuler(orientationTransform.eulerAngles + hitboxDefault_LocalEuler);
         // -> Scale box
-        Vector3 linearVelocity = player.GetLinearVelocity();
-        float hitboxSpeedScaleBonus = Mathf.Lerp(0, maxLengthBonus, (linearVelocity.magnitude / maxLengthVelocity) * Mathm.GetVectorAccuracy(linearVelocity, cameraTransform.forward));
+        float hitboxSpeedScaleBonus = 0;
+        if (calculateLengthBonus)
+        {
+            Vector3 linearVelocity = player.GetLinearVelocity();
+            hitboxSpeedScaleBonus = Mathf.Lerp(0, maxLengthBonus, (linearVelocity.magnitude / maxLengthVelocity) * Mathm.GetVectorAccuracy(linearVelocity, orientationTransform.forward));
+        }
         Vector3 cHitboxScale = hitboxDefault_Size + (Vector3.forward * hitboxSpeedScaleBonus);
         hitbox.SetSize(cHitboxScale);
         // -> Position Box
-        Vector3 cHitboxPosition = cameraTransform.rotation * (hitboxDefault_Offset + (Vector3.forward * hitboxSpeedScaleBonus / 2f));
+        Vector3 cHitboxPosition = orientationTransform.rotation * (hitboxDefault_Offset + (Vector3.forward * hitboxSpeedScaleBonus / 2f));
         hitbox.SetOffset(cHitboxPosition);
     }
     #endregion
@@ -316,7 +323,7 @@ public class Weapon
         cooldown.Start();
 
         // -> Wait for a bit within the animation to execute attack
-        while(!a_Event.GetFlagState())
+        while(a_Event != null && !a_Event.GetFlagState())
             yield return new WaitForEndOfFrame();
 
         // Start by setting up hitbox based on values
@@ -405,6 +412,11 @@ public class Weapon
     /// </summary>
     private void IncreaseConsecutiveAttack() 
     {
+        // Check if csc max is set
+        if (csc_Max == 0)
+            return;
+
+        // Increase count
         csc_Current = (csc_Current + 1) % csc_Max;
         csc_Total++;
         csc_Active = true;
@@ -484,6 +496,9 @@ public class Weapon
     /// <returns>Animation ID</returns>
     private string GetCurrentAnimationID()
     {
+        // Check if attack ids are set
+        if (a_AttackIDs.Length <= 0)
+            return "No Attack ID";
         // Check if we are running initial
         if (a_InitialAttackFlag)
         {

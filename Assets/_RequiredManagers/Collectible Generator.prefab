@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae24d59cc254d4d8674e5b53b0672b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MonoDebug
-  suppressAllMonoDebug: 1
+  suppressAllMonoDebug: 0
   suppressLocalMonoDebug: 1
   offset: {x: 0, y: 0, z: 0}
   textColor: {r: 1, g: 1, b: 1, a: 1}

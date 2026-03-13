@@ -214,6 +214,19 @@ public class EntityData : MonoBehaviour
     }
     #endregion
 
+    #region Positions
+    private static readonly int groundCheckLength = 30;
+    public Vector3 GetGroundPosition()
+    {
+        // Pull the ground point
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, groundCheckLength, LayerMask.NameToLayer("Terrain")))
+            return hit.point;
+
+        // Pull the default position
+        return transform.position;
+    }
+    #endregion
+
     #region Debug
     public override string ToString()
     {
