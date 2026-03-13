@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2190482168417153013, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24
+      value: -6.46797
       objectReference: {fileID: 0}
     - target: {fileID: 2190482168417153013, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2190482168417153013, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25
+      value: -1.0858593
       objectReference: {fileID: 0}
     - target: {fileID: 2190482168417153013, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
       propertyPath: m_LocalRotation.w
@@ -42,15 +42,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2190482168417153013, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2190482168417153013, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2190482168417153013, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2190482168417153013, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardboardBox_1x1x1 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8733379501452902458, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ea9c901dddb13524b99a90589a544da8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

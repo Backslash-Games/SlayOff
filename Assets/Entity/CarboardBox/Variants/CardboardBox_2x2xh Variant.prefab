@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardboardBox_2x2xh Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4408912825186209853, guid: 980fc2e8ac194344e8a32c7c059d450f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.260241
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408912825186209853, guid: 980fc2e8ac194344e8a32c7c059d450f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.373807
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609097560051013761, guid: 980fc2e8ac194344e8a32c7c059d450f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b0d14ca9be29a524ab72d30dd68b5bba, type: 2}
     - target: {fileID: 6387186466575251278, guid: 980fc2e8ac194344e8a32c7c059d450f, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
@@ -60,7 +72,12 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8820401996570135978, guid: 980fc2e8ac194344e8a32c7c059d450f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3eb3b08c35c718945879530672156d77, type: 2}
+    m_RemovedComponents:
+    - {fileID: 6204679065821045884, guid: 980fc2e8ac194344e8a32c7c059d450f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

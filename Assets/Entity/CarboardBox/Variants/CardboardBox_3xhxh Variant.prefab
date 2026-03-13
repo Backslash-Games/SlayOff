@@ -12,6 +12,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardboardBox_3xhxh Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4085931066509293942, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085931066509293942, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085931066509293942, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.49999928
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085931066509293942, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.49999928
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085931066509293942, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149103390659912348, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b0d14ca9be29a524ab72d30dd68b5bba, type: 2}
+    - target: {fileID: 5798715465031360097, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6827885856426331475, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
@@ -64,7 +92,12 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8937959299857479607, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f4f5e0a87ce4ed439cab2ee269b16f0, type: 2}
+    m_RemovedComponents:
+    - {fileID: 5798715465031360097, guid: c84d3c6932d02df49a4adeb7381d77fd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
