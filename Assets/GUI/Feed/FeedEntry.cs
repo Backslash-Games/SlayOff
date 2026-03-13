@@ -1,19 +1,23 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FeedEntry : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
     [SerializeField] private Image[] containedImages = new Image[0];
+    [SerializeField] private TextMeshProUGUI[] containedText = new TextMeshProUGUI[0];
     [Space]
     [SerializeField] private float currentTime = 0;
     [Space]
+    [SerializeField] private bool usePosition = false;
     [SerializeField] private Vector2[] positionRange = new Vector2[2];
     private float positionDistance = 0;
+    [SerializeField] private bool useRotation = false;
     [SerializeField] private Vector2 rotationRange = new Vector2(180, 120);
     [Space]
-    [SerializeField] private Vector2 scaleRange = new Vector2(1f, 0.7f);
+    [SerializeField] private AnimationCurve scaleRange = new AnimationCurve();
     [SerializeField] private Gradient colorRange = new Gradient();
     [Space]
     [SerializeField] private Transform targetTransform;
@@ -23,6 +27,15 @@ public class FeedEntry : MonoBehaviour
     {
         ForcePosition(position);
         ForceRotation(rotation);
+    }
+
+    public void ResetEntry(Vector3 position, float rotation)
+    {
+        ForcePosition(position);
+        ForceRotation(rotation);
+
+        targetPosition = position;
+        targetRotation = rotation;
     }
     #endregion
 
@@ -49,6 +62,10 @@ public class FeedEntry : MonoBehaviour
     /// <param name="rotation">Input Position</param>
     private void SetPosition(Vector3 offset)
     {
+        // Check if we are using position
+        if (!usePosition)
+            return;
+
         // Sets the position
         currentPosition = offset;
         transform.localPosition = currentPosition;
@@ -116,6 +133,10 @@ public class FeedEntry : MonoBehaviour
     /// <param name="rotation">Input Rotation</param>
     private void SetRotation(float rotation)
     {
+        // Check if we are using rotation
+        if (!useRotation)
+            return;
+
         // Sets the rotation
         currentRotation = rotation;
         transform.eulerAngles = Vector3.forward * currentRotation;
@@ -176,11 +197,16 @@ public class FeedEntry : MonoBehaviour
     ///     Sets the scale based on an amount
     /// </summary>
     /// <param name="amount">Input</param>
-    private void SetScale(float amount) { targetTransform.localScale = Vector3.one * amount; }
+    private void SetScale(float amount) 
+    {
+        if (float.IsNaN(amount))
+            return;
+        targetTransform.localScale = Vector3.one * amount; 
+    }
     /// <summary>
     ///     Sets the scale based on time
     /// </summary>
-    private void TimeScale() { SetScale(Mathf.LerpUnclamped(scaleRange.x, scaleRange.y, currentTime)); }
+    private void TimeScale() { SetScale(scaleRange.Evaluate(currentTime)); }
     #endregion
 
     #region Color
@@ -192,6 +218,8 @@ public class FeedEntry : MonoBehaviour
     {
         foreach (Image image in containedImages)
             image.color = color;
+        foreach (TextMeshProUGUI text in containedText)
+            text.color = color;
     }
     /// <summary>
     ///     Sets the color based on time

@@ -26,8 +26,11 @@ public class FeedHandler : MonoBehaviour
     private static readonly float queueCountDelayScale = 0.4f;
     private bool queueActive = false;
 
+    private bool hidden = false;
+
     [Space]
     public UnityEvent OnFeedChanged = new UnityEvent();
+    public UnityEvent OnRunFeedElements = new UnityEvent();
 
     #region Unity Method
     private void Awake()
@@ -64,6 +67,8 @@ public class FeedHandler : MonoBehaviour
     {
         // Enqueue Binary
         queuedFeed.Enqueue(value);
+        // Set unhidden
+        hidden = false;
 
         // Check if we need to run the feed
         if (!queueActive)
@@ -115,6 +120,25 @@ public class FeedHandler : MonoBehaviour
         for(int i = 0; i < collectibleFeedEntries.Length; i++)
             if (awakeEntries[i])
                 collectibleFeedEntries[i].Bump(bumpAmount);
+    }
+    /// <summary>
+    ///     Hides all active entires
+    /// </summary>
+    public void HideAllFeedEntries() 
+    {
+        if (hidden)
+            return;
+        for (int i = 0; i < collectibleFeedEntries.Length; i++)
+        {
+            FeedEntry entry = collectibleFeedEntries[i];
+
+            entry.ForcePosition(spawnPosition);
+            entry.ForceRotation(spawnRotation);
+
+            awakeEntries[i] = false;
+            feedTarget = 0;
+        }
+        hidden = true;
     }
     #endregion
 }

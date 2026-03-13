@@ -13,7 +13,7 @@ public class ComboFeedEntry : FeedEntry
     public override void TickRenderer<T>(T value)
     {
         // Set the string value
-        SetText(value.ToString());
+        SetText($"+ {value} .......... $1");
     }
     /// <summary>
     ///     Handles the bump logic for Collectible Feed Entry

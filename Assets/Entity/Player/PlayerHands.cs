@@ -171,6 +171,7 @@ public class Weapon
     [Header("Flags")]
     [SerializeField] private bool attacking = false;
     private bool attackingPrevious = false;
+    [SerializeField] private bool cancelAllowed = false;
 
     /// <summary>
     ///     Delegate to help track attacking state
@@ -420,7 +421,8 @@ public class Weapon
     /// </summary>
     private void ResetConsecutiveAttack() 
     {
-        cooldown.Cancel();
+        if(cancelAllowed)
+            cooldown.Cancel();
 
         csc_Current = 0;
         csc_Total = 0;

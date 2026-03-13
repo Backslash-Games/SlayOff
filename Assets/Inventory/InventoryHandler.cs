@@ -214,12 +214,18 @@ public class InventoryHandler : MonoBehaviour
     {
         // Check if our combo timer is set
         if (currentComboTime <= 0)
+        {
+            GetComboFeedHandler().HideAllFeedEntries();
             return;
+        }
         // Decrease combo time
         currentComboTime -= Time.deltaTime;
         // Check if the combo is done
         if (currentComboTime <= 0)
             ResetCombo();
+
+        // Run feed elements
+        GetComboFeedHandler().OnRunFeedElements.Invoke();
     }
     /// <summary>
     ///     Sets the current combo timer to max
@@ -232,7 +238,7 @@ public class InventoryHandler : MonoBehaviour
     private void AddComboTime(float value) 
     { 
         // Get the current max time
-        float currentMaxTime = Mathf.Lerp(comboTimeRange.y, comboTimeRange.x, (float)currentCombo / comboTimeMinimumThreshold);
+        float currentMaxTime = GetCurrentComboMaxTime();
         // Add time
         currentComboTime += currentMaxTime * value;
         // Clamp time
@@ -244,6 +250,17 @@ public class InventoryHandler : MonoBehaviour
     /// </summary>
     /// <returns>uInteger current combo</returns>
     public uint GetCurrentCombo() { return currentCombo; }
+
+    /// <summary>
+    ///     Gets the current combo max time
+    /// </summary>
+    /// <returns></returns>
+    public float GetCurrentComboMaxTime() { return Mathf.Lerp(comboTimeRange.y, comboTimeRange.x, (float)currentCombo / comboTimeMinimumThreshold); }
+    /// <summary>
+    ///     
+    /// </summary>
+    /// <returns></returns>
+    public float GetCurrentComboTimerPercentage() { return currentComboTime / GetCurrentComboMaxTime(); }
 
     #region Objective Management
     /// <summary>
