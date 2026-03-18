@@ -49,9 +49,9 @@ public class CameraFlair : MonoBehaviour
     }
     #endregion
     #region Unity Methods
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        TickCamera(); // Updates camera flair
+        TickCamera_LateUpdate(); // Updates camera flair
     }
     #endregion
 
@@ -59,7 +59,7 @@ public class CameraFlair : MonoBehaviour
     /// <summary>
     ///     Moves the camera methods forward by 1
     /// </summary>
-    private void TickCamera()
+    private void TickCamera_LateUpdate()
     {
         CalculateCameraFOV();
     }
@@ -71,12 +71,14 @@ public class CameraFlair : MonoBehaviour
     private void CalculateCameraFOV()
     {
         // Get the current magnitude of speed
-        Vector3 horizontalVelocity = GetPlayer().GetHorizontalVelocity();
-        float cMagnitude = horizontalVelocity.magnitude;
+        Vector3 simVelocity = GetPlayer().GetLinearVelocity();
+        Vector3 cameraForward = GetCameraForward();
+        // -> Pull magnitude
+        float cMagnitude = simVelocity.magnitude;
         // Get the current time for slerping speed
         float cTime = Mathf.Clamp01((cMagnitude - cameraFOV_minimumVelocity) / (cameraFOV_maximumVelocity - cameraFOV_minimumVelocity));
         //-> Scale our time by accuracy to ensure a stronger result when looking towards movement
-        cTime = cTime * Mathf.Clamp01(Mathm.GetVectorAccuracy(horizontalVelocity, GetCameraForward_Horizontal()) / cameraFOV_accuracyMaxThreshold);
+        cTime = cTime * Mathf.Clamp01(Mathm.GetVectorAccuracy(simVelocity, cameraForward) / cameraFOV_accuracyMaxThreshold);
         // Get the current and new FOV
         float currentFOV = GetCinemachineCamera().Lens.FieldOfView;
         float newFOV = Mathf.Lerp(cameraFOV_range.x, cameraFOV_range.y, cTime);
@@ -87,6 +89,14 @@ public class CameraFlair : MonoBehaviour
     #endregion
 
     #region Get Methods
+    /// <summary>
+    ///     Get the camera forward
+    /// </summary>
+    /// <returns>Camera Forward </returns>
+    private Vector3 GetCameraForward()
+    {
+        return GetCamera().transform.forward;
+    }
     /// <summary>
     ///     Get the camera forward locked to horizontal
     /// </summary>

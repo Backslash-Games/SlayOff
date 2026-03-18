@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc324ea1f820094882cf12d7673f5cc, type: 3}
+  m_Name: 0_Development_Tileset
+  m_EditorClassIdentifier: Assembly-CSharp::Arcade_Tileset
+  rooms:
+  - {fileID: 11400000, guid: 1419f6eb844b25742919becbf18f420d, type: 2}
+  halls:
+  - {fileID: 11400000, guid: c8bb215d23dc65d4ea26f41cea48085d, type: 2}

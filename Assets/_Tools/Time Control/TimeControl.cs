@@ -17,10 +17,14 @@ public class TimeControl
 
     #region Time Scale Adjustments
     /// <summary>
+    ///     Resets time scale to default
+    /// </summary>
+    public void ResetScale() { SetScale(defaultScale); }
+    /// <summary>
     ///     Sets the time scale
     /// </summary>
     /// <param name="amount">New time scale</param>
-    private void SetScale(float amount) 
+    public void SetScale(float amount) 
     {
         Time.timeScale = amount;
     }

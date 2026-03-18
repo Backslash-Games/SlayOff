@@ -125,6 +125,12 @@ public class PlayerController : EntityData
 
         // Run physics updates
         PhysicsUpdate();
+    }
+    private void LateUpdate()
+    {
+        // Updates player inputs
+        LateUpdateInput();
+
         // Run Collision updates
         CollisionUpdate();
     }
@@ -213,12 +219,18 @@ public class PlayerController : EntityData
     /// </summary>
     private void FixedUpdateInput()
     {
-        Look(); // Updates look direction   
         Movement(); // Updates movement
         Jump(); // Updates Jump
 
         UpdateStandingState();
         UpdateSliding();
+    }
+    /// <summary>
+    ///     Updates the players inputs through late update
+    /// </summary>
+    private void LateUpdateInput()
+    {
+        Look(); // Updates look direction   
     }
 
     #region Look
@@ -226,17 +238,18 @@ public class PlayerController : EntityData
     {
         // Store the input
         Vector2 cInput = in_look.ReadValue<Vector2>();
-
+        float inputScaling = 0.01f;
+        
         // Rotate Yaw
         // -> Modify yaw
-        cameraCurrentYaw += Time.deltaTime * cInput.x * cameraHorizontalSensitivity;
+        cameraCurrentYaw += cInput.x * cameraHorizontalSensitivity * inputScaling;
         cameraCurrentYaw = cameraCurrentYaw % 360;
         // -> Set the current yaw
         cameraYaw.localRotation = Quaternion.Lerp(cameraYaw.localRotation, Quaternion.AngleAxis(cameraCurrentYaw, Vector3.up), Time.deltaTime * cameraSmoothingScale);
 
         // Rotate Pitch
         // -> Modify pitch
-        cameraCurrentPitch += Time.deltaTime * -cInput.y * cameraVerticalSensitivity;
+        cameraCurrentPitch += -cInput.y * cameraVerticalSensitivity * inputScaling;
         cameraCurrentPitch = Mathf.Clamp(cameraCurrentPitch, -cameraVerticalBounds, cameraVerticalBounds);
         // -> Set the current pitch
         cameraPitch.localRotation = Quaternion.Lerp(cameraPitch.localRotation, Quaternion.AngleAxis(cameraCurrentPitch, Vector3.right), Time.deltaTime * cameraSmoothingScale);
