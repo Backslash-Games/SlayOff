@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Collider))]
 public class EntityData : MonoBehaviour
@@ -10,6 +11,24 @@ public class EntityData : MonoBehaviour
     [Space]
     [SerializeField] private Collider collision = null;
     [SerializeField] private Rigidbody physicsBody = null;
+
+    [Header("Entity Data - Visuals")]
+    [SerializeField] private Image op_HealthBar = null;
+
+    // Events
+    /// <summary>
+    ///     Delegate that tracks when health is changed
+    /// </summary>
+    /// <param name="amount">Amount changed</param>
+    public delegate void HealthChanged(string source, float amount);
+    /// <summary>
+    ///     Event that tracks when the entity is hurt
+    /// </summary>
+    public event HealthChanged OnHurt;
+    /// <summary>
+    ///     Event that tracks when the entity is healed
+    /// </summary>
+    public event HealthChanged OnHeal;
 
     #region Object Interaction Definition
     [System.Serializable]
@@ -45,6 +64,8 @@ public class EntityData : MonoBehaviour
     #region Unity Methods
     private void OnEnable()
     {
+        // Setup events
+        BindEvents();
         // Setup statblock
         statblock.Recalculate();
 
@@ -53,9 +74,36 @@ public class EntityData : MonoBehaviour
         // Run on enable
         OnEnabled();
     }
+    private void OnDisable()
+    {
+        // Setup events
+        UnbindEvents();
+
+        // Run on disable
+        OnDisabled();
+    }
     #endregion
     #region Unity Passthroughs
     public virtual void OnEnabled() { }
+    public virtual void OnDisabled() { }
+    #endregion
+    #region Event Binding
+    /// <summary>
+    ///     Binds basic entity data events
+    /// </summary>
+    private void BindEvents()
+    {
+        OnHurt += (_, _) => Tick_HealthBar();
+        OnHeal += (_, _) => Tick_HealthBar();
+    }
+    /// <summary>
+    ///     Unbinds basic entity data events
+    /// </summary>
+    private void UnbindEvents()
+    {
+        OnHurt -= (_, _) => Tick_HealthBar();
+        OnHeal -= (_, _) => Tick_HealthBar();
+    }
     #endregion
 
     #region Stats
@@ -88,6 +136,9 @@ public class EntityData : MonoBehaviour
 
         // Heal the entity
         health += cHeal;
+
+        // Run Heal event
+        OnHeal?.Invoke(source, amount);
     }
     /// <summary>
     ///     Heals the entity to full
@@ -113,6 +164,9 @@ public class EntityData : MonoBehaviour
 
         // Clamp health to allowed range
         health = Mathf.Clamp(health, 0, GetStatblock().GetHealth());
+
+        // Run hurt event
+        OnHurt?.Invoke(source, amount);
 
         // Check for a kill
         if (health <= 0)
@@ -225,6 +279,21 @@ public class EntityData : MonoBehaviour
         // Pull the default position
         return transform.position;
     }
+    #endregion
+    #region Visuals
+    /// <summary>
+    ///     Optional method, updates the entity healthbar.
+    /// </summary>
+    public virtual void Tick_HealthBar()
+    {
+        // Check if the healthbar is set... If not thats okay, just ignore
+        if (op_HealthBar == null)
+            return;
+
+        // Defaults to setting the healthbar filling
+        op_HealthBar.fillAmount = health / GetStatblock().GetHealth();
+    }
+
     #endregion
 
     #region Debug

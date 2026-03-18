@@ -57,6 +57,11 @@ public class Hitbox
     /// </summary>
     /// <returns>Layer mask</returns>
     public LayerMask GetLayerMask() { return mask; }
+    /// <summary>
+    ///     Sets the current layer mask
+    /// </summary>
+    /// <param name="layerMask">New Mask</param>
+    public void SetLayerMask(LayerMask layerMask) { mask = layerMask; }
     #endregion
 
     #region Transform

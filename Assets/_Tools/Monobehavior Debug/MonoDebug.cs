@@ -19,7 +19,7 @@ public class MonoDebug : MonoBehaviour
     private Canvas canvas;
     private static float canvasScale_world = 2.5f;
 
-    private bool billboardingActive = false;
+    private Billboard billboard = null;
 
     private TextMeshProUGUI text;
     private static float textPadding_canvas = 5;
@@ -30,6 +30,8 @@ public class MonoDebug : MonoBehaviour
         // Right out of the gates check our suppression
         // -> This needs to stay as the first call in awake
         CheckSuppression();
+        // -> Set up the billboard component
+        billboard = gameObject.AddComponent<Billboard>();
     }
     private void Start()
     {
@@ -108,7 +110,7 @@ public class MonoDebug : MonoBehaviour
         text.alignment = TextAlignmentOptions.BottomLeft;
 
         // Setup billboard
-        billboardingActive = true;
+        if(billboard != null) { billboard.Initialize(true, canvas.transform); }
     }
     /// <summary>
     ///     Builds the initial objects on a canvas
@@ -122,6 +124,9 @@ public class MonoDebug : MonoBehaviour
         text.rectTransform.sizeDelta = new Vector2(Screen.width - textPadding_canvas, Screen.height - textPadding_canvas);
         text.fontSize = 18;
         text.alignment = canvas_allignment;
+
+        // Setup billboard
+        if (billboard != null) { billboard.Initialize(false, canvas.transform); }
     }
 
     /// <summary>
@@ -180,8 +185,6 @@ public class MonoDebug : MonoBehaviour
     {
         // Update the text
         UpdateText();
-        // Update the billboard
-        UpdateBillboard();
     }
 
     /// <summary>
@@ -195,21 +198,6 @@ public class MonoDebug : MonoBehaviour
 
         // Update the text
         text.text = source.ToString();
-    }
-    /// <summary>
-    ///     Updates billboarding if active
-    /// </summary>
-    private void UpdateBillboard()
-    {
-        // Check if we are billboarding
-        if (!billboardingActive)
-            return;
-        // Make sure our canvas object is set
-        if (canvas == null)
-            return;
-
-        // Make canvas object face the main camera
-        canvas.transform.LookAt(Camera.main.transform, Vector3.down);
     }
     #endregion
 }

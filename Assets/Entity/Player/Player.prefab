@@ -713,6 +713,7 @@ MonoBehaviour:
       current: 0
   collision: {fileID: 4617844969571709243}
   physicsBody: {fileID: 1403528512543417202}
+  op_HealthBar: {fileID: 0}
   standingState: 0
   groundCheck:
     parent: {fileID: 3412193161495693098}
@@ -736,13 +737,13 @@ MonoBehaviour:
   jumpLunge: 22
   breakingSpeed: 375
   breakingVelocityThreshold: 0.6
-  crouchSpeed: 10
+  crouchSpeed: 20
   crouchHeight: 1
   crouchCenter: {x: 0, y: -0.5, z: 0}
   crouchCameraCenter: {x: 0, y: -0.2, z: 0}
   crouchMovementScale: 0.15
   crouchGravityBonus: 3
-  slidingVelocityThreshold: 8
+  slidingVelocityThreshold: 3
   slidingSpeed: 95
   slidingFrictionRate: 1.3
   slidingDownHillBonus: 4
@@ -1112,7 +1113,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2039
+    m_Bits: 6135
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1440,7 +1441,7 @@ MonoBehaviour:
       state: 0
       mask:
         serializedVersion: 2
-        m_Bits: 768
+        m_Bits: 4864
       offset: {x: 0, y: 0, z: 2.25}
       size: {x: 0.2, y: 0.2, z: 3.5}
       localEuler: {x: 0, y: 0, z: 0}
@@ -1474,7 +1475,7 @@ MonoBehaviour:
       state: 0
       mask:
         serializedVersion: 2
-        m_Bits: 768
+        m_Bits: 4864
       offset: {x: 0, y: 0, z: 8.1}
       size: {x: 0.45, y: 0.65, z: 15}
       localEuler: {x: 0, y: 0, z: 0}

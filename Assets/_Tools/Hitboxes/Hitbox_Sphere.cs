@@ -23,7 +23,8 @@ public class Hitbox_Sphere : Hitbox
     /// <returns>CheckCollision()</returns>
     public override bool GetColliding(out Collider[] collided)
     {
-        return base.GetColliding(out collided);
+        collided = Physics.OverlapSphere(GetWorldPosition(), radius, GetLayerMask());
+        return collided.Length != 0;
     }
 
     /// <summary>
@@ -36,4 +37,10 @@ public class Hitbox_Sphere : Hitbox
         // Draw the sphere
         Gizmos.DrawSphere(GetWorldPosition(), radius);
     }
+
+    /// <summary>
+    ///     Gets the radius of the sphere
+    /// </summary>
+    /// <returns>Radius</returns>
+    public float GetRadius() { return radius; }
 }

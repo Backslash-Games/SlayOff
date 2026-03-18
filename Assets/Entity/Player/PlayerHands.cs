@@ -323,7 +323,7 @@ public class Weapon
         cooldown.Start();
 
         // -> Wait for a bit within the animation to execute attack
-        while(a_Event != null && !a_Event.GetFlagState())
+        while(a_Event != null && !a_Event.GetState())
             yield return new WaitForEndOfFrame();
 
         // Start by setting up hitbox based on values
@@ -498,7 +498,7 @@ public class Weapon
     {
         // Check if attack ids are set
         if (a_AttackIDs.Length <= 0)
-            return "No Attack ID";
+            return a_InitialAttackID;
         // Check if we are running initial
         if (a_InitialAttackFlag)
         {
@@ -553,6 +553,19 @@ public class Weapon
         // Return the found list
         return foundEntities.ToArray();
     }
+
+    /// <summary>
+    ///     Gets if the weapon is currently on cooldown
+    /// </summary>
+    /// <returns>True when on cooldown</returns>
+    public bool isOnCooldown() { return cooldown.Active(); }
+    #endregion
+    #region Set Methods
+    /// <summary>
+    ///     Sets the value of damage
+    /// </summary>
+    /// <param name="value">New Value</param>
+    public void SetDamage(float value) { damage = value; }
     #endregion
     #region String Methods
     public override string ToString()

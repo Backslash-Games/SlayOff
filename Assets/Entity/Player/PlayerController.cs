@@ -110,7 +110,7 @@ public class PlayerController : EntityData
         // Binds player inputs
         BindEvents();
     }
-    private void OnDisable()
+    public override void OnDisabled()
     {
         // Unbinds player inputs
         UnbindEvents();
