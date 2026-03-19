@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,8 @@ public class PlayerController : EntityData
     [SerializeField] private Hitbox_Sphere groundCheck;
     [SerializeField] private Hitbox_Sphere crouch_headCheck;
 
-
+    [Header("Physics")]
+    [SerializeField] private bool usePhysics = true;
 
     [Header("Physics.Gravity")]
     [SerializeField] private float gravityStrength;
@@ -534,6 +536,9 @@ public class PlayerController : EntityData
     /// </summary>
     private void PhysicsUpdate()
     {
+        if (!usePhysics)
+            return;
+
         GravityCorrection();
         Braking();
     }
@@ -602,16 +607,6 @@ public class PlayerController : EntityData
         ApplyForce(directionVelocity, breakingSpeed, ForceMode.Force, $"Player.Breaking.{direction}");
     }
 
-
-    /// <summary>
-    ///     Halts all vertical velocity while maintaining horizontal
-    /// </summary>
-    private void ResetVerticalVelocity()
-    {
-        // Pull horizontal velocity and force set it
-        Vector2 horizontalVelocity = GetHorizontalVelocity();
-        GetRigidbody().linearVelocity = new Vector3(horizontalVelocity.x, 0, horizontalVelocity.y);
-    }
     #endregion
     #region Collision
     /// <summary>
@@ -725,6 +720,23 @@ public class PlayerController : EntityData
     {
         // Increase progress
         InventoryHandler.Instance.AddObjectiveProgress(comboObjective_JumpKey);
+    }
+    #endregion
+    #region Positioning
+    public void Teleport(Vector3 position) { StartCoroutine(IEnum_Teleport(position)); }
+    private IEnumerator IEnum_Teleport(Vector3 position)
+    {
+        GetRigidbody().isKinematic = true;
+        GetRigidbody().interpolation = RigidbodyInterpolation.None;
+        usePhysics = false;
+
+        ResetVelocity();
+        transform.position = position;
+        yield return new WaitForSeconds(0.1f);
+
+        GetRigidbody().isKinematic = false;
+        GetRigidbody().interpolation = RigidbodyInterpolation.Interpolate;
+        usePhysics = true;
     }
     #endregion
 

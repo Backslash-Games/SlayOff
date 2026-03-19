@@ -218,6 +218,7 @@ public class EntityData : MonoBehaviour
     }
 
     #region Velocity
+    #region Get
     /// <summary>
     ///     Pulls the current linear velocity
     /// </summary>
@@ -244,6 +245,25 @@ public class EntityData : MonoBehaviour
         Vector3 linearVelocity = GetLinearVelocity();
         return linearVelocity.y;
     }
+    #endregion
+    #region Set
+    /// <summary>
+    ///     Halts all vertical velocity while maintaining horizontal
+    /// </summary>
+    public void ResetVerticalVelocity()
+    {
+        // Pull horizontal velocity and force set it
+        Vector2 horizontalVelocity = GetHorizontalVelocity();
+        GetRigidbody().linearVelocity = new Vector3(horizontalVelocity.x, 0, horizontalVelocity.y);
+    }
+    /// <summary>
+    ///     Halts all velocity
+    /// </summary>
+    public void ResetVelocity()
+    {
+        GetRigidbody().linearVelocity = Vector3.zero;
+    }
+    #endregion
     #endregion
 
 

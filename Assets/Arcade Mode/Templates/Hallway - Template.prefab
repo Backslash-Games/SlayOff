@@ -1830,7 +1830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Room
   bounds:
     m_Center: {x: 0, y: 2.5, z: 0}
-    m_Extent: {x: 3, y: 2.5, z: 16}
+    m_Extent: {x: 3, y: 2.5, z: 15}
+  boundPadding: 0.1
   doors:
   - {fileID: 3515595403695762624}
   - {fileID: 2526943405545581446}

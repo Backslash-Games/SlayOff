@@ -55,6 +55,12 @@ public class Arcade_Door : MonoBehaviour
         state = unavaliableState;
         SetGraphic_OnState();
     }
+
+    public void SetSealed()
+    {
+        state = OpenState.Sealed;
+        SetGraphic_OnState();
+    }
     #endregion
     #region Graphical
     /// <summary>

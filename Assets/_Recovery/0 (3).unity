@@ -2444,14 +2444,11 @@ MonoBehaviour:
   buildMode: 0
   stage: 3
   seed: -1
-  length: 5
-  maxDoorChecks: 12
+  length: 21
   currentFloor: 0
   cFloorParent: {fileID: 0}
   tiles: []
   rooms: []
-  stallMode: 2
-  ds_delay: 1
   PlayerActions: {fileID: -944628639613478452, guid: 8d57450c8a21e0941bcb9e1e21f31d38, type: 3}
   ct_otherDoorIndex: 0
 --- !u!4 &1563074867
