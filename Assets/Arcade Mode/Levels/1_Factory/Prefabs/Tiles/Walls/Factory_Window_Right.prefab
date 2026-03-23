@@ -53,6 +53,10 @@ PrefabInstance:
       value: Factory_Window_Right
       objectReference: {fileID: 0}
     - target: {fileID: 9073273354282656046, guid: 004994bd88ed17e4091ebe64dfe0e359, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073273354282656046, guid: 004994bd88ed17e4091ebe64dfe0e359, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 582d5288a53f4da4093e907116cc7cfe, type: 2}

@@ -19,3 +19,5 @@ MonoBehaviour:
   halls:
   - {fileID: 11400000, guid: 91c03e16ff7d33e4397302f456fc6b80, type: 2}
   - {fileID: 11400000, guid: 5243163644b761648b56f6a321ca161c, type: 2}
+  - {fileID: 11400000, guid: 9b83c8cb2d749584782da46ff789b1d6, type: 2}
+  - {fileID: 11400000, guid: 066fcc7d2e29f6d4ba13d7c365f6b528, type: 2}
