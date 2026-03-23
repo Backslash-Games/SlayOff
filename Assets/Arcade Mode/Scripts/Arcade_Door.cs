@@ -40,8 +40,8 @@ public class Arcade_Door : MonoBehaviour
         Gizmos.DrawWireMesh(Resources.GetBuiltinResource<Mesh>("Cube.fbx"), cBounds.center, transform.rotation, cBounds.size * 0.9f);
 
         // Draw door out face
-        Gizmos.color = Color.cornflowerBlue;
-        Gizmos.DrawLine(transform.position, transform.position + GetOutFace_World());
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (GetOutFace_World() * 4f));
     }
     #endregion
 
