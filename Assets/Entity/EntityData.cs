@@ -11,6 +11,7 @@ public class EntityData : MonoBehaviour
     [Space]
     [SerializeField] private Collider collision = null;
     [SerializeField] private Rigidbody physicsBody = null;
+    [SerializeField] private bool awakeOnStart = true;
 
     [Header("Entity Data - Visuals")]
     [SerializeField] private Image op_HealthBar = null;
@@ -62,6 +63,13 @@ public class EntityData : MonoBehaviour
     #endregion
 
     #region Unity Methods
+    private void Awake()
+    {
+        // Set awake state
+        SetRigidbodyAwake(awakeOnStart);
+        // Run on awake
+        OnAwake();
+    }
     private void OnEnable()
     {
         // Setup events
@@ -84,6 +92,7 @@ public class EntityData : MonoBehaviour
     }
     #endregion
     #region Unity Passthroughs
+    public virtual void OnAwake() { }
     public virtual void OnEnabled() { }
     public virtual void OnDisabled() { }
     #endregion
@@ -262,6 +271,17 @@ public class EntityData : MonoBehaviour
     public void ResetVelocity()
     {
         GetRigidbody().linearVelocity = Vector3.zero;
+    }
+    /// <summary>
+    ///     Sets the awake state of the rigidbody
+    /// </summary>
+    /// <param name="state">New state</param>
+    public void SetRigidbodyAwake(bool state)
+    {
+        if (state)
+            GetRigidbody().WakeUp();
+        else
+            GetRigidbody().Sleep();
     }
     #endregion
     #endregion

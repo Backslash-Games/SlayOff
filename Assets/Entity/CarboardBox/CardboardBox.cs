@@ -30,7 +30,6 @@ public class CardboardBox : EntityData
     public override void OnEnabled()
     {
         base.OnEnabled();
-        GetRigidbody().Sleep();
     }
     public override void OnDeath()
     {

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5852489677700821710}
   m_Layer: 0
-  m_Name: Box Stack - Corner
+  m_Name: CornerStack_4x4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
