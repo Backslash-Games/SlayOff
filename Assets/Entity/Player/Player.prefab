@@ -732,6 +732,7 @@ MonoBehaviour:
       m_Bits: 64
     offset: {x: 0, y: 0, z: 0}
     radius: 0.35
+  usePhysics: 1
   gravityStrength: 0.15
   jumpsAllowed: 2
   jumpForce: 520
@@ -1147,7 +1148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
+  m_RequiresDepthTextureOption: 1
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras:
