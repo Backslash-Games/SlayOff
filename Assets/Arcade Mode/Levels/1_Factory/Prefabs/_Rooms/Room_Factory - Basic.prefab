@@ -513,6 +513,9 @@ MonoBehaviour:
   bounds:
     m_Center: {x: 0, y: 10, z: 0}
     m_Extent: {x: 12, y: 10, z: 12}
+  skipAssetClear: 0
+  mesh_parent: {fileID: 3892406663712468406}
+  prop_parent: {fileID: 4097642668963143873}
   doors:
   - {fileID: 5728933582498280795}
   - {fileID: 8523711075892134490}

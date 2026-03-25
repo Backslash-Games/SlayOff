@@ -6,12 +6,22 @@ public class Arcade_Room : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private Bounds bounds;
 
+    [Header("Assets")]
+    [SerializeField] private bool skipAssetClear = false;
+    [Space]
+    [SerializeField] private GameObject mesh_parent = null;
+    [SerializeField] private GameObject prop_parent = null;
+
     [Header("Components")]
     [SerializeField] private Arcade_Door[] doors;
 
     private int lastDoorInteracted = 0;
 
     #region Unity Methods
+    private void Awake()
+    {
+        ClearAllAssets();
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.forestGreen;
@@ -19,6 +29,34 @@ public class Arcade_Room : MonoBehaviour
     }
     #endregion
 
+    #region Asset Management
+    /// <summary>
+    ///     Sets all assets as inactive
+    /// </summary>
+    private void ClearAllAssets()
+    {
+        if (skipAssetClear)
+            return;
+
+        mesh_parent.SetActive(false);
+        prop_parent.SetActive(false);
+    }
+
+    /// <summary>
+    ///     Initializes mesh assets
+    /// </summary>
+    public void InitializeMeshAssets()
+    {
+        mesh_parent.SetActive(true);
+    }
+    /// <summary>
+    ///     Initializes prop assets
+    /// </summary>
+    public void InitializePropAssets()
+    {
+        prop_parent.SetActive(true);
+    }
+    #endregion
     #region Door Management
     /// <summary>
     ///     Runs through and finds an avaliable door

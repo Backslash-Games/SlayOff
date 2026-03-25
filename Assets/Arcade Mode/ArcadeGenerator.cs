@@ -39,7 +39,7 @@ public class ArcadeGenerator : MonoBehaviour
     [SerializeField] private int ct_otherDoorIndex = 0;
 
 
-    public delegate void BuildPhase();
+    public delegate void BuildPhase(int currentFloor, Transform cFloorParent, Arcade_Tile[] tiles, Arcade_Room[] rooms);
     public event BuildPhase OnGenerationStarted;
     public event BuildPhase OnGenerationPlacing;
     public event BuildPhase OnGenerationSuccess;
@@ -50,7 +50,7 @@ public class ArcadeGenerator : MonoBehaviour
     private async void OnEnable()
     {
         BindInput();
-        OnGenerationStarted += PositionPlayer;
+        OnGenerationStarted += (_, _, _, _) => PositionPlayer();
 
         UpdateSeed();
         await Generate();
@@ -58,7 +58,7 @@ public class ArcadeGenerator : MonoBehaviour
     private async void OnDisable()
     {
         UnbindInput();
-        OnGenerationStarted -= PositionPlayer;
+        OnGenerationStarted -= (_, _, _, _) => PositionPlayer();
 
         await ClearGeneration();
     }
@@ -220,6 +220,12 @@ public class ArcadeGenerator : MonoBehaviour
             return;
         }
 
+        // Initialize assets
+        await DebugStall($"PlaceTile.2 -> Initial pass for {tile.GetIdentification()} complete, initializing mesh");
+        cRoom.InitializeMeshAssets();
+        await DebugStall($"PlaceTile.3 -> {tile.GetIdentification()} initializing props");
+        cRoom.InitializePropAssets();
+
         // Add information to lists
         rooms.Add(cRoom);
         tiles.Add(tile);
@@ -352,10 +358,10 @@ public class ArcadeGenerator : MonoBehaviour
     }
 
 
-    private void StageStarted() { SetStage(BuildStage.Started, true); OnGenerationStarted?.Invoke(); }
-    private void StagePlacing() { SetStage(BuildStage.Placing); OnGenerationPlacing?.Invoke(); }
-    private void StageSuccess() { SetStage(BuildStage.Success); OnGenerationSuccess?.Invoke(); }
-    private void StageFailed() { SetStage(BuildStage.Failed); OnGenerationFailed?.Invoke(); }
+    private void StageStarted() { SetStage(BuildStage.Started, true); OnGenerationStarted?.Invoke(currentFloor, cFloorParent, tiles.ToArray(), rooms.ToArray()); }
+    private void StagePlacing() { SetStage(BuildStage.Placing); OnGenerationPlacing?.Invoke(currentFloor, cFloorParent, tiles.ToArray(), rooms.ToArray()); }
+    private void StageSuccess() { SetStage(BuildStage.Success); OnGenerationSuccess?.Invoke(currentFloor, cFloorParent, tiles.ToArray(), rooms.ToArray()); }
+    private void StageFailed() { SetStage(BuildStage.Failed); OnGenerationFailed?.Invoke(currentFloor, cFloorParent, tiles.ToArray(), rooms.ToArray()); }
     #endregion
     #region Generation Debugging
     private async Task GenDebug_ConnectionTest()

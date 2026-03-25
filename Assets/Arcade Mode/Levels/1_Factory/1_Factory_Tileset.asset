@@ -17,6 +17,9 @@ MonoBehaviour:
   rooms:
   - {fileID: 11400000, guid: 1f0eba78a6d11934d9a18705d762f552, type: 2}
   - {fileID: 11400000, guid: f469cdbf54779dd43a4d1b59bae2cbc0, type: 2}
+  - {fileID: 11400000, guid: aee8abb3a66bc004fb3419e2ae701d40, type: 2}
+  - {fileID: 11400000, guid: 2dd34c564e6400547b1e9fecbeeec40a, type: 2}
+  - {fileID: 11400000, guid: d44155e8eafab4d4db4f1c9c72812c1d, type: 2}
   halls:
   - {fileID: 11400000, guid: 91c03e16ff7d33e4397302f456fc6b80, type: 2}
   - {fileID: 11400000, guid: 5243163644b761648b56f6a321ca161c, type: 2}

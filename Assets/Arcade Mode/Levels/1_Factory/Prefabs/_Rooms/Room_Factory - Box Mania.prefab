@@ -324,7 +324,6 @@ Transform:
   - {fileID: 8554451525027054989}
   - {fileID: 3992706179880312628}
   - {fileID: 3382417753193515913}
-  - {fileID: 5364474416329895603}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6165675687394935479
@@ -342,42 +341,14 @@ MonoBehaviour:
   bounds:
     m_Center: {x: 0, y: 10, z: 0}
     m_Extent: {x: 12, y: 10, z: 12}
+  skipAssetClear: 0
+  mesh_parent: {fileID: 1271205548804475782}
+  prop_parent: {fileID: 7234725481234850326}
   doors:
   - {fileID: 8605179094324799383}
   - {fileID: 894958253260345243}
   - {fileID: 3189569183234443437}
   - {fileID: 1853958757961865337}
---- !u!1 &6828173585063264237
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7068132185352105255}
-  m_Layer: 0
-  m_Name: Boxes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7068132185352105255
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6828173585063264237}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3382417753193515913}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7234725481234850326
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +379,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6483656825151980658}
-  - {fileID: 7068132185352105255}
+  - {fileID: 5364474416329895603}
   m_Father: {fileID: 5471923930203719113}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7504879875182734086
@@ -507,7 +478,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8016245859108339454}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -515,7 +486,7 @@ Transform:
   - {fileID: 6741858060218363495}
   - {fileID: 3715529472124252003}
   - {fileID: 1359232834875556966}
-  m_Father: {fileID: 5471923930203719113}
+  m_Father: {fileID: 3382417753193515913}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &309634628173160313
 PrefabInstance:

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1c1e2c9879bf64489fd65a53f6ea17, type: 3}
+  m_Name: 1f_Room_BoxMania
+  m_EditorClassIdentifier: Assembly-CSharp::Arcade_Tile
+  identification: Room_Factory - Box Mania
+  prefab: {fileID: 6397238377549162460, guid: d8d4814802541f945b158a38b477984a, type: 3}
