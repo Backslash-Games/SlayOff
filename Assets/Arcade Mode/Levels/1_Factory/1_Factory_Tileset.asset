@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc324ea1f820094882cf12d7673f5cc, type: 3}
   m_Name: 1_Factory_Tileset
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Tileset
-  spawnRoom: {fileID: 11400000, guid: 1f0eba78a6d11934d9a18705d762f552, type: 2}
-  goalRoom: {fileID: 11400000, guid: 1f0eba78a6d11934d9a18705d762f552, type: 2}
+  spawnRoom: {fileID: 11400000, guid: 761ed89602bfcf44f9b51a747c98bce5, type: 2}
+  goalRoom: {fileID: 11400000, guid: c7b021e60f425aa45bf5dae4cb233a05, type: 2}
   rooms:
   - {fileID: 11400000, guid: 1f0eba78a6d11934d9a18705d762f552, type: 2}
   - {fileID: 11400000, guid: f469cdbf54779dd43a4d1b59bae2cbc0, type: 2}

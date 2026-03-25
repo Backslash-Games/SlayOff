@@ -11,6 +11,8 @@ public class EntityData : MonoBehaviour
     [Space]
     [SerializeField] private Collider collision = null;
     [SerializeField] private Rigidbody physicsBody = null;
+    private RigidbodyConstraints defaultConstraints = RigidbodyConstraints.None;
+
     [SerializeField] private bool awakeOnStart = true;
 
     [Header("Entity Data - Visuals")]
@@ -65,8 +67,11 @@ public class EntityData : MonoBehaviour
     #region Unity Methods
     private void Awake()
     {
+        // Set defaut parameters
+        SetDefaultConstraints();
         // Set awake state
         SetRigidbodyAwake(awakeOnStart);
+        
         // Run on awake
         OnAwake();
     }
@@ -178,7 +183,7 @@ public class EntityData : MonoBehaviour
         OnHurt?.Invoke(source, amount);
 
         // Check for a kill
-        if (health <= 0)
+        if (isDead())
             OnDeath();
     }
     /// <summary>
@@ -201,6 +206,11 @@ public class EntityData : MonoBehaviour
         // Set object to inactive
         gameObject.SetActive(false);
     }
+    /// <summary>
+    ///     Checks if the entity is dead
+    /// </summary>
+    /// <returns>True when dead</returns>
+    public bool isDead() { return health <= 0; }
     #endregion
     #region Collision
     /// <summary>
@@ -254,6 +264,15 @@ public class EntityData : MonoBehaviour
         Vector3 linearVelocity = GetLinearVelocity();
         return linearVelocity.y;
     }
+
+    /// <summary>
+    ///     Pull current angular velocity
+    /// </summary>
+    /// <returns>Angular Velocity</returns>
+    public Vector3 GetAngularVelocity()
+    {
+        return GetRigidbody().angularVelocity;
+    }
     #endregion
     #region Set
     /// <summary>
@@ -285,7 +304,11 @@ public class EntityData : MonoBehaviour
     }
     #endregion
     #endregion
-
+    #region Constraints
+    private void SetDefaultConstraints() { defaultConstraints = GetRigidbody().constraints; }
+    public void ResetConstraints() { GetRigidbody().constraints = defaultConstraints; }
+    public void SetConstraints(RigidbodyConstraints constraints) { GetRigidbody().constraints = constraints; }
+    #endregion
 
     private static readonly bool WriteToConsole = false;
     /// <summary>
@@ -305,6 +328,18 @@ public class EntityData : MonoBehaviour
         // Debug
         if(WriteToConsole)
             Debug.Log($"Force: {source} > {direction.normalized * strength} > {mode}\nLinear Velocity: {GetLinearVelocity()}\nLog from {name}");
+    }
+    public virtual void ApplyTorque(Vector3 direction, float strength, ForceMode mode, string source = "Unknown")
+    {
+        // Get the rigidbody
+        Rigidbody lBody = GetRigidbody();
+
+        // Apply the force
+        lBody.AddTorque(direction.normalized * strength, mode);
+
+        // Debug
+        if (WriteToConsole)
+            Debug.Log($"Torque: {source} > {direction.normalized * strength} > {mode}\nAngular Velocity: {GetAngularVelocity()}\nLog from {name}");
     }
     #endregion
 

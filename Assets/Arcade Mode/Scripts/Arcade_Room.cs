@@ -18,7 +18,7 @@ public class Arcade_Room : MonoBehaviour
     [SerializeField] private CombatState combatState = CombatState.Inactive;
     [Space]
     [SerializeField] private EntitySpawnNode[] enemy_spawnNodes = new EntitySpawnNode[0];
-    private List<Enemy> activeEnemies = new List<Enemy>();
+    private List<EntityData> activeEnemies = new List<EntityData>();
 
     [Header("Components")]
     [SerializeField] private Arcade_Door[] doors;
@@ -34,6 +34,10 @@ public class Arcade_Room : MonoBehaviour
     {
         Gizmos.color = Color.forestGreen;
         Gizmos.DrawWireCube(GetBounds_World().center, GetBounds_World().size);
+    }
+    private void LateUpdate()
+    {
+        Tick_Combat();
     }
     #endregion
 
@@ -200,7 +204,47 @@ public class Arcade_Room : MonoBehaviour
 
         // If the combat state has resulted in a failure, open the doors
         if (combatState.Equals(CombatState.Failure))
-            OpenAllConnectedDoors();    
+            OpenAllConnectedDoors();
+    }
+    /// <summary>
+    ///     Updates combat when active
+    /// </summary>
+    private void Tick_Combat()
+    {
+        // Check if we are active
+        if (!combatState.Equals(CombatState.Active))
+            return;
+
+        // Track active enemies
+        for(int i = 0; i < activeEnemies.Count; i++)
+        {
+            // Check if the entity is null
+            if (activeEnemies[i] == null || activeEnemies[i].isDead())
+            {
+                activeEnemies.RemoveAt(i);
+                i--;
+            }
+        }
+
+        // Finish combat if active enemies is 0
+        if (activeEnemies.Count == 0)
+            EndCombat();
+    }
+    /// <summary>
+    ///     Ends the active combat
+    /// </summary>
+    public void EndCombat()
+    {
+        // Check if we are active
+        if (!combatState.Equals(CombatState.Active))
+        {
+            Log("Could not end inactive combat");
+            return;
+        }
+        
+        // Clear combat and open doors
+        RequestCombatState(CombatState.Cleared);
+        OpenAllConnectedDoors();
     }
 
     /// <summary>
@@ -218,11 +262,9 @@ public class Arcade_Room : MonoBehaviour
         }
 
         // Roll through spawn nodes and spawn enemies
-
-        // For now set to failure
-        RequestCombatState(CombatState.Failure);
+        foreach (EntitySpawnNode node in enemy_spawnNodes)
+            activeEnemies.Add(node.Spawn());
     }
-
     #region State Handling
     /// <summary>
     ///     Requests a combat state change

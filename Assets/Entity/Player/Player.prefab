@@ -714,6 +714,7 @@ MonoBehaviour:
       current: 0
   collision: {fileID: 4617844969571709243}
   physicsBody: {fileID: 1403528512543417202}
+  awakeOnStart: 1
   op_HealthBar: {fileID: 5562086448525896401}
   standingState: 0
   groundCheck:
@@ -1463,7 +1464,7 @@ MonoBehaviour:
     - MeleeStrike_1
     - MeleeStrike_2
     a_Event: {fileID: 227607207244163699}
-    hitTimeScale: 0.05
+    hitTimeScale: 0.2
     hitTimeScaleResetDelay: 0.0875
     attacking: 0
     cancelAllowed: 1

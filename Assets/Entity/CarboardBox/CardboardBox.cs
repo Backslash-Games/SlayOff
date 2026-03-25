@@ -6,6 +6,7 @@ public class CardboardBox : EntityData
 {
     [Header("Cardboard Box")]
     [SerializeField] private bool active = true;
+    [SerializeField] private bool hasReward = true;
     [Space]
     [SerializeField] private float speedDeathThreshold = 0.8f;
     private static readonly float deathTimer = 0.25f;
@@ -51,8 +52,11 @@ public class CardboardBox : EntityData
         yield return new WaitForSecondsRealtime(deathTimer + Random.Range(-deathTimerRandom, deathTimerRandom));
         RunDeathVisuals();
 
-        InventoryHandler.Instance.RewardRandomCollectible();
-        InventoryHandler.Instance.AddObjectiveProgress(comboObjective_BreakKey);
+        if (hasReward)
+        {
+            InventoryHandler.Instance.RewardRandomCollectible();
+            InventoryHandler.Instance.AddObjectiveProgress(comboObjective_BreakKey);
+        }
 
         yield return new WaitForSecondsRealtime(cleanupTimer);
         while(GetLinearVelocity().magnitude >= cleanupVelocityThreshold)

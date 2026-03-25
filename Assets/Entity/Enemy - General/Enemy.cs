@@ -6,7 +6,12 @@ public class Enemy : EntityData
 
     [Header("Pathfinding")]
     [SerializeField] private NavMeshAgent agent;
+    [Space]
     [SerializeField] private Transform eyes;
+    [SerializeField] private float eye_TrackingSpeed = 1;
+    [SerializeField] private bool eye_predictMovemet = false;
+    [Space]
+    [SerializeField] private bool useTargeting = false;
     [SerializeField] private Hitbox_Sphere targetingRange;
     [SerializeField] private bool targeting_DrawHitbox;
 
@@ -28,6 +33,11 @@ public class Enemy : EntityData
     private static Transform ranged_ProjectileParent = null;
     [SerializeField] private Vector2 ranged_CooldownVariation;
 
+    [Header("Animations")]
+    [SerializeField] private Animator anim_walking = null;
+    [SerializeField] private string anim_walking_MultiplierID = "walk_speed";
+    [SerializeField] private float anim_walking_Speed = 1;
+
     private PlayerController player = null;
 
     #region Unity Methods
@@ -44,12 +54,18 @@ public class Enemy : EntityData
         // Set the agent destination
         SetAgentDestination(GetPlayer().GetGroundPosition());
 
-        // Look at our target
-        LookAtTarget(GetPlayer().gameObject, (Vector3.up * GetCameraOffset()) + GetMovementPrediction());
-        
         // Try to use attacks
         OnMeleeAttack();
         OnRangedAttack();
+    }
+    private void Update()
+    {
+        Tick_Animations();
+    }
+    private void LateUpdate()
+    {
+        // Look at our target
+        LookAtTarget(GetPlayer().gameObject, (Vector3.up * GetCameraOffset()) + GetMovementPrediction());
     }
 
     private void OnDrawGizmos()
@@ -102,9 +118,12 @@ public class Enemy : EntityData
         if (agent == null)
             return;
         // Check if the target is in the hitbox
-        targetingRange.Tick();
-        if (!targetingRange.GetState())
-            return;
+        if (useTargeting)
+        {
+            targetingRange.Tick();
+            if (!targetingRange.GetState())
+                return;
+        }
         // Sets the agent destination
         agent.SetDestination(target); 
     }
@@ -122,8 +141,12 @@ public class Enemy : EntityData
         if (!melee_Tracking.GetState())
             return;
 
+        // Mark down our target position
+        Vector3 tPosition = target.transform.position + offset;
+        Quaternion lRotation = Quaternion.LookRotation(tPosition - transform.position);
+
         // Look at target
-        eyes.transform.LookAt(target.transform.position + offset);
+        eyes.transform.rotation = Quaternion.Lerp(eyes.transform.rotation, lRotation, Time.deltaTime * eye_TrackingSpeed);
     }
 
     /// <summary>
@@ -132,6 +155,10 @@ public class Enemy : EntityData
     /// <returns>World Position appliable as offset</returns>
     private Vector3 GetMovementPrediction()
     {
+        // Check if we are predicting movemet
+        if (!eye_predictMovemet)
+            return Vector3.zero;
+
         // Hold a reference to the player
         PlayerController cPlayer = GetPlayer();
         // Start with the players linear velocity
@@ -217,6 +244,22 @@ public class Enemy : EntityData
         // Create object if all else fails
         ranged_ProjectileParent = (new GameObject(ranged_ProjectileParentID)).transform;
         return ranged_ProjectileParent;
+    }
+    #endregion
+
+    #region Animations
+    private void Tick_Animations()
+    {
+        SetWalkingMultiplier();
+    }
+
+    private void SetWalkingMultiplier()
+    {
+        if (anim_walking == null)
+            return;
+        
+        // Set anim walking variable
+        anim_walking.SetFloat(anim_walking_MultiplierID, agent.velocity.magnitude * anim_walking_Speed);
     }
     #endregion
 

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 1f_Starting_Basic
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Tile
   identification: Starting Room
-  prefab: {fileID: 3240291885776100005, guid: e53f30f5cd2cf174f9a89ac2efbd418a, type: 3}
+  prefab: {fileID: 8599643845863290691, guid: 6332dd552d1480747983fece8ac25235, type: 3}

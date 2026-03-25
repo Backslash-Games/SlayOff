@@ -331,6 +331,8 @@ MonoBehaviour:
   physicsBody: {fileID: 627542441760889512}
   awakeOnStart: 0
   op_HealthBar: {fileID: 0}
+  active: 1
+  hasReward: 1
   speedDeathThreshold: 0.8
   boxRenderer: {fileID: 4372330373691413777}
   flattenedRenderer: {fileID: 8733379501452902458}
