@@ -9,7 +9,7 @@ public class Arcade_Door : MonoBehaviour
     [Space]
 
     [Tooltip("A door is marked as a connector when it is used as a spatial marking. Will only connect with doors marked as !isConnector")]
-    [SerializeField] private bool isConnector;
+    [SerializeField] private bool connector;
 
     [Tooltip("Flag to control if the door is avaliable for further generation")]
     [SerializeField] private bool avaliable = true;
@@ -47,16 +47,32 @@ public class Arcade_Door : MonoBehaviour
 
     #region State Handling
     /// <summary>
-    ///     Sets the door as unavaliable. 
+    ///     Sets the door as unavaliable. Handles flags
     /// </summary>
     public void SetUnavaliable()
     {
         avaliable = false;
+        connector = true;
+        state = unavaliableState;
+        SetGraphic_OnState();
+    }
+    /// <summary>
+    ///     Sets the door as error. Handles flags
+    /// </summary>
+    public void SetError()
+    {
+        avaliable = false;
+        connector = false;
         state = unavaliableState;
         SetGraphic_OnState();
     }
 
-    public void SetSealed()
+    public void SetOpen()
+    {
+        state = unavaliableState;
+        SetGraphic_OnState();
+    }
+    public void SetClosed()
     {
         state = OpenState.Sealed;
         SetGraphic_OnState();
@@ -115,6 +131,11 @@ public class Arcade_Door : MonoBehaviour
     /// </summary>
     /// <returns>True if avaliable</returns>
     public bool isAvaliable() { return avaliable; }
+    /// <summary>
+    ///     Gets connection state
+    /// </summary>
+    /// <returns>True if connecting</returns>
+    public bool isConnector() { return connector; }
     /// <summary>
     ///     Gets the out face in respect to world
     /// </summary>

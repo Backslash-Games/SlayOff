@@ -446,7 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Door
   state: 1
   unavaliableState: 2
-  isConnector: 0
+  connector: 0
   avaliable: 1
   size: {x: 8, y: 8}
   outFace: {x: 0, y: 0, z: -1}
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Door
   state: 1
   unavaliableState: 2
-  isConnector: 0
+  connector: 0
   avaliable: 1
   size: {x: 8, y: 8}
   outFace: {x: 0, y: 0, z: -1}
@@ -2467,7 +2467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Door
   state: 1
   unavaliableState: 2
-  isConnector: 0
+  connector: 0
   avaliable: 1
   size: {x: 8, y: 8}
   outFace: {x: 0, y: 0, z: -1}
@@ -6914,7 +6914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Door
   state: 1
   unavaliableState: 2
-  isConnector: 0
+  connector: 0
   avaliable: 1
   size: {x: 8, y: 8}
   outFace: {x: 0, y: 0, z: -1}
@@ -7360,6 +7360,7 @@ MonoBehaviour:
   skipAssetClear: 0
   mesh_parent: {fileID: 149127439164323427}
   prop_parent: {fileID: 8129546924915693344}
+  hasCombat: 1
   doors:
   - {fileID: 6411964557906674837}
   - {fileID: 1921278242187042910}

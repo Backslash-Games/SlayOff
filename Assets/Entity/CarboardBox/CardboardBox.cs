@@ -4,6 +4,9 @@ using UnityEngine.VFX;
 
 public class CardboardBox : EntityData
 {
+    [Header("Cardboard Box")]
+    [SerializeField] private bool active = true;
+    [Space]
     [SerializeField] private float speedDeathThreshold = 0.8f;
     private static readonly float deathTimer = 0.25f;
     private static readonly float deathTimerRandom = 0.075f;
@@ -23,6 +26,9 @@ public class CardboardBox : EntityData
     #region Unity Methods
     private void FixedUpdate()
     {
+        if (!active)
+            return;
+
         TickObjectHandling();
     }
     #endregion

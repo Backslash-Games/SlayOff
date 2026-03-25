@@ -21,15 +21,23 @@ public class ArcadeModeManager : MonoBehaviour
     [SerializeField] private string pt_roomId = "";
     [SerializeField] private int pt_lastKnownIndex = 0;
 
+    public delegate void RoomTracking(Arcade_Room room);
+    public event RoomTracking OnRoomChanged;
+    public event RoomTracking OnRoomEntered;
+    public event RoomTracking OnRoomLeft;
+
     #region Unity Methods
     private void Awake()
     {
         CreateSingleton();
+
         PT_Awake();
+        RH_Awake();
     }
     private void OnDestroy()
     {
         PT_Destroy();
+        RH_Destroy();
     }
 
     private void LateUpdate()
@@ -151,6 +159,17 @@ public class ArcadeModeManager : MonoBehaviour
 
         Arcade_Tile cTile = cf_tiles[cIndex];
         Arcade_Room cRoom = cf_rooms[cIndex];
+        
+
+        // Check for a change in room
+        if(cIndex != pt_lastKnownIndex)
+        {
+            // Trigger events
+            OnRoomChanged?.Invoke(cRoom);
+            OnRoomEntered?.Invoke(cRoom);
+            OnRoomLeft?.Invoke(cf_rooms[pt_lastKnownIndex]);
+        }
+
         // Set information
         pt_roomId = $"{cTile.GetIdentification()} :: {cRoom.name}";
         pt_lastKnownIndex = cIndex;
@@ -173,6 +192,29 @@ public class ArcadeModeManager : MonoBehaviour
     {
         pt_roomId = "";
         pt_lastKnownIndex = 0;
+    }
+    #endregion
+    #region Room Handling
+    private void RH_Awake()
+    {
+        OnRoomEntered += RH_TriggerCombat;
+    }
+    private void RH_Destroy()
+    {
+        OnRoomEntered -= RH_TriggerCombat;
+    }
+
+
+    /// <summary>
+    ///     Triggers combat in room
+    /// </summary>
+    private void RH_TriggerCombat(Arcade_Room room)
+    {
+        if (room == null)
+            return;
+
+        // Request room combat
+        room.RequestCombat();
     }
     #endregion
 

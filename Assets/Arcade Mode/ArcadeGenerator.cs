@@ -175,7 +175,7 @@ public class ArcadeGenerator : MonoBehaviour
             if (!pt_status)
             {
                 error_out++;
-                rooms[rooms.Count - 1].SealLastDoor();
+                rooms[rooms.Count - 1].Error_LastDoor();
                 continue;
             }
 
@@ -185,7 +185,7 @@ public class ArcadeGenerator : MonoBehaviour
             {
                 error_out++;
                 RemoveListings(rooms.Count - 1);
-                rooms[rooms.Count - 1].SealLastDoor();
+                rooms[rooms.Count - 1].Error_LastDoor();
                 continue;
             }
 

@@ -344,6 +344,7 @@ MonoBehaviour:
   skipAssetClear: 0
   mesh_parent: {fileID: 1271205548804475782}
   prop_parent: {fileID: 7234725481234850326}
+  hasCombat: 1
   doors:
   - {fileID: 8605179094324799383}
   - {fileID: 894958253260345243}
