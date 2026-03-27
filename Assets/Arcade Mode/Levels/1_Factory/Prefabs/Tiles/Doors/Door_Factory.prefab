@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Door
   state: 1
   unavaliableState: 2
-  isConnector: 0
+  connector: 0
   avaliable: 1
   size: {x: 8, y: 8}
   outFace: {x: 0, y: 0, z: 1}

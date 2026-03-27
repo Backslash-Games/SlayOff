@@ -2095,7 +2095,7 @@ MonoBehaviour:
       current: 0
     maxHealth:
       tag: 7
-      basic: 12
+      basic: 100
       additive: 0
       percentage: 0
       current: 0
