@@ -137,7 +137,7 @@ public class ArcadeModeManager : MonoBehaviour
 
         Arcade_Room cRoom = cf_rooms[cIndex];
         // Check bounds
-        return cRoom.GetBounds_World().Contains(GetPlayer().transform.position);
+        return cRoom.GetPlayerBounds_World().Contains(GetPlayer().transform.position);
     }
     /// <summary>
     ///     Sets the players current room

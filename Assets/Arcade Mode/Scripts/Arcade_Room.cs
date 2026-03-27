@@ -5,6 +5,7 @@ public class Arcade_Room : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private Bounds bounds;
+    private static readonly float player_padding = 0.8f;
 
     [Header("Assets")]
     [SerializeField] private bool skipAssetClear = false;
@@ -34,6 +35,9 @@ public class Arcade_Room : MonoBehaviour
     {
         Gizmos.color = Color.forestGreen;
         Gizmos.DrawWireCube(GetBounds_World().center, GetBounds_World().size);
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(GetPlayerBounds_World().center, GetPlayerBounds_World().size);
     }
     private void LateUpdate()
     {
@@ -155,6 +159,13 @@ public class Arcade_Room : MonoBehaviour
         wBounds.size = new Vector3(Mathf.Abs(wBounds.size.x), Mathf.Abs(wBounds.size.y), Mathf.Abs(wBounds.size.z));
 
         return wBounds;
+    }
+    public Bounds GetPlayerBounds_World()
+    {
+        Bounds pBounds = GetBounds_World();
+        pBounds.size = pBounds.size - new Vector3(player_padding, 0, player_padding);
+
+        return pBounds;
     }
 
     /// <summary>

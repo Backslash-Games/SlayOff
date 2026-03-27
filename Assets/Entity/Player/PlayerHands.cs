@@ -143,21 +143,25 @@ public class Weapon
     private Vector3 hitboxDefault_LocalEuler;
     [Space]
 
-    [Header("Cooldown")]
-    [SerializeField] private Cooldown cooldown;
+    [Header("Reload")]
     [SerializeField] private float cooldownTime = 1;
     [SerializeField] private float cooldownReductionRate = 1;
+    private Cooldown reloadCooldown;
+    [Space]
+    [SerializeField] private string reloadAnimationID = string.Empty;
     [Space]
 
 
     [Header("Consecutive Attack")]
-    [SerializeField] private int csc_Current = 0;
-    [Space]
-    [SerializeField] private int csc_Total = 0;
     [SerializeField] private int csc_AllowedAttacks = 1;
     [Space]
-    [SerializeField] private bool csc_Active = false;
+    [SerializeField] private float csc_SpacingTime = 0; // Time between each consecutive shot
+    private Cooldown csc_Cooldown; // Will always have a reduction rate of 1
+
+    private bool csc_Active = false;
     private int csc_Max = 0;
+    private int csc_Current = 0;
+    private int csc_Total = 0;
     [Space]
 
     [Header("Vecolity Bonus")]
@@ -208,8 +212,9 @@ public class Weapon
         monoBehaviour = mono;
         // Create time control
         _timeControl = new TimeControl(monoBehaviour);
-        // Create cooldown
-        cooldown = new Cooldown(monoBehaviour, cooldownTime, cooldownReductionRate);
+        // Create cooldowns
+        reloadCooldown = new Cooldown(monoBehaviour, cooldownTime, cooldownReductionRate);
+        csc_Cooldown = new Cooldown(monoBehaviour, csc_SpacingTime, 1);
 
         // Setup information
         SetupConsecutiveAttacks();
@@ -277,6 +282,10 @@ public class Weapon
     /// <param name="state">New state</param>
     private void SetAttackingState(bool state) 
     {
+        // Ignore input if csc is active and we cant cancel the attack
+        if (csc_Active && !cancelAllowed)
+            return;
+
         // Set our attacking state
         attacking = state;
         // Check if our new state equals our last state
@@ -309,10 +318,10 @@ public class Weapon
             UnlockRest();
             return;
         }
-        // Check if we are on cooldown
-        if (cooldown.Active())
+        // Check if we are on any cooldown
+        if (reloadCooldown.Active() || csc_Cooldown.Active())
             return;
-        // Check if we are holding input
+        // Check if we are attempting to attack
         if (!GetAttacking())
             return;
         // Play melee attack timed
@@ -329,9 +338,9 @@ public class Weapon
         coroutineLock = true;
         // Run animation
         LockRest();
-        PlayAnimation(GetCurrentAnimationID());
+        PlayAnimation(GetCurrentAnimationID(), 0);
         // Start cooldown
-        cooldown.Start();
+        csc_Cooldown.Start();
 
         // -> Wait for a bit within the animation to execute attack
         while(a_Event != null && !a_Event.GetState())
@@ -434,7 +443,7 @@ public class Weapon
         ResetConsecutiveAttack();
 
         OnStateChanged += _ => ResetConsecutiveAttack();
-        cooldown.OnCooldownSuccess += IncreaseAtCooldownEnd;
+        csc_Cooldown.OnCooldownSuccess += IncreaseAtCooldownEnd;
     }
     /// <summary>
     ///     Cleans up structures for consecutive attacks
@@ -442,7 +451,7 @@ public class Weapon
     private void CleanupConsecutiveAttacks()
     {
         OnStateChanged -= _ => ResetConsecutiveAttack();
-        cooldown.OnCooldownSuccess -= IncreaseAtCooldownEnd;
+        csc_Cooldown.OnCooldownSuccess -= IncreaseAtCooldownEnd;
     }
 
     /// <summary>
@@ -466,7 +475,10 @@ public class Weapon
         // Increase count
         csc_Current = (csc_Current + 1) % csc_Max;
         csc_Total++;
-        csc_Active = true;
+
+        // Check csc state
+        csc_Active = isConsecutiveAllowed();
+        if (!csc_Active) { SetAttackingState(false); }
     }
 
     /// <summary>
@@ -481,7 +493,7 @@ public class Weapon
     private void ResetConsecutiveAttack() 
     {
         if(cancelAllowed)
-            cooldown.Cancel();
+            csc_Cooldown.Cancel();
 
         csc_Current = 0;
         csc_Total = 0;
@@ -509,32 +521,35 @@ public class Weapon
     /// <summary>
     ///     Plays the attack animation
     /// </summary>
-    private void PlayAnimation(string name)
+    private void PlayAnimation(string name, int layer)
     {
         if (animationController == null)
             return;
         // Run animation
-        animationController.Play(name, -1, 0);
+        animationController.Play(name, layer, 0);
     }
     /// <summary>
     ///     Locks the resting id on the animator
     /// </summary>
     private void LockRest()
     {
-        if (animationController == null)
-            return;
-        // Run animation
-        animationController.SetBool(a_RestingLockID, true);
+        csc_Active = true;
+        // Set lock state
+        if (animationController != null)
+            animationController.SetBool(a_RestingLockID, true);
     }
     /// <summary>
     ///     Unlocks the resting id on the animator
     /// </summary>
     private void UnlockRest()
     {
-        if (animationController == null)
-            return;
-        // Run animation
-        animationController.SetBool(a_RestingLockID, false);
+        // Start reload
+        if (reloadAnimationID != string.Empty && reloadAnimationID != "" && !reloadCooldown.Active())
+            PlayAnimation(reloadAnimationID, 1);
+        reloadCooldown.Start();
+        // Set lock state
+        if (animationController != null)
+            animationController.SetBool(a_RestingLockID, false);
     }
 
     /// <summary>
@@ -605,7 +620,7 @@ public class Weapon
     ///     Gets if the weapon is currently on cooldown
     /// </summary>
     /// <returns>True when on cooldown</returns>
-    public bool isOnCooldown() { return cooldown.Active(); }
+    public bool isOnCooldown() { return reloadCooldown.Active(); }
     #endregion
     #region Set Methods
     /// <summary>
@@ -619,7 +634,8 @@ public class Weapon
     {
         string output = "";
 
-        output += $"{cooldown}\n";
+        output += $"CSC: {csc_Cooldown}\n";
+        output += $"RLD: {reloadCooldown}\n";
 
         return output;
     }
