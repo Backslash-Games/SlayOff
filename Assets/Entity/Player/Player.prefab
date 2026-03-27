@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -805,6 +805,37 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -1000
   m_TargetDisplay: 0
+--- !u!1 &2614324272901847085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6986476596976811732}
+  m_Layer: 11
+  m_Name: LabelMaker_Nozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6986476596976811732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614324272901847085}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.3050003, y: -0.16409993, z: 0.8690001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4312110141930194563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2754891667652675435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1218,7 @@ GameObject:
   - component: {fileID: 3942318330657955743}
   - component: {fileID: 5786642044704738181}
   - component: {fileID: 4987302575126009434}
+  - component: {fileID: 3090216328647822618}
   m_Layer: 0
   m_Name: HandCamera
   m_TagString: MainCamera
@@ -1304,6 +1336,20 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &3090216328647822618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350721996134716519}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377b0a0ed96205e4c9cf9784d3862359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraTracking
+  other_camera: {fileID: 9013949553386793823}
+  this_camera: {fileID: 5786642044704738181}
 --- !u!1 &4630529467680348345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,7 +2127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 59.663452, y: 41.469482}
+  m_AnchoredPosition: {x: 59.663452, y: 41.8}
   m_SizeDelta: {x: 602, y: 124}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3642819346019871164
@@ -2371,6 +2417,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AnimationEvent
   id: Melee Weapon Execution Event
   flag: 0
+--- !u!1 &7614845766762819433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8385954369640210967}
+  m_Layer: 11
+  m_Name: Stamper_Nozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8385954369640210967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614845766762819433}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3050003, y: -0.18673003, z: 1.3599981}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4312110141930194563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7901945610079814669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2751,6 +2828,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3086221862721315164}
+  - {fileID: 6986476596976811732}
+  - {fileID: 8385954369640210967}
   - {fileID: 3011930610081351949}
   - {fileID: 7946703604428827547}
   m_Father: {fileID: 2280857383930128564}
@@ -2797,6 +2876,11 @@ MonoBehaviour:
     - MeleeStrike_1
     - MeleeStrike_2
     a_Event: {fileID: 227607207244163699}
+    weapon_visual: {fileID: 0}
+    wv_nozzle: {fileID: 0}
+    wv_hitmask:
+      serializedVersion: 2
+      m_Bits: 0
     hitTimeScale: 0.2
     hitTimeScaleResetDelay: 0.0875
     attacking: 0
@@ -2812,9 +2896,9 @@ MonoBehaviour:
       state: 0
       mask:
         serializedVersion: 2
-        m_Bits: 4864
+        m_Bits: 768
       offset: {x: 0, y: 0, z: 8.1}
-      size: {x: 0.1, y: 0.1, z: 15}
+      size: {x: 0.1, y: 0.1, z: 100}
       localEuler: {x: 0, y: 0, z: 0}
     cooldownTime: 0.375
     cooldownReductionRate: 1
@@ -2830,6 +2914,11 @@ MonoBehaviour:
     a_AttackIDs:
     - RangedHold
     a_Event: {fileID: 4540107012553779526}
+    weapon_visual: {fileID: 8051822870431934072, guid: 42643a5c3b5a58948a3972875cb5a2bc, type: 3}
+    wv_nozzle: {fileID: 8385954369640210967}
+    wv_hitmask:
+      serializedVersion: 2
+      m_Bits: 832
     hitTimeScale: 1
     hitTimeScaleResetDelay: 0
     attacking: 0
@@ -2847,11 +2936,11 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 4864
       offset: {x: 0, y: 0, z: 8.1}
-      size: {x: 0.75, y: 1, z: 15}
+      size: {x: 0.075, y: 0.1, z: 15}
       localEuler: {x: 0, y: 0, z: 0}
     cooldownTime: 3
     cooldownReductionRate: 1
-    reloadAnimationID: 
+    reloadAnimationID: LabelMaker_Reload
     csc_AllowedAttacks: 1
     csc_SpacingTime: 0
     calculateLengthBonus: 1
@@ -2863,6 +2952,11 @@ MonoBehaviour:
     a_AttackIDs:
     - RangedShoot
     a_Event: {fileID: 8915914079024554609}
+    weapon_visual: {fileID: 4724072272159141168, guid: 0531cbd1441fc5546b09fd020be6d598, type: 3}
+    wv_nozzle: {fileID: 6986476596976811732}
+    wv_hitmask:
+      serializedVersion: 2
+      m_Bits: 4928
     hitTimeScale: 0.03
     hitTimeScaleResetDelay: 0.11
     attacking: 0
@@ -3182,19 +3276,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.97
+      value: -1.283
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.26
+      value: 5.736
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.208
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.96165
+      value: 0.96175313
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3206,7 +3300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.27427942
+      value: 0.27391773
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3218,7 +3312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 31.838
+      value: 31.795
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0d54a216464a8244898a2161978107d5, type: 3}
       propertyPath: m_Name
@@ -3729,11 +3823,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1790911179952330968, guid: 15eff41acbd6e8c43887c274235865cd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -630
+      value: -691.2
       objectReference: {fileID: 0}
     - target: {fileID: 1790911179952330968, guid: 15eff41acbd6e8c43887c274235865cd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -457
+      value: -493.3
       objectReference: {fileID: 0}
     - target: {fileID: 4357292807157936577, guid: 15eff41acbd6e8c43887c274235865cd, type: 3}
       propertyPath: m_IsActive

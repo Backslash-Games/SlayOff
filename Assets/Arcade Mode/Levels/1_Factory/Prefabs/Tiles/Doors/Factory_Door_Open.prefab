@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7447354314948940980}
   - component: {fileID: 2990377952467062839}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8016755503592710040}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3436584051230078823}
   - component: {fileID: 164523713479261510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7353562988611127303}
   - component: {fileID: 3193696456312702434}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8225631181379635512}
   - component: {fileID: 7340482828769003211}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1454088990500985593}
   - component: {fileID: 2443903357107777711}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3992370105735908024}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Factory_Door_Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3591597395177481378}
   - component: {fileID: 2321974396210279286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4830919158821988336}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4432503441794178912}
   - component: {fileID: 5428967855924005185}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6792343013441195128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Corridor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3465906021907629365}
   - component: {fileID: 3106829114563680234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5112225560315840566}
   - component: {fileID: 29908862357375853}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9118155017996199154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -659,7 +659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1385565978226011641}
   - component: {fileID: 3950652946657820797}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,6 +750,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7903102352829956056, guid: 1a347cde5833deb4bbfecec7d35bd441, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -3428450759914162127, guid: 1a347cde5833deb4bbfecec7d35bd441, type: 3}
       propertyPath: m_CastShadows
       value: 2
@@ -761,6 +765,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1a347cde5833deb4bbfecec7d35bd441, type: 3}
       propertyPath: m_Name
       value: Factory_Beam_4x4_Open (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a347cde5833deb4bbfecec7d35bd441, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -820,6 +828,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7903102352829956056, guid: 1a347cde5833deb4bbfecec7d35bd441, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -3428450759914162127, guid: 1a347cde5833deb4bbfecec7d35bd441, type: 3}
       propertyPath: m_CastShadows
       value: 2
@@ -831,6 +843,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1a347cde5833deb4bbfecec7d35bd441, type: 3}
       propertyPath: m_Name
       value: Factory_Beam_4x4_Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a347cde5833deb4bbfecec7d35bd441, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -901,6 +917,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 162459e1757f11c4d946ff19022f2509, type: 3}
       propertyPath: m_Name
       value: Factory_Door_Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 162459e1757f11c4d946ff19022f2509, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904701334399999433, guid: 162459e1757f11c4d946ff19022f2509, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

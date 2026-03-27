@@ -52,10 +52,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory_Beam_1x4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a6abd47902486145a8fef8c64d358d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3346600088684840398, guid: 3a6abd47902486145a8fef8c64d358d4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 582d5288a53f4da4093e907116cc7cfe, type: 2}
+    - target: {fileID: 9053809352502029009, guid: 3a6abd47902486145a8fef8c64d358d4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

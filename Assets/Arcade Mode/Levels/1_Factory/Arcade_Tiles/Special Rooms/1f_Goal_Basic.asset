@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 1f_Goal_Basic
   m_EditorClassIdentifier: Assembly-CSharp::Arcade_Tile
   identification: Goal Room
-  prefab: {fileID: 8599643845863290691, guid: 6332dd552d1480747983fece8ac25235, type: 3}
+  prefab: {fileID: 281698843293441026, guid: 92487a825b058194594912058e934ddb, type: 3}

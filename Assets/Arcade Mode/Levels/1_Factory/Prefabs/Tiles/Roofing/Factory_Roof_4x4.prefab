@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory_Roof_4x4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26c6284090117b8459c387a09061ea62, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819749079693791754, guid: 26c6284090117b8459c387a09061ea62, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8479249047178725445, guid: 26c6284090117b8459c387a09061ea62, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4

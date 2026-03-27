@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Factory_Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf10ad9e6bca41a49bd94ffdde9d78cb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058944366269601201, guid: bf10ad9e6bca41a49bd94ffdde9d78cb, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9123450968074151868, guid: bf10ad9e6bca41a49bd94ffdde9d78cb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

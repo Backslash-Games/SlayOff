@@ -180,6 +180,11 @@ public class Weapon
     [SerializeField] private AnimationEvent a_Event;
     [Space]
 
+    [Header("Visuals")]
+    [SerializeField] private GameObject weapon_visual = null;
+    [SerializeField] private Transform wv_nozzle = null;
+    [SerializeField] private LayerMask wv_hitmask;
+
     [Header("Slow Down")]
     [SerializeField] private float hitTimeScale = 0.05f;
     [SerializeField] private float hitTimeScaleResetDelay = 0.0875f;
@@ -349,6 +354,8 @@ public class Weapon
         CalculateHitCollision(out EntityData[] hitEntities);
         // Run logic
         HitEntities(hitEntities);
+        // Spawn visual
+        SpawnVisual();
 
         // Check for impact stun
         if (hitbox.GetState())
@@ -587,6 +594,32 @@ public class Weapon
         UnlockRest();
     }
     #endregion
+    #region Visual Handling
+    private void SpawnVisual()
+    {
+        // Check if we have contents to spawn
+        if (weapon_visual == null || wv_nozzle == null)
+            return;
+
+        // Spawn visual
+        GameObject cObject = MonoBehaviour.Instantiate(weapon_visual, wv_nozzle.transform.position, Quaternion.identity, null);
+        cObject.transform.forward = monoBehaviour.transform.forward;
+        WeaponVisual cVisual = cObject.GetComponent<WeaponVisual>();
+
+        // Shoot ray
+        float rLength = hitbox.GetSize().z;
+        Vector3 hitPosition = (monoBehaviour.transform.forward * rLength) + monoBehaviour.transform.position;
+        if (Physics.Raycast(monoBehaviour.transform.position, monoBehaviour.transform.forward, out RaycastHit hit, rLength, wv_hitmask))
+        {
+            hitPosition = hit.point;
+            cVisual.SetHitInformation(hit);
+        }
+
+        // Initialize visual
+        cVisual.Initialize(wv_nozzle.transform, hitPosition);
+    }
+    #endregion
+
 
     #region Get Methods
     /// <summary>

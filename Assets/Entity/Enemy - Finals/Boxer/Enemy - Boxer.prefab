@@ -1930,10 +1930,9 @@ MonoBehaviour:
       localEuler: {x: 0, y: 0, z: 0}
     cooldownTime: 1
     cooldownReductionRate: 1
-    csc_Current: 0
-    csc_Total: 0
+    reloadAnimationID: 
     csc_AllowedAttacks: -1
-    csc_Active: 0
+    csc_SpacingTime: 1
     calculateLengthBonus: 0
     maxLengthBonus: 5
     maxLengthVelocity: 24
@@ -1944,6 +1943,11 @@ MonoBehaviour:
     - e_boxer_attack_right
     - e_boxer_attack_left
     a_Event: {fileID: 8095750552329720456}
+    weapon_visual: {fileID: 0}
+    wv_nozzle: {fileID: 0}
+    wv_hitmask:
+      serializedVersion: 2
+      m_Bits: 0
     hitTimeScale: 0.02
     hitTimeScaleResetDelay: 0.04
     attacking: 0
