@@ -12,6 +12,10 @@ public class PlayerHands : MonoBehaviour
     [SerializeField] private Weapon melee;
     [SerializeField] private bool drawMeleeHitbox = false;
 
+    [Header("Stamper")]
+    [SerializeField] private Weapon r_stamper;
+    [SerializeField] private bool drawStamperHitbox = false;
+
     [Header("Ranged")]
     [SerializeField] private Weapon ranged;
     [SerializeField] private bool drawRangedHitbox = false;
@@ -24,18 +28,22 @@ public class PlayerHands : MonoBehaviour
     #region Unity Methods
     private void Awake()
     {
-        melee.Setup(this, player);
+        //melee.Setup(this, player);
+        r_stamper.Setup(this, player);
         ranged.Setup(this, player);
     }
     private void OnDestroy()
     {
-        melee.Cleanup();
+        //melee.Cleanup();
+        r_stamper.Cleanup();
         ranged.Cleanup();
     }
     private void OnDrawGizmos()
     {
-        if(drawMeleeHitbox)
-            melee.GetHitbox().DrawGizmos();
+        /*if(drawMeleeHitbox)
+            melee.GetHitbox().DrawGizmos();*/
+        if (drawStamperHitbox)
+            r_stamper.GetHitbox().DrawGizmos();
         if (drawRangedHitbox)
             ranged.GetHitbox().DrawGizmos();
     }
@@ -99,7 +107,8 @@ public class PlayerHands : MonoBehaviour
     private void TickAttacks()
     {
         // Update melee to be pressed
-        melee.Tick(in_melee.IsPressed());
+        //melee.Tick(in_melee.IsPressed());
+        r_stamper.Tick(in_melee.IsPressed());
         ranged.Tick(in_ranged.IsPressed());
     }
     #endregion
@@ -110,6 +119,7 @@ public class PlayerHands : MonoBehaviour
         string output = "";
 
         output += $"Melee:{melee}\n";
+        output += $"Stamper:{r_stamper}\n";
         output += $"Ranged:{ranged}\n";
 
         return output;
@@ -125,7 +135,8 @@ public class Weapon
     [SerializeField] private Transform orientationTransform;
     [Space]
 
-    [Header("Hitbox")]
+    [Header("Hit Types")]
+    [SerializeField] private bool hitscan = false;
     [SerializeField] private Hitbox_Cube hitbox;
     private Vector3 hitboxDefault_Offset;
     private Vector3 hitboxDefault_Size;
@@ -326,13 +337,7 @@ public class Weapon
         while(a_Event != null && !a_Event.GetState())
             yield return new WaitForEndOfFrame();
 
-        // Start by setting up hitbox based on values
-        RecalculateHitbox();
-        // Tick the hitbox
-        hitbox.Tick();
-        // Get colliding objects
-        hitbox.GetColliding(out Collider[] colliders);
-        EntityData[] hitEntities = PullEntityDataFromColliders(colliders);
+        CalculateHitCollision(out EntityData[] hitEntities);
         // Run logic
         HitEntities(hitEntities);
 
@@ -342,6 +347,48 @@ public class Weapon
 
         // Set lock
         coroutineLock = false;
+    }
+    private void CalculateHitCollision(out EntityData[] hit)
+    {
+        // Check if we are using hitscan or hitbox
+        if (hitscan)
+        {
+            // TEMPORARY SOLUTION TO MAKE DEADLINE
+
+            // Raycast
+            if (Physics.Raycast(orientationTransform.transform.position, orientationTransform.transform.forward, out RaycastHit rHit, 100, hitbox.GetLayerMask()))
+            {
+
+                // Try to get entity data
+                EntityData cData = rHit.transform.GetComponent<EntityData>();
+                if (cData == null)
+                    rHit.transform.GetComponentInChildren<EntityData>();
+                if (cData == null)
+                    rHit.transform.GetComponentInParent<EntityData>();
+
+                // Set hit information
+                if (cData != null)
+                    hit = new EntityData[] { cData };
+                else
+                    hit = new EntityData[0];
+            }
+            else
+                hit = new EntityData[0];
+            return;
+
+            // TEMPORARY SOLUTION TO MAKE DEADLINE
+        }
+        else
+        {
+            // Start by setting up hitbox based on values
+            RecalculateHitbox();
+            // Tick the hitbox
+            hitbox.Tick();
+            // Get colliding objects
+            hitbox.GetColliding(out Collider[] colliders);
+            hit = PullEntityDataFromColliders(colliders);
+            return;
+        }
     }
     /// <summary>
     ///     Hits all entities in an array
