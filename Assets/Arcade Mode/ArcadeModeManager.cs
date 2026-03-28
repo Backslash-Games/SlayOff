@@ -8,12 +8,16 @@ public class ArcadeModeManager : MonoBehaviour
 
     [Header("General")]
     [SerializeField] private ArcadeGenerator generator = null;
+    [SerializeField] private ArcadeResultsHandler results = null;
     private PlayerController player = null;
 
     private int cf_index = 0;
     private Transform cf_parent = null;
     private Arcade_Tile[] cf_tiles = new Arcade_Tile[0];
     private Arcade_Room[] cf_rooms = new Arcade_Room[0];
+
+    [Header("Waypoint Tracking")]
+    [SerializeField] private Elevator[] elevators = new Elevator[3]; // Should always be 3 entries
 
     [Header("Player Tracking")]
     [SerializeField] private bool ptrackingEnabled = false;
@@ -26,6 +30,9 @@ public class ArcadeModeManager : MonoBehaviour
     public event RoomTracking OnRoomEntered;
     public event RoomTracking OnRoomLeft;
 
+    public delegate void ModeSequence();
+    public event ModeSequence OnPlayerStaged;
+
     #region Unity Methods
     private void Awake()
     {
@@ -33,11 +40,13 @@ public class ArcadeModeManager : MonoBehaviour
 
         PT_Awake();
         RH_Awake();
+        WP_Awake();
     }
     private void OnDestroy()
     {
         PT_Destroy();
         RH_Destroy();
+        WP_Destroy();
     }
 
     private void LateUpdate()
@@ -62,7 +71,6 @@ public class ArcadeModeManager : MonoBehaviour
         }
     }
     #endregion
-
     #region Player Tracking
     /// <summary>
     ///     Setup for player tracking
@@ -218,8 +226,62 @@ public class ArcadeModeManager : MonoBehaviour
     }
     #endregion
 
+    #region Waypoints
+    private void WP_Awake()
+    {
+        GetArcadeGenerator().OnGenerationSuccess += (_, _, _, _) => WP_GatherEndpoints();
+        GetArcadeGenerator().OnGenerationSuccess += (_, _, _, _) => WP_MoveToPoint(0, 1);
+    }
+    private void WP_Destroy()
+    {
+        GetArcadeGenerator().OnGenerationSuccess -= (_, _, _, _) => WP_GatherEndpoints();
+        GetArcadeGenerator().OnGenerationSuccess -= (_, _, _, _) => WP_MoveToPoint(0, 1);
+    }
+
+    /// <summary>
+    ///     Gets elevators at the start and finish of the stage
+    /// </summary>
+    private void WP_GatherEndpoints()
+    {
+        // Get elevators at each end of the stage
+        elevators[1] = GameObject.FindGameObjectWithTag("Elevator_Start").GetComponent<Elevator>();
+        elevators[2] = GameObject.FindGameObjectWithTag("Elevator_End").GetComponent<Elevator>();
+    }
+
+    /// <summary>
+    ///     Move from current to new
+    /// </summary>
+    /// <param name="currentIndex">Our current location</param>
+    /// <param name="otherIndex">Location we want to end up at</param>
+    public void WP_MoveToPoint(int currentIndex, int otherIndex)
+    {
+        if(otherIndex >= elevators.Length)
+        {
+            Debug.Log($"Point index is out of bounds :: index:{otherIndex} length:{elevators.Length}");
+            return;
+        }
+        // Get the elevator at index
+        Elevator nElevator = elevators[otherIndex];
+        // Make sure our new position isnt null
+        if (nElevator == null)
+        {
+            Debug.Log($"No point set :: index:{otherIndex}");
+            return;
+        }
+        // Move the player to the new point
+        Vector3 position = nElevator.MirrorVectorPosition(GetPlayer().transform.position, elevators[currentIndex]);
+        Vector3 cameraOrientation = nElevator.MirrorVectorPosition(Camera.main.transform.position + (Camera.main.transform.forward), elevators[currentIndex]);
+        GetPlayer().Teleport(position, cameraOrientation);
+
+        // Run on staging player
+        OnPlayerStaged?.Invoke();
+    }
+    #endregion
+    #region Results
+    #endregion
+
     #region Get Methods
-    private ArcadeGenerator GetArcadeGenerator()
+    public ArcadeGenerator GetArcadeGenerator()
     {
         if (generator == null)
             generator = FindAnyObjectByType<ArcadeGenerator>();
@@ -230,6 +292,12 @@ public class ArcadeModeManager : MonoBehaviour
         if (player == null)
             player = FindAnyObjectByType<PlayerController>();
         return player;
+    }
+    public ArcadeResultsHandler GetArcadeResults()
+    {
+        if (results == null)
+            results = FindAnyObjectByType<ArcadeResultsHandler>();
+        return results;
     }
     #endregion
     #region Set Methods

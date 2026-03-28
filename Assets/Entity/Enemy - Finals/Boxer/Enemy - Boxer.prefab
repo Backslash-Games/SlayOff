@@ -1829,7 +1829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292d9bdd6fbf46f4e9c4815405ac2c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  health: 100
+  health: 0
   statblock:
     blockName: 
     attackLower:
@@ -1870,7 +1870,7 @@ MonoBehaviour:
       current: 0
     maxHealth:
       tag: 7
-      basic: 100
+      basic: 50
       additive: 0
       percentage: 0
       current: 0
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   eyes: {fileID: 5278647706388946678}
   eye_TrackingSpeed: 4
   eye_predictMovemet: 0
-  useTargeting: 1
+  useTargeting: 0
   targetingRange:
     parent: {fileID: 4701909663599347986}
     state: 0
@@ -1913,7 +1913,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 128
     offset: {x: 0, y: 0, z: 0}
-    radius: 5
+    radius: 15
   melee_Weapon:
     knockback: 15
     damage: 1

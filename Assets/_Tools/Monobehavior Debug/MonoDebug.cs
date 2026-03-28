@@ -197,7 +197,7 @@ public class MonoDebug : MonoBehaviour
             return;
 
         // Update the text
-        text.text = source.ToString();
+        text.text = $"MonoDebug - Object:{source.name}\n{source.ToString()}";
     }
     #endregion
 }

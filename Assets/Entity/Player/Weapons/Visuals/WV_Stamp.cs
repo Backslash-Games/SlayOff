@@ -66,6 +66,7 @@ public class WV_Stamp : WeaponVisual
         stamp.SetActive(true);
         stamp.transform.position = hit.point; 
         stamp.transform.forward = hit.normal;
+        stamp.transform.parent = hit.transform;
 
         StartCoroutine(enum_DestroyStamp());
     }
@@ -77,6 +78,8 @@ public class WV_Stamp : WeaponVisual
         stamp_fade_cooldown.Start();
         while (stamp_fade_cooldown.Active())
         {
+            if (stamp == null)
+                break;
             stamp_sprite.color = new Color(stamp_sprite.color.r, stamp_sprite.color.g, stamp_sprite.color.b, 1f - stamp_fade_cooldown.GetPercentComplete());
             yield return new WaitForEndOfFrame();
         }

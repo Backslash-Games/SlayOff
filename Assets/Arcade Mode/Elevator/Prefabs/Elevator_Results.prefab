@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7858342293452216928
+--- !u!1001 &1010404193109622831
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3558998519271174610, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_Name
-      value: Elevator_End
+      value: Elevator_Results
       objectReference: {fileID: 0}
     - target: {fileID: 3558998519271174610, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_TagString
-      value: Elevator_End
+      value: Elevator_Results
       objectReference: {fileID: 0}
-    - target: {fileID: 5163302906656544676, guid: a05912bf3388d3941876501351bc08c9, type: 3}
-      propertyPath: m_Controller
+    - target: {fileID: 3586432315279806440, guid: a05912bf3388d3941876501351bc08c9, type: 3}
+      propertyPath: animator
       value: 
-      objectReference: {fileID: 9100000, guid: d7b9cd84f1a936048a072206c5310652, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.84294
       objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.29499
       objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -60,51 +60,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3586432315279806440, guid: a05912bf3388d3941876501351bc08c9, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3558998519271174610, guid: a05912bf3388d3941876501351bc08c9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 945740383448719264}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a05912bf3388d3941876501351bc08c9, type: 3}
---- !u!4 &351079386002595893 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
-  m_PrefabInstance: {fileID: 7858342293452216928}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &3074212577394593220 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5163302906656544676, guid: a05912bf3388d3941876501351bc08c9, type: 3}
-  m_PrefabInstance: {fileID: 7858342293452216928}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6659252518954560434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3558998519271174610, guid: a05912bf3388d3941876501351bc08c9, type: 3}
-  m_PrefabInstance: {fileID: 7858342293452216928}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &945740383448719264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6659252518954560434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd045fb314d2cdf4b9bc63c51686db84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Elevator_End
-  animator: {fileID: 3074212577394593220}
-  anim_triggerID: Activate
-  end_trigger:
-    parent: {fileID: 351079386002595893}
-    state: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 128
-    offset: {x: 0, y: 2, z: -0.8}
-    size: {x: 5, y: 5, z: 3}
-    localEuler: {x: 0, y: 0, z: 0}
-  debug_DrawTrigger: 1

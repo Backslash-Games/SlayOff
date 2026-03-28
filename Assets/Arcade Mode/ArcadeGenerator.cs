@@ -17,6 +17,7 @@ public class ArcadeGenerator : MonoBehaviour
     [Space]
     [SerializeField] private int seed = -1;
     [SerializeField] private int length = 10;
+    [SerializeField] private Vector2Int lengthRange = new Vector2Int(3, 15);
     [SerializeField] private int maxDoorChecks = 12;
 
 
@@ -50,7 +51,6 @@ public class ArcadeGenerator : MonoBehaviour
     private async void OnEnable()
     {
         BindInput();
-        OnGenerationStarted += (_, _, _, _) => PositionPlayer();
 
         UpdateSeed();
         await Generate();
@@ -58,12 +58,16 @@ public class ArcadeGenerator : MonoBehaviour
     private async void OnDisable()
     {
         UnbindInput();
-        OnGenerationStarted -= (_, _, _, _) => PositionPlayer();
 
         await ClearGeneration();
     }
     #endregion
     #region Generate Overview
+    public async void GenerateNew()
+    {
+        await ClearGeneration();
+        await Generate();
+    }
     private async Task Generate()
     {
         StageStarted();
@@ -106,6 +110,9 @@ public class ArcadeGenerator : MonoBehaviour
 
         // Ensure floor parent always exists
         CreateNewFloorParent();
+        // Set difficulty
+        length = Mathf.Clamp(currentFloor, lengthRange.x, lengthRange.y);
+
         // Place spawn room
         await PlaceTile(tileset.GetSpawnRoom());
         // Spawn tiles until there is no more length
@@ -122,6 +129,7 @@ public class ArcadeGenerator : MonoBehaviour
         // Check for a failed generation
         if (stage.Equals(BuildStage.Failed))
         {
+            currentFloor--;
             await ClearGeneration();
             await Generate();
             return;
@@ -421,10 +429,6 @@ public class ArcadeGenerator : MonoBehaviour
     }
     #endregion
     #region Player Handling
-    private void PositionPlayer()
-    {
-        GetPlayer().Teleport(Vector3.up);
-    }
     private PlayerController GetPlayer()
     {
         if (player == null)

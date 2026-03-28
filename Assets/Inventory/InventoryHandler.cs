@@ -162,6 +162,7 @@ public class InventoryHandler : MonoBehaviour
     /// <param name="binary"></param>
     public void RewardCollectible(uint binary)
     {
+        AddObjectiveProgress("Collectable Get");
         AddBinaryCollectible(binary); // Adds the binary to stored collectibles
         GetCollectibleFeedHandler().RequestNewFeed(binary.ToString()); // Requests pop up feed for binary
     }
@@ -185,7 +186,7 @@ public class InventoryHandler : MonoBehaviour
     {
         // Reward combo progress
         currentCombo++;
-        GetComboFeedHandler().RequestNewFeed(comboObjectives[source].GetFeedDescription()); // Requests pop up feed for binary
+        //GetComboFeedHandler().RequestNewFeed(comboObjectives[source].GetFeedDescription()); // Requests pop up feed for binary
 
         // Reset combo timer if not running
         if (currentComboTime <= 0)
@@ -204,7 +205,7 @@ public class InventoryHandler : MonoBehaviour
         ResetAllObjectiveProgress();
 
         // Reset feed display
-        GetComboFeedHandler().OnFeedChanged.Invoke();
+        //GetComboFeedHandler().OnFeedChanged.Invoke();
     }
 
     /// <summary>
@@ -215,7 +216,7 @@ public class InventoryHandler : MonoBehaviour
         // Check if our combo timer is set
         if (currentComboTime <= 0)
         {
-            GetComboFeedHandler().HideAllFeedEntries();
+            //GetComboFeedHandler().HideAllFeedEntries();
             return;
         }
         // Decrease combo time
@@ -225,7 +226,7 @@ public class InventoryHandler : MonoBehaviour
             ResetCombo();
 
         // Run feed elements
-        GetComboFeedHandler().OnRunFeedElements.Invoke();
+        //GetComboFeedHandler().OnRunFeedElements.Invoke();
     }
     /// <summary>
     ///     Sets the current combo timer to max
@@ -269,8 +270,12 @@ public class InventoryHandler : MonoBehaviour
     /// <param name="id">String ID</param>
     public void AddObjectiveProgress(string id)
     {
-        // Gets the objective and increases progress
         CreateObjectiveDictionary();
+        // Check if key exists
+        if (!comboObjectiveIDs.ContainsKey(id))
+            return;
+
+        // Gets the objective and increases progress
         comboObjectives[comboObjectiveIDs[id]].IncreaseProgress();
 
         // Check if the objective was complete

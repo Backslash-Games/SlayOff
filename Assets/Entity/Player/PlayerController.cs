@@ -670,6 +670,18 @@ public class PlayerController : EntityData
         if (cameraParent != null)
             cameraInitialCenter = cameraParent.localPosition;
     }
+    private void ForceCameraLookAt(Vector3 position)
+    {
+        Debug.Log($"Looking at {position}");
+
+        cameraYaw.LookAt(position);
+        Vector3 cAngles = cameraYaw.eulerAngles;
+
+        cameraYaw.eulerAngles = new Vector3(0, cAngles.y, 0);
+        cameraCurrentYaw = cAngles.y % 360;
+        cameraPitch.eulerAngles = new Vector3(cAngles.x, cAngles.y, 0);
+        cameraCurrentPitch = cAngles.x % 360;
+    }
     #endregion
 
     #region Combo Objectives
@@ -723,8 +735,8 @@ public class PlayerController : EntityData
     }
     #endregion
     #region Positioning
-    public void Teleport(Vector3 position) { StartCoroutine(IEnum_Teleport(position)); }
-    private IEnumerator IEnum_Teleport(Vector3 position)
+    public void Teleport(Vector3 position, Vector3 eyeTracking) { StartCoroutine(IEnum_Teleport(position, eyeTracking)); }
+    private IEnumerator IEnum_Teleport(Vector3 position, Vector3 eyeTracking)
     {
         GetRigidbody().isKinematic = true;
         GetRigidbody().interpolation = RigidbodyInterpolation.None;
@@ -732,6 +744,7 @@ public class PlayerController : EntityData
 
         ResetVelocity();
         transform.position = position;
+        ForceCameraLookAt(eyeTracking);
         yield return new WaitForSeconds(0.1f);
 
         GetRigidbody().isKinematic = false;
