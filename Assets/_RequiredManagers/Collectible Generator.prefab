@@ -47,6 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectibleGenerator
   collectibleIdentifier: 0
   gameCollectibles:
+  - {fileID: 11400000, guid: 169bb9a93b3829e47b8e9da18000ae35, type: 2}
+  - {fileID: 11400000, guid: 4c289eb7a8b08b1458aa8c4ef79f7831, type: 2}
+  - {fileID: 11400000, guid: 5579a7fac88ec0d468c01a6a016f8a35, type: 2}
+  - {fileID: 11400000, guid: 2c3135f735ab23c4eb1518b3e96a1098, type: 2}
+  - {fileID: 11400000, guid: e42c8303b9ef7094dbc15784895369e3, type: 2}
+  - {fileID: 11400000, guid: 85f65c16dceb0c1449bb4cf32ff0112f, type: 2}
+  - {fileID: 11400000, guid: 7bd5a0c6b709cf24fbcd91379b4d6b2d, type: 2}
+  - {fileID: 11400000, guid: 2ca5333f975e3324381a0b5016c3bfce, type: 2}
+  - {fileID: 11400000, guid: 1c942e92d496dac47ab759c7cd30d79c, type: 2}
+  - {fileID: 11400000, guid: b861a15779d6c9f40b19db2d91f631ad, type: 2}
+  - {fileID: 11400000, guid: 30ecc2cda9a28144388b485639a3146a, type: 2}
+  - {fileID: 11400000, guid: 70e4694c57f780a49ac0e4aef4f60178, type: 2}
   - {fileID: 11400000, guid: e7b0e323b69b6f248b78109e2ca99298, type: 2}
   - {fileID: 11400000, guid: 7b04c4b4f1d300e41ae5a43318f508b5, type: 2}
   - {fileID: 11400000, guid: d34f4fad78c346c4ca47702fd3702c4f, type: 2}

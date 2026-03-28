@@ -59,10 +59,11 @@ public class CardboardBox : EntityData
         }
 
         yield return new WaitForSecondsRealtime(cleanupTimer);
-        while(GetLinearVelocity().magnitude >= cleanupVelocityThreshold)
-            yield return new WaitForEndOfFrame();
-        GetRigidbody().isKinematic = true;
-        GetCollision().enabled = false;
+        //while(GetLinearVelocity().magnitude >= cleanupVelocityThreshold && transform.position.y > -250)
+            //yield return new WaitForEndOfFrame();
+        //GetRigidbody().isKinematic = true;
+        //GetCollision().enabled = false;
+        gameObject.SetActive(false);
     }
     #endregion
 

@@ -7,12 +7,16 @@ public class InventoryHandler : MonoBehaviour
     private static InventoryHandler _instance;
     public static InventoryHandler Instance { get { return _instance; } }
 
-
     /// <summary>
     ///     Defines stored collectibles. Key is the collectible binart, Value is the quantity
     /// </summary>
     [SerializeField] private Dictionary<uint, ushort> storedCollectibles = new Dictionary<uint, ushort>();
 
+    [Header("Score")]
+    [SerializeField] private int score_debug = 100000;
+    [SerializeField] private LimitlessNumeric score;
+    
+    [Header("Combo")]
     [SerializeField] private ComboObjective[] comboObjectives = new ComboObjective[0];
     [SerializeField] private Dictionary<string, ushort> comboObjectiveIDs = new Dictionary<string, ushort>();
     [Space]
@@ -114,6 +118,7 @@ public class InventoryHandler : MonoBehaviour
     private void Awake()
     {
         CreateSingleton();
+        score = new LimitlessNumeric(score_debug);
     }
 
     private void Update()

@@ -412,6 +412,183 @@ MonoBehaviour:
   skipAssetClear: 0
   mesh_parent: {fileID: 1271205548804475782}
   prop_parent: {fileID: 7234725481234850326}
+  contained_boxes:
+  - {fileID: 3345025543773173155}
+  - {fileID: 3160557402376079533}
+  - {fileID: 2000735170878874320}
+  - {fileID: 2289684139440415014}
+  - {fileID: 8473861837333822180}
+  - {fileID: 4923534346343047183}
+  - {fileID: 7545542164063394530}
+  - {fileID: 6766851801003644179}
+  - {fileID: 8434692815406718849}
+  - {fileID: 578059382568129219}
+  - {fileID: 7332991269960442475}
+  - {fileID: 6950005858300780389}
+  - {fileID: 5794977952766686488}
+  - {fileID: 6082524854283433710}
+  - {fileID: 4483012126775455020}
+  - {fileID: 1151804202268964807}
+  - {fileID: 2528992372600491306}
+  - {fileID: 1605322622511710939}
+  - {fileID: 4513138827411720265}
+  - {fileID: 4875782411561157899}
+  - {fileID: 5496251579459315499}
+  - {fileID: 6573979981294003384}
+  - {fileID: 652973127247852031}
+  - {fileID: 1371283735220895939}
+  - {fileID: 5435601545118228190}
+  - {fileID: 2428636529295728462}
+  - {fileID: 7586761123918533629}
+  - {fileID: 5932488850744078955}
+  - {fileID: 4034398282967547771}
+  - {fileID: 4425445712539608091}
+  - {fileID: 6924219789820366233}
+  - {fileID: 2263230701673665574}
+  - {fileID: 3578500970457274377}
+  - {fileID: 1002701902171349848}
+  - {fileID: 6549643735085156817}
+  - {fileID: 3173029859519003220}
+  - {fileID: 4284385175221221831}
+  - {fileID: 7584508113730382976}
+  - {fileID: 8307312974441258428}
+  - {fileID: 3107875882238886817}
+  - {fileID: 4754119392784663089}
+  - {fileID: 650718897823288962}
+  - {fileID: 3610243431866871572}
+  - {fileID: 6319475742010089988}
+  - {fileID: 6711508061606820196}
+  - {fileID: 25195713171640550}
+  - {fileID: 9162250449230235993}
+  - {fileID: 5901727361240614262}
+  - {fileID: 7900464356016815655}
+  - {fileID: 4227547643344147630}
+  - {fileID: 8134548845482316705}
+  - {fileID: 7087647951186310003}
+  - {fileID: 171574133230605755}
+  - {fileID: 3985936985755869810}
+  - {fileID: 852957627820916503}
+  - {fileID: 1036167961206260249}
+  - {fileID: 4501824442331113572}
+  - {fileID: 4214011238004140946}
+  - {fileID: 5774897864329785424}
+  - {fileID: 7056669019867900603}
+  - {fileID: 5551423135631773782}
+  - {fileID: 8670859400715722663}
+  - {fileID: 5815192883884971317}
+  - {fileID: 3294407870837332087}
+  - {fileID: 8157721419461032804}
+  - {fileID: 7172500522046610358}
+  - {fileID: 266900643250404734}
+  - {fileID: 3928636318192077495}
+  - {fileID: 902316361811196342}
+  - {fileID: 2178177214039906660}
+  - {fileID: 9081402146625552300}
+  - {fileID: 5419790167833512037}
+  - {fileID: 6272090270635553288}
+  - {fileID: 4645212980894413211}
+  - {fileID: 1316098889950667996}
+  - {fileID: 597760648820856288}
+  - {fileID: 5774540100052863997}
+  - {fileID: 4249193941762951789}
+  - {fileID: 8216250608401254110}
+  - {fileID: 5266964453225703240}
+  - {fileID: 3220465927754197592}
+  - {fileID: 2748950608773034296}
+  - {fileID: 8888889984124803258}
+  - {fileID: 298635308821643525}
+  - {fileID: 3090886350418693418}
+  - {fileID: 1632057333481240187}
+  - {fileID: 4731428506778295538}
+  - {fileID: 3206799746070138373}
+  - {fileID: 4322676253720448406}
+  - {fileID: 7622798982849435857}
+  - {fileID: 8341101481286707693}
+  - {fileID: 3146166891884509168}
+  - {fileID: 4715845908753643104}
+  - {fileID: 689011004429875923}
+  - {fileID: 3644014620329909061}
+  - {fileID: 6285691427589527125}
+  - {fileID: 6749800442957008181}
+  - {fileID: 58979892837082295}
+  - {fileID: 9200520358909492488}
+  - {fileID: 5867961050652471591}
+  - {fileID: 7866694265856903798}
+  - {fileID: 4189278487029604607}
+  - {fileID: 1440177340147253643}
+  - {fileID: 324652727757931032}
+  - {fileID: 6248112815587628895}
+  - {fileID: 5529810471228384867}
+  - {fileID: 1501159753416931454}
+  - {fileID: 9083287760040950254}
+  - {fileID: 3959654810855748957}
+  - {fileID: 1003877431091762379}
+  - {fileID: 7514007235277134299}
+  - {fileID: 7120267376672867003}
+  - {fileID: 4588560194608851769}
+  - {fileID: 4670952224813560454}
+  - {fileID: 7931808394098146985}
+  - {fileID: 5931313314567636472}
+  - {fileID: 387046095127867249}
+  - {fileID: 189371050779002531}
+  - {fileID: 1575463484399289648}
+  - {fileID: 5181831033280860279}
+  - {fileID: 6764858599679861067}
+  - {fileID: 398989169627561814}
+  - {fileID: 8021504986569735878}
+  - {fileID: 2859727819764576885}
+  - {fileID: 2067771713019843555}
+  - {fileID: 8726660631149616883}
+  - {fileID: 8326042090362635667}
+  - {fileID: 3382653506804509713}
+  - {fileID: 5876845748577023406}
+  - {fileID: 9173621244758194561}
+  - {fileID: 4831250064024191696}
+  - {fileID: 1442099667342714969}
+  - {fileID: 7659906323346332360}
+  - {fileID: 8068780390161917894}
+  - {fileID: 6909248865136479675}
+  - {fileID: 6620300944143257165}
+  - {fileID: 3584772137508132239}
+  - {fileID: 33063771107807076}
+  - {fileID: 3211552154260977033}
+  - {fileID: 1859477476194810488}
+  - {fileID: 3542243116469580010}
+  - {fileID: 5486284605372284328}
+  - {fileID: 6956019762884596432}
+  - {fileID: 7295789797446774750}
+  - {fileID: 6135976462974305699}
+  - {fileID: 5847294694040618581}
+  - {fileID: 4285844017174093207}
+  - {fileID: 770322769078781820}
+  - {fileID: 2761958374338428305}
+  - {fileID: 1372467316115681888}
+  - {fileID: 4318204864228964594}
+  - {fileID: 5109045631409616304}
+  - {fileID: 7424869463897902164}
+  - {fileID: 7114854275547214170}
+  - {fileID: 5955322744079850279}
+  - {fileID: 6243981285950462161}
+  - {fileID: 4393454967264363283}
+  - {fileID: 950941308229573112}
+  - {fileID: 2438315386803430165}
+  - {fileID: 1479761980519247076}
+  - {fileID: 4354849031645161078}
+  - {fileID: 4711936740598524724}
+  - {fileID: 9066762934281333446}
+  - {fileID: 8675333582575294408}
+  - {fileID: 5223188009283550645}
+  - {fileID: 5512089612287245891}
+  - {fileID: 2747551646970291585}
+  - {fileID: 1723646917915131754}
+  - {fileID: 4255709531747272071}
+  - {fileID: 1031561843190631030}
+  - {fileID: 2789553043071959268}
+  - {fileID: 6610679700375162278}
+  - {fileID: 2451731381621038247}
+  - {fileID: 1096081151210136562}
+  - {fileID: 7302418524580719300}
+  - {fileID: 1122132106532412421}
   hasCombat: 1
   combatState: 0
   enemy_spawnNodes:
@@ -871,6 +1048,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
+--- !u!114 &1096081151210136562 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 451234864477803241, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
+  m_PrefabInstance: {fileID: 681473218113515803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!4 &2852838512280104415 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3378339408923811012, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
@@ -944,6 +1132,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
+--- !u!114 &1122132106532412421 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 451234864477803241, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
+  m_PrefabInstance: {fileID: 707494515007835884}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!4 &2824816106371224104 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3378339408923811012, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
@@ -1905,6 +2104,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3378339408923811012, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
   m_PrefabInstance: {fileID: 2613590834679615054}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2451731381621038247 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 451234864477803241, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
+  m_PrefabInstance: {fileID: 2613590834679615054}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!114 &6138958053265378902 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8175338266520944664, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
@@ -3196,11 +3406,121 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+--- !u!114 &852957627820916503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7601617079232570042, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1036167961206260249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7838861778784985012, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3294407870837332087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5697080488771454426, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!4 &3715529472124252003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5852489677700821710, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
   m_PrefabInstance: {fileID: 7108947422692941229}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4214011238004140946 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6400497844250687039, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4501824442331113572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6688337472308098505, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5551423135631773782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3432468499203427835, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5774897864329785424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3642428065314991613, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5815192883884971317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3610683047602374808, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7056669019867900603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 235978361605748502, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8670859400715722663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1944739937673724426, guid: aa341af2e8fdf4441a590c50cdf38a2d, type: 3}
+  m_PrefabInstance: {fileID: 7108947422692941229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!1001 &7139469034422351917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3274,6 +3594,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3378339408923811012, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
   m_PrefabInstance: {fileID: 7139469034422351917}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7302418524580719300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 451234864477803241, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
+  m_PrefabInstance: {fileID: 7139469034422351917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!1001 &7286462900130081052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3951,11 +4282,605 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+--- !u!114 &25195713171640550 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8907285717763862715, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &171574133230605755 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8765420732887332326, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &578059382568129219 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8340991445108454046, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &650718897823288962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8269553495865618143, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &652973127247852031 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8271804017122152866, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1002701902171349848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8515984075880973061, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1151804202268964807 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8374599247882344346, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1371283735220895939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7548962330316382366, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1605322622511710939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7891373208823751302, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2000735170878874320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6917670303620481677, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2263230701673665574 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7254197435059713147, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2289684139440415014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7206355214784119163, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2428636529295728462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6516931289033572115, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2528992372600491306 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6403066837290626423, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3107875882238886817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5829327882498253820, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3160557402376079533 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5771367606969133296, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3173029859519003220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6326527974860036617, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3345025543773173155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6174260776140396030, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3578500970457274377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5363199848297527380, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3610243431866871572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5322871240452493129, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3985936985755869810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5518157373402579503, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4034398282967547771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5492568177289535270, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4227547643344147630 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4715214221323646195, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4284385175221221831 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4661713707285240218, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4425445712539608091 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5093251329287914566, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4483012126775455020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5040180757951466865, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4513138827411720265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5000519161213544468, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4754119392784663089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4196945915047912044, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4875782411561157899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4066407629805561174, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4923534346343047183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4582238975665274962, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5435601545118228190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3507082254207352451, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5496251579459315499 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3999778952848000886, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5794977952766686488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3147857579249243461, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5901727361240614262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3036463747762726187, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5932488850744078955 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2995145924425814582, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6082524854283433710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3435668533885834931, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6319475742010089988 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3204244891118420569, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6549643735085156817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2387339027797895564, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6573979981294003384 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2377897865558230245, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6711508061606820196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2801409878435977529, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!4 &6741858060218363495 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2759420535563062842, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
   m_PrefabInstance: {fileID: 8918405397170937949}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6766851801003644179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2750614878783026510, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6924219789820366233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2005033406340394436, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6950005858300780389 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1997324399940353848, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7087647951186310003 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1844479368352551726, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7332991269960442475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2161884783775613494, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7545542164063394530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1401654031070788287, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7584508113730382976 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1334507521074482397, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7586761123918533629 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1336757096898933664, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7900464356016815655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1612460249741565562, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8134548845482316705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 803667578034942972, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8307312974441258428 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 616161188599594465, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8434692815406718849 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1065811707090681820, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8473861837333822180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1035192418842548921, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &9162250449230235993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 351931997847087364, guid: 239ee729ff030ba4d99ed179ab8af3e9, type: 3}
+  m_PrefabInstance: {fileID: 8918405397170937949}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!1001 &9169932348212800863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4013,8 +4938,1196 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+--- !u!114 &33063771107807076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9166887590476292667, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &58979892837082295 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9192881499448773096, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &189371050779002531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9071062279918365692, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &266900643250404734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9004415679638868001, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &298635308821643525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8892027446709349466, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &324652727757931032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8918043213173485383, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &387046095127867249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8799247235827761710, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &398989169627561814 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8848265311887462921, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &597760648820856288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8577537351305853119, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &689011004429875923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8560779088069318540, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &770322769078781820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8499023228637833763, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &902316361811196342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8342794140745012457, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &950941308229573112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8246171140101420199, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1003877431091762379 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8263078194322078100, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1031561843190631030 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8147852736590767913, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1316098889950667996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7854730840417094019, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
 --- !u!4 &1359232834875556966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7898983812193347897, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
   m_PrefabInstance: {fileID: 9169932348212800863}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1372467316115681888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7803013168656998207, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1440177340147253643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7835890943342226644, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1442099667342714969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7728593551578989830, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1479761980519247076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7767318803660931515, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1501159753416931454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7752687503421805857, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1575463484399289648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7682876341790599279, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1632057333481240187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7630258430169455396, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1723646917915131754 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7541765070675595829, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &1859477476194810488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7389303127192114983, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2067771713019843555 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7201281678033059516, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2178177214039906660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7023456254234506299, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2438315386803430165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6815219531164667466, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2747551646970291585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6441105453322750174, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2748950608773034296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6441300723716381799, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2761958374338428305 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6419413293194875086, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2789553043071959268 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6481910579752365499, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &2859727819764576885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6408041375803694890, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3090886350418693418 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6171950332572672117, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3146166891884509168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6119066967577500335, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3206799746070138373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6035654190699946842, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3211552154260977033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6040344465611938006, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3220465927754197592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6049249437746710279, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3382653506804509713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5887257580632899918, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3542243116469580010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5650530692730953141, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3584772137508132239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5691863450506344656, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3644014620329909061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5606989367622923802, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3928636318192077495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5316346563430180840, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &3959654810855748957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5310203490624034818, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4189278487029604607 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4999394109702770080, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4249193941762951789 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5024345387940685618, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4255709531747272071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4921719330566842584, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4285844017174093207 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4915754378472943816, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4318204864228964594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4949311486610462125, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4322676253720448406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4953713044280598729, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4354849031645161078 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4840715381016333097, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4393454967264363283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4880376840329473612, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4588560194608851769 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4679226601462695526, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4645212980894413211 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4554608697571597508, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4670952224813560454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4580348485861335001, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4711936740598524724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4478281597495985771, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4715845908753643104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4481125870268521279, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4731428506778295538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4533802981052330413, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &4831250064024191696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4345455447955255183, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5109045631409616304 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4153687800840460527, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5181831033280860279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4083545762088844584, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5223188009283550645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3980717186656932074, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5266964453225703240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3916478703335819799, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5419790167833512037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3779877519751734586, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5486284605372284328 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3702264717020942583, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5512089612287245891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3692042049010668316, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5529810471228384867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3746979160348412732, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5774540100052863997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3414130125601515170, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5847294694040618581 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3343895690173950730, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5867961050652471591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3327328476123470968, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5876845748577023406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3372321943358593265, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5931313314567636472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3247771438036232359, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &5955322744079850279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3307800026746025592, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6135976462974305699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3054983126539020540, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6243981285950462161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3018879628976977294, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6248112815587628895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3024137886493374976, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6272090270635553288 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2902803314573582167, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6285691427589527125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2916476505609960202, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6610679700375162278 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2666129653418762489, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6620300944143257165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2639720988811584274, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6749800442957008181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2517018920321048682, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6764858599679861067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2496049652118080532, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6909248865136479675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2351074574854873316, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &6956019762884596432 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2290814868393246607, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7114854275547214170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2161497639332305925, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7120267376672867003 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2130872873424121828, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7172500522046610358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2075020178519897833, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7295789797446774750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1908961953719353985, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7424869463897902164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1749731548737954059, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7514007235277134299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1658794881314649220, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7622798982849435857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1624598435781244302, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7659906323346332360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1517520477122590615, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7866694265856903798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1328060666259875625, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &7931808394098146985 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1247872405405701110, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8021504986569735878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1157487415570797465, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8068780390161917894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1204772142343473817, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8157721419461032804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1041501987839383099, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8216250608401254110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 956971522164943745, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8326042090362635667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 922727510109743308, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8341101481286707693 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 901757281643938994, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8675333582575294408 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 515342264226855575, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8726660631149616883 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 457528200182461356, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &8888889984124803258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 295419785173218789, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &9066762934281333446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 185131624266074009, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &9081402146625552300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 91685809085977331, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &9083287760040950254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 93580488189580465, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &9173621244758194561 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3688904064472286, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+--- !u!114 &9200520358909492488 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 66696821885030487, guid: 4b2ee915614f5bb42a6b56bd24231ef5, type: 3}
+  m_PrefabInstance: {fileID: 9169932348212800863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57409a8fe32d754786d5a63518b3628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardboardBox

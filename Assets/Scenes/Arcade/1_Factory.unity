@@ -531,6 +531,7 @@ MonoBehaviour:
   stage: 3
   seed: -1
   length: 5
+  lengthRange: {x: 3, y: 15}
   maxDoorChecks: 12
   currentFloor: 0
   cFloorParent: {fileID: 0}
@@ -701,8 +702,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3556101287457143289, guid: f1889d759b3bf694b8131d8219c1bc20, type: 3}
-      propertyPath: comboObjectives.Array.data[0].value
-      value: 0.1
+      propertyPath: score_debug
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 7440606740032102804, guid: f1889d759b3bf694b8131d8219c1bc20, type: 3}
       propertyPath: m_Name

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Arcade_Room : MonoBehaviour
@@ -12,6 +13,8 @@ public class Arcade_Room : MonoBehaviour
     [Space]
     [SerializeField] private GameObject mesh_parent = null;
     [SerializeField] private GameObject prop_parent = null;
+    [Space]
+    [SerializeField] private CardboardBox[] contained_boxes = new CardboardBox[0];
 
     [Header("Combat")]
     [SerializeField] private bool hasCombat = false;
@@ -26,10 +29,14 @@ public class Arcade_Room : MonoBehaviour
 
     private int lastDoorInteracted = 0;
 
+    public delegate void RoomState();
+    public event RoomState OnRoomCleared;
+
     #region Unity Methods
     private void Awake()
     {
         ClearAllAssets();
+        OnRoomCleared += ExplodeAllBoxes;
     }
     private void OnDrawGizmos()
     {
@@ -38,6 +45,10 @@ public class Arcade_Room : MonoBehaviour
 
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireCube(GetPlayerBounds_World().center, GetPlayerBounds_World().size);
+    }
+    private void OnDestroy()
+    {
+        OnRoomCleared -= ExplodeAllBoxes;
     }
     private void LateUpdate()
     {
@@ -176,6 +187,25 @@ public class Arcade_Room : MonoBehaviour
     public bool CheckOverlap(Bounds other) { return GetBounds_World().Intersects(other); }
     #endregion
 
+    #region Box Management
+    private void ExplodeAllBoxes() { StartCoroutine(enum_ExplodeAllBoxes()); }
+    private IEnumerator enum_ExplodeAllBoxes()
+    {
+        float stallThreshold = contained_boxes.Length * 0.05f;
+        // Roll through each value in boxes
+        for(int i = 0; i < contained_boxes.Length; i++)
+        {
+            if (contained_boxes[i] != null && contained_boxes[i].isActiveAndEnabled)
+                contained_boxes[i].ApplyForce(Random.insideUnitSphere, 5, ForceMode.Impulse, "Room Cleared");
+            if(i > stallThreshold)
+            {
+                yield return new WaitForSeconds(0.05f);
+                stallThreshold += contained_boxes.Length * 0.05f;
+            }
+        }
+    }
+    #endregion
+
     #region Combat Management
     /// <summary>
     ///     Sequencing for combat
@@ -256,6 +286,8 @@ public class Arcade_Room : MonoBehaviour
         // Clear combat and open doors
         RequestCombatState(CombatState.Cleared);
         OpenAllConnectedDoors();
+
+        OnRoomCleared?.Invoke();
     }
 
     /// <summary>

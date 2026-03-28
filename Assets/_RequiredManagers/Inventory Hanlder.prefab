@@ -49,7 +49,7 @@ MonoBehaviour:
   - name: Collectable Get
     feedDescription: 
     quota: 1
-    value: 0
+    value: 0.1
     progress: 0
     timesCompleted: 0
   currentCombo: 0
