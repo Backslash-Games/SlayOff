@@ -38,7 +38,7 @@ public class CardboardBox : EntityData
     {
         base.OnEnabled();
     }
-    public override void OnDeath()
+    public override void OnDeath(bool play_audio = true)
     {
         boxDead = true;
         StartCoroutine(DelayDeathCoroutine());
@@ -50,10 +50,15 @@ public class CardboardBox : EntityData
     IEnumerator DelayDeathCoroutine()
     {
         yield return new WaitForSecondsRealtime(deathTimer + Random.Range(-deathTimerRandom, deathTimerRandom));
+        
+        // Play visuals
         RunDeathVisuals();
+        // Play Audio
+        PlayAudio(AudioType.Death);
 
         if (hasReward)
         {
+            hasReward = false;
             InventoryHandler.Instance.RewardRandomCollectible();
             InventoryHandler.Instance.AddObjectiveProgress(comboObjective_BreakKey);
         }
@@ -86,7 +91,7 @@ public class CardboardBox : EntityData
             return;
         // Kill the box
         if (GetLinearVelocity().magnitude >= speedDeathThreshold)
-            Hurt("CarboardBox.SpeedDeath", 9999);
+            Kill("CarboardBox.SpeedDeath");
     }
     #endregion
     #region Visual Handling

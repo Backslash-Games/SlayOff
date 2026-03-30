@@ -18,12 +18,32 @@ public class EntityData : MonoBehaviour
     [Header("Entity Data - Visuals")]
     [SerializeField] private Image op_HealthBar = null;
 
+    public enum AudioType { Hurt, Heal, Death, Move };
+    [System.Serializable]
+    private struct EntityAudio
+    {
+        [SerializeField] private AudioType audioType;
+        [SerializeField] private AudioClip audioClip;
+
+        public EntityAudio(AudioType audioType, AudioClip audioClip)
+        {
+            this.audioType = audioType;
+            this.audioClip = audioClip;
+        }
+
+        public AudioType GetAudioType() { return audioType; }
+        public AudioClip GetAudioClip() { return audioClip; }
+    }
+    [Header("Entity Data - Audio")]
+    [SerializeField] private bool audio_Muted = false;
+    [SerializeField] private EntityAudio[] e_audio = new EntityAudio[0];
+
     // Events
     /// <summary>
     ///     Delegate that tracks when health is changed
     /// </summary>
     /// <param name="amount">Amount changed</param>
-    public delegate void HealthChanged(string source, float amount);
+    public delegate void HealthChanged(string source, Vector3 origin, float amount);
     /// <summary>
     ///     Event that tracks when the entity is hurt
     /// </summary>
@@ -83,7 +103,7 @@ public class EntityData : MonoBehaviour
         statblock.Recalculate();
 
         // Heal full when enabled
-        HealFull("Entity.OnEnable");
+        HealFull("Entity.OnEnable", false);
         // Run on enable
         OnEnabled();
     }
@@ -107,16 +127,16 @@ public class EntityData : MonoBehaviour
     /// </summary>
     private void BindEvents()
     {
-        OnHurt += (_, _) => Tick_HealthBar();
-        OnHeal += (_, _) => Tick_HealthBar();
+        OnHurt += (_, _, _) => Tick_HealthBar();
+        OnHeal += (_, _, _) => Tick_HealthBar();
     }
     /// <summary>
     ///     Unbinds basic entity data events
     /// </summary>
     private void UnbindEvents()
     {
-        OnHurt -= (_, _) => Tick_HealthBar();
-        OnHeal -= (_, _) => Tick_HealthBar();
+        OnHurt -= (_, _, _) => Tick_HealthBar();
+        OnHeal -= (_, _, _) => Tick_HealthBar();
     }
     #endregion
 
@@ -134,7 +154,7 @@ public class EntityData : MonoBehaviour
     ///     Heals the entity
     /// </summary>
     /// <param name="amount">Heal amount</param>
-    public void Heal(string source, float amount)
+    public void Heal(string source, float amount, bool play_audio = true)
     {
         // Add interaction
         AddInteraction(source, $"Entity.Heal({amount})");
@@ -151,24 +171,28 @@ public class EntityData : MonoBehaviour
         // Heal the entity
         health += cHeal;
 
+        // Play heal audio
+        if(play_audio)
+            PlayAudio(AudioType.Heal);
+
         // Run Heal event
-        OnHeal?.Invoke(source, amount);
+        OnHeal?.Invoke(source, Vector3.zero, amount);
     }
     /// <summary>
     ///     Heals the entity to full
     /// </summary>
-    public void HealFull(string source)
+    public void HealFull(string source, bool play_audio = true)
     {
         // Add interaction
         AddInteraction(source, "Entity.HealFull");
 
-        Heal(source, GetStatblock().GetHealth());
+        Heal(source, GetStatblock().GetHealth(), play_audio);
     }
     /// <summary>
     ///     Hurts the entity
     /// </summary>
     /// <param name="amount">Hurt amount</param>
-    public void Hurt(string source, float amount)
+    public void Hurt(string source, Vector3 origin, float amount, bool play_audio = true)
     {
         // Add interaction
         AddInteraction(source, $"Entity.Hurt({amount})");
@@ -179,21 +203,25 @@ public class EntityData : MonoBehaviour
         // Clamp health to allowed range
         health = Mathf.Clamp(health, 0, GetStatblock().GetHealth());
 
+        // Play hurt audio
+        if (play_audio)
+            PlayAudio(AudioType.Hurt);
+
         // Run hurt event
-        OnHurt?.Invoke(source, amount);
+        OnHurt?.Invoke(source, origin, amount);
 
         // Check for a kill
         if (isDead())
-            OnDeath();
+            OnDeath(play_audio);
     }
     /// <summary>
     ///     Kills the entity
     /// </summary>
-    public void Kill(string source)
+    public void Kill(string source, bool play_audio = true)
     {
         // Add interaction
         AddInteraction(source, "Entity.Kill");
-        Hurt(source, GetStatblock().GetHealth());
+        Hurt(source, transform.position, GetStatblock().GetHealth(), play_audio);
     }
 
 
@@ -201,8 +229,12 @@ public class EntityData : MonoBehaviour
     /// <summary>
     ///     Virtual Void - What code is run when the entity dies
     /// </summary>
-    public virtual void OnDeath() 
+    public virtual void OnDeath(bool play_audio = true)
     {
+        // Play death audio
+        if (play_audio)
+            PlayAudio(AudioType.Death);
+
         // Set object to inactive
         gameObject.SetActive(false);
     }
@@ -369,6 +401,30 @@ public class EntityData : MonoBehaviour
         op_HealthBar.fillAmount = health / GetStatblock().GetHealth();
     }
 
+    #endregion
+    #region Audio
+    public void MuteAudio() { audio_Muted = true; }
+    public void UnmuteAudio() { audio_Muted = false; }
+
+    public void PlayAudio(AudioType type) 
+    {
+        if (audio_Muted)
+            return;
+        if (AudioManager.Instance == null)
+            return;
+
+        // Get audio clip of type
+        foreach (EntityAudio value in e_audio)
+        {
+            if (value.GetAudioType().Equals(type))
+            {
+                // Play the audio clip
+                AudioManager.Instance.PlayAudio(value.GetAudioClip(), transform.position);
+                return;
+            }
+        }
+
+    }
     #endregion
 
     #region Debug

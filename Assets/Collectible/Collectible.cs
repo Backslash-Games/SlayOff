@@ -9,6 +9,7 @@ public class Collectible
     private static readonly char charIgnore = '?';
 
     private static readonly int[] qWeight = new int[] { 1000, 500, 250, 125, 62, 31, 15, 1 };
+    private static readonly float[] qPrice = new float[] { 0.75f, 1, 1.25f, 1.5f, 2, 2.75f, 4, 8};
     private static readonly string[] qNames = new string[] { $"{charIgnore}", "Uncommon", "Rare", "Very Rare", "Super Rare", "Legendary", "Ultra Legendary", "Super Ultra Legendary" };
     private static readonly Color32[] qRenderOptions = new Color32[] {
         new Color32(255, 255, 255, 255), // White
@@ -25,12 +26,14 @@ public class Collectible
 
 
     private static readonly int[] mWeight = new int[] { 30, 70, 150, 500, 160, 80, 40, 1 };
+    private static readonly float[] mPrice = new float[] { 0.25f, 0.5f, 0.75f, 1, 1.5f, 2, 4, 10 };
     private static readonly string[] mNames = new string[] { "Dirty", "Slimy", "Infested", $"{charIgnore}", "Foiled", "Gilded", "Chroma", "Ethereal" };
     public enum cMaterial { Dirty, Slimy, Infested, Normal, Foiled, Gilded, Chroma, Ethereal }
     [SerializeField] private cMaterial material = cMaterial.Normal;
 
 
     private static readonly int[] dWeight = new int[] { 1000, 300, 200, 100, 50, 25, 10, 1 };
+    private static readonly float[] dPrice = new float[] { 1, 0.9f, 0.95f, 1.2f, 1.3f, 1.4f, 1.5f, 1.75f };
     private static readonly string[] dNames = new string[] { $"{charIgnore}", "Squashed", "Stretched", "Grown", "Shrunk", "Bloated", "Twirled", "Mirrored" };
     private static readonly Vector2[] dRenderOptions = new Vector2[]
     {
@@ -48,6 +51,7 @@ public class Collectible
 
 
     private static readonly int[] aWeight = new int[] { 750, 1 };
+    private static readonly float[] aPrice = new float[] { 1, 100 };
     private static readonly string[] aNames = new string[] { $"{charIgnore}", "Anomaly" };
     [SerializeField] private bool anomaly = false;
 
@@ -161,6 +165,11 @@ public class Collectible
     public Vector2 GetDefectScale() { return dRenderOptions[(int)GetDefect()]; }
     #endregion
     #region Price
+    public int GetPrice()
+    {
+        float modifier = qPrice[(int)quality] * mPrice[(int)material] * dPrice[(int)defect] * aPrice[anomaly ? 1 : 0];
+        return Mathf.CeilToInt(definition.GetPrice() * modifier);
+    }
     #endregion
     #region Get Methods
     public cQuality GetQuality() { return quality; }

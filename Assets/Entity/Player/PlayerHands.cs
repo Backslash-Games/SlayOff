@@ -130,8 +130,11 @@ public class PlayerHands : MonoBehaviour
 public class Weapon
 {
     [Header("Main Attributes")]
+    [SerializeField] private string id = "weapon";
     [SerializeField] private float knockback = 15;
     [SerializeField] private float damage = 1;
+    [SerializeField] private float recoil = 0;
+    [SerializeField] private float recoil_reduction = 0;
     [SerializeField] private Transform orientationTransform;
     [Space]
 
@@ -184,6 +187,10 @@ public class Weapon
     [SerializeField] private GameObject weapon_visual = null;
     [SerializeField] private Transform wv_nozzle = null;
     [SerializeField] private LayerMask wv_hitmask;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip audio_attack;
+    [SerializeField] private bool audio_disable_spatial = false;
 
     [Header("Slow Down")]
     [SerializeField] private float hitTimeScale = 0.05f;
@@ -354,8 +361,16 @@ public class Weapon
         CalculateHitCollision(out EntityData[] hitEntities);
         // Run logic
         HitEntities(hitEntities);
+        
         // Spawn visual
         SpawnVisual();
+        // Play audio
+        if(audio_attack != null)
+            AudioManager.Instance.PlayAudio(audio_attack, monoBehaviour.transform.position, true, audio_disable_spatial);
+
+        // Apply recoil
+        if(recoil != 0)
+            CameraController.Instance.AddModifier(new CameraModifier(CameraModifier.Axis.pitch, recoil, recoil_reduction));
 
         // Check for impact stun
         if (hitbox.GetState())
@@ -436,7 +451,7 @@ public class Weapon
     private void ApplyDamage(EntityData target)
     {
         // Apply the knockback to the target
-        target.Hurt("Player.Melee", damage);
+        target.Hurt($"Weapon.{id}", monoBehaviour.transform.position, damage);
     }
 
     #endregion

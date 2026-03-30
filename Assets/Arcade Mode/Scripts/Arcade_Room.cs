@@ -192,14 +192,25 @@ public class Arcade_Room : MonoBehaviour
     private IEnumerator enum_ExplodeAllBoxes()
     {
         float stallThreshold = contained_boxes.Length * 0.05f;
+        float max_audio_players = 1; // allowed audio players per burst
+        float active_audio_players = 0;
         // Roll through each value in boxes
-        for(int i = 0; i < contained_boxes.Length; i++)
+        for (int i = 0; i < contained_boxes.Length; i++)
         {
             if (contained_boxes[i] != null && contained_boxes[i].isActiveAndEnabled)
+            {
                 contained_boxes[i].ApplyForce(Random.insideUnitSphere, 5, ForceMode.Impulse, "Room Cleared");
+
+                // Check if we allow audio to play
+                if (active_audio_players > max_audio_players)
+                    contained_boxes[i].MuteAudio();
+                active_audio_players++;
+            }
             if(i > stallThreshold)
             {
                 yield return new WaitForSeconds(0.05f);
+
+                active_audio_players = 0;
                 stallThreshold += contained_boxes.Length * 0.05f;
             }
         }

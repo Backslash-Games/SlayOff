@@ -17,6 +17,8 @@ public class FeedHandler : MonoBehaviour
     [SerializeField] private float initialRotation = 0; // Rotation moved into after spawning
     [Space]
     [SerializeField] private float bumpAmount = -5f;
+    [Space]
+    [SerializeField] private AudioClip feedAudio_NewElementAdded;
 
     private FeedEntry[] collectibleFeedEntries;
     private bool[] awakeEntries;
@@ -109,6 +111,9 @@ public class FeedHandler : MonoBehaviour
 
         // Increase target
         feedTarget = (feedTarget + 1) % feedSpawnAmount;
+
+        // Play audio
+        AudioManager.Instance.PlayAudio(feedAudio_NewElementAdded, Vector3.zero, true, true);
 
 
         // Call on feed changed

@@ -4,7 +4,11 @@ using UnityEngine.AI;
 public class Enemy : EntityData
 {
 
-    [Header("Pathfinding")]
+    private enum MovementType { Pathfinding, Flying_Tracking, Flying_Stationary };
+    [Header("Movement")]
+    [SerializeField] private MovementType movementType = MovementType.Pathfinding;
+
+    [Header("Movement.Pathfinding")]
     [SerializeField] private NavMeshAgent agent;
     [Space]
     [SerializeField] private Transform eyes;
@@ -15,23 +19,32 @@ public class Enemy : EntityData
     [SerializeField] private Hitbox_Sphere targetingRange;
     [SerializeField] private bool targeting_DrawHitbox;
 
+    [Header("Movement.Flying_Stationary")]
+    [SerializeField] private float hover_height = 0;
+    [SerializeField] private float hover_speed = 0;
+    private float hover_init_height = 0;
+
     private enum AttackType { Melee, Ranged };
-    [Header("Attacking General")]
+    [Header("Attack")]
     [SerializeField] private AttackType attackType = AttackType.Melee;
     [SerializeField] private float movementPredictionStrength = 1;
 
-    [Header("Melee Weapon")]
+    [Header("Attack.Melee")]
     [SerializeField] private Hitbox_Sphere melee_AggressionRange;
     [SerializeField] private Weapon melee_Weapon;
     [SerializeField] private AnimationEvent melee_Tracking;
     [SerializeField] private bool melee_DrawHitbox;
+    [SerializeField] private bool lock_eyes_OnAttack = true;
 
-    [Header("Ranged Weapon")]
+    [Header("Attack.Ranged")]
     [SerializeField] private GameObject ranged_Projectile;
     [SerializeField] private Cooldown ranged_Cooldown;
     private static string ranged_ProjectileParentID = "Projectiles";
     private static Transform ranged_ProjectileParent = null;
     [SerializeField] private Vector2 ranged_CooldownVariation;
+    [Space]
+    [SerializeField] private Animator ranged_animator;
+    [SerializeField] private string ranged_animation_id;
 
     [Header("Animations")]
     [SerializeField] private Animator anim_walking = null;
@@ -46,13 +59,13 @@ public class Enemy : EntityData
         melee_Weapon.Setup(this, GetPlayer());
         melee_Weapon.SetDamage(GetStatblock().GetAttack());
         SetupRangedCooldown();
+        SetupMovement();
 
         SetAgent(GetStatblock());
     }
     private void FixedUpdate()
     {
-        // Set the agent destination
-        SetAgentDestination(GetPlayer().GetGroundPosition());
+        TickMovement_FU();
 
         // Try to use attacks
         OnMeleeAttack();
@@ -64,6 +77,7 @@ public class Enemy : EntityData
     }
     private void LateUpdate()
     {
+        TickMovement_LU();
         // Look at our target
         LookAtTarget(GetPlayer().gameObject, (Vector3.up * GetCameraOffset()) + GetMovementPrediction());
     }
@@ -93,6 +107,71 @@ public class Enemy : EntityData
     }
     #endregion
 
+    #region Movement
+    private void SetupMovement()
+    {
+        switch (movementType)
+        {
+            case MovementType.Flying_Tracking:
+                agent.enabled = false;
+                GetRigidbody().useGravity = false;
+                SetConstraints(RigidbodyConstraints.FreezeRotation);
+                break;
+            case MovementType.Flying_Stationary:
+                agent.enabled = false;
+                hover_init_height = transform.position.y;
+                break;
+            default:
+                agent.enabled = true;
+                break;
+        }
+    }
+
+    private void TickMovement_FU()
+    {
+        switch (movementType)
+        {
+            case MovementType.Flying_Tracking:
+                MovementFlying_Tracking();
+                break;
+            case MovementType.Flying_Stationary:
+                // NONE
+                break;
+            default:
+                // Set the agent destination
+                SetAgentDestination(GetPlayer().GetGroundPosition());
+                break;
+        }
+    }
+    private void TickMovement_LU()
+    {
+        switch (movementType)
+        {
+            case MovementType.Flying_Tracking:
+                // NONE
+                break;
+            case MovementType.Flying_Stationary:
+                MovementFlying_Stationary();
+                break;
+            default:
+                // Set the agent destination
+                SetAgentDestination(GetPlayer().GetGroundPosition());
+                break;
+        }
+    }
+    #endregion
+
+    #region Flying
+    private void MovementFlying_Stationary()
+    {
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, hover_init_height, transform.position.z) + (Vector3.up * hover_height), Time.deltaTime * hover_speed);
+    }
+
+    private void MovementFlying_Tracking()
+    {
+        ApplyForce(GetPlayer().transform.position - transform.position, GetStatblock().GetSpeed(), ForceMode.Acceleration, "Enemy.Flying_Tracking");
+    }
+    #endregion
     #region AI
     /// <summary>
     ///     Sets the agent attributes based on statblock
@@ -138,7 +217,7 @@ public class Enemy : EntityData
         if (eyes == null)
             return;
         // Make sure we are not using our melee attack
-        if (!melee_Tracking.GetState())
+        if (lock_eyes_OnAttack && !melee_Tracking.GetState())
             return;
 
         // Mark down our target position
@@ -213,8 +292,8 @@ public class Enemy : EntityData
         if (!attackType.Equals(AttackType.Ranged))
             return;
         // Checks if the player is in targeting range
-        if (!targetingRange.GetState())
-            return;
+        /*if (!targetingRange.CheckCollision())
+            return;*/
         // Check if the ranged cooldown is active
         if (ranged_Cooldown.Active())
             return;
@@ -223,6 +302,9 @@ public class Enemy : EntityData
         ShootProjectile();
         // Restart cooldown
         ranged_Cooldown.Start(Random.Range(ranged_CooldownVariation.x, ranged_CooldownVariation.y));
+
+        if(ranged_animator != null)
+            ranged_animator.Play(ranged_animation_id);
     }
     /// <summary>
     ///     Shoot a projectile

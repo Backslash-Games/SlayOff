@@ -5,6 +5,9 @@ public class EntitySpawnNode : MonoBehaviour
     [SerializeField] private EntityData node_entity = null;
     [SerializeField] private EntityData spawn_entity = null;
     [Space]
+    [SerializeField] private GameObject[] possible_spawns = new GameObject[3];
+    [SerializeField] private Transform spawn_point;
+    [Space]
     [SerializeField] private float spawnForce = 5;
     [SerializeField] private float spawnTorque = 5;
     [Space]
@@ -21,15 +24,21 @@ public class EntitySpawnNode : MonoBehaviour
             Debug.Log("Node entity is null");
             return null;
         }
+
+        // Break barrier
+        node_entity.Kill("Spawn Node");
+        node_entity.ResetConstraints();
+        // Spawn the entity
+        GameObject spawned = Instantiate(GetSpawn(), spawn_point.transform.position, Quaternion.identity, transform);
+        spawn_entity = spawned.GetComponent<EntityData>();
+
+        // Make sure entities are set properly
         if (spawn_entity == null)
         {
-            Debug.Log("Node entity is null");
+            Debug.Log("Spawned entity is null");
             return null;
         }
 
-        // Spawn the entity
-        node_entity.Kill("Spawn Node");
-        node_entity.ResetConstraints();
         // Apply random force
         Vector2 rDirection = Random.insideUnitCircle;
         node_entity.ApplyForce(Vector3.up + new Vector3(rDirection.x, 0, rDirection.y), spawnForce, ForceMode.Impulse, "Spawn Node");
@@ -64,6 +73,11 @@ public class EntitySpawnNode : MonoBehaviour
     public EntityData GetSpawnedEntity()
     {
         return spawn_entity;
+    }
+
+    public GameObject GetSpawn()
+    {
+        return possible_spawns[Random.Range(0, possible_spawns.Length)];
     }
     #endregion
 

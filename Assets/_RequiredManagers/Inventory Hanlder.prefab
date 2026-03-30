@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd3cc08b6b2b664888a4f9abfbb906c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryHandler
+  collectableGet_audio: {fileID: 8300000, guid: 00354e1fede5bdc489dcfe7e4c90bdda, type: 3}
+  floor_score:
+    numeric: 
+  total_score:
+    numeric: 
   comboObjectives:
   - name: Collectable Get
     feedDescription: 
@@ -58,6 +63,7 @@ MonoBehaviour:
   comboTimeMinimumThreshold: 150
   writeStoredCollectibleString: 0
   writeComboString: 1
+  writeScoreString: 1
 --- !u!114 &8209492025513042385
 MonoBehaviour:
   m_ObjectHideFlags: 0

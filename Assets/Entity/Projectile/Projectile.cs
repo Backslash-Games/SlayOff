@@ -7,6 +7,7 @@ public class Projectile : EntityData
     [SerializeField] private LayerMask reflectedMask;
     [SerializeField] private bool hitbox_Draw = false;
     [SerializeField] private float aliveTime = 10;
+    [SerializeField] private float homing_speed = 1;
     private Cooldown aliveTimer;
     private bool reflected = false;
 
@@ -17,20 +18,24 @@ public class Projectile : EntityData
     {
         aliveTimer = new Cooldown(this, aliveTime, 1);
         aliveTimer.OnCooldownSuccess += () => Kill("TimedDeath");
-        OnHurt += (_, _) => ReflectBullet();
+        //OnHurt += (_, _, _) => ReflectBullet();
 
         aliveTimer.Start();
     }
     public override void OnDisabled()
     {
         aliveTimer.OnCooldownSuccess -= () => Kill("TimedDeath");
-        OnHurt -= (_, _) => ReflectBullet();
+        //OnHurt -= (_, _, _) => ReflectBullet();
     }
 
     void Update()
     {
         OnMovement();
         OnAttack();
+    }
+    private void LateUpdate()
+    {
+        Homing();
     }
 
     private void OnDrawGizmos()
@@ -56,6 +61,15 @@ public class Projectile : EntityData
     {
         transform.position += transform.forward * GetStatblock().GetSpeed() * Time.deltaTime;
     }
+
+    /// <summary>
+    ///     Calculate the target direction for homing
+    /// </summary>
+    private void Homing()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(GetPlayer().transform.position - transform.position);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * homing_speed);
+    }
     #endregion
     #region Collision
     /// <summary>
@@ -80,7 +94,7 @@ public class Projectile : EntityData
         foreach(Collider collider in colliding)
             // Get entity data
             if(collider.TryGetComponent(out EntityData data))
-                data.Hurt("Projectile", GetStatblock().GetAttack());
+                data.Hurt("Projectile", transform.position, GetStatblock().GetAttack());
 
         // Kill the box
         Kill("Attack Executed");
@@ -105,9 +119,17 @@ public class Projectile : EntityData
     #endregion
 
     #region Overrides
-    public override void OnDeath()
+    public override void OnDeath(bool play_audio = true)
     {
         Destroy(gameObject);
+    }
+    #endregion
+    #region Get Methods
+    private PlayerController GetPlayer()
+    {
+        if (player == null)
+            player = FindAnyObjectByType<PlayerController>();
+        return player;
     }
     #endregion
 }

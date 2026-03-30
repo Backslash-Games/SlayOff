@@ -15,6 +15,7 @@ public class CollectibleFeedEntry : FeedEntry
         if (uint.TryParse(value.ToString(), out uint binary))
         {
             RenderCollectible(binary);
+            InventoryHandler.Instance.RewardScore((new Collectible(binary)).GetPrice());
             return;
         }
         Debug.LogError($"Attempted a call to Tick Renderer with value of type {value.GetType()}");

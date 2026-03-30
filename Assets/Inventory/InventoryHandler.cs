@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InventoryHandler : MonoBehaviour
 {
@@ -13,9 +14,10 @@ public class InventoryHandler : MonoBehaviour
     [SerializeField] private Dictionary<uint, ushort> storedCollectibles = new Dictionary<uint, ushort>();
 
     [Header("Score")]
-    [SerializeField] private int score_debug = 100000;
-    [SerializeField] private LimitlessNumeric score;
-    
+    [SerializeField] private LimitlessNumeric floor_score;
+    [SerializeField] private LimitlessNumeric total_score;
+    private TextMeshProUGUI score_display = null;
+
     [Header("Combo")]
     [SerializeField] private ComboObjective[] comboObjectives = new ComboObjective[0];
     [SerializeField] private Dictionary<string, ushort> comboObjectiveIDs = new Dictionary<string, ushort>();
@@ -27,6 +29,7 @@ public class InventoryHandler : MonoBehaviour
     [Space]
     [SerializeField] private bool writeStoredCollectibleString = true;
     [SerializeField] private bool writeComboString = true;
+    [SerializeField] private bool writeScoreString = true;
 
     #region Combo Struct
     [System.Serializable]
@@ -118,9 +121,9 @@ public class InventoryHandler : MonoBehaviour
     private void Awake()
     {
         CreateSingleton();
-        score = new LimitlessNumeric(score_debug);
+        floor_score = new LimitlessNumeric(0);
+        total_score = new LimitlessNumeric(0);
     }
-
     private void Update()
     {
         TickComboTime();
@@ -168,8 +171,12 @@ public class InventoryHandler : MonoBehaviour
     public void RewardCollectible(uint binary)
     {
         AddObjectiveProgress("Collectable Get");
-        AddBinaryCollectible(binary); // Adds the binary to stored collectibles
-        GetCollectibleFeedHandler().RequestNewFeed(binary.ToString()); // Requests pop up feed for binary
+
+        // Adds the binary to stored collectibles
+        AddBinaryCollectible(binary);
+
+        // Requests pop up feed for binary
+        GetCollectibleFeedHandler().RequestNewFeed(binary.ToString());
     }
 
     private void AddBinaryCollectible(uint binary)
@@ -333,6 +340,30 @@ public class InventoryHandler : MonoBehaviour
     }
     #endregion
     #endregion
+    #region Score
+    public void RewardScore(int amount)
+    {
+        floor_score.Add(amount);
+        SetScoreDisplayText(GetFloorScoreString());
+    }
+
+    private void SetScoreDisplayText(string value) { GetScoreDisplay().text = value; }
+
+    private TextMeshProUGUI GetScoreDisplay()
+    {
+        if (score_display == null)
+            score_display = GameObject.Find("Floor_Score_Display").GetComponent<TextMeshProUGUI>();
+        return score_display;
+    }
+    public string GetFloorScoreString()
+    {
+        return "$" + floor_score.PrettyPrint();
+    }
+    public string GetTotalScoreString()
+    {
+        return "$" + total_score.PrettyPrint();
+    }
+    #endregion
 
     #region Get Feed Handlers
     private FeedHandler collectibleFeedHandler = null;
@@ -358,6 +389,7 @@ public class InventoryHandler : MonoBehaviour
         output += StoredCollectiblesToString();
         output += ComboToString();
         output += ComboObjectivesToString();
+        output += ScoreToString();
 
         return output;
     }
@@ -403,6 +435,16 @@ public class InventoryHandler : MonoBehaviour
         for (int i = 0; i < comboObjectives.Length; i++)
             output += $"{comboObjectives[i]}";
         output += "\n";
+
+        return output;
+    }
+
+    private string ScoreToString()
+    {
+        string output = "";
+
+        output += $"Floor Score: {GetFloorScoreString()}\n";
+        output += $"Total Score: {GetTotalScoreString()}";
 
         return output;
     }

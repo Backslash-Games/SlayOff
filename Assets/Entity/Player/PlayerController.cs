@@ -64,18 +64,7 @@ public class PlayerController : EntityData
 
 
     [Header("Camera")]
-    [SerializeField] private Transform cameraParent;
-    [Space]
-    [SerializeField] private Transform cameraYaw;
-    [SerializeField] private float cameraHorizontalSensitivity = 1;
-    [Space]
-    [SerializeField] private Transform cameraPitch;
-    [SerializeField] private float cameraVerticalSensitivity = 1;
-    private float cameraCurrentYaw = 0;
-    private float cameraCurrentPitch = 0;
-    private float cameraVerticalBounds = 87.5f;
-    private float cameraSmoothingScale = 25;
-    private Vector3 cameraInitialCenter = Vector3.zero;
+    [SerializeField] private CameraController cameraController;
 
 
 
@@ -102,8 +91,6 @@ public class PlayerController : EntityData
     {
         // Run collision start
         CollisionStart();
-        // Run camera start
-        CameraStart();
     }
     public override void OnEnabled()
     {
@@ -128,11 +115,13 @@ public class PlayerController : EntityData
         // Run physics updates
         PhysicsUpdate();
     }
-    private void LateUpdate()
+    private void Update()
     {
         // Updates player inputs
-        LateUpdateInput();
-
+        UpdateInput();
+    }
+    private void LateUpdate()
+    {
         // Run Collision updates
         CollisionUpdate();
     }
@@ -149,7 +138,7 @@ public class PlayerController : EntityData
         Gizmos.DrawLine(Vector3.zero, GetLinearVelocity());
 
         Gizmos.color = Color.blueViolet;
-        Gizmos.DrawLine(Vector3.zero, Quaternion.Inverse(cameraYaw.rotation) * GetLinearVelocity());
+        Gizmos.DrawLine(Vector3.zero, Quaternion.Inverse(cameraController.GetTransform_Yaw().rotation) * GetLinearVelocity());
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + slidingIdealMomentumNormal * 5);
@@ -228,9 +217,9 @@ public class PlayerController : EntityData
         UpdateSliding();
     }
     /// <summary>
-    ///     Updates the players inputs through late update
+    ///     Sends a desired influence to our camera controller. Controller handles interpolation
     /// </summary>
-    private void LateUpdateInput()
+    private void UpdateInput()
     {
         Look(); // Updates look direction   
     }
@@ -241,20 +230,7 @@ public class PlayerController : EntityData
         // Store the input
         Vector2 cInput = in_look.ReadValue<Vector2>();
         float inputScaling = 0.01f;
-        
-        // Rotate Yaw
-        // -> Modify yaw
-        cameraCurrentYaw += cInput.x * cameraHorizontalSensitivity * inputScaling;
-        cameraCurrentYaw = cameraCurrentYaw % 360;
-        // -> Set the current yaw
-        cameraYaw.localRotation = Quaternion.Lerp(cameraYaw.localRotation, Quaternion.AngleAxis(cameraCurrentYaw, Vector3.up), Time.deltaTime * cameraSmoothingScale);
-
-        // Rotate Pitch
-        // -> Modify pitch
-        cameraCurrentPitch += -cInput.y * cameraVerticalSensitivity * inputScaling;
-        cameraCurrentPitch = Mathf.Clamp(cameraCurrentPitch, -cameraVerticalBounds, cameraVerticalBounds);
-        // -> Set the current pitch
-        cameraPitch.localRotation = Quaternion.Lerp(cameraPitch.localRotation, Quaternion.AngleAxis(cameraCurrentPitch, Vector3.right), Time.deltaTime * cameraSmoothingScale);
+        cameraController.PushCameraAxis(cInput * inputScaling);
     }
     #endregion
     #region Move
@@ -268,7 +244,7 @@ public class PlayerController : EntityData
             return;
 
         // Get the input
-        Vector3 worldForce = cameraYaw.rotation * GetInputToWorldSpace();
+        Vector3 worldForce = cameraController.GetTransform_Yaw().rotation * GetInputToWorldSpace();
 
         // Get the current speed
         float currentSpeed = GetStatblock().GetSpeed();
@@ -372,7 +348,7 @@ public class PlayerController : EntityData
     private void JumpLunge_Standing()
     {
         // Get world force from input
-        Vector3 worldForce = cameraYaw.rotation * GetInputToWorldSpace();
+        Vector3 worldForce = cameraController.GetTransform_Yaw().rotation * GetInputToWorldSpace();
 
         // Apply movement
         ApplyForce(worldForce, jumpLunge * GetHorizontalVelocity().magnitude, ForceMode.Impulse, "Player.JumpLunge");
@@ -477,7 +453,7 @@ public class PlayerController : EntityData
     private void StartSliding()
     {
         // Set up initial sliding variables
-        slidingDirection = cameraYaw.rotation * GetInputToWorldSpace();
+        slidingDirection = cameraController.GetTransform_Yaw().rotation * GetInputToWorldSpace();
         slidingCurrentSpeed = slidingSpeed;
 
         // Reset Slide Distance
@@ -595,14 +571,14 @@ public class PlayerController : EntityData
             return;
 
         // Get the players linear velocity
-        Vector3 linearVelocity = Quaternion.Inverse(cameraYaw.rotation) * GetLinearVelocity();
+        Vector3 linearVelocity = Quaternion.Inverse(cameraController.GetTransform_Yaw().rotation) * GetLinearVelocity();
         linearVelocity = new Vector3(linearVelocity.x * direction.x, linearVelocity.y * direction.y, linearVelocity.z * direction.z);
         // Check if our directional velocity exceedes the breaking threshold
         if (linearVelocity.magnitude <= breakingVelocityThreshold)
             return;
 
         // Flip the direction velocity
-        Vector3 directionVelocity = cameraYaw.rotation * -linearVelocity;
+        Vector3 directionVelocity = cameraController.GetTransform_Yaw().rotation * -linearVelocity;
         // Apply movement
         ApplyForce(directionVelocity, breakingSpeed, ForceMode.Force, $"Player.Breaking.{direction}");
     }
@@ -642,7 +618,7 @@ public class PlayerController : EntityData
         // -> Standing Collision
         if (standingState.Equals(StandingState.Standing))
         {
-            Collision_MoveTowards(crouch_collisionInitialHeight, crouch_collisionInitialCenter, cameraInitialCenter);
+            Collision_MoveTowards(crouch_collisionInitialHeight, crouch_collisionInitialCenter, cameraController.GetInitialCenter());
         }
         // -> Crouching Collision
         else
@@ -657,30 +633,7 @@ public class PlayerController : EntityData
         capsuleCollider.height = Mathf.Lerp(capsuleCollider.height, height, crouchSpeed * Time.deltaTime);
         capsuleCollider.center = Vector3.Lerp(capsuleCollider.center, center, crouchSpeed * Time.deltaTime);
 
-        cameraParent.localPosition = Vector3.Lerp(cameraParent.localPosition, cameraCenter, crouchSpeed * Time.deltaTime);
-    }
-    #endregion
-    #region Camera
-    /// <summary>
-    ///     Initial camera method
-    /// </summary>
-    private void CameraStart()
-    {
-        // Make sure camera parent is set
-        if (cameraParent != null)
-            cameraInitialCenter = cameraParent.localPosition;
-    }
-    private void ForceCameraLookAt(Vector3 position)
-    {
-        Debug.Log($"Looking at {position}");
-
-        cameraYaw.LookAt(position);
-        Vector3 cAngles = cameraYaw.eulerAngles;
-
-        cameraYaw.eulerAngles = new Vector3(0, cAngles.y, 0);
-        cameraCurrentYaw = cAngles.y % 360;
-        cameraPitch.eulerAngles = new Vector3(cAngles.x, cAngles.y, 0);
-        cameraCurrentPitch = cAngles.x % 360;
+        cameraController.GetParent().localPosition = Vector3.Lerp(cameraController.GetParent().localPosition, cameraCenter, crouchSpeed * Time.deltaTime);
     }
     #endregion
 
@@ -744,7 +697,7 @@ public class PlayerController : EntityData
 
         ResetVelocity();
         transform.position = position;
-        ForceCameraLookAt(eyeTracking);
+        cameraController.ForceCameraLookAt(eyeTracking);
         yield return new WaitForSeconds(0.1f);
 
         GetRigidbody().isKinematic = false;
