@@ -72,7 +72,7 @@ public class LimitlessNumeric
     {
         // Ensure we have a numeric to print
         if (numeric.Count <= 0)
-            return "No value set";
+            return "0";
 
         // Set up pretty print
         string output = GetValueString(numeric.Count - 1, false);

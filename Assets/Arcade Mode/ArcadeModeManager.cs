@@ -30,7 +30,7 @@ public class ArcadeModeManager : MonoBehaviour
     public event RoomTracking OnRoomEntered;
     public event RoomTracking OnRoomLeft;
 
-    public delegate void ModeSequence();
+    public delegate void ModeSequence(int target_elevator);
     public event ModeSequence OnPlayerStaged;
 
     #region Unity Methods
@@ -274,7 +274,7 @@ public class ArcadeModeManager : MonoBehaviour
         GetPlayer().Teleport(position, cameraOrientation);
 
         // Run on staging player
-        OnPlayerStaged?.Invoke();
+        OnPlayerStaged?.Invoke(otherIndex);
     }
     #endregion
     #region Results

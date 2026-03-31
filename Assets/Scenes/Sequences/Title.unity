@@ -11731,8 +11731,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5770424979262289717, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
       propertyPath: Mute
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5770424979262289717, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: b868a661c029e0a449834e501a32af67, type: 3}
     - target: {fileID: 9201936611640060666, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

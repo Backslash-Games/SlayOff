@@ -6,8 +6,10 @@ public class Elevator : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string anim_triggerID = "Activate";
 
+    private PlayerController player = null;
+
     #region Animation
-    public void TriggerAnimation() { GetAnimator().SetTrigger(anim_triggerID); }
+    public void TriggerAnimation(int elevator_index) { GetAnimator().SetTrigger(anim_triggerID); }
     #endregion
 
     #region Get Methods
@@ -44,6 +46,13 @@ public class Elevator : MonoBehaviour
     {
         Vector3 offset = other.transform.rotation * other.GetVectorOffset(point);
         return GetOrigin() + offset;
+    }
+
+    public PlayerController GetPlayer()
+    {
+        if (player == null)
+            player = FindAnyObjectByType<PlayerController>();
+        return player;
     }
     #endregion
 }

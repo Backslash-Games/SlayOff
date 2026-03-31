@@ -27,7 +27,7 @@ public class Elevator_End : Elevator
     private IEnumerator enum_EndFloor()
     {
         // Start by closing the doors
-        TriggerAnimation();
+        TriggerAnimation(0);
         yield return new WaitForSeconds(teleport_stall);
         // Teleport the player
         GetArcadeModeManager().WP_MoveToPoint(2, 0);

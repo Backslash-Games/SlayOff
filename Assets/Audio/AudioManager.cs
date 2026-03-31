@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     // Singleton
     private static AudioManager _instance;
     public static AudioManager Instance { get { return _instance; } }
+
+    [Header("Mixer")]
+    [SerializeField] private AudioMixer mixer;
 
     [Header("Sound Effects")]
     [SerializeField] private GameObject audioEffectPrefab;
@@ -54,6 +58,28 @@ public class AudioManager : MonoBehaviour
 
         // Apply the clip to the effect
         effect.Play(clip, randomize_pitch, disable_spatial);
+    }
+    #endregion
+    #region Mixer
+    public void SetMixerVolumes(float master, float music, float sound_effects)
+    {
+        if (mixer == null)
+            return;
+
+        if(master > 0.01f)
+            mixer.SetFloat("Master", (1 - master) * -30);
+        else
+            mixer.SetFloat("Master", -80);
+
+        if (music > 0.01f)
+            mixer.SetFloat("Music", (1 - music) * -30);
+        else
+            mixer.SetFloat("Music", -80);
+
+        if (sound_effects > 0.01f)
+            mixer.SetFloat("Sound Effects", (1 - sound_effects) * -30);
+        else
+            mixer.SetFloat("Sound Effects", -80);
     }
     #endregion
 }

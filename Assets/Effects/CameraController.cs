@@ -208,7 +208,7 @@ public class CameraController : MonoBehaviour
     private void Modifier_ApplyAxis(CameraModifier.Axis axis, ref float value)
     {
         // Roll through all modifiers
-        for(int i = 0; i < modifiers.Count; i++)
+        for (int i = 0; i < modifiers.Count; i++)
         {
             // Check if the current value is our target axis
             if (modifiers[i].GetAxis().Equals(axis))
@@ -219,7 +219,7 @@ public class CameraController : MonoBehaviour
                 // Reduce influence
                 modifiers[i].ReduceInfluence();
                 // Check if value needs to be removed
-                if(Mathf.Abs(modifiers[i].GetInfluence()) <= alive_threshold)
+                if (Mathf.Abs(modifiers[i].GetInfluence()) <= alive_threshold)
                 {
                     modifiers.RemoveAt(i);
                     i--;
@@ -228,7 +228,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void AddModifier(CameraModifier modifier) { modifiers.Add(modifier);}
+    public void AddModifier(CameraModifier modifier) { modifiers.Add(modifier); }
 
     #region Tools
     /// <summary>
@@ -278,7 +278,7 @@ public class CameraController : MonoBehaviour
     public float GetCurrentPitch() { return current_pitch; }
     public float GetCurrentYaw() { return current_yaw; }
 
-    public Vector3 GetInitialCenter() { return initial_center;}
+    public Vector3 GetInitialCenter() { return initial_center; }
     #endregion
     #region Set Methods
     public void ForceCameraLookAt(Vector3 position)
@@ -290,6 +290,12 @@ public class CameraController : MonoBehaviour
         current_yaw = cAngles.y % 360;
         pitch.eulerAngles = new Vector3(cAngles.x, cAngles.y, 0);
         current_pitch = cAngles.x % 360;
+    }
+
+    public void SetSensitivity(float horizontal, float vertical)
+    {
+        horizontalSensitivity = horizontal;
+        verticalSensitivity = vertical;
     }
     #endregion
 
