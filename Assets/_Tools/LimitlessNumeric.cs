@@ -12,6 +12,10 @@ public class LimitlessNumeric
     {
         SetValue(value);
     }
+    public LimitlessNumeric(LimitlessNumeric numeric)
+    {
+        this.numeric = new List<ushort>(numeric.GetNumeric());
+    }
     #endregion
 
     #region Operations
@@ -37,13 +41,19 @@ public class LimitlessNumeric
             numeric.Add(0);
 
         // Add each value from other into current
-        for(int i = 0; i < oList.Count; i++)
+        for (int i = 0; i < oList.Count; i++)
         {
             numeric[i] += oList[i];
         }
 
         // Refactor list
         Refactor();
+    }
+
+    public void Multiply(int amount)
+    {
+        for(int i = 0; i < amount - 1; i++)
+            Add(this);
     }
     #endregion
     #region Get/Set Methods

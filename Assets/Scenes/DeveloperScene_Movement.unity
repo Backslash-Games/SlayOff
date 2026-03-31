@@ -9795,7 +9795,10 @@ MonoBehaviour:
   awakeOnStart: 1
   op_HealthBar: {fileID: 0}
   audio_Muted: 0
+  audio_spatial: 1
+  audio_random_pitch: 1
   e_audio: []
+  e_vfx: []
 --- !u!135 &817019617
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16327,6 +16330,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8652405852124519376, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652405852124519376, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652405852124519376, guid: e60e5f1ec38cae84b84ab251ec29fd25, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -18398,7 +18413,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.5
+  orthographic size: 0.7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

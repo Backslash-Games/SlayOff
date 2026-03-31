@@ -2760,6 +2760,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 836b750187891424f8bced44adcdcdef, type: 3}
   m_PrefabInstance: {fileID: 7923920038851692197}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &817554148 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5302042580030686997, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+  m_PrefabInstance: {fileID: 6002415587562613336}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde4fb6fb4c21247955acc53ccbbe29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!4 &828230178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 836b750187891424f8bced44adcdcdef, type: 3}
@@ -8078,8 +8089,8 @@ MonoBehaviour:
   UE_OnHurt:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2013527933}
-        m_TargetAssemblyTypeName: TitleScreen_ClickHandler, Assembly-CSharp
+      - m_Target: {fileID: 817554148}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -11685,6 +11696,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1299858978668865955, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3239118248464932632, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4326614504712677380, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.60001

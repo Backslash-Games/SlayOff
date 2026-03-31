@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Elevator_Start
   animator: {fileID: 5163302906656544676}
   anim_triggerID: Activate
+  open_audio: {fileID: 8300000, guid: d5382c71dd1f46747a1ebb4ff5bcd73a, type: 3}
 --- !u!95 &5163302906656544676
 Animator:
   serializedVersion: 7

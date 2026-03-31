@@ -48,7 +48,8 @@ public class GameManager : MonoBehaviour
     {
         InventoryHandler.Instance.CollapseCollectableFeed();
 
-        Save.total_money.Add(InventoryHandler.Instance.GetFloorScore());
+        int floor = ArcadeModeManager.Instance.GetArcadeGenerator().GetCurrentFloor();
+        Save.total_money.Add(InventoryHandler.Instance.GetTotalScore(floor));
         Save.employee_number += 1;
 
         Save.Save();
@@ -64,9 +65,16 @@ public class GameManager : MonoBehaviour
     {
         string output = "";
 
-        output += $"Floor - {ArcadeModeManager.Instance.GetArcadeGenerator().GetCurrentFloor()}\n";
-        output += $"Collectables Got - {InventoryHandler.Instance.GetCollectableLength()}\n\n";
-        output += $"Run Cash - {InventoryHandler.Instance.GetFloorScoreString()}\n";
+        int floor = ArcadeModeManager.Instance.GetArcadeGenerator().GetCurrentFloor();
+
+        output += $"Items Got - {InventoryHandler.Instance.GetCollectableLength()}\n";
+        output += $"Highest Value Item: {InventoryHandler.Instance.GetCollectable_MostValuablePrice()}\n" +
+            $"- {InventoryHandler.Instance.GetCollectable_MostValuableName()}\n\n";
+
+        output += $"Run Cash - {InventoryHandler.Instance.GetTotalScoreString(floor)}\n";
+        output += $"- Cash.....{InventoryHandler.Instance.GetFloorScoreString()}\n";
+        output += $"- Floor Mult.....x{ArcadeModeManager.Instance.GetArcadeGenerator().GetCurrentFloor()}\n\n";
+
         output += $"Total Cash - ${Save.total_money.PrettyPrint()}";
 
         return output;

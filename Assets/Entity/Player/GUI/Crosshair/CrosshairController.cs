@@ -7,7 +7,7 @@ public class CrosshairController : MonoBehaviour
     public static CrosshairController Instance { get { return _instance; } }
 
     #region Data Types
-    public enum CrosshairType { None, Main, Hit, Hurt };
+    public enum CrosshairType { None, Main, Hit, Hurt, Heal };
     [System.Serializable]
     private class CrosshairLayer
     {

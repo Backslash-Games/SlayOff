@@ -189,6 +189,8 @@ public class PlayerController : EntityData
 
         // Set up events
         OnHurt += PlayerController_OnHurt;
+        OnHeal += PlayerController_OnHeal;
+
         in_pause.performed += OnPausePerformed;
 
         // External bind methods
@@ -213,6 +215,8 @@ public class PlayerController : EntityData
 
         // Set up events
         OnHurt -= PlayerController_OnHurt;
+        OnHeal -= PlayerController_OnHeal;
+
         in_pause.performed -= OnPausePerformed;
         
         // External unbind methods
@@ -235,6 +239,12 @@ public class PlayerController : EntityData
         float rotation = Vector2.SignedAngle(Vector2.up, flat_direction);
         // Apply crosshair
         CrosshairController.Instance.RequestCrosshair(CrosshairController.CrosshairType.Hurt, -rotation);
+    }
+
+    private void PlayerController_OnHeal(string source, Vector3 origin, float amount)
+    {
+        // Apply crosshair
+        CrosshairController.Instance.RequestCrosshair(CrosshairController.CrosshairType.Heal);
     }
 
     public override void OnDeath(bool play_audio = true)

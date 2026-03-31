@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3586432315279806440, guid: a05912bf3388d3941876501351bc08c9, type: 3}
+      propertyPath: open_audio
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7624937737900030549, guid: a05912bf3388d3941876501351bc08c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.84294

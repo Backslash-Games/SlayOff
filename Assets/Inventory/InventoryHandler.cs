@@ -13,6 +13,10 @@ public class InventoryHandler : MonoBehaviour
     /// </summary>
     [SerializeField] private Dictionary<uint, ushort> storedCollectibles = new Dictionary<uint, ushort>();
 
+    [Header("Collectables")]
+    [SerializeField] private string collectable_most_valuable_name;
+    [SerializeField] private int collectable_most_valuable_price;
+
     [Header("Score")]
     [SerializeField] private LimitlessNumeric floor_score;
     [SerializeField] private LimitlessNumeric total_score;
@@ -177,8 +181,23 @@ public class InventoryHandler : MonoBehaviour
 
         // Requests pop up feed for binary
         GetCollectibleFeedHandler().RequestNewFeed(binary.ToString());
+
+        // Update the most valuable
+        UpdateMostValuableCollectable(binary);
     }
 
+    private void UpdateMostValuableCollectable(uint binary)
+    {
+        Collectible cCollectable = new Collectible(binary);
+        float price = cCollectable.GetPrice();
+    
+        if(price > collectable_most_valuable_price)
+        {
+            collectable_most_valuable_name = cCollectable.GetName();
+            collectable_most_valuable_price = cCollectable.GetPrice();
+        }
+    }
+    
     private void AddBinaryCollectible(uint binary)
     {
         // Add key if it has not been added yet
@@ -195,6 +214,8 @@ public class InventoryHandler : MonoBehaviour
     }
 
     public int GetCollectableLength() { return storedCollectibles.Count; }
+    public string GetCollectable_MostValuableName() { return collectable_most_valuable_name; }
+    public int GetCollectable_MostValuablePrice() { return collectable_most_valuable_price; }
     #endregion
     #region Combo Management
     /// <summary>
@@ -367,14 +388,20 @@ public class InventoryHandler : MonoBehaviour
     {
         return floor_score;
     }
+    public LimitlessNumeric GetTotalScore(int floor)
+    {
+        total_score = new LimitlessNumeric(floor_score);
+        total_score.Multiply(floor);
+        return total_score;
+    }
 
     public string GetFloorScoreString()
     {
         return "$" + floor_score.PrettyPrint();
     }
-    public string GetTotalScoreString()
+    public string GetTotalScoreString(int floor)
     {
-        return "$" + total_score.PrettyPrint();
+        return "$" + GetTotalScore(floor).PrettyPrint();
     }
     #endregion
 
@@ -457,7 +484,7 @@ public class InventoryHandler : MonoBehaviour
         string output = "";
 
         output += $"Floor Score: {GetFloorScoreString()}\n";
-        output += $"Total Score: {GetTotalScoreString()}";
+        output += $"Total Score: {GetTotalScoreString(1)}";
 
         return output;
     }
