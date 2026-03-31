@@ -188,6 +188,13 @@ public class InventoryHandler : MonoBehaviour
         else
             storedCollectibles[binary]++;
     }
+
+    public void CollapseCollectableFeed()
+    {
+        GetCollectibleFeedHandler().CollapseFeed();
+    }
+
+    public int GetCollectableLength() { return storedCollectibles.Count; }
     #endregion
     #region Combo Management
     /// <summary>
@@ -355,6 +362,12 @@ public class InventoryHandler : MonoBehaviour
             score_display = GameObject.Find("Floor_Score_Display").GetComponent<TextMeshProUGUI>();
         return score_display;
     }
+
+    public LimitlessNumeric GetFloorScore()
+    {
+        return floor_score;
+    }
+
     public string GetFloorScoreString()
     {
         return "$" + floor_score.PrettyPrint();

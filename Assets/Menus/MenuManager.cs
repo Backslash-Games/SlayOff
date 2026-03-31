@@ -59,7 +59,6 @@ public class MenuManager : MonoBehaviour
 
     public void CloseAllMenus()
     {
-        Debug.Log("Close all");
         int length = System.Enum.GetValues(typeof(Type)).Length;
         for (int i = 0; i < length; i++)
             TriggerMenu((Type)i, false); 

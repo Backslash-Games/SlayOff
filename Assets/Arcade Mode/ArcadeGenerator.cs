@@ -436,4 +436,8 @@ public class ArcadeGenerator : MonoBehaviour
         return player;
     }
     #endregion
+
+    #region Get Methods
+    public int GetCurrentFloor() { return currentFloor; }
+    #endregion
 }

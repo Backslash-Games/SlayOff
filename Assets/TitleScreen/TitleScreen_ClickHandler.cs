@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TitleScreen_ClickHandler : MonoBehaviour
 {
@@ -21,6 +21,11 @@ public class TitleScreen_ClickHandler : MonoBehaviour
     [SerializeField] private bool load_starting_scene;
     [SerializeField] private string scene_name;
 
+    [Header("Money Total")]
+    [SerializeField] private TextMeshPro money_total_text;
+
+    private bool laid_off = false;
+
     #region Unity Methods
     private void Awake()
     {
@@ -31,8 +36,6 @@ public class TitleScreen_ClickHandler : MonoBehaviour
         in_click.started += _ => Shoot();
 
         PlayerActions.Enable();
-
-        MenuManager.Instance.OpenMenu(MenuManager.Type.LayOff);
     }
     private void OnDestroy()
     {
@@ -46,6 +49,13 @@ public class TitleScreen_ClickHandler : MonoBehaviour
         if (Cursor.lockState == CursorLockMode.Locked)
             Cursor.lockState = CursorLockMode.None;
 
+        if(!laid_off)
+            UpdateMoneyTotal();
+        if (!laid_off)
+            MenuManager.Instance.OpenMenu(MenuManager.Type.LayOff);
+        if(!laid_off && MenuManager.Instance.isAnyMenuActive())
+            laid_off = true;
+
         CheckSceneLoad();
     }
     #endregion
@@ -54,7 +64,9 @@ public class TitleScreen_ClickHandler : MonoBehaviour
     {
         if (action_locked)
             return;
-
+        if (MenuManager.Instance.isAnyMenuActive())
+            return;
+            
         // Get mouse position in world
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         // Fire the ray
@@ -68,6 +80,13 @@ public class TitleScreen_ClickHandler : MonoBehaviour
                 entity.ApplyForce(hit.point - Camera.main.transform.position, shootStrength, ForceMode.Impulse, "TitleScreen.Shoot");
             }
         }
+    }
+
+    private void UpdateMoneyTotal()
+    {
+        if (money_total_text == null)
+            return;
+        money_total_text.text = "$" + GameManager.Instance.Save.total_money.PrettyPrint();
     }
 
     #region Sequencing
@@ -94,7 +113,7 @@ public class TitleScreen_ClickHandler : MonoBehaviour
     private void CheckSceneLoad()
     {
         if (load_starting_scene)
-            SceneManager.LoadScene(scene_name);
+            GameManager.Instance.StartArcadeMode();
     }
     #endregion
 }

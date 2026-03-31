@@ -15,6 +15,7 @@ public class MenuContainer
     [SerializeField] private Animator animator;
     [SerializeField] private string open_anim_id;
     [SerializeField] private string close_anim_id;
+    [SerializeField] private float closing_time = 0;
 
     public UnityEvent OnMenuOpened;
     public UnityEvent OnMenuClosed;
@@ -45,23 +46,31 @@ public class MenuContainer
     #region Events
     private void OnMenuOpened_DefaultListener()
     {
-        Debug.Log("Default");
+        SetParentState(true);        
         PlayAnimation(open_anim_id);
         time_control.SetScale(time_scale);
-        SetParentState(true);
         TriggerControls(true);
     }
     private void OnMenuClosed_DefaultListener()
     {
-        PlayAnimation(close_anim_id);
-        monoBehaviour.StartCoroutine(WaitToClose());
+        if (closing_time > 0)
+            monoBehaviour.StartCoroutine(WaitToClose());
+        else
+            ForceClose();
     }
     private IEnumerator WaitToClose()
     {
-        while (animator != null && animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == close_anim_id)
-            yield return new WaitForEndOfFrame();
+        PlayAnimation(close_anim_id);
+        yield return new WaitForSecondsRealtime(closing_time);
 
         // Run close
+        time_control.ResetScale();
+        SetParentState(false);
+        TriggerControls(false);
+    }
+    private void ForceClose()
+    {
+        PlayAnimation(close_anim_id);
         time_control.ResetScale();
         SetParentState(false);
         TriggerControls(false);
@@ -118,7 +127,11 @@ public class MenuContainer
     private void PlayAnimation(string id)
     {
         if (animator == null)
+        {
+            Debug.Log("Animator is null");
             return;
+        }
+        Debug.Log("Playing " + id);
         animator.Play(id);
     }
     #endregion

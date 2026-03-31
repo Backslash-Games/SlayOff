@@ -86,12 +86,12 @@ public class FeedHandler : MonoBehaviour
         while(queuedFeed.Count > 0)
         {
             CreateNewFeed(queuedFeed.Dequeue().ToString());
-            yield return new WaitForSecondsRealtime(queueDelay / Mathf.Clamp(queuedFeed.Count * queueCountDelayScale, 1, int.MaxValue));
+            yield return new WaitForSeconds(queueDelay / Mathf.Clamp(queuedFeed.Count * queueCountDelayScale, 1, int.MaxValue));
         }
         // Unlock queue
         queueActive = false;
     }
-    private void CreateNewFeed(string data)
+    private void CreateNewFeed(string data, bool play_audio = true)
     {
         // Pull the index for the current active feed member
         // -> Wake up
@@ -113,12 +113,29 @@ public class FeedHandler : MonoBehaviour
         feedTarget = (feedTarget + 1) % feedSpawnAmount;
 
         // Play audio
-        AudioManager.Instance.PlayAudio(feedAudio_NewElementAdded, Vector3.zero, true, true);
+        if(play_audio)
+            AudioManager.Instance.PlayAudio(feedAudio_NewElementAdded, Vector3.zero, true, true);
 
 
         // Call on feed changed
         OnFeedChanged.Invoke();
     }
+
+    public void CollapseFeed()
+    {
+        if (!queueActive)
+            return;
+
+        StopAllCoroutines();
+
+
+        // Display information
+        while (queuedFeed.Count > 0)
+        {
+            CreateNewFeed(queuedFeed.Dequeue().ToString());
+        }
+    }
+
     private void BumpActiveFeed()
     {
         // Bump all active feeds

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : EntityData
 {
@@ -78,6 +79,8 @@ public class PlayerController : EntityData
     private InputAction in_crouch;
     private InputAction in_pause;
 
+    private bool is_dead = false;
+
     /// <summary>
     ///     Objectives
     /// </summary>
@@ -107,6 +110,7 @@ public class PlayerController : EntityData
         // Unbinds player inputs
         UnbindEvents();
     }
+    
 
     private void FixedUpdate()
     {
@@ -172,7 +176,7 @@ public class PlayerController : EntityData
         // Check if player actions are set
         if (PlayerActions == null)
             return;
-
+        
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -185,14 +189,14 @@ public class PlayerController : EntityData
 
         // Set up events
         OnHurt += PlayerController_OnHurt;
-        in_pause.performed += _ => OnPausePerformed();
+        in_pause.performed += OnPausePerformed;
 
         // External bind methods
         BindCrouch();
 
         // Enable input
-        PlayerActions.FindActionMap("Control").Enable();
-        PlayerActions.FindActionMap("UI").Enable();
+        SetControlMapActive(true);
+        SetUIMapActive(true);
     }
 
     /// <summary>
@@ -209,18 +213,17 @@ public class PlayerController : EntityData
 
         // Set up events
         OnHurt -= PlayerController_OnHurt;
-        in_pause.performed -= _ => OnPausePerformed();
+        in_pause.performed -= OnPausePerformed;
         
         // External unbind methods
         UnbindCrouch();
 
         // Disable input
-        PlayerActions.FindActionMap("Control").Disable();
-        PlayerActions.FindActionMap("UI").Disable();
+        SetControlMapActive(false);
+        SetUIMapActive(false);
     }
     #endregion
     #region Events
-
     private void PlayerController_OnHurt(string source, Vector3 origin, float amount)
     {
         // Apply whiplash
@@ -232,6 +235,25 @@ public class PlayerController : EntityData
         float rotation = Vector2.SignedAngle(Vector2.up, flat_direction);
         // Apply crosshair
         CrosshairController.Instance.RequestCrosshair(CrosshairController.CrosshairType.Hurt, -rotation);
+    }
+
+    public override void OnDeath(bool play_audio = true)
+    {
+        if (is_dead)
+            return;
+        is_dead = true;
+
+        // Play death audio
+        if (play_audio)
+            PlayAudio(EffectState.Death);
+        PlayVFX(EffectState.Death);
+
+        // Lock all controls
+        SetControlMapActive(false);
+        SetUIMapActive(false);
+
+        // Signal game over sequence
+        GameManager.Instance.GameOver();
     }
     #endregion
     #region Inputs
@@ -346,7 +368,7 @@ public class PlayerController : EntityData
         {
             JumpLunge_Sliding();
             ApplyForce(worldForce, slidingJumpOutUpwardForce, ForceMode.Impulse, "Player.Jump.Sliding");
-            EndCrouch();
+            EndCrouch(new InputAction.CallbackContext());
         }
 
         // Updates combo objective
@@ -435,16 +457,16 @@ public class PlayerController : EntityData
     /// </summary>
     private void BindCrouch()
     {
-        in_crouch.started += _ => CheckCrouchState();
-        in_crouch.canceled += _ => EndCrouch();
+        in_crouch.started += CheckCrouchState;
+        in_crouch.canceled += EndCrouch;
     }
     /// <summary>
     ///     Unbinds crouch to input
     /// </summary>
     private void UnbindCrouch()
     {
-        in_crouch.started -= _ => CheckCrouchState();
-        in_crouch.canceled -= _ => EndCrouch();
+        in_crouch.started -= CheckCrouchState;
+        in_crouch.canceled -= EndCrouch;
     }
 
     /// <summary>
@@ -458,7 +480,7 @@ public class PlayerController : EntityData
     /// <summary>
     ///     Stops crouching
     /// </summary>
-    private void EndCrouch()
+    private void EndCrouch(InputAction.CallbackContext context)
     {
         // Pass off functionality to start standing
         RequestStandingStateChange(StandingState.Standing);
@@ -467,7 +489,7 @@ public class PlayerController : EntityData
     /// <summary>
     ///     Checks if we continue with crouching, or if we pivot to sliding
     /// </summary>
-    private void CheckCrouchState()
+    private void CheckCrouchState(InputAction.CallbackContext context)
     {
         // Check if we have surpassed sliding threshold
         if (GetHorizontalVelocity().magnitude >= slidingVelocityThreshold)
@@ -536,7 +558,7 @@ public class PlayerController : EntityData
     #endregion
 
     #region Menu Handling
-    private void OnPausePerformed()
+    private void OnPausePerformed(InputAction.CallbackContext context)
     {
         if (MenuManager.Instance.isAnyMenuActive())
             MenuManager.Instance.CloseAllMenus();
@@ -551,6 +573,13 @@ public class PlayerController : EntityData
             PlayerActions.FindActionMap("Control").Enable();
         else
             PlayerActions.FindActionMap("Control").Disable();
+    }
+    public void SetUIMapActive(bool state)
+    {
+        if (state)
+            PlayerActions.FindActionMap("UI").Enable();
+        else
+            PlayerActions.FindActionMap("UI").Disable();
     }
     #endregion
     #endregion

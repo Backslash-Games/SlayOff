@@ -49,7 +49,7 @@ public class CardboardBox : EntityData
     /// <returns>Wait</returns>
     IEnumerator DelayDeathCoroutine()
     {
-        yield return new WaitForSecondsRealtime(deathTimer + Random.Range(-deathTimerRandom, deathTimerRandom));
+        yield return new WaitForSeconds(deathTimer + Random.Range(-deathTimerRandom, deathTimerRandom));
         
         // Play visuals
         RunDeathVisuals();
@@ -64,7 +64,7 @@ public class CardboardBox : EntityData
             InventoryHandler.Instance.AddObjectiveProgress(comboObjective_BreakKey);
         }
 
-        yield return new WaitForSecondsRealtime(cleanupTimer);
+        yield return new WaitForSeconds(cleanupTimer);
 
         // -> Old freeze functionality
         //while(GetLinearVelocity().magnitude >= cleanupVelocityThreshold && transform.position.y > -250)
