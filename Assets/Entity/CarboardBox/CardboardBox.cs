@@ -40,7 +40,7 @@ public class CardboardBox : EntityData
     }
     public override void OnDeath(bool play_audio = true)
     {
-        boxDead = true;
+        SetDeadState(true);
         StartCoroutine(DelayDeathCoroutine());
     }
     /// <summary>
@@ -53,8 +53,9 @@ public class CardboardBox : EntityData
         
         // Play visuals
         RunDeathVisuals();
-        // Play Audio
-        PlayAudio(AudioType.Death);
+        // Play Effects
+        PlayAudio(EffectState.Death);
+        PlayVFX(EffectState.Death);
 
         if (hasReward)
         {
@@ -64,10 +65,18 @@ public class CardboardBox : EntityData
         }
 
         yield return new WaitForSecondsRealtime(cleanupTimer);
+
+        // -> Old freeze functionality
         //while(GetLinearVelocity().magnitude >= cleanupVelocityThreshold && transform.position.y > -250)
-            //yield return new WaitForEndOfFrame();
+        //yield return new WaitForEndOfFrame();
         //GetRigidbody().isKinematic = true;
         //GetCollision().enabled = false;
+
+        CleanupBox();
+    }
+
+    public virtual void CleanupBox()
+    {
         gameObject.SetActive(false);
     }
     #endregion
@@ -110,7 +119,7 @@ public class CardboardBox : EntityData
     {
         peanutEffect.SendEvent("OnPeanut");
     }
-    private void FlattenBox()
+    public void FlattenBox()
     {
         boxRenderer.gameObject.SetActive(false);
         GetCollision().enabled = false;
@@ -118,5 +127,16 @@ public class CardboardBox : EntityData
         flattenedRenderer.gameObject.SetActive(true);
         gameObject.layer = 10;
     }
+
+    public void UnflattenBox()
+    {
+        boxRenderer.gameObject.SetActive(true);
+        GetCollision().enabled = true;
+
+        flattenedRenderer.gameObject.SetActive(true);
+        gameObject.layer = 9;
+    }
+
+    public void SetDeadState(bool state) { boxDead = state; }
     #endregion
 }

@@ -552,11 +552,14 @@ MonoBehaviour:
   awakeOnStart: 1
   op_HealthBar: {fileID: 1848563302965132641}
   audio_Muted: 0
+  audio_spatial: 1
+  audio_random_pitch: 1
   e_audio:
-  - audioType: 0
+  - effectState: 0
     audioClip: {fileID: 8300000, guid: 2e7263020d61b854a885d06e27c2736b, type: 3}
-  - audioType: 2
+  - effectState: 2
     audioClip: {fileID: 8300000, guid: 1eb74b5221c788d4f9fc62db7667c9ac, type: 3}
+  e_vfx: []
   movementType: 1
   agent: {fileID: 2799094486503811705}
   eyes: {fileID: 754518240029882051}
@@ -619,7 +622,10 @@ MonoBehaviour:
     wv_hitmask:
       serializedVersion: 2
       m_Bits: 0
+    crosshair_trigger: 0
+    audio_disable_spatial: 0
     audio_attack: {fileID: 8300000, guid: 63a550537414d644281836911608ef57, type: 3}
+    audio_damage: {fileID: 0}
     hitTimeScale: 0.05
     hitTimeScaleResetDelay: 0.0875
     attacking: 0
@@ -631,9 +637,11 @@ MonoBehaviour:
   ranged_CooldownVariation: {x: -0.2, y: 0.2}
   ranged_animator: {fileID: 0}
   ranged_animation_id: 
+  ranged_audio: {fileID: 0}
   anim_walking: {fileID: 5884346304993780175}
   anim_walking_MultiplierID: walk_speed
   anim_walking_Speed: 1
+  corpsePrefab: {fileID: 6461290523642570747, guid: 90d8f2c629c575c41987e0ba32e61b7a, type: 3}
 --- !u!114 &342340801534372776
 MonoBehaviour:
   m_ObjectHideFlags: 0

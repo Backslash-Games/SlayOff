@@ -65,6 +65,8 @@ public class PlayerController : EntityData
 
     [Header("Camera")]
     [SerializeField] private CameraController cameraController;
+    [SerializeField] private float whiplashStrength = 1;
+    [SerializeField] private float whiplashReduction = 1;
 
 
 
@@ -74,6 +76,7 @@ public class PlayerController : EntityData
     private InputAction in_look;
     private InputAction in_jump;
     private InputAction in_crouch;
+    private InputAction in_pause;
 
     /// <summary>
     ///     Objectives
@@ -178,13 +181,20 @@ public class PlayerController : EntityData
         in_look = PlayerActions.FindAction("Look");
         in_jump = PlayerActions.FindAction("Jump");
         in_crouch = PlayerActions.FindAction("Crouch");
+        in_pause = PlayerActions.FindAction("Pause");
+
+        // Set up events
+        OnHurt += PlayerController_OnHurt;
+        in_pause.performed += _ => OnPausePerformed();
 
         // External bind methods
         BindCrouch();
 
         // Enable input
         PlayerActions.FindActionMap("Control").Enable();
+        PlayerActions.FindActionMap("UI").Enable();
     }
+
     /// <summary>
     ///     Unbinds inputs from the player
     /// </summary>
@@ -197,11 +207,31 @@ public class PlayerController : EntityData
         // Unlock cursor
         Cursor.lockState = CursorLockMode.None;
 
+        // Set up events
+        OnHurt -= PlayerController_OnHurt;
+        in_pause.performed -= _ => OnPausePerformed();
+        
         // External unbind methods
         UnbindCrouch();
 
         // Disable input
         PlayerActions.FindActionMap("Control").Disable();
+        PlayerActions.FindActionMap("UI").Disable();
+    }
+    #endregion
+    #region Events
+
+    private void PlayerController_OnHurt(string source, Vector3 origin, float amount)
+    {
+        // Apply whiplash
+        CameraController.Instance.AddModifierWhiplash(origin, whiplashStrength, whiplashReduction);
+
+        // -> Get hurt rotation
+        Vector3 direction = Camera.main.transform.rotation * (origin - transform.position).normalized;
+        Vector2 flat_direction = new Vector2(direction.x, direction.z);
+        float rotation = Vector2.SignedAngle(Vector2.up, flat_direction);
+        // Apply crosshair
+        CrosshairController.Instance.RequestCrosshair(CrosshairController.CrosshairType.Hurt, -rotation);
     }
     #endregion
     #region Inputs
@@ -502,6 +532,25 @@ public class PlayerController : EntityData
         // Calculate accuracy
         slidingMomentumAccuracy = Mathm.GetVectorAccuracy(Mathm.RemoveVerticalAxis(slidingDirection), Mathm.RemoveVerticalAxis(slidingIdealMomentumDirection));
         slidingCurrentSpeed = Mathf.Clamp((slidingCurrentSpeed + (slidingMomentumAccuracy - 0.5f) * slidingDownHillBonus) - slidingFrictionRate, 0, float.MaxValue);
+    }
+    #endregion
+
+    #region Menu Handling
+    private void OnPausePerformed()
+    {
+        if (MenuManager.Instance.isAnyMenuActive())
+            MenuManager.Instance.CloseAllMenus();
+        else
+            MenuManager.Instance.OpenPauseMenu();
+    }
+    #endregion
+    #region Control State
+    public void SetControlMapActive(bool state)
+    {
+        if(state)
+            PlayerActions.FindActionMap("Control").Enable();
+        else
+            PlayerActions.FindActionMap("Control").Disable();
     }
     #endregion
     #endregion

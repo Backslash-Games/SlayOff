@@ -331,9 +331,13 @@ MonoBehaviour:
   physicsBody: {fileID: 627542441760889512}
   awakeOnStart: 0
   op_HealthBar: {fileID: 0}
+  audio_Muted: 0
+  audio_spatial: 1
+  audio_random_pitch: 1
   e_audio:
-  - audioType: 2
+  - effectState: 2
     audioClip: {fileID: 8300000, guid: 1eb74b5221c788d4f9fc62db7667c9ac, type: 3}
+  e_vfx: []
   active: 1
   hasReward: 1
   speedDeathThreshold: 0.8

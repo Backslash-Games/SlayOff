@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Collider))]
 public class EntityData : MonoBehaviour
@@ -18,25 +19,52 @@ public class EntityData : MonoBehaviour
     [Header("Entity Data - Visuals")]
     [SerializeField] private Image op_HealthBar = null;
 
-    public enum AudioType { Hurt, Heal, Death, Move };
+    public enum EffectState { Hurt, Heal, Death, Move };
     [System.Serializable]
     private struct EntityAudio
     {
-        [SerializeField] private AudioType audioType;
+        [SerializeField] private EffectState effectState;
         [SerializeField] private AudioClip audioClip;
 
-        public EntityAudio(AudioType audioType, AudioClip audioClip)
+        public EntityAudio(EffectState effectState, AudioClip audioClip)
         {
-            this.audioType = audioType;
+            this.effectState = effectState;
             this.audioClip = audioClip;
         }
 
-        public AudioType GetAudioType() { return audioType; }
+        public EffectState GetEffectState() { return effectState; }
         public AudioClip GetAudioClip() { return audioClip; }
+    }
+    [System.Serializable]
+    private struct EntityVFX
+    {
+        [SerializeField] private EffectState effectState;
+        [SerializeField] private VisualEffectAsset visualEffectAsset;
+        [Space]
+        [SerializeField] private float play_time;
+        [SerializeField] private string event_name;
+
+        public EntityVFX(EffectState effectState, VisualEffectAsset visualEffectAsset, float play_time, string event_name)
+        {
+            this.effectState = effectState;
+            this.visualEffectAsset = visualEffectAsset;
+            this.play_time = play_time;
+            this.event_name = event_name;
+        }
+
+        public EffectState GetEffectState() { return effectState; }
+        public VisualEffectAsset GetVFXAsset() { return visualEffectAsset; }
+        public float GetPlayTime() { return play_time; }
+        public string GetEventName() { return event_name; }
     }
     [Header("Entity Data - Audio")]
     [SerializeField] private bool audio_Muted = false;
+    [SerializeField] private bool audio_spatial = true;
+    [SerializeField] private bool audio_random_pitch = true;
     [SerializeField] private EntityAudio[] e_audio = new EntityAudio[0];
+
+    [Header("Entity Data - Visual Effects")]
+    [SerializeField] private EntityVFX[] e_vfx = new EntityVFX[0];
 
     // Events
     /// <summary>
@@ -173,7 +201,8 @@ public class EntityData : MonoBehaviour
 
         // Play heal audio
         if(play_audio)
-            PlayAudio(AudioType.Heal);
+            PlayAudio(EffectState.Heal);
+        PlayVFX(EffectState.Heal);
 
         // Run Heal event
         OnHeal?.Invoke(source, Vector3.zero, amount);
@@ -205,7 +234,8 @@ public class EntityData : MonoBehaviour
 
         // Play hurt audio
         if (play_audio)
-            PlayAudio(AudioType.Hurt);
+            PlayAudio(EffectState.Hurt);
+        PlayVFX(EffectState.Hurt);
 
         // Run hurt event
         OnHurt?.Invoke(source, origin, amount);
@@ -233,7 +263,8 @@ public class EntityData : MonoBehaviour
     {
         // Play death audio
         if (play_audio)
-            PlayAudio(AudioType.Death);
+            PlayAudio(EffectState.Death);
+        PlayVFX(EffectState.Death);
 
         // Set object to inactive
         gameObject.SetActive(false);
@@ -406,7 +437,7 @@ public class EntityData : MonoBehaviour
     public void MuteAudio() { audio_Muted = true; }
     public void UnmuteAudio() { audio_Muted = false; }
 
-    public void PlayAudio(AudioType type) 
+    public void PlayAudio(EffectState type) 
     {
         if (audio_Muted)
             return;
@@ -416,10 +447,30 @@ public class EntityData : MonoBehaviour
         // Get audio clip of type
         foreach (EntityAudio value in e_audio)
         {
-            if (value.GetAudioType().Equals(type))
+            if (value.GetEffectState().Equals(type))
             {
                 // Play the audio clip
-                AudioManager.Instance.PlayAudio(value.GetAudioClip(), transform.position);
+                AudioManager.Instance.PlayAudio(value.GetAudioClip(), transform.position, audio_random_pitch, !audio_spatial);
+                return;
+            }
+        }
+
+    }
+    #endregion
+    #region VFX
+
+    public void PlayVFX(EffectState type)
+    {
+        if (VisualEffectManager.Instance == null)
+            return;
+
+        // Get audio clip of type
+        foreach (EntityVFX value in e_vfx)
+        {
+            if (value.GetEffectState().Equals(type))
+            {
+                // Play the vfx
+                VisualEffectManager.Instance.PlayVisual(value.GetVFXAsset(), transform.position, value.GetPlayTime(), value.GetEventName());
                 return;
             }
         }

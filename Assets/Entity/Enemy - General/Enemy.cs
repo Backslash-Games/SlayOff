@@ -45,11 +45,16 @@ public class Enemy : EntityData
     [Space]
     [SerializeField] private Animator ranged_animator;
     [SerializeField] private string ranged_animation_id;
+    [Space]
+    [SerializeField] private AudioClip ranged_audio;
 
     [Header("Animations")]
     [SerializeField] private Animator anim_walking = null;
     [SerializeField] private string anim_walking_MultiplierID = "walk_speed";
     [SerializeField] private float anim_walking_Speed = 1;
+    [Space]
+    [SerializeField] private GameObject corpsePrefab = null;
+
 
     private PlayerController player = null;
 
@@ -302,6 +307,9 @@ public class Enemy : EntityData
         ShootProjectile();
         // Restart cooldown
         ranged_Cooldown.Start(Random.Range(ranged_CooldownVariation.x, ranged_CooldownVariation.y));
+        // Play audio
+        if(ranged_audio != null)
+            AudioManager.Instance.PlayAudio(ranged_audio, transform.position);
 
         if(ranged_animator != null)
             ranged_animator.Play(ranged_animation_id);
@@ -342,6 +350,21 @@ public class Enemy : EntityData
         
         // Set anim walking variable
         anim_walking.SetFloat(anim_walking_MultiplierID, agent.velocity.magnitude * anim_walking_Speed);
+    }
+    #endregion
+    #region Death Handling
+    public override void OnDeath(bool play_audio = true)
+    {
+        SpawnCorpse();
+        base.OnDeath(play_audio);
+    }
+    private void SpawnCorpse()
+    {
+        if (corpsePrefab == null)
+            return;
+
+        Corpse corpse = Instantiate(corpsePrefab, transform.position, transform.rotation).GetComponent<Corpse>();
+        corpse.SetEyes(eyes);
     }
     #endregion
 

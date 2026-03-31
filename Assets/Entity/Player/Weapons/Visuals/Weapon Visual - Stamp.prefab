@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.000000007450581, z: 0.010999978}
-  m_LocalScale: {x: 1, y: -1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1724167845236561937}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  m_Sprite: {fileID: -1681105512, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,11 +143,70 @@ MonoBehaviour:
   line_time: 0.075
   stamp: {fileID: 8985189037719246293}
   stamp_sprite: {fileID: 6231744068487661745}
+  stamp_sprites:
+  - {fileID: -1681105512, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 321944569, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1382461146, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 524559268, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -2059144435, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 655266676, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1455396427, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1569329278, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 459180904, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -2052731163, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -958731381, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 332067598, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 623882724, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1129536902, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 886711417, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 2040472427, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1131286559, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1868010283, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 589602616, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1830241127, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -326022300, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1251134973, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1397290795, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 5300937, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1896553607, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 237698590, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1518443793, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -579454260, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 822938539, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1779483720, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -151940022, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -631378080, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -2008999229, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1693635674, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1306688370, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1440208745, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1918852887, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1329408983, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1041734221, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1144767605, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1696936578, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1331188858, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -443306021, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 2010509220, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1392894734, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -2016328640, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1657859992, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -674981629, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 40388205, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1547565077, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1068504960, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -44499187, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 1394172180, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 128001376, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: 862211716, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
+  - {fileID: -1406111991, guid: 19832fbf39afdf34e9268d25fc6c51a6, type: 3}
   stamp_layers:
     serializedVersion: 2
     m_Bits: 64
   stamp_alive_time: 4
   stamp_fade_time: 1.25
+  dust_vfx: {fileID: 8926484042661614526, guid: caa76ca6baedc844186e805613639798, type: 3}
+  dust_event_name: OnBurst
 --- !u!1 &8293900480693370526
 GameObject:
   m_ObjectHideFlags: 0

@@ -228,6 +228,10 @@ MonoBehaviour:
   physicsBody: {fileID: 1669931070786443795}
   awakeOnStart: 1
   op_HealthBar: {fileID: 0}
+  audio_Muted: 0
+  audio_spatial: 1
+  audio_random_pitch: 1
+  e_audio: []
   hitbox:
     parent: {fileID: 4320663061586527862}
     state: 0
@@ -242,6 +246,7 @@ MonoBehaviour:
   hitbox_Draw: 1
   aliveTime: 2.5
   homing_speed: 2.35
+  crosshair_trigger: 0
 --- !u!65 &8167977881976230285
 BoxCollider:
   m_ObjectHideFlags: 0

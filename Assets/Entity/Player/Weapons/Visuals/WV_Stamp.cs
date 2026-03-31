@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class WV_Stamp : WeaponVisual
 {
@@ -9,9 +10,13 @@ public class WV_Stamp : WeaponVisual
     [Space]
     [SerializeField] private GameObject stamp = null;
     [SerializeField] private SpriteRenderer stamp_sprite = null;
+    [SerializeField] private Sprite[] stamp_sprites = null;
     [SerializeField] private LayerMask stamp_layers;
     [SerializeField] private float stamp_alive_time = 5;
     [SerializeField] private float stamp_fade_time = 5;
+    [Space]
+    [SerializeField] private VisualEffectAsset dust_vfx;
+    [SerializeField] private string dust_event_name = "OnDust";
     private Cooldown stamp_fade_cooldown;
 
     private void Awake()
@@ -36,7 +41,7 @@ public class WV_Stamp : WeaponVisual
     private void DrawLine(bool ignore_coroutine = false) 
     {
         Vector3[] positions = new Vector3[] { GetNozzle().position, GetHitPosition() };
-        Debug.Log($"Setting positions {positions[0]} || {positions[1]}");
+        //Debug.Log($"Setting positions {positions[0]} || {positions[1]}");
         scan_line.enabled = true;
         scan_line.SetPositions(positions);
         
@@ -67,6 +72,11 @@ public class WV_Stamp : WeaponVisual
         stamp.transform.position = hit.point; 
         stamp.transform.forward = hit.normal;
         stamp.transform.parent = hit.transform;
+
+        stamp_sprite.sprite = stamp_sprites[Random.Range(0, stamp_sprites.Length)];
+
+        if (dust_vfx != null)
+            VisualEffectManager.Instance.PlayVisual(dust_vfx, hit.point, 0.5f, dust_event_name);
 
         StartCoroutine(enum_DestroyStamp());
     }

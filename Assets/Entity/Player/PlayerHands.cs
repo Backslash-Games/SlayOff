@@ -187,10 +187,13 @@ public class Weapon
     [SerializeField] private GameObject weapon_visual = null;
     [SerializeField] private Transform wv_nozzle = null;
     [SerializeField] private LayerMask wv_hitmask;
+    [Space]
+    [SerializeField] private CrosshairController.CrosshairType crosshair_trigger = CrosshairController.CrosshairType.None;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip audio_attack;
     [SerializeField] private bool audio_disable_spatial = false;
+    [SerializeField] private AudioClip audio_attack;
+    [SerializeField] private AudioClip audio_damage;
 
     [Header("Slow Down")]
     [SerializeField] private float hitTimeScale = 0.05f;
@@ -431,6 +434,14 @@ public class Weapon
         {
             ApplyKnockback(entity);
             ApplyDamage(entity);
+
+            // Check if entity is a player or an enemy
+            if (entity.GetType().Equals(typeof(Enemy)) || entity.GetType().Equals(typeof(PlayerController)))
+            {
+                if(audio_damage != null)
+                    AudioManager.Instance.PlayAudio(audio_damage, entity.transform.position, true, audio_disable_spatial);
+                CrosshairController.Instance.RequestCrosshair(crosshair_trigger);
+            }
         }
     }
     /// <summary>

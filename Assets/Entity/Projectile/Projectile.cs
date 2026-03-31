@@ -8,6 +8,7 @@ public class Projectile : EntityData
     [SerializeField] private bool hitbox_Draw = false;
     [SerializeField] private float aliveTime = 10;
     [SerializeField] private float homing_speed = 1;
+    [SerializeField] private CrosshairController.CrosshairType crosshair_trigger = CrosshairController.CrosshairType.Hurt;
     private Cooldown aliveTimer;
     private bool reflected = false;
 
@@ -91,10 +92,13 @@ public class Projectile : EntityData
     {
         // Damage the player
         hitbox.GetColliding(out Collider[] colliding);
-        foreach(Collider collider in colliding)
+        foreach (Collider collider in colliding)
             // Get entity data
-            if(collider.TryGetComponent(out EntityData data))
+            if (collider.TryGetComponent(out EntityData data))
+            {
                 data.Hurt("Projectile", transform.position, GetStatblock().GetAttack());
+                CrosshairController.Instance.RequestCrosshair(crosshair_trigger);
+            }
 
         // Kill the box
         Kill("Attack Executed");

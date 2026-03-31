@@ -229,6 +229,26 @@ public class CameraController : MonoBehaviour
     }
 
     public void AddModifier(CameraModifier modifier) { modifiers.Add(modifier);}
+
+    #region Tools
+    /// <summary>
+    ///     Adds modifiers to simulate a whiplash effect
+    /// </summary>
+    public void AddModifierWhiplash(Vector3 origin, float strength, float reduction_rate)
+    {
+        // Calculate the vector accuracy between direction of input and camera forward
+        float front_accuracy = Mathm.GetVectorAccuracy(camera.transform.forward, camera.transform.position - origin);
+        float side_accuracy = Mathm.GetVectorAccuracy(camera.transform.right, camera.transform.position - origin);
+
+        // Whiplash impacts pitch and roll
+        // -> Calculate pitch impact
+        float pitch_impact = (front_accuracy - 0.5f) * 2;
+        AddModifier(new CameraModifier(CameraModifier.Axis.pitch, strength * pitch_impact, reduction_rate));
+        // -> Calculate roll impact
+        float roll_impact = (side_accuracy - 0.5f) * 2;
+        AddModifier(new CameraModifier(CameraModifier.Axis.roll, strength * -roll_impact, reduction_rate));
+    }
+    #endregion
     #endregion
 
     #region Get Methods
