@@ -225,6 +225,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &628522728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5302042580030686997, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+  m_PrefabInstance: {fileID: 1194121607}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dde4fb6fb4c21247955acc53ccbbe29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1 &645867408
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,9 +579,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4715489490671885795, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715489490671885795, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715489490671885795, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 628522728}
+    - target: {fileID: 4715489490671885795, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715489490671885795, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715489490671885795, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715489490671885795, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5624915704757821781, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
       propertyPath: m_Name
       value: _GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646526139652744725, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: volume_master
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6646526139652744725, guid: 40e8a3c4986182240b91fc07425f862b, type: 3}
+      propertyPath: volume_sound_effects
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

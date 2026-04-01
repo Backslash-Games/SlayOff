@@ -19,6 +19,8 @@ public class Elevator_Start : Elevator
     {
         if (open_audio == null)
             return;
+        if (elevator_index != 1)
+            return;
         AudioManager.Instance.PlayAudio(open_audio, Vector3.zero, false, true);
     }
 }

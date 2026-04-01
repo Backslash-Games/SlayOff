@@ -1940,8 +1940,8 @@ MonoBehaviour:
       mask:
         serializedVersion: 2
         m_Bits: 128
-      offset: {x: 0, y: 0, z: 1.125}
-      size: {x: 0.4, y: 0.4, z: 1.25}
+      offset: {x: 0, y: 0, z: 1.75}
+      size: {x: 0.4, y: 0.4, z: 2.5}
       localEuler: {x: 0, y: 0, z: 0}
     cooldownTime: 1
     cooldownReductionRate: 1

@@ -28,7 +28,7 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI h_sensitivity_text;
     [SerializeField] private TextMeshProUGUI v_sensitivity_text;
 
-    private static readonly Vector3 default_volume = Vector3.one;
+    private static readonly Vector3 default_volume = new Vector3(0.85f, 1, 0.7f);
     private static readonly Vector2 default_camera_sensitivity = new Vector2(5.5f, 5.5f);
 
     private void OnEnable()

@@ -44,7 +44,7 @@ public class Elevator : MonoBehaviour
     /// <returns>Position</returns>
     public Vector3 MirrorVectorPosition(Vector3 point, Elevator other)
     {
-        Vector3 offset = other.transform.rotation * other.GetVectorOffset(point);
+        Vector3 offset = Quaternion.Inverse(other.transform.rotation) * other.GetVectorOffset(point);
         return GetOrigin() + offset;
     }
 
