@@ -18,7 +18,7 @@ public class SaveManager : MonoSave
 
     public void UpdateOptions()
     {
-        AudioManager.Instance.SetMixerVolumes(volume_master, volume_music, volume_sound_effects);
+        EffectManager.Instance.SetMixerVolumes(volume_master, volume_music, volume_sound_effects);
 
         if(CameraController.Instance != null)
             CameraController.Instance.SetSensitivity(camera_sensitivity.x, camera_sensitivity.y);

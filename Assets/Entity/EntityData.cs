@@ -15,10 +15,8 @@ public class EntityData : MonoBehaviour
     private RigidbodyConstraints defaultConstraints = RigidbodyConstraints.None;
 
     [SerializeField] private bool awakeOnStart = true;
-
-    [Header("Entity Data - Visuals")]
-    [SerializeField] private Image op_HealthBar = null;
-
+    
+    
     public enum EffectState { Hurt, Heal, Death, Move };
     [System.Serializable]
     private struct EntityAudio
@@ -57,16 +55,21 @@ public class EntityData : MonoBehaviour
         public float GetPlayTime() { return play_time; }
         public string GetEventName() { return event_name; }
     }
+
+    [Header("Entity Data - Visuals")]
+    [SerializeField] private EntityVFX[] visualEffects = new EntityVFX[0];
+    [Space]
+    [SerializeField] private Image op_HealthBar = null;
+
     [Header("Entity Data - Audio")]
+    [SerializeField] private EntityAudio[] audioClips = new EntityAudio[0];
+    [Space]
     [SerializeField] private bool audio_Muted = false;
     [SerializeField] private bool audio_spatial = true;
     [SerializeField] private bool audio_random_pitch = true;
-    [SerializeField] private EntityAudio[] e_audio = new EntityAudio[0];
 
-    [Header("Entity Data - Visual Effects")]
-    [SerializeField] private EntityVFX[] e_vfx = new EntityVFX[0];
 
-    // Events
+    #region Events
     /// <summary>
     ///     Delegate that tracks when health is changed
     /// </summary>
@@ -80,35 +83,54 @@ public class EntityData : MonoBehaviour
     ///     Event that tracks when the entity is healed
     /// </summary>
     public event HealthChanged OnHeal;
+    #endregion
+
 
     #region Object Interaction Definition
+    /// <summary>
+    ///     Current list of interactions on the entity
+    /// </summary>
+    private List<ObjectInteration> interactions = new List<ObjectInteration>();
+    private static readonly int s_MaximumInteractionLength = 30;
+
+    /// <summary>
+    ///     Structure used to track information about interactions on each entity
+    /// </summary>
     [System.Serializable]
     private struct ObjectInteration
     {
-        [SerializeField] private string source;
-        [SerializeField] private string action;
-        [SerializeField] private float time;
+        [SerializeField] private string _source;
+        [SerializeField] private string _action;
+        [SerializeField] private float _time;
 
         public ObjectInteration(string source, string action, float time)
         {
-            this.source = source;
-            this.action = action;
-            this.time = time;
+            _source = source;
+            _action = action;
+            _time = time;
         }
 
         public override string ToString()
         {
             string output = "";
 
-            output += $"{time}: {source} did {action}";
+            output += $"{_time}: {_source} did {_action}";
 
             return output;
         }
     }
-    private List<ObjectInteration> interactions = new List<ObjectInteration>();
+    /// <summary>
+    ///     Adds a new interaction to the entity
+    /// </summary>
+    /// <param name="source">Interaction Source</param>
+    /// <param name="action">Interaction Action</param>
     private void AddInteraction(string source, string action)
     {
         interactions.Add(new ObjectInteration(source, action, Time.time));
+
+        // Check if interactions have overflown maximum length
+        while (interactions.Count > s_MaximumInteractionLength)
+            interactions.RemoveAt(0);
     }
     #endregion
 
@@ -445,7 +467,7 @@ public class EntityData : MonoBehaviour
             return;
 
         // Get audio clip of type
-        foreach (EntityAudio value in e_audio)
+        foreach (EntityAudio value in audioClips)
         {
             if (value.GetEffectState().Equals(type))
             {
@@ -465,7 +487,7 @@ public class EntityData : MonoBehaviour
             return;
 
         // Get audio clip of type
-        foreach (EntityVFX value in e_vfx)
+        foreach (EntityVFX value in visualEffects)
         {
             if (value.GetEffectState().Equals(type))
             {
