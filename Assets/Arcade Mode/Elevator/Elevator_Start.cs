@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Elevator_Start : Elevator
 {
-    [SerializeField] private AudioClip open_audio;
+    private enum EffectStates { Open, Moving };
+    [SerializeField] private EffectLibrary<EffectStates, AudioClip, EffectComponent_Audio.AudioParameters> audioLibrary;
     
     private void Start()
     {
@@ -17,10 +18,8 @@ public class Elevator_Start : Elevator
 
     private void PlayAudio(int elevator_index)
     {
-        if (open_audio == null)
-            return;
         if (elevator_index != 1)
             return;
-        AudioManager.Instance.PlayAudio(open_audio, Vector3.zero, false, true);
+        EffectManager.Instance.Play(audioLibrary, EffectStates.Open);
     }
 }

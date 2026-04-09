@@ -785,16 +785,25 @@ MonoBehaviour:
   collision: {fileID: 4067763178177525984}
   physicsBody: {fileID: 8038069225058846816}
   awakeOnStart: 1
+  particleLibrary:
+    parameters:
+      origin: {fileID: 0}
+      length: 1
+    entries: []
   op_HealthBar: {fileID: 7600304239499375054}
+  audioLibrary:
+    parameters:
+      origin: {fileID: 2859541989916349314}
+      output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+      randomizePitch: 1
+      spatial: 1
+    entries:
+    - state: 0
+      content: {fileID: 8300000, guid: 2e7263020d61b854a885d06e27c2736b, type: 3}
+      eventKey: 
   audio_Muted: 0
   audio_spatial: 1
   audio_random_pitch: 1
-  e_audio:
-  - effectState: 0
-    audioClip: {fileID: 8300000, guid: 2e7263020d61b854a885d06e27c2736b, type: 3}
-  - effectState: 2
-    audioClip: {fileID: 8300000, guid: 1eb74b5221c788d4f9fc62db7667c9ac, type: 3}
-  e_vfx: []
   movementType: 2
   agent: {fileID: 4845484496879650437}
   eyes: {fileID: 8030778362558854554}
@@ -858,9 +867,16 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
     crosshair_trigger: 0
-    audio_disable_spatial: 0
-    audio_attack: {fileID: 8300000, guid: 5b983fcc808b1f24ab294f577ee1a070, type: 3}
-    audio_damage: {fileID: 0}
+    audioLibrary:
+      parameters:
+        origin: {fileID: 2859541989916349314}
+        output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+        randomizePitch: 1
+        spatial: 1
+      entries:
+      - state: 0
+        content: {fileID: 8300000, guid: 5b983fcc808b1f24ab294f577ee1a070, type: 3}
+        eventKey: 
     hitTimeScale: 0.05
     hitTimeScaleResetDelay: 0.0875
     attacking: 0
@@ -872,7 +888,16 @@ MonoBehaviour:
   ranged_CooldownVariation: {x: -0.2, y: 0.2}
   ranged_animator: {fileID: 1605353033190421104}
   ranged_animation_id: e_Skull_Shoot
-  ranged_audio: {fileID: 8300000, guid: 5b983fcc808b1f24ab294f577ee1a070, type: 3}
+  attackAudioLibrary:
+    parameters:
+      origin: {fileID: 2859541989916349314}
+      output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+      randomizePitch: 1
+      spatial: 1
+    entries:
+    - state: 1
+      content: {fileID: 8300000, guid: 5b983fcc808b1f24ab294f577ee1a070, type: 3}
+      eventKey: 
   anim_walking: {fileID: 0}
   anim_walking_MultiplierID: walk_speed
   anim_walking_Speed: 1

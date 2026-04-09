@@ -5,6 +5,8 @@ using TMPro;
 
 public class TitleScreen_ClickHandler : MonoBehaviour
 {
+    private enum ClickStates { Clicked };
+
     [Header("Animation")]
     [SerializeField] private Animator titleAnimator;
     [SerializeField] private string introAnimationName;
@@ -14,7 +16,7 @@ public class TitleScreen_ClickHandler : MonoBehaviour
     [SerializeField] private bool action_locked = false;
     [Space]
     private InputAction in_click;
-    [SerializeField] private VisualEffectAsset dust_burst;
+    [SerializeField] private EffectLibrary<ClickStates, VisualEffectAsset, EffectComponent_Visual.VisualParameters> particleLibrary; 
     [SerializeField] private float shootStrength = 5;
 
     [Header("Scene Handling")]
@@ -72,7 +74,7 @@ public class TitleScreen_ClickHandler : MonoBehaviour
         // Fire the ray
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            VisualEffectManager.Instance.PlayVisual(dust_burst, hit.point, 0.5f, "OnBurst");
+            EffectManager.Instance.Play(particleLibrary, ClickStates.Clicked);
             EntityData entity = hit.transform.gameObject.GetComponent<EntityData>();
             // Check if we have hit an entity
             if (entity != null)

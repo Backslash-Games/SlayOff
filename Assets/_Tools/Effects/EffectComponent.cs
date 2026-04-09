@@ -10,6 +10,11 @@ public class EffectComponent : MonoBehaviour
     public class Parameters 
     {
         public Transform origin;
+        private bool _continuous = false;
+        #region Get Set Methods
+        public bool GetContinuousState() { return _continuous; }
+        public void SetContinuousState(bool state) { _continuous = state; }
+        #endregion
     }
     #endregion
     public enum EffectState { None, Initialized, Started, Paused, Stopped, Completed };
@@ -27,9 +32,12 @@ public class EffectComponent : MonoBehaviour
     public Cooldown effectTimer;
 
     // Private variables
-    private string _dictionaryKey = "";
+    private string _identifier = "";
+    // Duplicate Handling
     private static readonly byte s_MaxDuplicates = 15;
-    private static Dictionary<string, byte> s_ActiveEffects;
+    private static Dictionary<string, byte> s_ActiveDupes;
+    // Continuous handling
+    private static List<string> s_ActiveContinuous;
 
     #region Unity Methods
     private void Awake()
@@ -45,9 +53,12 @@ public class EffectComponent : MonoBehaviour
         // Apply basic parameters
         transform.position = p.origin.position;
     }
-    public virtual void Play(object target, Parameters parameters, string eventKey) { }
+    public virtual void Play(object target, Parameters parameters, string eventKey, EffectManager.PlayMode mode) 
+    { 
+        Initialize(parameters); 
+    }
     // public virtual void Pause() { }
-    // public virtual void Stop() { }
+    public virtual void Stop() { CleanupEffect(); }
     #endregion
     #region Object Handling
     /// <summary>
@@ -55,7 +66,11 @@ public class EffectComponent : MonoBehaviour
     /// </summary>
     private void CleanupEffect()
     {
-        RemoveFromDictionary(_dictionaryKey);
+        // Make sure item is no longer present in any list
+        RemoveFromDupeDictionary(_identifier);
+        RemoveFromContinuous(_identifier);
+
+        // Destroy
         Destroy(gameObject);
     }
     #endregion
@@ -111,57 +126,10 @@ public class EffectComponent : MonoBehaviour
     }
     #endregion
     #region Set Methods
-    public void SetDictionaryKey(string key) { _dictionaryKey = key; }
+    public void SetIdentifier(string key) { _identifier = key; }
     #endregion
 
-    #region STATIC - Dictionary Handling
-    /// <summary>
-    ///     Sets up the active effects dictionary
-    /// </summary>
-    private static void SetupDictionary()
-    {
-        if (s_ActiveEffects == null)
-            s_ActiveEffects = new Dictionary<string, byte>();
-    }
-
-    /// <summary>
-    ///     Adds new effect to the dictionary
-    /// </summary>
-    /// <param name="effectName">Name of the effect</param>
-    /// <param name="count">Amount of effect added</param>
-    public static void AddToDictionary(string effectName, int count = 1)
-    {
-        // Make sure we are setup
-        SetupDictionary();
-
-        // Check if the key exists in the dictionary
-        if (s_ActiveEffects.ContainsKey(effectName))
-        {
-            s_ActiveEffects[effectName] += (byte)count;
-            return;
-        }
-
-        // Add new element
-        s_ActiveEffects.Add(effectName, (byte)count);
-    }
-    /// <summary>
-    ///     Removes effect from the dictionary
-    /// </summary>
-    /// <param name="effectName">Name of the effect</param>
-    /// <param name="count">Amount of effect removed</param>
-    public static void RemoveFromDictionary(string effectName, int count = 1)
-    {
-        // Make sure we are setup
-        SetupDictionary();
-
-        // Check if the key exists in the dictionary
-        if (!s_ActiveEffects.ContainsKey(effectName))
-            return;
-
-        // Remove count from key
-        s_ActiveEffects[effectName] = (byte)Mathf.Clamp(s_ActiveEffects[effectName] - count, 0, s_MaxDuplicates);
-    }
-
+    #region STATIC - General
     /// <summary>
     ///     Checks if effect is playable
     /// </summary>
@@ -169,19 +137,109 @@ public class EffectComponent : MonoBehaviour
     /// <returns>True if the number of effects played hasn't gone over maximum</returns>
     public static bool isPlayable(string effectName)
     {
-        // Make sure we are setup
-        SetupDictionary();
+        // Make sure dictionary is setup
+        SetupDupeDictionary();
+        SetupContinuousList();
 
+        // --> Continuous checks <--
+        if (s_ActiveContinuous.Contains(effectName))
+            return false;
+
+        // --> Duplicate checks <--
         // Check if the key exists in the dictionary
-        if (!s_ActiveEffects.ContainsKey(effectName))
-            return true;
-
-        // Check if the active effects are less than the max allowed
-        if (s_ActiveEffects[effectName] < s_MaxDuplicates)
-            return true;
+        if (s_ActiveDupes.ContainsKey(effectName) && s_ActiveDupes[effectName] >= s_MaxDuplicates)
+            return false;
 
         // Otherwise return false
-        return false;
+        return true;
+    }
+    #endregion
+    #region STATIC - Duplicate Handling
+    /// <summary>
+    ///     Sets up the active effects dictionary
+    /// </summary>
+    private static void SetupDupeDictionary()
+    {
+        if (s_ActiveDupes == null)
+            s_ActiveDupes = new Dictionary<string, byte>();
+    }
+
+    /// <summary>
+    ///     Adds new effect to the dictionary
+    /// </summary>
+    /// <param name="effectName">Name of the effect</param>
+    /// <param name="count">Amount of effect added</param>
+    public static void AddToDupeDictionary(string effectName, int count = 1)
+    {
+        // Make sure we are setup
+        SetupDupeDictionary();
+
+        // Check if the key exists in the dictionary
+        if (s_ActiveDupes.ContainsKey(effectName))
+        {
+            s_ActiveDupes[effectName] += (byte)count;
+            return;
+        }
+
+        // Add new element
+        s_ActiveDupes.Add(effectName, (byte)count);
+    }
+    /// <summary>
+    ///     Removes effect from the dictionary
+    /// </summary>
+    /// <param name="effectName">Name of the effect</param>
+    /// <param name="count">Amount of effect removed</param>
+    public static void RemoveFromDupeDictionary(string effectName, int count = 1)
+    {
+        // Make sure we are setup
+        SetupDupeDictionary();
+
+        // Check if the key exists in the dictionary
+        if (!s_ActiveDupes.ContainsKey(effectName))
+            return;
+
+        // Remove count from key
+        s_ActiveDupes[effectName] = (byte)Mathf.Clamp(s_ActiveDupes[effectName] - count, 0, s_MaxDuplicates);
+    }
+    #endregion
+    #region STATIC - Continuous Handling
+    /// <summary>
+    ///     Lazy initialization for Active List
+    /// </summary>
+    static public void SetupContinuousList()
+    {
+        if (s_ActiveContinuous == null)
+            s_ActiveContinuous = new List<string>();
+    }
+
+    /// <summary>
+    ///     Adds an effect name to the active continuous list
+    /// </summary>
+    /// <param name="effectName">Effect name</param>
+    static public void AddToContinuous(string effectName)
+    {
+        // Make sure list is setup
+        SetupContinuousList();
+
+        // Make sure name isnt in continuous yet
+        if (s_ActiveContinuous.Contains(effectName))
+            return;
+
+        // Add entry to list
+        s_ActiveContinuous.Add(effectName);
+    }
+
+    /// <summary>
+    ///     Removes entry from continuous list
+    /// </summary>
+    /// <param name="effectName">Effect name</param>
+    static public void RemoveFromContinuous(string effectName)
+    {
+        // Make sure list is setup
+        SetupContinuousList();
+
+        // Remove entry
+        s_ActiveContinuous.Remove(effectName);
     }
     #endregion
 }

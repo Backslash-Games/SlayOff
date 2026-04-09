@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -99,6 +100,19 @@ public class Cooldown
     {
         // Reset timer
         timer = basic;
+    }
+
+    /// <summary>
+    ///     Removes all listeners from cooldown
+    /// </summary>
+    public void RemoveAllListeners()
+    {
+        OnCooldownStarted = null;
+        OnCooldownUpdate = null;
+        OnCooldownPaused = null;
+        OnCooldownSuccess = null;
+        OnCooldownEnded = null;
+        OnCooldownCanceled = null;
     }
     #endregion
 

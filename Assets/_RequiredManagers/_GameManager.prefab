@@ -3104,7 +3104,7 @@ MonoBehaviour:
   employee_number: 0
   volume_master: 0.85
   volume_music: 1
-  volume_sound_effects: 0.7
+  volume_sound_effects: 1
   camera_sensitivity: {x: 5.5, y: 5.5}
 --- !u!1 &2720536681409141228
 GameObject:
@@ -5821,6 +5821,7 @@ Transform:
   - {fileID: 8761755494855944219}
   - {fileID: 3812952211590175191}
   - {fileID: 4129575004731681126}
+  - {fileID: 7420940757956709503}
   - {fileID: 3591199230690483368}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6268,6 +6269,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6248210657024657861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7420940757956709503}
+  - component: {fileID: 6285289907592082205}
+  m_Layer: 0
+  m_Name: Music Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7420940757956709503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6248210657024657861}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4326614504712677380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6285289907592082205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6248210657024657861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd95b60f8f54fe04ea199c2627b62144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  sceneCorrelations:
+  - sceneName: Title
+    sceneState: 0
+  - sceneName: 1_Factory
+    sceneState: 1
+  currentSceneState: 0
+  musicLibrary:
+    parameters:
+      origin: {fileID: 7420940757956709503}
+      output: {fileID: -8471067422604487568, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+      randomizePitch: 0
+      spatial: 0
+      volume: 1
+    entries:
+    - state: 1
+      content: {fileID: 8300000, guid: 1b019fe77658ccb4b96d075524d22d0f, type: 3}
+      eventKey: 
+  ambienceLibrary:
+    parameters:
+      origin: {fileID: 7420940757956709503}
+      output: {fileID: -1127688562022600250, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+      randomizePitch: 0
+      spatial: 0
+      volume: 1
+    entries:
+    - state: 0
+      content: {fileID: 8300000, guid: b868a661c029e0a449834e501a32af67, type: 3}
+      eventKey: 
+    - state: 1
+      content: {fileID: 8300000, guid: b868a661c029e0a449834e501a32af67, type: 3}
+      eventKey: 
 --- !u!1 &6416986511061895080
 GameObject:
   m_ObjectHideFlags: 0

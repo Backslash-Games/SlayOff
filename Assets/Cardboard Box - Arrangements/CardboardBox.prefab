@@ -330,14 +330,24 @@ MonoBehaviour:
   collision: {fileID: 3343367029755230457}
   physicsBody: {fileID: 627542441760889512}
   awakeOnStart: 0
+  particleLibrary:
+    parameters:
+      origin: {fileID: 0}
+      length: 1
+    entries: []
   op_HealthBar: {fileID: 0}
+  audioLibrary:
+    parameters:
+      origin: {fileID: 2190482168417153013}
+      randomizePitch: 1
+      spatial: 1
+    entries:
+    - state: 2
+      content: {fileID: 8300000, guid: 1eb74b5221c788d4f9fc62db7667c9ac, type: 3}
+      eventKey: 
   audio_Muted: 0
   audio_spatial: 1
   audio_random_pitch: 1
-  e_audio:
-  - effectState: 2
-    audioClip: {fileID: 8300000, guid: 1eb74b5221c788d4f9fc62db7667c9ac, type: 3}
-  e_vfx: []
   active: 1
   hasReward: 1
   speedDeathThreshold: 0.8

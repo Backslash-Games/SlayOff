@@ -46,7 +46,7 @@ public class Enemy : EntityData
     [SerializeField] private Animator ranged_animator;
     [SerializeField] private string ranged_animation_id;
     [Space]
-    [SerializeField] private AudioClip ranged_audio;
+    [SerializeField] private EffectLibrary<AttackType, AudioClip, EffectComponent_Audio.AudioParameters> attackAudioLibrary;
 
     [Header("Animations")]
     [SerializeField] private Animator anim_walking = null;
@@ -308,8 +308,7 @@ public class Enemy : EntityData
         // Restart cooldown
         ranged_Cooldown.Start(Random.Range(ranged_CooldownVariation.x, ranged_CooldownVariation.y));
         // Play audio
-        if(ranged_audio != null)
-            AudioManager.Instance.PlayAudio(ranged_audio, transform.position);
+        EffectManager.Instance.Play(attackAudioLibrary, AttackType.Ranged);
 
         if(ranged_animator != null)
             ranged_animator.Play(ranged_animation_id);

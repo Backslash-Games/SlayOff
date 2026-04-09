@@ -15,4 +15,18 @@ public class Debug_EffectTester : MonoBehaviour
         EffectManager.Instance.Play(audioLibrary, (EffectTesterStates)value);
         EffectManager.Instance.Play(particleLibrary, (EffectTesterStates)value);
     }
+
+    public void PlayStateContinuous(int value)
+    {
+        // Provide library and state
+        EffectManager.Instance.Play(audioLibrary, (EffectTesterStates)value, EffectManager.PlayMode.Continuous);
+        EffectManager.Instance.Play(particleLibrary, (EffectTesterStates)value, EffectManager.PlayMode.Continuous);
+    }
+
+    public void StopStateContinuous(int value)
+    {
+        // Provide library and state
+        EffectManager.Instance.Stop(audioLibrary, (EffectTesterStates)value);
+        EffectManager.Instance.Stop(particleLibrary, (EffectTesterStates)value);
+    }
 }

@@ -202,7 +202,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Elevator_Start
   animator: {fileID: 5163302906656544676}
   anim_triggerID: Activate
-  open_audio: {fileID: 8300000, guid: d5382c71dd1f46747a1ebb4ff5bcd73a, type: 3}
+  audioLibrary:
+    parameters:
+      origin: {fileID: 7624937737900030549}
+      output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+      randomizePitch: 0
+      spatial: 0
+    entries:
+    - state: 0
+      content: {fileID: 8300000, guid: d5382c71dd1f46747a1ebb4ff5bcd73a, type: 3}
+      eventKey: 
 --- !u!95 &5163302906656544676
 Animator:
   serializedVersion: 7

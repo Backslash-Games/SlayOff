@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class WeaponVisual : MonoBehaviour
 {
     [SerializeField] private Transform nozzle_transform = null;
     [SerializeField] private Vector3 hit_position = Vector3.zero;
+
+    public enum EffectStates { Init }
+    public EffectLibrary<EffectStates, VisualEffectAsset, EffectComponent_Visual.VisualParameters> particleLibrary;
 
     private RaycastHit hit_information;
 

@@ -519,7 +519,7 @@ MonoBehaviour:
       current: 0
     speed:
       tag: 4
-      basic: 14
+      basic: 12
       additive: 0
       percentage: 0
       current: 0
@@ -550,16 +550,25 @@ MonoBehaviour:
   collision: {fileID: 354065344162531705}
   physicsBody: {fileID: 6975090284264566048}
   awakeOnStart: 1
+  particleLibrary:
+    parameters:
+      origin: {fileID: 0}
+      length: 1
+    entries: []
   op_HealthBar: {fileID: 1848563302965132641}
+  audioLibrary:
+    parameters:
+      origin: {fileID: 7193134695487684072}
+      output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+      randomizePitch: 1
+      spatial: 1
+    entries:
+    - state: 0
+      content: {fileID: 8300000, guid: 2e7263020d61b854a885d06e27c2736b, type: 3}
+      eventKey: 
   audio_Muted: 0
   audio_spatial: 1
   audio_random_pitch: 1
-  e_audio:
-  - effectState: 0
-    audioClip: {fileID: 8300000, guid: 2e7263020d61b854a885d06e27c2736b, type: 3}
-  - effectState: 2
-    audioClip: {fileID: 8300000, guid: 1eb74b5221c788d4f9fc62db7667c9ac, type: 3}
-  e_vfx: []
   movementType: 1
   agent: {fileID: 2799094486503811705}
   eyes: {fileID: 754518240029882051}
@@ -623,9 +632,16 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
     crosshair_trigger: 0
-    audio_disable_spatial: 0
-    audio_attack: {fileID: 8300000, guid: 63a550537414d644281836911608ef57, type: 3}
-    audio_damage: {fileID: 0}
+    audioLibrary:
+      parameters:
+        origin: {fileID: 7193134695487684072}
+        output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+        randomizePitch: 1
+        spatial: 1
+      entries:
+      - state: 0
+        content: {fileID: 8300000, guid: 63a550537414d644281836911608ef57, type: 3}
+        eventKey: 
     hitTimeScale: 0.05
     hitTimeScaleResetDelay: 0.0875
     attacking: 0
@@ -637,7 +653,13 @@ MonoBehaviour:
   ranged_CooldownVariation: {x: -0.2, y: 0.2}
   ranged_animator: {fileID: 0}
   ranged_animation_id: 
-  ranged_audio: {fileID: 0}
+  attackAudioLibrary:
+    parameters:
+      origin: {fileID: 0}
+      output: {fileID: 0}
+      randomizePitch: 1
+      spatial: 1
+    entries: []
   anim_walking: {fileID: 5884346304993780175}
   anim_walking_MultiplierID: walk_speed
   anim_walking_Speed: 1

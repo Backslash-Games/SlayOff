@@ -17,7 +17,7 @@ public class EntityData : MonoBehaviour
     [SerializeField] private bool awakeOnStart = true;
     
     
-    public enum EffectState { Hurt, Heal, Death, Move };
+    public enum EffectState { Hurt, Heal, Death };
     [System.Serializable]
     private struct EntityAudio
     {
@@ -57,12 +57,12 @@ public class EntityData : MonoBehaviour
     }
 
     [Header("Entity Data - Visuals")]
-    [SerializeField] private EntityVFX[] visualEffects = new EntityVFX[0];
+    [SerializeField] private EffectLibrary<EffectState, VisualEffectAsset, EffectComponent_Visual.VisualParameters> particleLibrary;
     [Space]
     [SerializeField] private Image op_HealthBar = null;
 
     [Header("Entity Data - Audio")]
-    [SerializeField] private EntityAudio[] audioClips = new EntityAudio[0];
+    [SerializeField] private EffectLibrary<EffectState, AudioClip, EffectComponent_Audio.AudioParameters> audioLibrary;
     [Space]
     [SerializeField] private bool audio_Muted = false;
     [SerializeField] private bool audio_spatial = true;
@@ -454,6 +454,18 @@ public class EntityData : MonoBehaviour
         op_HealthBar.fillAmount = health / GetStatblock().GetHealth();
     }
 
+    /// <summary>
+    ///     Plays a visual effect
+    /// </summary>
+    /// <param name="type">Effect type</param>
+    public void PlayVFX(EffectState type)
+    {
+        if (EffectManager.Instance == null)
+            return;
+
+        // Play visual
+        EffectManager.Instance.Play(particleLibrary, type);
+    }
     #endregion
     #region Audio
     public void MuteAudio() { audio_Muted = true; }
@@ -463,40 +475,11 @@ public class EntityData : MonoBehaviour
     {
         if (audio_Muted)
             return;
-        if (AudioManager.Instance == null)
+        if (EffectManager.Instance == null)
             return;
 
-        // Get audio clip of type
-        foreach (EntityAudio value in audioClips)
-        {
-            if (value.GetEffectState().Equals(type))
-            {
-                // Play the audio clip
-                AudioManager.Instance.PlayAudio(value.GetAudioClip(), transform.position, audio_random_pitch, !audio_spatial);
-                return;
-            }
-        }
-
-    }
-    #endregion
-    #region VFX
-
-    public void PlayVFX(EffectState type)
-    {
-        if (VisualEffectManager.Instance == null)
-            return;
-
-        // Get audio clip of type
-        foreach (EntityVFX value in visualEffects)
-        {
-            if (value.GetEffectState().Equals(type))
-            {
-                // Play the vfx
-                VisualEffectManager.Instance.PlayVisual(value.GetVFXAsset(), transform.position, value.GetPlayTime(), value.GetEventName());
-                return;
-            }
-        }
-
+        // Play audio
+        EffectManager.Instance.Play(audioLibrary, type);
     }
     #endregion
 

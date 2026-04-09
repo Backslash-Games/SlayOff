@@ -32,14 +32,16 @@ public class VisualEffectManager : MonoBehaviour
     #region Unity Methods
     private void Awake()
     {
-        CreateSingleton();
+        Debug.LogWarning("VisualManager is depreciated, please refer to EffectManager");
+        //CreateSingleton();
     }
     #endregion
 
     #region Tools
     public void PlayVisual(VisualEffectAsset asset, Vector3 position, float time, string play_id)
     {
-        // Check if the clip is playable
+        Debug.LogWarning("VisualManager is depreciated, please refer to EffectManager");
+        /*// Check if the clip is playable
         if (!VisualEffectContainer.isPlayable(asset.name))
             return;
 
@@ -56,7 +58,7 @@ public class VisualEffectManager : MonoBehaviour
         }
 
         // Apply the clip to the effect
-        effect.Play(asset, time, play_id);
+        effect.Play(asset, time, play_id);*/
     }
     #endregion
 }

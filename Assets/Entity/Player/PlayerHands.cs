@@ -190,10 +190,9 @@ public class Weapon
     [Space]
     [SerializeField] private CrosshairController.CrosshairType crosshair_trigger = CrosshairController.CrosshairType.None;
 
+    private enum AttackEffectState { Attack, Damage };
     [Header("Audio")]
-    [SerializeField] private bool audio_disable_spatial = false;
-    [SerializeField] private AudioClip audio_attack;
-    [SerializeField] private AudioClip audio_damage;
+    [SerializeField] private EffectLibrary<AttackEffectState, AudioClip, EffectComponent_Audio.AudioParameters> audioLibrary;
 
     [Header("Slow Down")]
     [SerializeField] private float hitTimeScale = 0.05f;
@@ -368,8 +367,7 @@ public class Weapon
         // Spawn visual
         SpawnVisual();
         // Play audio
-        if(audio_attack != null)
-            AudioManager.Instance.PlayAudio(audio_attack, monoBehaviour.transform.position, true, audio_disable_spatial);
+        EffectManager.Instance.Play(audioLibrary, AttackEffectState.Attack);
 
         // Apply recoil
         if(recoil != 0)
@@ -438,8 +436,8 @@ public class Weapon
             // Check if entity is a player or an enemy
             if (entity.GetType().Equals(typeof(Enemy)) || entity.GetType().Equals(typeof(PlayerController)))
             {
-                if(audio_damage != null)
-                    AudioManager.Instance.PlayAudio(audio_damage, entity.transform.position, true, audio_disable_spatial);
+                // Play audio
+                EffectManager.Instance.Play(audioLibrary, AttackEffectState.Damage);
                 CrosshairController.Instance.RequestCrosshair(crosshair_trigger);
             }
         }

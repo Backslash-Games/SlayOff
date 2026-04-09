@@ -21,7 +21,8 @@ public class VisualEffectContainer : MonoBehaviour
     /// </summary>
     public void Play(VisualEffectAsset asset, float time, string play_id)
     {
-        // Check if the clip is null
+        Debug.LogWarning("VisualEffectContainer is depreciated, please refer to EffectComponent_Visual");
+        /*// Check if the clip is null
         if (vfx == null)
         {
             Debug.LogError("Attempted to play null visual effect");
@@ -42,7 +43,7 @@ public class VisualEffectContainer : MonoBehaviour
         // Mark as played
         played = true;
         // Start Audio and timer
-        effect_timer.Start();
+        effect_timer.Start();*/
     }
     #endregion
 

@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class FeedHandler : MonoBehaviour
 {
+    private enum FeedStates { CollectableGot };
+
     [SerializeField] private Transform parent;
     [SerializeField] private GameObject entryPrefab;
     [SerializeField] private int feedSpawnAmount;
@@ -18,7 +20,7 @@ public class FeedHandler : MonoBehaviour
     [Space]
     [SerializeField] private float bumpAmount = -5f;
     [Space]
-    [SerializeField] private AudioClip feedAudio_NewElementAdded;
+    [SerializeField] private EffectLibrary<FeedStates, AudioClip, EffectComponent_Audio.AudioParameters> audioLibrary;
 
     private FeedEntry[] collectibleFeedEntries;
     private bool[] awakeEntries;
@@ -113,8 +115,7 @@ public class FeedHandler : MonoBehaviour
         feedTarget = (feedTarget + 1) % feedSpawnAmount;
 
         // Play audio
-        if(play_audio)
-            AudioManager.Instance.PlayAudio(feedAudio_NewElementAdded, Vector3.zero, true, true);
+        EffectManager.Instance.Play(audioLibrary, FeedStates.CollectableGot);
 
 
         // Call on feed changed

@@ -75,8 +75,7 @@ public class WV_Stamp : WeaponVisual
 
         stamp_sprite.sprite = stamp_sprites[Random.Range(0, stamp_sprites.Length)];
 
-        if (dust_vfx != null)
-            VisualEffectManager.Instance.PlayVisual(dust_vfx, hit.point, 0.5f, dust_event_name);
+        EffectManager.Instance.Play(particleLibrary, EffectStates.Init);
 
         StartCoroutine(enum_DestroyStamp());
     }
