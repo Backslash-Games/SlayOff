@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EntitySpawnNode : MonoBehaviour
+public class EntitySpawnNode : MonoBehaviour, IActivatable
 {
     [SerializeField] private EntityData node_entity = null;
     [SerializeField] private EntityData spawn_entity = null;
@@ -12,6 +12,8 @@ public class EntitySpawnNode : MonoBehaviour
     [SerializeField] private float spawnTorque = 5;
     [Space]
     [SerializeField] private bool debug_spawnEnemy = false;
+
+    private static byte s_LastSpawnID = 0;
 
     /// <summary>
     ///     Spawns enemy on node
@@ -77,7 +79,33 @@ public class EntitySpawnNode : MonoBehaviour
 
     public GameObject GetSpawn()
     {
-        return possible_spawns[Random.Range(0, possible_spawns.Length)];
+        // Pull a random number
+        int rng = Random.Range(0, possible_spawns.Length);
+        // Check if it is a unique spawn
+        if (rng == s_LastSpawnID) 
+            rng = (s_LastSpawnID + 1) % possible_spawns.Length;
+        // Set last spawn
+        s_LastSpawnID = (byte)rng;
+
+        return possible_spawns[rng];
+    }
+    #endregion
+    #region Exposed Methods
+    /// <summary>
+    ///     Exposed for Unity Events
+    /// </summary>
+    public void Event_Spawn()
+    {
+        Spawn();
+    }
+    #endregion
+    #region Interface
+    /// <summary>
+    ///     IActivatable implementation
+    /// </summary>
+    public void Activate()
+    {
+        Spawn();
     }
     #endregion
 

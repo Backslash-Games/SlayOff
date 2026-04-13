@@ -553,15 +553,18 @@ MonoBehaviour:
   particleLibrary:
     parameters:
       origin: {fileID: 0}
+      originSticky: 0
       length: 1
     entries: []
   op_HealthBar: {fileID: 1848563302965132641}
   audioLibrary:
     parameters:
       origin: {fileID: 7193134695487684072}
+      originSticky: 1
       output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
       randomizePitch: 1
       spatial: 1
+      volume: 1
     entries:
     - state: 0
       content: {fileID: 8300000, guid: 2e7263020d61b854a885d06e27c2736b, type: 3}
@@ -635,9 +638,11 @@ MonoBehaviour:
     audioLibrary:
       parameters:
         origin: {fileID: 7193134695487684072}
+        originSticky: 0
         output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
         randomizePitch: 1
         spatial: 1
+        volume: 1
       entries:
       - state: 0
         content: {fileID: 8300000, guid: 63a550537414d644281836911608ef57, type: 3}
@@ -656,9 +661,11 @@ MonoBehaviour:
   attackAudioLibrary:
     parameters:
       origin: {fileID: 0}
+      originSticky: 0
       output: {fileID: 0}
       randomizePitch: 1
       spatial: 1
+      volume: 1
     entries: []
   anim_walking: {fileID: 5884346304993780175}
   anim_walking_MultiplierID: walk_speed

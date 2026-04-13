@@ -352,10 +352,10 @@ public class Enemy : EntityData
     }
     #endregion
     #region Death Handling
-    public override void OnDeath(bool play_audio = true)
+    public override void Death(bool play_audio = true)
     {
         SpawnCorpse();
-        base.OnDeath(play_audio);
+        base.Death(play_audio);
     }
     private void SpawnCorpse()
     {

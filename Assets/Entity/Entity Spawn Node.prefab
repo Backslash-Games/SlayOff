@@ -80,9 +80,9 @@ MonoBehaviour:
   node_entity: {fileID: 451234864477803241}
   spawn_entity: {fileID: 0}
   possible_spawns:
-  - {fileID: 6185055288174916116, guid: bb3dd68ef282f304a95d400dd7aee4e9, type: 3}
   - {fileID: 4182673380092842002, guid: af1a3cccf6c3cfd43b6560884a232fed, type: 3}
   - {fileID: 5169160842347327544, guid: 07c75d7a14474b540bcf3867230e4dae, type: 3}
+  - {fileID: 6185055288174916116, guid: bb3dd68ef282f304a95d400dd7aee4e9, type: 3}
   spawn_point: {fileID: 2664467202605681579}
   spawnForce: 8
   spawnTorque: 5

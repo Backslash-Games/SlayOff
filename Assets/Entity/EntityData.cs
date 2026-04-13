@@ -83,6 +83,15 @@ public class EntityData : MonoBehaviour
     ///     Event that tracks when the entity is healed
     /// </summary>
     public event HealthChanged OnHeal;
+
+    /// <summary>
+    ///     Delegate that tracks events bound to certain entity states
+    /// </summary>
+    public delegate void EntityState(bool playAudio);
+    /// <summary>
+    ///     Event that tracks when entity is dead
+    /// </summary>
+    public event EntityState OnDeath;
     #endregion
 
 
@@ -179,14 +188,17 @@ public class EntityData : MonoBehaviour
     {
         OnHurt += (_, _, _) => Tick_HealthBar();
         OnHeal += (_, _, _) => Tick_HealthBar();
+
+        OnDeath += Death;
     }
     /// <summary>
-    ///     Unbinds basic entity data events
+    ///     Unbinds all events
     /// </summary>
     private void UnbindEvents()
     {
-        OnHurt -= (_, _, _) => Tick_HealthBar();
-        OnHeal -= (_, _, _) => Tick_HealthBar();
+        OnHurt = null;
+        OnHeal = null;
+        OnDeath = null;
     }
     #endregion
 
@@ -264,7 +276,7 @@ public class EntityData : MonoBehaviour
 
         // Check for a kill
         if (isDead())
-            OnDeath(play_audio);
+            OnDeath?.Invoke(play_audio);
     }
     /// <summary>
     ///     Kills the entity
@@ -281,7 +293,7 @@ public class EntityData : MonoBehaviour
     /// <summary>
     ///     Virtual Void - What code is run when the entity dies
     /// </summary>
-    public virtual void OnDeath(bool play_audio = true)
+    public virtual void Death(bool play_audio = true)
     {
         // Play death audio
         if (play_audio)

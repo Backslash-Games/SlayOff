@@ -12,8 +12,7 @@ public class CardboardBox : EntityData
     private static readonly float deathTimer = 0.25f;
     private static readonly float deathTimerRandom = 0.075f;
 
-    private static readonly float cleanupTimer = 3;
-    private static readonly float cleanupVelocityThreshold = 0.025f;
+    private static readonly float cleanupTimer = 0.5f;
     private bool boxDead = false;
 
     [Space]
@@ -38,7 +37,7 @@ public class CardboardBox : EntityData
     {
         base.OnEnabled();
     }
-    public override void OnDeath(bool play_audio = true)
+    public override void Death(bool play_audio = true)
     {
         SetDeadState(true);
         StartCoroutine(DelayDeathCoroutine());
@@ -65,12 +64,6 @@ public class CardboardBox : EntityData
         }
 
         yield return new WaitForSeconds(cleanupTimer);
-
-        // -> Old freeze functionality
-        //while(GetLinearVelocity().magnitude >= cleanupVelocityThreshold && transform.position.y > -250)
-        //yield return new WaitForEndOfFrame();
-        //GetRigidbody().isKinematic = true;
-        //GetCollision().enabled = false;
 
         CleanupBox();
     }
@@ -138,5 +131,6 @@ public class CardboardBox : EntityData
     }
 
     public void SetDeadState(bool state) { boxDead = state; }
+    public bool isBoxDead() { return boxDead; }
     #endregion
 }

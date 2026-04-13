@@ -7,10 +7,12 @@ public class EffectComponent : MonoBehaviour
 {
     #region Parameter Class
     [System.Serializable]
-    public class Parameters 
+    public class Parameters
     {
-        public Transform origin;
+        public Transform origin; // Defines the origin of the effect
+        public bool sticky = true; // Flag that checks if the effect should follow the origin
         private bool _continuous = false;
+
         #region Get Set Methods
         public bool GetContinuousState() { return _continuous; }
         public void SetContinuousState(bool state) { _continuous = state; }
@@ -18,7 +20,7 @@ public class EffectComponent : MonoBehaviour
     }
     #endregion
     public enum EffectState { None, Initialized, Started, Paused, Stopped, Completed };
-    
+
     [Header("Effect Variables")]
     public EffectState effectState = EffectState.None;
     #region Effect State Events
@@ -50,12 +52,16 @@ public class EffectComponent : MonoBehaviour
     #region Sequencing
     public virtual void Initialize(Parameters p)
     {
-        // Apply basic parameters
-        transform.position = p.origin.position;
+        // Stick effect to origin
+        StickToOrigin(p);
+
+        // Check if we need to make the effect sticky
+        if (p.sticky)
+            effectTimer.OnCooldownUpdate += () => StickToOrigin(p);
     }
-    public virtual void Play(object target, Parameters parameters, string eventKey, EffectManager.PlayMode mode) 
-    { 
-        Initialize(parameters); 
+    public virtual void Play(object target, Parameters parameters, string eventKey, EffectManager.PlayMode mode)
+    {
+        Initialize(parameters);
     }
     // public virtual void Pause() { }
     public virtual void Stop() { CleanupEffect(); }
@@ -72,6 +78,15 @@ public class EffectComponent : MonoBehaviour
 
         // Destroy
         Destroy(gameObject);
+    }
+
+    /// <summary>
+    ///     Sets the effect position to the origin.
+    /// </summary>
+    /// <param name="p">Parameters</param>
+    private void StickToOrigin(Parameters p)
+    {
+        transform.position = p.origin.position;
     }
     #endregion
 

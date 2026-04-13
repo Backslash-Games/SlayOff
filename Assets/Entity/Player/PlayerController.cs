@@ -247,7 +247,7 @@ public class PlayerController : EntityData
         CrosshairController.Instance.RequestCrosshair(CrosshairController.CrosshairType.Heal);
     }
 
-    public override void OnDeath(bool play_audio = true)
+    public override void Death(bool play_audio = true)
     {
         if (is_dead)
             return;

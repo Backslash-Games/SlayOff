@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 3343367029755230457}
   - component: {fileID: 627542441760889512}
   m_Layer: 9
-  m_Name: CardboardBox_Corpse
+  m_Name: CardboardBox - Corpse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
