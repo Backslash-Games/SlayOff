@@ -283,13 +283,21 @@ public class CameraController : MonoBehaviour
     #region Set Methods
     public void ForceCameraLookAt(Vector3 position)
     {
+        // Calculate lookat
         yaw.LookAt(position);
         Vector3 cAngles = yaw.eulerAngles;
 
+        // Check for pitch correction
+        if (cAngles.x > 180) cAngles -= Vector3.right * 360;
+
+        // Apply variables
         yaw.eulerAngles = new Vector3(0, cAngles.y, 0);
         current_yaw = cAngles.y % 360;
         pitch.eulerAngles = new Vector3(cAngles.x, cAngles.y, 0);
         current_pitch = cAngles.x % 360;
+        
+        cinemachineCamera.PreviousStateIsValid = false;
+        cinemachineCamera.InternalUpdateCameraState(Vector3.up, 0);
     }
 
     public void SetSensitivity(float horizontal, float vertical)

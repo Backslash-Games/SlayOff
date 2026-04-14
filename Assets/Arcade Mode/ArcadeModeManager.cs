@@ -16,8 +16,8 @@ public class ArcadeModeManager : MonoBehaviour
     private Arcade_Tile[] cf_tiles = new Arcade_Tile[0];
     private Arcade_Room[] cf_rooms = new Arcade_Room[0];
 
-    [Header("Waypoint Tracking")]
-    [SerializeField] private Elevator[] elevators = new Elevator[3]; // Should always be 3 entries
+    [Header("Elevator")]
+    [SerializeField] private Elevator _elevator;
 
     [Header("Player Tracking")]
     [SerializeField] private bool ptrackingEnabled = false;
@@ -30,9 +30,6 @@ public class ArcadeModeManager : MonoBehaviour
     public event RoomTracking OnRoomEntered;
     public event RoomTracking OnRoomLeft;
 
-    public delegate void ModeSequence(int target_elevator);
-    public event ModeSequence OnPlayerStaged;
-
     #region Unity Methods
     private void Awake()
     {
@@ -40,13 +37,13 @@ public class ArcadeModeManager : MonoBehaviour
 
         PT_Awake();
         RH_Awake();
-        WP_Awake();
+        IntermissionElevator_Awake();
     }
     private void OnDestroy()
     {
         PT_Destroy();
         RH_Destroy();
-        WP_Destroy();
+        IntermissionElevator_Destroy();
     }
 
     private void LateUpdate()
@@ -226,56 +223,26 @@ public class ArcadeModeManager : MonoBehaviour
     }
     #endregion
 
-    #region Waypoints
-    private void WP_Awake()
-    {
-        GetArcadeGenerator().OnGenerationSuccess += (_, _, _, _) => WP_GatherEndpoints();
-        GetArcadeGenerator().OnGenerationSuccess += (_, _, _, _) => WP_MoveToPoint(0, 1);
-    }
-    private void WP_Destroy()
-    {
-        GetArcadeGenerator().OnGenerationSuccess -= (_, _, _, _) => WP_GatherEndpoints();
-        GetArcadeGenerator().OnGenerationSuccess -= (_, _, _, _) => WP_MoveToPoint(0, 1);
-    }
-
+    #region Intermission Elevator
     /// <summary>
-    ///     Gets elevators at the start and finish of the stage
+    ///     Intermission elevator specific awake method
     /// </summary>
-    private void WP_GatherEndpoints()
+    private void IntermissionElevator_Awake()
     {
-        // Get elevators at each end of the stage
-        elevators[1] = GameObject.FindGameObjectWithTag("Elevator_Start").GetComponent<Elevator>();
-        elevators[2] = GameObject.FindGameObjectWithTag("Elevator_End").GetComponent<Elevator>();
-    }
+        // Make sure our generator is set
+        if (GetArcadeGenerator() == null)
+            return;
 
+        // Create new floor when arriving at the intermission elevator
+        _elevator.OnArrival += generator.GenerateNew;
+
+        // Teleport once generation is done
+        generator.OnGenerationSuccess += (_, _, _, _) => _elevator.Teleport();
+    }
     /// <summary>
-    ///     Move from current to new
+    ///     Intermission elevator specific destroy method
     /// </summary>
-    /// <param name="currentIndex">Our current location</param>
-    /// <param name="otherIndex">Location we want to end up at</param>
-    public void WP_MoveToPoint(int currentIndex, int otherIndex)
-    {
-        if(otherIndex >= elevators.Length)
-        {
-            Debug.Log($"Point index is out of bounds :: index:{otherIndex} length:{elevators.Length}");
-            return;
-        }
-        // Get the elevator at index
-        Elevator nElevator = elevators[otherIndex];
-        // Make sure our new position isnt null
-        if (nElevator == null)
-        {
-            Debug.Log($"No point set :: index:{otherIndex}");
-            return;
-        }
-        // Move the player to the new point
-        Vector3 position = nElevator.MirrorVectorPosition(GetPlayer().transform.position, elevators[currentIndex]);
-        Vector3 cameraOrientation = nElevator.MirrorVectorPosition(Camera.main.transform.position + (Camera.main.transform.forward), elevators[currentIndex]);
-        GetPlayer().Teleport(position, cameraOrientation);
-
-        // Run on staging player
-        OnPlayerStaged?.Invoke(otherIndex);
-    }
+    private void IntermissionElevator_Destroy() { }
     #endregion
     #region Results
     #endregion

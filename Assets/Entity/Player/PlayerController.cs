@@ -776,21 +776,20 @@ public class PlayerController : EntityData
     }
     #endregion
     #region Positioning
-    public void Teleport(Vector3 position, Vector3 eyeTracking) { StartCoroutine(IEnum_Teleport(position, eyeTracking)); }
-    private IEnumerator IEnum_Teleport(Vector3 position, Vector3 eyeTracking)
+    public void Teleport(Vector3 position, Vector3 eyeTracking)
     {
-        GetRigidbody().isKinematic = true;
-        GetRigidbody().interpolation = RigidbodyInterpolation.None;
-        usePhysics = false;
+        Teleport(position, eyeTracking, GetLinearVelocity());
+    }
+    public void Teleport(Vector3 position, Vector3 eyeTracking, Vector3 velocity)
+    {
+        // Pull data
+        Rigidbody rb = GetRigidbody();
 
-        ResetVelocity();
-        transform.position = position;
+        // Set data
+        rb.position = transform.position = position;
+        rb.linearVelocity = velocity;
+
         cameraController.ForceCameraLookAt(eyeTracking);
-        yield return new WaitForSeconds(0.1f);
-
-        GetRigidbody().isKinematic = false;
-        GetRigidbody().interpolation = RigidbodyInterpolation.Interpolate;
-        usePhysics = true;
     }
     #endregion
 
