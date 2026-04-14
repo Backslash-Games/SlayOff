@@ -6,7 +6,8 @@ public class Arcade_Room : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private Bounds bounds;
-    private static readonly float player_padding = 0.8f;
+    private static readonly float s_triggerPadding = 0.8f;
+    private static readonly float s_oobPadding = 10;
 
     [Header("Assets")]
     [SerializeField] private bool skipAssetClear = false;
@@ -25,6 +26,7 @@ public class Arcade_Room : MonoBehaviour
     private List<EntityData> activeEnemies = new List<EntityData>();
 
     [Header("Components")]
+    [SerializeField] private Transform _respawnPoint;
     [SerializeField] private Arcade_Door[] doors;
 
     private int lastDoorInteracted = 0;
@@ -44,7 +46,10 @@ public class Arcade_Room : MonoBehaviour
         Gizmos.DrawWireCube(GetBounds_World().center, GetBounds_World().size);
 
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireCube(GetPlayerBounds_World().center, GetPlayerBounds_World().size);
+        Gizmos.DrawWireCube(GetRoomTriggerBounds_World().center, GetRoomTriggerBounds_World().size);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(GetOutOfBounds_World().center, GetOutOfBounds_World().size);
     }
     private void OnDestroy()
     {
@@ -171,12 +176,32 @@ public class Arcade_Room : MonoBehaviour
 
         return wBounds;
     }
-    public Bounds GetPlayerBounds_World()
+    /// <summary>
+    ///     Gets world bounds with padding
+    /// </summary>
+    /// <returns></returns>
+    private Bounds GetPaddedBounds_World(Vector3 padding)
     {
         Bounds pBounds = GetBounds_World();
-        pBounds.size = pBounds.size - new Vector3(player_padding, 0, player_padding);
+        pBounds.size = pBounds.size + padding;
 
         return pBounds;
+    }
+    /// <summary>
+    ///     Gets the bounds of the room where the player can trigger events within
+    /// </summary>
+    /// <returns>Room Trigger Boundary - World</returns>
+    public Bounds GetRoomTriggerBounds_World()
+    {
+        return GetPaddedBounds_World(new Vector3(-1, 0, -1) * s_triggerPadding);
+    }
+    /// <summary>
+    ///     Gets the bounds of the room that are considered out of bounds
+    /// </summary>
+    /// <returns>Out of Bounds - World</returns>
+    public Bounds GetOutOfBounds_World()
+    {
+        return GetPaddedBounds_World(Vector3.one * s_oobPadding);
     }
 
     /// <summary>
@@ -338,6 +363,20 @@ public class Arcade_Room : MonoBehaviour
         combatState = state;
     }
     #endregion
+    #endregion
+
+    #region Respawn Management
+    public Transform GetRespawnPoint() 
+    {
+        // Check if the respawn point is null, if so panic create
+        if (_respawnPoint == null) 
+        {
+            _respawnPoint = new GameObject($"{name} - Respawn Point").transform;
+            _respawnPoint.parent = transform;
+            _respawnPoint.localPosition = Vector3.up * 3;
+        }
+        return _respawnPoint; 
+    }
     #endregion
 
     #region Debug

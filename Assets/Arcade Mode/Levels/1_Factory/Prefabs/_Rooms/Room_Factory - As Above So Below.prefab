@@ -1142,6 +1142,7 @@ MonoBehaviour:
   - {fileID: 4669833645851162774}
   - {fileID: 2029408008759886096}
   - {fileID: 778276981571705393}
+  _respawnPoint: {fileID: 0}
   doors:
   - {fileID: 1687299018471894893}
   - {fileID: 6411634876896845366}
@@ -5472,6 +5473,10 @@ PrefabInstance:
     - target: {fileID: 405824515844705947, guid: 6496e877449f0cc4b9be3367bdeb6992, type: 3}
       propertyPath: m_Name
       value: Factory_Floor_4x4 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 405824515844705947, guid: 6496e877449f0cc4b9be3367bdeb6992, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1074697384004539425, guid: 6496e877449f0cc4b9be3367bdeb6992, type: 3}
       propertyPath: m_LocalPosition.x

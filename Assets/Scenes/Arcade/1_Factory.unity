@@ -242,6 +242,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3452777774234471798, guid: 4fe52d88f3a05234baaf9a4864dd111a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5150798504085189995, guid: 4fe52d88f3a05234baaf9a4864dd111a, type: 3}
       propertyPath: m_Name
       value: Elevator - Intermission
@@ -603,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc0669b8151cc341a1020ec228824e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcadeGenerator
-  tileset: {fileID: 11400000, guid: e819e651fb3a0734ca88b66c21e75a73, type: 2}
+  tileset: {fileID: 11400000, guid: d05a13a3ad2229f4ab6cd0fc73c5ae8a, type: 2}
   buildMode: 0
   stage: 3
   seed: -1
@@ -684,6 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArcadeModeManager
   generator: {fileID: 1563074866}
   results: {fileID: 119948252}
+  _playerInStage: 0
   _elevator: {fileID: 381245755}
   ptrackingEnabled: 0
   pt_roomId: 

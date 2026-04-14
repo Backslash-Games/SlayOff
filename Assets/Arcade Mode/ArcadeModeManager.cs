@@ -9,6 +9,8 @@ public class ArcadeModeManager : MonoBehaviour
     [Header("General")]
     [SerializeField] private ArcadeGenerator generator = null;
     [SerializeField] private ArcadeResultsHandler results = null;
+    [Space]
+    [SerializeField] private bool _playerInStage = false;
     private PlayerController player = null;
 
     private int cf_index = 0;
@@ -68,6 +70,7 @@ public class ArcadeModeManager : MonoBehaviour
         }
     }
     #endregion
+
     #region Player Tracking
     /// <summary>
     ///     Setup for player tracking
@@ -100,6 +103,7 @@ public class ArcadeModeManager : MonoBehaviour
 
         // Run logic
         PT_TrackPlayer();
+        PT_OutOfBounds();
     }
 
     /// <summary>
@@ -127,6 +131,27 @@ public class ArcadeModeManager : MonoBehaviour
                 cDepth++;
         }
     }
+    /// <summary>
+    ///     Tracks if the player makes it out of bounds
+    /// </summary>
+    private void PT_OutOfBounds()
+    {
+        // Check if we are in the stage
+        if (!_playerInStage)
+            return;
+        // Make sure our last known index is correct
+        if (pt_lastKnownIndex < 0 || pt_lastKnownIndex >= cf_rooms.Length)
+            return;
+        // Check if we are in the out of bounds region in the current room
+        if (cf_rooms[pt_lastKnownIndex].GetOutOfBounds_World().Contains(GetPlayer().transform.position))
+            return;
+
+        // Log as an error
+        Debug.LogError("Player is out of bounds, attempting to fix");
+        // Respawn player in room
+        Transform rPoint = cf_rooms[pt_lastKnownIndex].GetRespawnPoint();
+        GetPlayer().Teleport(rPoint.position, Vector3.zero, Vector3.zero);
+    }
 
     /// <summary>
     ///     Checks if the player is in a room using room index
@@ -142,7 +167,7 @@ public class ArcadeModeManager : MonoBehaviour
 
         Arcade_Room cRoom = cf_rooms[cIndex];
         // Check bounds
-        return cRoom.GetPlayerBounds_World().Contains(GetPlayer().transform.position);
+        return cRoom.GetRoomTriggerBounds_World().Contains(GetPlayer().transform.position);
     }
     /// <summary>
     ///     Sets the players current room
@@ -233,6 +258,9 @@ public class ArcadeModeManager : MonoBehaviour
         if (GetArcadeGenerator() == null)
             return;
 
+        // Locate player
+        _elevator.OnArrival += () => SetPlayerInStage(false);
+        _elevator.OnDeparture += () => SetPlayerInStage(true);
         // Create new floor when arriving at the intermission elevator
         _elevator.OnArrival += generator.GenerateNew;
 
@@ -274,6 +302,10 @@ public class ArcadeModeManager : MonoBehaviour
         cf_parent = cFloorParent;
         cf_tiles = tiles;
         cf_rooms = rooms;
+    }
+    private void SetPlayerInStage(bool state)
+    {
+        _playerInStage = state;
     }
     #endregion
 }
