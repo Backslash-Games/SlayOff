@@ -12,6 +12,8 @@ public class ArcadeGenerator : MonoBehaviour
 
     [Header("Generation")]
     [SerializeField] private Arcade_Tileset tileset;
+    [SerializeField] private ArcadeProgression progression;
+    [Space]
     [SerializeField] private BuildMode buildMode = BuildMode.Normal;
     [SerializeField] private BuildStage stage = BuildStage.Failed;
     [Space]
@@ -45,6 +47,10 @@ public class ArcadeGenerator : MonoBehaviour
     public event BuildPhase OnGenerationPlacing;
     public event BuildPhase OnGenerationSuccess;
     public event BuildPhase OnGenerationFailed;
+
+    [Header("Inspector View")]
+    [SerializeField] private List<Arcade_Tile> floorRoomCollection;
+    [SerializeField] private List<Arcade_Tile> floorHallCollection;
 
 
     #region Unity Methods
@@ -111,20 +117,24 @@ public class ArcadeGenerator : MonoBehaviour
         // Ensure floor parent always exists
         CreateNewFloorParent();
         // Set difficulty
-        length = Mathf.Clamp(currentFloor, lengthRange.x, lengthRange.y);
+        length = Mathf.Clamp(lengthRange.x + (currentFloor - 1), lengthRange.x, lengthRange.y);
+
+        // Organize collections
+        floorRoomCollection = tileset.GetRandomCollection_Room();
+        floorHallCollection = tileset.GetRandomCollection_Hall();
 
         // Place spawn room
         await PlaceTile(tileset.GetSpawnRoom());
         // Spawn tiles until there is no more length
         for (int i = 0; i < length; i++)
         {
-            await PlaceCombo(tileset.GetRandom_Hall(), tileset.GetRandom_Room());
+            await PlaceCombo(GetFromCollection(floorHallCollection, i), GetFromCollection(floorRoomCollection, i));
             if (stage.Equals(BuildStage.Failed))
                 break;
         }
         // Place goal room
         if (!stage.Equals(BuildStage.Failed))
-            await PlaceCombo(tileset.GetRandom_Hall(), tileset.GetGoalRoom());
+            await PlaceCombo(GetFromCollection(floorHallCollection, length), tileset.GetGoalRoom());
 
         // Check for a failed generation
         if (stage.Equals(BuildStage.Failed))
@@ -136,7 +146,7 @@ public class ArcadeGenerator : MonoBehaviour
         }
     }
 
-    #region Floor Handling
+    #region Floor/Tileset Handling
     /// <summary>
     ///     Creates a new floor parent
     /// </summary>
@@ -145,6 +155,9 @@ public class ArcadeGenerator : MonoBehaviour
         currentFloor++;
         cFloorParent = (new GameObject($"Floor - {currentFloor}")).transform;
         cFloorParent.transform.parent = transform;
+
+        // Set the current floor tileset
+        SetTileset(progression.GetTileset(currentFloor));
     }
 
     /// <summary>
@@ -157,6 +170,8 @@ public class ArcadeGenerator : MonoBehaviour
             CreateNewFloorParent();
         return cFloorParent;
     }
+
+    private void SetTileset(Arcade_Tileset value) { tileset = value; }
     #endregion
     #region Tile Handling
     private async Task PlaceCombo(Arcade_Tile hallway, Arcade_Tile room)
@@ -375,11 +390,11 @@ public class ArcadeGenerator : MonoBehaviour
     private async Task GenDebug_ConnectionTest()
     {
         // Place 5 tiles
-        await PlaceTile(tileset.GetRandom_Room(), false);
-        await PlaceTile(tileset.GetRandom_Room(), false);
-        await PlaceTile(tileset.GetRandom_Room(), false);
-        await PlaceTile(tileset.GetRandom_Room(), false);
-        await PlaceTile(tileset.GetRandom_Room(), false);
+        await PlaceTile(tileset.GetRandomTile_Room(), false);
+        await PlaceTile(tileset.GetRandomTile_Room(), false);
+        await PlaceTile(tileset.GetRandomTile_Room(), false);
+        await PlaceTile(tileset.GetRandomTile_Room(), false);
+        await PlaceTile(tileset.GetRandomTile_Room(), false);
 
         // Run connections
         ConnectRooms(rooms[1], rooms[0], ct_otherDoorIndex, 0);
@@ -439,5 +454,7 @@ public class ArcadeGenerator : MonoBehaviour
 
     #region Get Methods
     public int GetCurrentFloor() { return currentFloor; }
+
+    private Arcade_Tile GetFromCollection(List<Arcade_Tile> collection, int index) { return collection[index % collection.Count]; }
     #endregion
 }

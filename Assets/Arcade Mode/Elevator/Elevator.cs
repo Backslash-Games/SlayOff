@@ -6,6 +6,7 @@ public class Elevator : MonoBehaviour
 {
     public enum ElevatorTag { Start, Intermission, End };
     public enum TeleportationTag { Waypoint, ArcadeManaged };
+    public enum AudioTag { Arrived };
 
     [Header("Attributes")]
     public ElevatorTag elevatorTag = ElevatorTag.Start;
@@ -16,6 +17,9 @@ public class Elevator : MonoBehaviour
     [SerializeField] private Animator _animator;
     private static readonly string sr_arrivalAnimation = "Elevator_Start_Open";
     private static readonly string sr_departureAnimation = "Elevator_End_Close";
+
+    [Header("Audio")]
+    [SerializeField] private EffectLibrary<AudioTag, AudioClip, EffectComponent_Audio.AudioParameters> audioLibrary;
 
     [Header("Hitbox")]
     [SerializeField] private bool _drawTigger = false;
@@ -66,9 +70,11 @@ public class Elevator : MonoBehaviour
     private void Awake()
     {
         BindEvents();
-        OrientTriggerZone();
-
         General_Awake();
+    }
+    private void FixedUpdate()
+    {
+        OrientTriggerZone();
     }
     private void Update()
     {
@@ -85,6 +91,7 @@ public class Elevator : MonoBehaviour
     /// </summary>
     private void General_Awake()
     {
+        Start_Awake();
         Intermission_Awake();
         End_Awake();
     }
@@ -98,6 +105,17 @@ public class Elevator : MonoBehaviour
     #endregion
 
     #region Start
+    /// <summary>
+    ///     Intermission specific awake method
+    /// </summary>
+    private void Start_Awake()
+    {
+        // Check if we have the Intermission tag
+        if (!elevatorTag.Equals(ElevatorTag.Start))
+            return;
+        // Bind Audio
+        OnArrival += () => PlayAudio(AudioTag.Arrived);
+    }
     #endregion
     #region Intermission
     /// <summary>
@@ -215,13 +233,21 @@ public class Elevator : MonoBehaviour
     }
     #endregion
     #region Hitbox Manager
+    private bool _triggerDefaultSet = false;
+    private Vector3 _triggerDefaultOffset = Vector3.zero;
     /// <summary>
     ///     Orients the trigger zone properly
     /// </summary>
     private void OrientTriggerZone()
     {
+        // Mark default
+        if (!_triggerDefaultSet)
+        {
+            _triggerDefaultOffset = _triggerZone.GetOffset();
+            _triggerDefaultSet = true;
+        }
         // Set position and rotation of trigger zone
-        _triggerZone.SetOffset(transform.rotation * _triggerZone.GetOffset());
+        _triggerZone.SetOffset(transform.rotation * _triggerDefaultOffset);
         _triggerZone.SetLocalEuler(transform.eulerAngles);
     }
     #endregion
@@ -274,6 +300,12 @@ public class Elevator : MonoBehaviour
     ///     REMOVED
     /// </summary>
     public void TriggerAnimation(int elevator_index) { }
+    #endregion
+    #region Audio
+    private void PlayAudio(AudioTag audio)
+    {
+        EffectManager.Instance.Play(audioLibrary, audio);
+    }
     #endregion
     #region Math
     /// <summary>

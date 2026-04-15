@@ -4285,6 +4285,18 @@ MonoBehaviour:
   teleportationTag: 0
   _targetElevator: {fileID: 0}
   _animator: {fileID: 6092765747492125693}
+  audioLibrary:
+    parameters:
+      origin: {fileID: 2254304458155899861}
+      sticky: 1
+      output: {fileID: -3694600693420450596, guid: 901e5f4ed2ae5764da5b789143de4d28, type: 2}
+      randomizePitch: 0
+      spatial: 0
+      volume: 1
+    entries:
+    - state: 0
+      content: {fileID: 8300000, guid: d5382c71dd1f46747a1ebb4ff5bcd73a, type: 3}
+      eventKey: 
   _drawTigger: 1
   _triggerZone:
     parent: {fileID: 2254304458155899861}

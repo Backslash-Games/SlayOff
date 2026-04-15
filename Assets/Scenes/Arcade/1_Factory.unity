@@ -607,12 +607,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc0669b8151cc341a1020ec228824e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcadeGenerator
-  tileset: {fileID: 11400000, guid: d05a13a3ad2229f4ab6cd0fc73c5ae8a, type: 2}
+  tileset: {fileID: 0}
+  progression:
+    arcadeProgressionEntries:
+    - identification: Factory - Easy
+      tileset: {fileID: 11400000, guid: d05a13a3ad2229f4ab6cd0fc73c5ae8a, type: 2}
+      floor: 0
+    - identification: Factory
+      tileset: {fileID: 11400000, guid: e819e651fb3a0734ca88b66c21e75a73, type: 2}
+      floor: 3
   buildMode: 0
   stage: 3
   seed: -1
   length: 5
-  lengthRange: {x: 3, y: 10}
+  lengthRange: {x: 2, y: 9}
   maxDoorChecks: 12
   currentFloor: 0
   cFloorParent: {fileID: 0}
@@ -622,6 +630,8 @@ MonoBehaviour:
   ds_delay: 1
   PlayerActions: {fileID: -944628639613478452, guid: 8d57450c8a21e0941bcb9e1e21f31d38, type: 3}
   ct_otherDoorIndex: 0
+  floorRoomCollection: []
+  floorHallCollection: []
 --- !u!4 &1563074867
 Transform:
   m_ObjectHideFlags: 0

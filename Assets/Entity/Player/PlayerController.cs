@@ -230,15 +230,9 @@ public class PlayerController : EntityData
     #region Events
     private void PlayerController_OnHurt(string source, Vector3 origin, float amount)
     {
-        // Apply whiplash
-        CameraController.Instance.AddModifierWhiplash(origin, whiplashStrength, whiplashReduction);
-
-        // -> Get hurt rotation
-        Vector3 direction = Camera.main.transform.rotation * (origin - transform.position).normalized;
-        Vector2 flat_direction = new Vector2(direction.x, direction.z);
-        float rotation = Vector2.SignedAngle(Vector2.up, flat_direction);
-        // Apply crosshair
-        CrosshairController.Instance.RequestCrosshair(CrosshairController.CrosshairType.Hurt, -rotation);
+        // Apply hurt effects
+        CameraController.Instance.AddModifierWhiplash(origin, whiplashStrength * amount, whiplashReduction);
+        CrosshairController.Instance.RequestCrosshair_Point(CrosshairController.CrosshairType.Hurt, Camera.main.transform, origin);
     }
 
     private void PlayerController_OnHeal(string source, Vector3 origin, float amount)

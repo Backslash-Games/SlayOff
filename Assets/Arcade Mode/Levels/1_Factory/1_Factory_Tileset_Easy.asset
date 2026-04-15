@@ -15,6 +15,12 @@ MonoBehaviour:
   spawnRoom: {fileID: 11400000, guid: 761ed89602bfcf44f9b51a747c98bce5, type: 2}
   goalRoom: {fileID: 11400000, guid: c7b021e60f425aa45bf5dae4cb233a05, type: 2}
   rooms:
-  - {fileID: 11400000, guid: d44155e8eafab4d4db4f1c9c72812c1d, type: 2}
+  - {fileID: 11400000, guid: 1f0eba78a6d11934d9a18705d762f552, type: 2}
+  - {fileID: 11400000, guid: aee8abb3a66bc004fb3419e2ae701d40, type: 2}
+  - {fileID: 11400000, guid: f469cdbf54779dd43a4d1b59bae2cbc0, type: 2}
   halls:
   - {fileID: 11400000, guid: 91c03e16ff7d33e4397302f456fc6b80, type: 2}
+  - {fileID: 11400000, guid: 77de616ac5c6bc943953d13dc9f2ddda, type: 2}
+  - {fileID: 11400000, guid: c55f36eea2bc50d4491937b58e2f79e6, type: 2}
+  - {fileID: 11400000, guid: be352b113e293b24382c2f5c71d355e4, type: 2}
+  - {fileID: 11400000, guid: 066fcc7d2e29f6d4ba13d7c365f6b528, type: 2}

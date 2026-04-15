@@ -134,5 +134,20 @@ public class CrosshairController : MonoBehaviour
         crosshairs[index].Trigger();
         crosshairs[index].SetParentRotation(rotation);
     }
+
+    /// <summary>
+    ///     Requests a crosshair that points to a target
+    /// </summary>
+    public void RequestCrosshair_Point(CrosshairType type, Transform source, Vector3 target)
+    {
+        // Get point rotation
+        Vector3 direction = (target - source.position).normalized;
+        Vector2 flat_direction = new Vector2(direction.x, direction.z);
+        float rotation = Vector2.SignedAngle(Vector2.up, flat_direction);
+        rotation += source.eulerAngles.y;
+
+        // Request crosshair
+        RequestCrosshair(type, rotation);
+    }
     #endregion
 }

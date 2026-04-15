@@ -263,6 +263,8 @@ public class ArcadeModeManager : MonoBehaviour
         _elevator.OnDeparture += () => SetPlayerInStage(true);
         // Create new floor when arriving at the intermission elevator
         _elevator.OnArrival += generator.GenerateNew;
+        // Heal player on arrival
+        _elevator.OnArrival += () => GetPlayer().Heal("Elevator.Intermission.Arrival", 35);
 
         // Teleport once generation is done
         generator.OnGenerationSuccess += (_, _, _, _) => _elevator.Teleport();
@@ -282,17 +284,18 @@ public class ArcadeModeManager : MonoBehaviour
             generator = FindAnyObjectByType<ArcadeGenerator>();
         return generator;
     }
-    private PlayerController GetPlayer()
-    {
-        if (player == null)
-            player = FindAnyObjectByType<PlayerController>();
-        return player;
-    }
     public ArcadeResultsHandler GetArcadeResults()
     {
         if (results == null)
             results = FindAnyObjectByType<ArcadeResultsHandler>();
         return results;
+    }
+    
+    private PlayerController GetPlayer()
+    {
+        if (player == null)
+            player = FindAnyObjectByType<PlayerController>();
+        return player;
     }
     #endregion
     #region Set Methods

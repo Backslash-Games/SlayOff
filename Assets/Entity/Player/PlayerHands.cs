@@ -460,7 +460,7 @@ public class Weapon
     private void ApplyDamage(EntityData target)
     {
         // Apply the knockback to the target
-        target.Hurt($"Weapon.{id}", monoBehaviour.transform.position, damage);
+        target.Hurt($"Weapon.{id}", orientationTransform.transform.position, damage);
     }
 
     #endregion
