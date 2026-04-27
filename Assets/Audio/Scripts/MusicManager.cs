@@ -1,4 +1,5 @@
 using UnityEngine;
+using HFHandyUtils.Effects;
 using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour

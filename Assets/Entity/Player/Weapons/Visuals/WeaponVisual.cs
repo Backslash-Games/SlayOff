@@ -1,4 +1,5 @@
 using UnityEngine;
+using HFHandyUtils.Effects;
 using UnityEngine.VFX;
 
 public class WeaponVisual : MonoBehaviour

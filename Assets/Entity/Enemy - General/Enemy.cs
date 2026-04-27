@@ -1,4 +1,6 @@
 using UnityEngine;
+using HFHandyUtils.Effects;
+using HFHandyUtils.Physics;
 using UnityEngine.AI;
 
 public class Enemy : EntityData
@@ -32,7 +34,7 @@ public class Enemy : EntityData
     [Header("Attack.Melee")]
     [SerializeField] private Hitbox_Sphere melee_AggressionRange;
     [SerializeField] private Weapon melee_Weapon;
-    [SerializeField] private AnimationEvent melee_Tracking;
+    [SerializeField] private HFHandyUtils.Animation.AnimationEvent melee_Tracking;
     [SerializeField] private bool melee_DrawHitbox;
     [SerializeField] private bool lock_eyes_OnAttack = true;
 

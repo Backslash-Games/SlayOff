@@ -179,7 +179,7 @@ public class CameraController : MonoBehaviour
         // Get the current time for slerping speed
         float cTime = Mathf.Clamp01((cMagnitude - cameraFOV_minimumVelocity) / (cameraFOV_maximumVelocity - cameraFOV_minimumVelocity));
         //-> Scale our time by accuracy to ensure a stronger result when looking towards movement
-        cTime = cTime * Mathf.Clamp01(Mathm.GetVectorAccuracy(simVelocity, cameraForward) / cameraFOV_accuracyMaxThreshold);
+        cTime = cTime * Mathf.Clamp01(Mathh.GetVectorAccuracy(simVelocity, cameraForward) / cameraFOV_accuracyMaxThreshold);
         // Get the current and new FOV
         float currentFOV = GetCinemachineCamera().Lens.FieldOfView;
         float newFOV = Mathf.Lerp(cameraFOV_range.x, cameraFOV_range.y, cTime);
@@ -237,8 +237,8 @@ public class CameraController : MonoBehaviour
     public void AddModifierWhiplash(Vector3 origin, float strength, float reduction_rate)
     {
         // Calculate the vector accuracy between direction of input and camera forward
-        float front_accuracy = Mathm.GetVectorAccuracy(camera.transform.forward, camera.transform.position - origin);
-        float side_accuracy = Mathm.GetVectorAccuracy(camera.transform.right, camera.transform.position - origin);
+        float front_accuracy = Mathh.GetVectorAccuracy(camera.transform.forward, camera.transform.position - origin);
+        float side_accuracy = Mathh.GetVectorAccuracy(camera.transform.right, camera.transform.position - origin);
 
         // Whiplash impacts pitch and roll
         // -> Calculate pitch impact
@@ -314,7 +314,7 @@ public class CameraController : MonoBehaviour
 
         output += "FOV\n";
         output += $"Current FOV {GetCinemachineCamera().Lens.FieldOfView}\n";
-        float vva = Mathm.GetVectorAccuracy(GetPlayer().GetHorizontalVelocity(), GetCameraForward_Horizontal());
+        float vva = Mathh.GetVectorAccuracy(GetPlayer().GetHorizontalVelocity(), GetCameraForward_Horizontal());
         output += $"Velocty-View Accuracy {vva} || Scaled with threshold({cameraFOV_accuracyMaxThreshold}) {Mathf.Clamp01(vva / cameraFOV_accuracyMaxThreshold)}\n";
         output += $"Range {cameraFOV_range} || Min-Velocity {cameraFOV_minimumVelocity} || Max-Velocity {cameraFOV_maximumVelocity} || Delta Scale {cameraFOV_deltaScale}\n";
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using HFHandyUtils.Effects;
 using UnityEngine.VFX;
 
 public class WV_Stamp : WeaponVisual

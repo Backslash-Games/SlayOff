@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using HFHandyUtils.Physics;
 
 public class PlayerController : EntityData
 {
@@ -556,7 +557,7 @@ public class PlayerController : EntityData
         slidingIdealMomentumPivot = Vector3.Cross(slidingIdealMomentumNormal, Vector3.up).normalized;
         slidingIdealMomentumDirection = Vector3.Cross(slidingIdealMomentumNormal, slidingIdealMomentumPivot).normalized;
         // Calculate accuracy
-        slidingMomentumAccuracy = Mathm.GetVectorAccuracy(Mathm.RemoveVerticalAxis(slidingDirection), Mathm.RemoveVerticalAxis(slidingIdealMomentumDirection));
+        slidingMomentumAccuracy = Mathh.GetVectorAccuracy(Mathh.RemoveVerticalAxis(slidingDirection), Mathh.RemoveVerticalAxis(slidingIdealMomentumDirection));
         slidingCurrentSpeed = Mathf.Clamp((slidingCurrentSpeed + (slidingMomentumAccuracy - 0.5f) * slidingDownHillBonus) - slidingFrictionRate, 0, float.MaxValue);
     }
     #endregion

@@ -1,4 +1,5 @@
 using UnityEngine;
+using HFHandyUtils;
 
 public class EntitySpawnNode : MonoBehaviour, IActivatable
 {

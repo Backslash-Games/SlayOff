@@ -1,7 +1,10 @@
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using HFHandyUtils;
+using HFHandyUtils.Effects;
+using HFHandyUtils.Physics;
 
 public class PlayerHands : MonoBehaviour
 {
@@ -180,7 +183,7 @@ public class Weapon
     private bool a_InitialAttackFlag = false;
     [SerializeField] private string[] a_AttackIDs = new string[0];
     [Space]
-    [SerializeField] private AnimationEvent a_Event;
+    [SerializeField] private HFHandyUtils.Animation.AnimationEvent a_Event;
     [Space]
 
     [Header("Visuals")]
@@ -279,7 +282,7 @@ public class Weapon
         if (calculateLengthBonus)
         {
             Vector3 linearVelocity = player.GetLinearVelocity();
-            hitboxSpeedScaleBonus = Mathf.Lerp(0, maxLengthBonus, (linearVelocity.magnitude / maxLengthVelocity) * Mathm.GetVectorAccuracy(linearVelocity, orientationTransform.forward));
+            hitboxSpeedScaleBonus = Mathf.Lerp(0, maxLengthBonus, (linearVelocity.magnitude / maxLengthVelocity) * Mathh.GetVectorAccuracy(linearVelocity, orientationTransform.forward));
         }
         Vector3 cHitboxScale = hitboxDefault_Size + (Vector3.forward * hitboxSpeedScaleBonus);
         hitbox.SetSize(cHitboxScale);

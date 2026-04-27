@@ -1,4 +1,5 @@
 using UnityEngine;
+using HFHandyUtils.Math;
 
 [System.Serializable]
 public class Collectible
@@ -72,12 +73,12 @@ public class Collectible
     }
     public Collectible(uint binary)
     {
-        SetDefinition((byte)Mathm.GetBinaryRange(binary, binary_definitionIndex, 8));
+        SetDefinition((byte)Mathh.GetBinaryRange(binary, binary_definitionIndex, 8));
 
-        quality = (cQuality)Mathm.GetBinaryRange(binary, binary_qualityIndex, 4);
-        material = (cMaterial)Mathm.GetBinaryRange(binary, binary_materialIndex, 4);
-        defect = (cDefect)Mathm.GetBinaryRange(binary, binary_defectIndex, 4);
-        SetOtherFlagsFromInt((int)Mathm.GetBinaryRange(binary, binary_otherIndex, 4));
+        quality = (cQuality)Mathh.GetBinaryRange(binary, binary_qualityIndex, 4);
+        material = (cMaterial)Mathh.GetBinaryRange(binary, binary_materialIndex, 4);
+        defect = (cDefect)Mathh.GetBinaryRange(binary, binary_defectIndex, 4);
+        SetOtherFlagsFromInt((int)Mathh.GetBinaryRange(binary, binary_otherIndex, 4));
     }
     #endregion
 
@@ -97,22 +98,22 @@ public class Collectible
     ///     Sets random quality
     /// </summary>
     private void SetRandomQuality() { quality = (cQuality)GetRandomQuality(); }
-    public static int GetRandomQuality() { return Randomu.GetWeightedIndex(qWeight); }
+    public static int GetRandomQuality() { return Randomh.GetWeightedIndex(qWeight); }
     /// <summary>
     ///     Sets random material
     /// </summary>
-    private void SetRandomMaterial() { material = (cMaterial)Randomu.GetWeightedIndex(mWeight); }
-    public static int GetRandomMaterial() { return Randomu.GetWeightedIndex(mWeight); }
+    private void SetRandomMaterial() { material = (cMaterial)Randomh.GetWeightedIndex(mWeight); }
+    public static int GetRandomMaterial() { return Randomh.GetWeightedIndex(mWeight); }
     /// <summary>
     ///     Sets random defect
     /// </summary>
-    private void SetRandomDefect() { defect = (cDefect)Randomu.GetWeightedIndex(dWeight); }
-    public static int GetRandomDefect() { return Randomu.GetWeightedIndex(dWeight); }
+    private void SetRandomDefect() { defect = (cDefect)Randomh.GetWeightedIndex(dWeight); }
+    public static int GetRandomDefect() { return Randomh.GetWeightedIndex(dWeight); }
     /// <summary>
     ///     Sets random anomaly
     /// </summary>
-    private void SetRandomAnomaly() { anomaly = Randomu.GetWeightedIndex(aWeight) == 1; }
-    public static int GetRandomAnomaly() { return Randomu.GetWeightedIndex(aWeight); }
+    private void SetRandomAnomaly() { anomaly = Randomh.GetWeightedIndex(aWeight) == 1; }
+    public static int GetRandomAnomaly() { return Randomh.GetWeightedIndex(aWeight); }
     #endregion
     #region String Methods
     /// <summary>
@@ -219,12 +220,12 @@ public class Collectible
     {
         uint binary = 0;
 
-        Mathm.SetBinaryRange(binary_definitionIndex, input.GetDefinitionID(), ref binary); // Set Definition
+        Mathh.SetBinaryRange(binary_definitionIndex, input.GetDefinitionID(), ref binary); // Set Definition
 
-        Mathm.SetBinaryRange(binary_qualityIndex, (uint)input.GetQuality(), ref binary); // Set Quality
-        Mathm.SetBinaryRange(binary_materialIndex, (uint)input.GetMaterial(), ref binary); // Set Material
-        Mathm.SetBinaryRange(binary_defectIndex, (uint)input.GetDefect(), ref binary); // Set Defect
-        Mathm.SetBinaryRange(binary_otherIndex, (uint)input.GetOtherFlagsAsInt(), ref binary); // Set Other
+        Mathh.SetBinaryRange(binary_qualityIndex, (uint)input.GetQuality(), ref binary); // Set Quality
+        Mathh.SetBinaryRange(binary_materialIndex, (uint)input.GetMaterial(), ref binary); // Set Material
+        Mathh.SetBinaryRange(binary_defectIndex, (uint)input.GetDefect(), ref binary); // Set Defect
+        Mathh.SetBinaryRange(binary_otherIndex, (uint)input.GetOtherFlagsAsInt(), ref binary); // Set Other
 
         return binary;
     }
@@ -232,12 +233,12 @@ public class Collectible
     {
         uint binary = 0;
 
-        Mathm.SetBinaryRange(binary_definitionIndex, definitionID, ref binary); // Set Definition
+        Mathh.SetBinaryRange(binary_definitionIndex, definitionID, ref binary); // Set Definition
 
-        Mathm.SetBinaryRange(binary_qualityIndex, quality, ref binary); // Set Quality
-        Mathm.SetBinaryRange(binary_materialIndex, material, ref binary); // Set Material
-        Mathm.SetBinaryRange(binary_defectIndex, defect, ref binary); // Set Defect
-        Mathm.SetBinaryRange(binary_otherIndex, other, ref binary); // Set Other
+        Mathh.SetBinaryRange(binary_qualityIndex, quality, ref binary); // Set Quality
+        Mathh.SetBinaryRange(binary_materialIndex, material, ref binary); // Set Material
+        Mathh.SetBinaryRange(binary_defectIndex, defect, ref binary); // Set Defect
+        Mathh.SetBinaryRange(binary_otherIndex, other, ref binary); // Set Other
 
         return binary;
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using HFHandyUtils.Physics;
 
 public class Projectile : EntityData
 {

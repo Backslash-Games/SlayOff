@@ -1,4 +1,5 @@
 using UnityEngine;
+using HFHandyUtils;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour

@@ -82,13 +82,13 @@ public class CollectibleGenerator : MonoBehaviour
     {
         string output = "";
 
-        output += $"Collectible Identifier: {Mathm.IntToBinaryString(collectibleIdentifier)} ({collectibleIdentifier})\n";
-        output += $". > Definition: {Mathm.GetBinaryRange(collectibleIdentifier, 0, 8)}\n";
-        output += $". > Quality: {Mathm.GetBinaryRange(collectibleIdentifier, 8, 4)}\n";
-        output += $". > Material: {Mathm.GetBinaryRange(collectibleIdentifier, 12, 4)}\n";
-        output += $". > Defect: {Mathm.GetBinaryRange(collectibleIdentifier, 16, 4)}\n";
-        output += $". > Other: {Mathm.GetBinaryRange(collectibleIdentifier, 20, 4)}\n";
-        output += $". > Quantity: {Mathm.GetBinaryRange(collectibleIdentifier, 24, 8)}\n";
+        output += $"Collectible Identifier: {Mathh.IntToBinaryString(collectibleIdentifier)} ({collectibleIdentifier})\n";
+        output += $". > Definition: {Mathh.GetBinaryRange(collectibleIdentifier, 0, 8)}\n";
+        output += $". > Quality: {Mathh.GetBinaryRange(collectibleIdentifier, 8, 4)}\n";
+        output += $". > Material: {Mathh.GetBinaryRange(collectibleIdentifier, 12, 4)}\n";
+        output += $". > Defect: {Mathh.GetBinaryRange(collectibleIdentifier, 16, 4)}\n";
+        output += $". > Other: {Mathh.GetBinaryRange(collectibleIdentifier, 20, 4)}\n";
+        output += $". > Quantity: {Mathh.GetBinaryRange(collectibleIdentifier, 24, 8)}\n";
         output += "\n";
 
         output += $"Stored Collectible: {(storedCollectible != null ? storedCollectible.ToString() : "Null")}\n";
