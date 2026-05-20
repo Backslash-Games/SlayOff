@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using HFHandyUtils;
+using HFHandyUtils.Time;
 using HFHandyUtils.Effects;
 using HFHandyUtils.Physics;
 

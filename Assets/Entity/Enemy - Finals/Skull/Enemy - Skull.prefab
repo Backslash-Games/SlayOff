@@ -683,7 +683,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2859541989916349314}
   - component: {fileID: 8435891925892676530}
-  - component: {fileID: 4073761257037637591}
   - component: {fileID: 8536292328606663538}
   - component: {fileID: 3912239165203275083}
   - component: {fileID: 4067763178177525984}
@@ -909,25 +908,6 @@ MonoBehaviour:
   anim_walking_MultiplierID: walk_speed
   anim_walking_Speed: 1
   corpsePrefab: {fileID: 8860802262748790544, guid: 56ca120d74a1da8438347b4d71f6aa69, type: 3}
---- !u!114 &4073761257037637591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4182673380092842002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fae24d59cc254d4d8674e5b53b0672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonoDebug
-  suppressAllMonoDebug: 0
-  suppressLocalMonoDebug: 1
-  offset: {x: 0, y: 0, z: 0}
-  textColor: {r: 0, g: 0, b: 0, a: 1}
-  debugStyle: 1
-  canvas_allignment: 1025
-  source: {fileID: 8435891925892676530}
 --- !u!33 &8536292328606663538
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1221,10 +1201,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5866528863361344362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d023cee143ab3ae4d85457b86c0b8507, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a015c04a06f98042a81427804c3fb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationEvent
-  id: Enemy Template Melee Event
+  id: New Animation Event
   flag: 0
 --- !u!1 &6385821614159615059
 GameObject:
@@ -1560,10 +1540,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7552775651178005923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d023cee143ab3ae4d85457b86c0b8507, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a015c04a06f98042a81427804c3fb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationEvent
-  id: Enemy Template Melee Event
+  id: New Animation Event
   flag: 0
 --- !u!1 &7869051090834140548
 GameObject:

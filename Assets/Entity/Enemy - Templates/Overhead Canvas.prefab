@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3145916681475075605}
   - component: {fileID: 6421300611262822109}
   - component: {fileID: 5485928243017479161}
-  - component: {fileID: 4755816609486967449}
   m_Layer: 8
   m_Name: Overhead Canvas
   m_TagString: Untagged
@@ -103,20 +102,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4755816609486967449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 387782077262587895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: caa038f017f5349488773cd655e59a87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Billboard
-  active: 1
-  target: {fileID: 1975940794113035636}
 --- !u!1 &947880576191679504
 GameObject:
   m_ObjectHideFlags: 0

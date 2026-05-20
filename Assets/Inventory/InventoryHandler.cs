@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using HFHandyUtils.Math;
+using HFHandyUtils.Data;
 
 public class InventoryHandler : MonoBehaviour
 {

@@ -163,10 +163,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1925842921046553245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d023cee143ab3ae4d85457b86c0b8507, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a015c04a06f98042a81427804c3fb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationEvent
-  id: Gnat Attack
+  id: New Animation Event
   flag: 0
 --- !u!1 &3415946275318414087
 GameObject:
@@ -448,7 +448,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7193134695487684072}
   - component: {fileID: 3019909226547303173}
-  - component: {fileID: 342340801534372776}
   - component: {fileID: 4965327395947958166}
   - component: {fileID: 671707293583262160}
   - component: {fileID: 354065344162531705}
@@ -671,25 +670,6 @@ MonoBehaviour:
   anim_walking_MultiplierID: walk_speed
   anim_walking_Speed: 1
   corpsePrefab: {fileID: 6461290523642570747, guid: 90d8f2c629c575c41987e0ba32e61b7a, type: 3}
---- !u!114 &342340801534372776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5169160842347327544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fae24d59cc254d4d8674e5b53b0672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonoDebug
-  suppressAllMonoDebug: 0
-  suppressLocalMonoDebug: 1
-  offset: {x: 0, y: 0, z: 0}
-  textColor: {r: 0, g: 0, b: 0, a: 1}
-  debugStyle: 1
-  canvas_allignment: 1025
-  source: {fileID: 3019909226547303173}
 --- !u!33 &4965327395947958166
 MeshFilter:
   m_ObjectHideFlags: 0

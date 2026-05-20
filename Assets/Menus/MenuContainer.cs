@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using HFHandyUtils;
+using HFHandyUtils.Time;
 using UnityEngine.Events;
 
 [System.Serializable]

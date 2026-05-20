@@ -1,5 +1,5 @@
 using UnityEngine;
-using HFHandyUtils;
+using HFHandyUtils.Time;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
