@@ -261,8 +261,8 @@ public class Weapon
     private void StoreHitboxDefault()
     {
         hitboxDefault_Offset = hitbox.GetOffset();
-        hitboxDefault_Size = hitbox.GetSize();
-        hitboxDefault_LocalEuler = hitbox.GetLocalEuler();
+        hitboxDefault_Size = hitbox.size;
+        hitboxDefault_LocalEuler = hitbox.localEuler;
 
         RecalculateHitbox();
     }
@@ -276,7 +276,7 @@ public class Weapon
             return;
 
         // -> Rotate Box
-        hitbox.SetLocalEuler(orientationTransform.eulerAngles + hitboxDefault_LocalEuler);
+        hitbox.localEuler = orientationTransform.eulerAngles + hitboxDefault_LocalEuler;
         // -> Scale box
         float hitboxSpeedScaleBonus = 0;
         if (calculateLengthBonus)
@@ -285,7 +285,7 @@ public class Weapon
             hitboxSpeedScaleBonus = Mathf.Lerp(0, maxLengthBonus, (linearVelocity.magnitude / maxLengthVelocity) * Mathh.GetVectorAccuracy(linearVelocity, orientationTransform.forward));
         }
         Vector3 cHitboxScale = hitboxDefault_Size + (Vector3.forward * hitboxSpeedScaleBonus);
-        hitbox.SetSize(cHitboxScale);
+        hitbox.size = cHitboxScale;
         // -> Position Box
         Vector3 cHitboxPosition = orientationTransform.rotation * (hitboxDefault_Offset + (Vector3.forward * hitboxSpeedScaleBonus / 2f));
         hitbox.SetOffset(cHitboxPosition);
@@ -634,7 +634,7 @@ public class Weapon
         WeaponVisual cVisual = cObject.GetComponent<WeaponVisual>();
 
         // Shoot ray
-        float rLength = hitbox.GetSize().z;
+        float rLength = hitbox.size.z;
         Vector3 hitPosition = (monoBehaviour.transform.forward * rLength) + monoBehaviour.transform.position;
         if (Physics.Raycast(monoBehaviour.transform.position, monoBehaviour.transform.forward, out RaycastHit hit, rLength, wv_hitmask))
         {

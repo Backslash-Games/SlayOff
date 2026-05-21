@@ -250,7 +250,7 @@ public class Elevator : MonoBehaviour
         }
         // Set position and rotation of trigger zone
         _triggerZone.SetOffset(transform.rotation * _triggerDefaultOffset);
-        _triggerZone.SetLocalEuler(transform.eulerAngles);
+        _triggerZone.localEuler = transform.eulerAngles;
     }
     #endregion
 

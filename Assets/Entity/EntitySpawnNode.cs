@@ -104,10 +104,11 @@ public class EntitySpawnNode : MonoBehaviour, IActivatable
     /// <summary>
     ///     IActivatable implementation
     /// </summary>
-    public void Activate()
+    public void OnActivate()
     {
         Spawn();
     }
+    public void OnDeactivate() { }
     #endregion
 
     #region Debug

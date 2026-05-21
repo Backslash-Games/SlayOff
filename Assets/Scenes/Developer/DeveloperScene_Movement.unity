@@ -5879,7 +5879,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 911387873}
-  - component: {fileID: 911387872}
   m_Layer: 0
   m_Name: tc_MonoControl
   m_TagString: Untagged
@@ -5887,19 +5886,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &911387872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 911387871}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c99982f8ef7ea4499b1be704a01c2d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::tc_MonoControl
-  timeScale: 1
 --- !u!4 &911387873
 Transform:
   m_ObjectHideFlags: 0

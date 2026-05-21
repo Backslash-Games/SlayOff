@@ -251,7 +251,7 @@ public class Enemy : EntityData
         Vector3 movementPrediction = cPlayer.GetLinearVelocity();
 
         // Adjust scale based on distance
-        float distanceModifier = Vector3.Distance(transform.position, cPlayer.transform.position) / targetingRange.GetRadius();
+        float distanceModifier = Vector3.Distance(transform.position, cPlayer.transform.position) / targetingRange.radius;
         movementPrediction *= distanceModifier * movementPredictionStrength;
 
         return movementPrediction;
