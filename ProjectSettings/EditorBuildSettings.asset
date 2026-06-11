@@ -12,5 +12,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Arcade/1_Factory.unity
     guid: f2b74b3521fee35439739c67fdd4c36d
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8d57450c8a21e0941bcb9e1e21f31d38, type: 3}
   m_UseUCBPForAssetBundles: 0
