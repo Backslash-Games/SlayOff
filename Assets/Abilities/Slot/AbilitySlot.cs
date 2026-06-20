@@ -1,12 +1,8 @@
 using HFHandyUtils;
-using HFHandyUtils.Time;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
-using UnityEditor.Build;
 using UnityEngine;
-using UnityEngine.InputSystem.DualShock;
 using UnityEngine.UI;
 
 public class AbilitySlot : MonoBehaviour, ITrigger
@@ -25,7 +21,10 @@ public class AbilitySlot : MonoBehaviour, ITrigger
     [Header("Graphical")]
     [SerializeField] private TextMeshProUGUI displayName = null;
     [SerializeField] private Image displayImage = null;
+    [SerializeField] private Image modifierIcon = null;
     [SerializeField] private Image abilityIcon = null;
+    [SerializeField] private Image abilityIcon_shadow = null;
+    [SerializeField] private Image abilityIcon_animation = null;
     [SerializeField] public Color color = Color.white;
 
     [Header("Binding")]
@@ -33,51 +32,127 @@ public class AbilitySlot : MonoBehaviour, ITrigger
     [SerializeField] private HFHandyUtils.Time.Cooldown abilityCooldown;
     [SerializeField] private AbilitySlot[] adjacentSlots = new AbilitySlot[6];
 
+    [Header("Modfiers")]
+    [SerializeField] private AbilitySlotModifier modifier = null;
+
     [Header("Chaining")]
-    [SerializeField] private List<AdjacentDirection> chainDirections = new List<AdjacentDirection>();
+    [SerializeField] public List<AdjacentDirection> chainDirections = new List<AdjacentDirection>();
 
-    private static readonly bool s_ShowGizmos = false;
-
-    private static readonly float s_AdjacentRadius = 100;
-    private static readonly float s_TopBottomThreshold = 10f;
-
-    private static readonly float s_AnimationResetThreshold = 1f;
-
-    private static readonly float s_ClickAnimationResetSpeed = 10f;
-    private static readonly float s_ClickAnimationVerticalOffset = 15;
-
-    private static readonly float s_AbilityAnimationResetSpeed = 1.85f;
-    private static readonly float s_AbilityAnimationFadeoutDelay = 4f;
-    private static readonly float s_AbilityAnimationVerticalOffset = 75;
-
-    private static readonly float s_TextColorScale = 0.282353f;
-
-    private static readonly float s_DefaultCooldownTime = 1.25f;
-    private static readonly float s_ChainDelay = 0.24f;
-
+    #region Private Variables
     // Slot Data
+    private static Sprite s_BlankAbilityIcon = null;
     private static Sprite s_DefaultAbilityIcon = null;
 
     private Color _ClickVisualColor = Color.black;
     private Color _AbilityActivationResetColor = Color.black;
 
-
     // Records
     private float _ObjectVerticalPosition = 0;
     private float _AbilityIconVerticalOffset = 0;
 
+    // Last click information
+    private Vector2 _lastClick = Vector2.zero;
+    #endregion
+    #region Private Static Variables
+
+    #region Debug
+    /// <summary>
+    ///     Flag that dictates if we are showing gizmos
+    /// </summary>
+    private static readonly bool s_ShowGizmos = true;
+    #endregion
+
+    #region Adjacent Settings
+    /// <summary>
+    ///     Search radius for adjacent assignments
+    /// </summary>
+    private static readonly float s_AdjacentRadius = 100;
+    /// <summary>
+    ///     Threshold for a top/bottom check
+    /// </summary>
+    private static readonly float s_TopBottomThreshold = 10f;
+    #endregion
+
+    #region Animation - General
+    /// <summary>
+    ///     Threshold for resetting animations
+    /// </summary>
+    private static readonly float s_AnimationResetThreshold = 1f;
+    #endregion
+    #region Animation - Click
+    /// <summary>
+    ///     Click animation's reset speed
+    /// </summary>
+    private static readonly float s_ClickAnimationResetSpeed = 10f;
+    /// <summary>
+    ///     Click animation default vertical offset
+    /// </summary>
+    private static readonly float s_ClickAnimationVerticalOffset = 15;
+    #endregion
+    #region Animation - Ability
+    /// <summary>
+    ///     Ability animation reset speed
+    /// </summary>
+    private static readonly float s_AbilityAnimationResetSpeed = 1.85f;
+    /// <summary>
+    ///     Ability animation fadeout delay
+    /// </summary>
+    private static readonly float s_AbilityAnimationFadeoutDelay = 4f;
+    /// <summary>
+    ///     Ability animation default vertical offset
+    /// </summary>
+    private static readonly float s_AbilityAnimationVerticalOffset = 75;
+    #endregion
+
+    #region Color
+    /// <summary>
+    ///     Darken scale for text color
+    /// </summary>
+    private static readonly float s_TextColorScale = 0.282353f;
+    /// <summary>
+    ///     Darken scale for text color
+    /// </summary>
+    private static readonly Color s_LockColor = new Color(0.3f, 0.3f, 0.3f, 1);
+    #endregion
+
+    #region Cooldown
+    /// <summary>
+    ///     Default cooldown time
+    /// </summary>
+    private static readonly float s_DefaultCooldownTime = 1.25f;
+    /// <summary>
+    ///     Ability slot chain delay
+    /// </summary>
+    private static readonly float s_ChainDelay = 0.24f;
+    #endregion
+    #region Interaction
+    /// <summary>
+    ///     Ability interaction distance
+    /// </summary>
+    private static readonly float s_ClickDistance = 30f;
+    /// <summary>
+    ///     Correction for ability interactions
+    /// </summary>
+    private static readonly Vector2 s_ClickOffset = Vector2.up * 2.5f;
+    #endregion
+
+    #endregion
+
+
+
     #region Sequencing
-    private void OnEnable()
+    private void Start()
     {
         // Setup information
         // -> Transform
         _ObjectVerticalPosition = transform.localPosition.y;
-        _AbilityIconVerticalOffset = abilityIcon.transform.localPosition.y;
+        _AbilityIconVerticalOffset = abilityIcon_animation.transform.localPosition.y;
         // -> Click
         _ClickVisualColor = new Color(color.r * 0.6f, color.g * 0.6f, color.b * 0.6f, 1);
         // -> Ability
-        if (s_DefaultAbilityIcon == null) s_DefaultAbilityIcon = abilityIcon.sprite;
-        _AbilityActivationResetColor = abilityIcon.color = new Color(abilityIcon.color.r, abilityIcon.color.g, abilityIcon.color.b, 0);
+        if (s_BlankAbilityIcon == null) s_BlankAbilityIcon = (Sprite)Resources.Load("Fallbacks/Sprites/Blank", typeof(Sprite));
+        if (s_DefaultAbilityIcon == null) s_DefaultAbilityIcon = (Sprite)Resources.Load("Fallbacks/Sprites/Ability_Icon_Default", typeof(Sprite));
+        _AbilityActivationResetColor = abilityIcon_animation.color = new Color(abilityIcon_animation.color.r, abilityIcon_animation.color.g, abilityIcon_animation.color.b, 0);
 
         // Setup cooldown
         float cooldownTime = boundAbility == null ? s_DefaultCooldownTime : boundAbility.cooldownTime;
@@ -85,8 +160,11 @@ public class AbilitySlot : MonoBehaviour, ITrigger
         abilityCooldown.OnStart += () => { onCooldown = true; };
         abilityCooldown.OnEnd += () => { onCooldown = false; };
         abilityCooldown.OnUpdate += UpdateFill;
+
+        // Ensure ability is not set
+        BindAbility(null);
     }
-    private void OnDisable()
+    private void OnDestroy()
     {
         if(abilityCooldown != null) abilityCooldown.RemoveAllListeners();
     }
@@ -129,7 +207,17 @@ public class AbilitySlot : MonoBehaviour, ITrigger
     /// </summary>
     public void UpdateFill()
     {
-        displayImage.fillAmount = abilityCooldown.GetPercentComplete();
+        displayImage.fillAmount = abilityIcon.fillAmount = abilityCooldown.GetPercentComplete();
+    }
+
+    /// <summary>
+    ///     Sets the modifier icon
+    /// </summary>
+    /// <param name="sprite">New sprite</param>
+    private void SetModifierIcon(Sprite sprite)
+    {
+        if (modifierIcon == null) return;
+        modifierIcon.sprite = sprite;
     }
     #endregion
     #region Trigger
@@ -141,7 +229,7 @@ public class AbilitySlot : MonoBehaviour, ITrigger
         abilityCooldown.Start();
 
         // Debug
-        HFLogger.Log("Triggered " + bindingName);
+        //HFLogger.Log("Triggered " + bindingName);
 
         // Trigger ability
         if (boundAbility != null) boundAbility.OnTrigger();
@@ -168,6 +256,18 @@ public class AbilitySlot : MonoBehaviour, ITrigger
             if (index < 0 || index >= adjacentSlots.Length) continue;
             if (adjacentSlots[index] != null) adjacentSlots[index].OnTrigger();
         }
+    }
+    #endregion
+    #region Ability
+    /// <summary>
+    ///     Binds a new ability to the slot
+    /// </summary>
+    /// <param name="ability">New ability</param>
+    public void BindAbility(Ability ability)
+    {
+        boundAbility = ability;
+        abilityIcon.sprite = abilityIcon_shadow.sprite = abilityIcon_animation.sprite = ability == null || ability.icon == null ? s_BlankAbilityIcon : ability.icon;
+        abilityCooldown.SetBasicRate(ability == null ? s_DefaultCooldownTime : ability.cooldownTime);
     }
     #endregion
 
@@ -316,53 +416,93 @@ public class AbilitySlot : MonoBehaviour, ITrigger
 
     private IEnumerator AbilityActivatedAnimation()
     {
-        // Set sprite
-        if (boundAbility == null || boundAbility.icon == null) abilityIcon.sprite = s_DefaultAbilityIcon;
-        else abilityIcon.sprite = boundAbility.icon;
-
         // Position and set visual
-        Color cColor = abilityIcon.color = new Color(abilityIcon.color.r, abilityIcon.color.g, abilityIcon.color.b, 1);
-        abilityIcon.transform.localPosition = new Vector3(abilityIcon.transform.localPosition.x, s_ClickAnimationVerticalOffset + _AbilityIconVerticalOffset, abilityIcon.transform.localPosition.z);
+        Color cColor = abilityIcon_animation.color = new Color(abilityIcon_animation.color.r, abilityIcon_animation.color.g, abilityIcon_animation.color.b, 1);
+        abilityIcon_animation.transform.localPosition = new Vector3(abilityIcon_animation.transform.localPosition.x, s_ClickAnimationVerticalOffset + _AbilityIconVerticalOffset, abilityIcon_animation.transform.localPosition.z);
 
-        Vector3 cPosition = abilityIcon.transform.localPosition;
-        Vector3 tPosition = new Vector3(abilityIcon.transform.localPosition.x, _AbilityIconVerticalOffset + s_AbilityAnimationVerticalOffset, abilityIcon.transform.localPosition.z);
+        Vector3 cPosition = abilityIcon_animation.transform.localPosition;
+        Vector3 tPosition = new Vector3(abilityIcon_animation.transform.localPosition.x, _AbilityIconVerticalOffset + s_AbilityAnimationVerticalOffset, abilityIcon_animation.transform.localPosition.z);
 
         // Move icon
-        float cDistance = Vector3.Distance(abilityIcon.transform.localPosition, tPosition);
+        float cDistance = Vector3.Distance(abilityIcon_animation.transform.localPosition, tPosition);
         while (cDistance > s_AnimationResetThreshold)
         {
             yield return new WaitForEndOfFrame();
-            abilityIcon.color = Color.Lerp(_AbilityActivationResetColor, cColor, (cDistance * s_AbilityAnimationFadeoutDelay) / s_AbilityAnimationVerticalOffset);
+            abilityIcon_animation.color = Color.Lerp(_AbilityActivationResetColor, cColor, (cDistance * s_AbilityAnimationFadeoutDelay) / s_AbilityAnimationVerticalOffset);
             // Set position
             cPosition = Vector3.Lerp(cPosition, tPosition, Time.deltaTime * s_AbilityAnimationResetSpeed);
-            abilityIcon.transform.localPosition = cPosition + Mathf.Abs(transform.localPosition.y - _ObjectVerticalPosition) * Vector3.up;
+            abilityIcon_animation.transform.localPosition = cPosition + Mathf.Abs(transform.localPosition.y - _ObjectVerticalPosition) * Vector3.up;
 
-            cDistance = Vector3.Distance(abilityIcon.transform.localPosition, tPosition);
+            cDistance = Vector3.Distance(abilityIcon_animation.transform.localPosition, tPosition);
         }
-        abilityIcon.color = _AbilityActivationResetColor;
+        abilityIcon_animation.color = _AbilityActivationResetColor;
     }
     #endregion
+    #endregion
+
+    #region Click Interactions
+    /// <summary>
+    ///     Checks if a given point is in our click region
+    /// </summary>
+    /// <param name="point">Point</param>
+    /// <returns>True if in region</returns>
+    public bool PointInClickRegion(Vector2 point)
+    {
+        Vector2 cPoint = (Vector2)transform.position + s_ClickOffset;
+        _lastClick = point;
+        return Vector2.Distance(cPoint, point) <= s_ClickDistance;
+    }
+    #endregion
+    #region Modifiers
+    /// <summary>
+    ///     Sets the basic components of a modifier
+    /// </summary>
+    /// <param name="modifier">Other modifier</param>
+    public void SetModifier(AbilitySlotModifier modifier)
+    {
+        this.modifier = modifier;
+        SetModifierIcon(modifier.sprite);
+    }
     #endregion
 
     #region Locking
     public void LockSlot()
     {
         locked = true;
-        SetColor(Color.red);
+        SetColor(s_LockColor);
     }
     #endregion
 
+
+    #region Debug
+    private void OnDrawGizmos()
+    {
+        if (!s_ShowGizmos) return;
+
+        // Draw default click region
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, s_ClickDistance);
+
+        // Draw click comparison
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere((Vector2)transform.position + s_ClickOffset, s_ClickDistance);
+        // Draw last click
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(_lastClick, 5);
+    }
     private void OnDrawGizmosSelected()
     {
         if (!s_ShowGizmos) return;
 
+        // Draw adjacent collection distance
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, s_AdjacentRadius);
-
+        // Draw adjacent keys
         Gizmos.color = Color.green;
         foreach (AbilitySlot slot in adjacentSlots)
         {
             if (slot != null) Gizmos.DrawWireSphere(slot.transform.position, 10f);
         }
     }
+    #endregion
 }

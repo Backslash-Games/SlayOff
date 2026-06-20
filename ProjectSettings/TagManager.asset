@@ -47,6 +47,12 @@ TagManager:
   - name: CollectibleFeedEntries
     uniqueID: 869507259
     locked: 0
+  - name: KeyboardUI
+    uniqueID: 1239627011
+    locked: 0
+  - name: DraggableUI_Object
+    uniqueID: 742482357
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1

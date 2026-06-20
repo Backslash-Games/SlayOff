@@ -1,18 +1,18 @@
 using HFHandyUtils;
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.Utilities;
 
-public class AbilityInputHandler : MonoBehaviour
+public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
 {
     private static readonly string s_AbilityPrefix = "Ability_";
     private static readonly string s_ActionMapId = "Ability Actions";
 
     [SerializeField] private bool buildOnAwake = true;
+    [SerializeField] private bool allowClickTrigger = false;
     private InputActionMap actionMap = new InputActionMap(s_ActionMapId);
     [Space]
     [SerializeField] private Transform as_Parent = null;
@@ -47,6 +47,7 @@ public class AbilityInputHandler : MonoBehaviour
         }
     }
 
+    #region Unity Methods
     private void Awake()
     {
         // Check if we need to build
@@ -55,9 +56,9 @@ public class AbilityInputHandler : MonoBehaviour
             BuildAbilityKeys();
         }
 
-        // Binds abilities
         BindAbilityKeys();
     }
+    #endregion
 
     #region Key Methods
     /// <summary>
@@ -150,7 +151,7 @@ public class AbilityInputHandler : MonoBehaviour
         foreach (KeyControl key in keys)
         {
             // Check if the slot is bound
-            HFLogger.Log(boundKeys.Contains(key.path) + " - " + key.path);
+            //HFLogger.Log(boundKeys.Contains(key.path) + " - " + key.path);
             if (boundKeys.Contains(key.path))
             {
                 LockAbilityKey(key.path);
@@ -174,7 +175,7 @@ public class AbilityInputHandler : MonoBehaviour
     /// <param name="identifier">Ability identifier</param>
     private void ActivateAbilityKey(string id)
     {
-        HFLogger.Log("Attempting to trigger slot with id " + id);
+        //HFLogger.Log("Attempting to trigger slot with id " + id);
 
         // Find ability
         int index = 0;
@@ -221,6 +222,22 @@ public class AbilityInputHandler : MonoBehaviour
 
             abilitySlotData[i] = new AbilitySlotData();
         }
+    }
+    #endregion
+    #region Click Methods
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        // -> Get all keys
+        EventSystem.current.RaycastAll(eventData, results);
+        if (allowClickTrigger)
+            foreach (RaycastResult result in results) 
+            {
+                // Check if the result is an ability slot
+                AbilitySlot slot = result.gameObject.GetComponent<AbilitySlot>();
+                if (slot != null && slot.PointInClickRegion(eventData.position)) slot.OnTrigger();
+            }
     }
     #endregion
 
