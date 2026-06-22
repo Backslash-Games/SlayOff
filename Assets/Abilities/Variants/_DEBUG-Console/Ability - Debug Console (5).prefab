@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4da3755fe8bc77443b15bad8ec9fe1ee, type: 3}
     - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
+      propertyPath: name
+      value: Debug Indigo
+      objectReference: {fileID: 0}
+    - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
       propertyPath: output
       value: '[INDIGO] Debug Ability Activated'
       objectReference: {fileID: 0}

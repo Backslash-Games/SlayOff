@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 
 public class Ability_DebugClear : Ability
 {
-    public override void OnTrigger() { }
-
     protected override bool OnDrop(PointerEventData eventData)
     {
         List<RaycastResult> results = GetHoveringResults(eventData);

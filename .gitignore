@@ -77,3 +77,122 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/vInspector/VInspectorSerializedDictionary.cs.meta
+Assets/vInspector/VInspectorResettableVariables.cs.meta
+Assets/vHierarchy/VHierarchySceneSelectorWindow.cs.meta
+Assets/vInspector/VInspectorSelectionHistory.cs.meta
+Assets/vInspector/VInspectorSerializedDictionary.cs
+Assets/vInspector/VInspectorComponentWindow.cs.meta
+Assets/vInspector/VInspectorComponentHeader.cs.meta
+Assets/vHierarchy/VHierarchyComponentWindow.cs.meta
+Assets/vHierarchy/VHierarchyComponentEditor.cs.meta
+Assets/vInspector/VInspectorResettableVariables.cs
+Assets/vHierarchy/VHierarchySceneSelectorWindow.cs
+Assets/vHierarchy/VHierarchyLightingWindow.cs.meta
+Assets/vHierarchy/VHierarchyPaletteWindow.cs.meta
+Assets/vHierarchy/VHierarchyPaletteEditor.cs.meta
+Assets/vHierarchy/VHierarchyDataComponent.cs.meta
+Assets/vInspector/VInspectorSelectionHistory.cs
+Assets/vHierarchy/vHierarchy Palette.asset.meta
+Assets/vInspector/VInspectorComponentWindow.cs
+Assets/vInspector/VInspectorComponentHeader.cs
+Assets/vInspector/VInspectorAttributes.cs.meta
+Assets/vHierarchy/VHierarchyIconEditor.cs.meta
+Assets/vHierarchy/VHierarchyController.cs.meta
+Assets/vHierarchy/VHierarchyComponentWindow.cs
+Assets/vHierarchy/VHierarchyComponentEditor.cs
+Assets/vInspector/VInspectorClipboard.cs.meta
+Assets/vHierarchy/VHierarchyMenuItems.cs.meta
+Assets/vHierarchy/VHierarchyLightingWindow.cs
+Assets/vFolders/VFoldersPaletteWindow.cs.meta
+Assets/vFolders/VFoldersPaletteEditor.cs.meta
+Assets/vInspector/vInspector Data.asset.meta
+Assets/vHierarchy/VHierarchyPaletteWindow.cs
+Assets/vHierarchy/VHierarchyPaletteEditor.cs
+Assets/vHierarchy/VHierarchyDataComponent.cs
+Assets/vHierarchy/vHierarchy Data.asset.meta
+Assets/vInspector/VInspectorDrawers.cs.meta
+Assets/vHierarchy/VHierarchyPalette.cs.meta
+Assets/vFolders/vFolders Palette.asset.meta
+Assets/vInspector/VInspectorNavbar.cs.meta
+Assets/vInspector/VInspectorEditor.cs.meta
+Assets/vHierarchy/VHierarchyNavbar.cs.meta
+Assets/vHierarchy/vHierarchy Palette.asset
+Assets/vFolders/VFoldersIconEditor.cs.meta
+Assets/vFolders/VFoldersController.cs.meta
+Assets/vInspector/VInspectorState.cs.meta
+Assets/vInspector/VInspectorAttributes.cs
+Assets/vHierarchy/VHierarchyIconEditor.cs
+Assets/vHierarchy/VHierarchyController.cs
+Assets/vHierarchy/VHierarchyCache.cs.meta
+Assets/vFolders/VFoldersMenuItems.cs.meta
+Assets/vInspector/VInspectorMenu.cs.meta
+Assets/vInspector/VInspectorLibs.cs.meta
+Assets/vInspector/VInspectorData.cs.meta
+Assets/vInspector/VInspectorClipboard.cs
+Assets/vInspector/VInspector.asmdef.meta
+Assets/vHierarchy/VHierarchyMenuItems.cs
+Assets/vHierarchy/VHierarchyMenu.cs.meta
+Assets/vHierarchy/VHierarchyLibs.cs.meta
+Assets/vHierarchy/VHierarchyData.cs.meta
+Assets/vHierarchy/VHierarchy.asmdef.meta
+Assets/vFolders/VFoldersPaletteWindow.cs
+Assets/vFolders/VFoldersPaletteEditor.cs
+Assets/vFolders/vFolders Data.asset.meta
+Assets/vInspector/vInspector Data.asset
+Assets/vHierarchy/VHierarchyGUI.cs.meta
+Assets/vHierarchy/vHierarchy Data.asset
+Assets/vFolders/VFoldersPalette.cs.meta
+Assets/vFolders/VFoldersHistory.cs.meta
+Assets/vInspector/VInspectorDrawers.cs
+Assets/vHierarchy/VHierarchyPalette.cs
+Assets/vFolders/VFoldersNavbar.cs.meta
+Assets/vFolders/vFolders Palette.asset
+Assets/vInspector/VInspectorNavbar.cs
+Assets/vInspector/VInspectorEditor.cs
+Assets/vHierarchy/VHierarchyNavbar.cs
+Assets/vFolders/VFoldersIconEditor.cs
+Assets/vFolders/VFoldersController.cs
+Assets/vFolders/VFoldersCache.cs.meta
+Assets/vInspector/VInspectorState.cs
+Assets/vInspector/VInspector.cs.meta
+Assets/vHierarchy/VHierarchyCache.cs
+Assets/vHierarchy/VHierarchy.cs.meta
+Assets/vFolders/VFoldersMenuItems.cs
+Assets/vFolders/VFoldersMenu.cs.meta
+Assets/vFolders/VFoldersLibs.cs.meta
+Assets/vFolders/VFoldersData.cs.meta
+Assets/vFolders/VFolders.asmdef.meta
+Assets/vInspector/VInspectorMenu.cs
+Assets/vInspector/VInspectorLibs.cs
+Assets/vInspector/VInspectorData.cs
+Assets/vInspector/VInspector.asmdef
+Assets/vHierarchy/VHierarchyMenu.cs
+Assets/vHierarchy/VHierarchyLibs.cs
+Assets/vHierarchy/VHierarchyData.cs
+Assets/vHierarchy/VHierarchy.asmdef
+Assets/vFolders/VFoldersGUI.cs.meta
+Assets/vFolders/vFolders Data.asset
+Assets/vInspector/Read me.pdf.meta
+Assets/vHierarchy/VHierarchyGUI.cs
+Assets/vHierarchy/Read me.pdf.meta
+Assets/vFolders/VFoldersPalette.cs
+Assets/vFolders/VFoldersHistory.cs
+Assets/vFolders/VFoldersNavbar.cs
+Assets/vFolders/VFoldersCache.cs
+Assets/vFolders/VFolders.cs.meta
+Assets/vFolders/Read me.pdf.meta
+Assets/vInspector/VInspector.cs
+Assets/vHierarchy/VHierarchy.cs
+Assets/vFolders/VFoldersMenu.cs
+Assets/vFolders/VFoldersLibs.cs
+Assets/vFolders/VFoldersData.cs
+Assets/vFolders/VFolders.asmdef
+Assets/vFolders/VFoldersGUI.cs
+Assets/vInspector/Read me.pdf
+Assets/vHierarchy/Read me.pdf
+Assets/vFolders/VFolders.cs
+Assets/vFolders/Read me.pdf
+Assets/vInspector.meta
+Assets/vHierarchy.meta
+Assets/vFolders.meta

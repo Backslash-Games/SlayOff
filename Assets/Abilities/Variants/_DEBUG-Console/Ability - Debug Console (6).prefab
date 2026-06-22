@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: b386c66be2350d44681624832e579363, type: 3}
     - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
+      propertyPath: name
+      value: Debug Violet
+      objectReference: {fileID: 0}
+    - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
       propertyPath: output
       value: '[VIOLET] Debug Ability Activated'
       objectReference: {fileID: 0}

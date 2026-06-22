@@ -6,6 +6,7 @@ public class Ability_DebugConsole : Ability
 
     public override void OnTrigger()
     {
+        base.OnTrigger();
         HFLogger.Log(output);
     }
 }

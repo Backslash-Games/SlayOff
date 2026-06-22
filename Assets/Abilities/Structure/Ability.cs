@@ -8,10 +8,13 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class Ability : DraggableComponent, ITrigger
 {
+    [Header("Info")]
+    public string name = string.Empty;
+
     [Header("Data")]
-    [SerializeField] public Sprite icon;
-    [SerializeField] public Color color = Color.white;
-    [SerializeField] public float cooldownTime = 1f;
+    public Sprite icon;
+    public Color color = Color.white;
+    public float cooldownTime = 1f;
 
     /// <summary>
     ///     Image that renders the icon
@@ -28,7 +31,8 @@ public class Ability : DraggableComponent, ITrigger
     #region Interfaces
     public virtual void OnTrigger()
     {
-        HFLogger.Log($"Blank Ability: \'{name}\'");
+        // Add ability to execution information chain
+        AbilityInformationHandler.Instance.executionLine.AddInformation(this);
     }
     #endregion
     #region Overrides

@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e58439c8d8057e24eb0a3f2e6161c663, type: 3}
     - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
+      propertyPath: name
+      value: Debug Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
       propertyPath: output
       value: '[GREEN] Debug Ability Activated'
       objectReference: {fileID: 0}
