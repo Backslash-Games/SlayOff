@@ -5,8 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(RectTransform))]
 public class AbilityInformation : MonoBehaviour
 {
+    /// <summary>
+    ///     Rect transform
+    /// </summary>
+    public RectTransform rectTransform;
     /// <summary>
     ///     Ability Icon
     /// </summary>
@@ -20,31 +25,40 @@ public class AbilityInformation : MonoBehaviour
     /// </summary>
     [SerializeField] private TextMeshProUGUI _cooldownInformation;
 
-    /// <summary>
-    ///     Connection arrow
-    /// </summary>
-    [SerializeField] private GameObject _arrow;
-    /// <summary>
-    ///     Connection arrow graphic
-    /// </summary>
-    [SerializeField] private Image _arrowGraphic;
-    /// <summary>
-    ///     Connection delay information
-    /// </summary>
-    [SerializeField] private TextMeshProUGUI _delayInformation;
 
+    /// <summary>
+    ///     Connection Arrow Prefab
+    /// </summary>
+    [SerializeField] private GameObject _arrowPrefab = null;
+    /// <summary>
+    ///     Connection Arrow
+    /// </summary>
+    [SerializeField] private AI_Arrow _connectionArrow = null;
+
+
+
+    private void Update()
+    {
+        if (_connectionArrow != null) _connectionArrow.TickTransform();
+    }
+
+
+    public void SetSlot(AbilitySlot slot, AbilityTrace trace)
+    {
+        SetAbility(slot.boundAbility, trace);
+    }
     /// <summary>
     ///     Sets information from ability
     /// </summary>
     /// <param name="ability">Ability</param>
-    public void SetAbility(Ability ability, float reductionRate)
+    public void SetAbility(Ability ability, AbilityTrace trace)
     {
         if (ability == null) return;
 
         _icon.sprite = ability.icon;
         _name.text = ability.name;
 
-        _cooldownInformation.text = $"<color=grey><size=8>[{ability.cooldownTime}s]</size></color>\n{(ability.cooldownTime / reductionRate).ToString("F2")}s";
+        _cooldownInformation.text = $"<color=grey><size=8>[{ability.cooldownTime}s]</size></color>\n{(ability.cooldownTime / trace.reductionRate).ToString("F2")}s";
     }
 
     /// <summary>
@@ -53,22 +67,11 @@ public class AbilityInformation : MonoBehaviour
     /// <param name="ability">Other ability</param>
     public void ConnectTo(AbilityInformation ability, TimeSpan delayTime)
     {
-        // Set the arrow active
-        _arrow.SetActive(true);
-        // Position the parent
-        _arrow.transform.localPosition = new Vector3((ability.transform.position.x - transform.position.x) / 2, _arrow.transform.localPosition.y, 0);
-
-        // Write delay information
-        _delayInformation.text = delayTime.Seconds.ToString();
-        if (delayTime.Milliseconds > 0.0099f) _delayInformation.text += '.' + delayTime.ToString("fff").Substring(0, 2);
-        _delayInformation.text += 's';
-
-        // Write delay information strength
-        // -> Evaluate strength and convert to style consistent value
-        Color strengthColor = HFColor.errorGradient.Evaluate((1 - (delayTime.Milliseconds / 1000f)) + delayTime.Seconds);
-        Color.RGBToHSV(strengthColor, out float h, out _, out _);
-        strengthColor = Color.HSVToRGB(h, 0.61f, 1);
-        // -> Set color
-        _arrowGraphic.color = _delayInformation.color = strengthColor;
+        // Create connection arrow
+        if (_connectionArrow == null) _connectionArrow = Instantiate(_arrowPrefab, transform).GetComponent<AI_Arrow>();
+        // Update connection arrow
+        _connectionArrow.Connect(this, ability);
+        _connectionArrow.SetDelayInformation(delayTime);
+        _connectionArrow.SetColor(delayTime);
     }
 }

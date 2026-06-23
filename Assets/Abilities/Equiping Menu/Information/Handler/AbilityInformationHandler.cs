@@ -27,6 +27,10 @@ public class AbilityInformationHandler : MonoBehaviour
     ///     Ability information handler - Execution line reference
     /// </summary>
     public AIH_ExecutionLine executionLine;
+    /// <summary>
+    ///     Ability information handler - Execution tree reference
+    /// </summary>
+    public AIH_ExecutionTree executionTree;
 
     #region Unity Methods
     private void Awake()

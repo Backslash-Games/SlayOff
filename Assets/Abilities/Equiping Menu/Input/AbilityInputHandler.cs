@@ -1,4 +1,5 @@
 using HFHandyUtils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -181,8 +182,11 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
         {
             if (id.Equals(key) && abilitySlots[index].enabled)
             {
-                abilitySlots[index].OnTriggerSlot(new AbilityTrace("Key Pressed"));
+                AbilityTrace trace = new AbilityTrace("Key Pressed", abilitySlots[index]);
+                abilitySlots[index].OnTriggerSlot(trace);
+
                 AbilityInformationHandler.Instance.executionLine.ResetInformation();
+                AbilityInformationHandler.Instance.executionTree.Build(trace);
             }
             index++;
         }
@@ -238,7 +242,11 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
             {
                 // Check if the result is an ability slot
                 AbilitySlot slot = result.gameObject.GetComponent<AbilitySlot>();
-                if (slot != null && slot.PointInClickRegion(eventData.position)) slot.OnTriggerSlot(new AbilityTrace("Mouse Clicked"));
+                if (slot != null && slot.PointInClickRegion(eventData.position))
+                {
+                    AbilityTrace trace = new AbilityTrace("Mouse Clicked", slot);
+                    slot.OnTriggerSlot(trace);
+                }
             }
     }
     #endregion

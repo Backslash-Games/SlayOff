@@ -84,7 +84,7 @@ public class AIH_ExecutionLine : MonoBehaviour
             Ability ability = _informationRequests[0];
             // Spawn a new container
             AbilityInformation information = Instantiate(_informationContainer, _layout.transform).GetComponent<AbilityInformation>();
-            information.SetAbility(ability, trace.reductionRate);
+            information.SetAbility(ability, trace);
             // Calculate timespan
             _delayTimeSpan = DateTime.Now - _additionTimeStamp;
             _additionTimeStamp = DateTime.Now;

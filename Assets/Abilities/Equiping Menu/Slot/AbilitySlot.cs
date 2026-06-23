@@ -1,6 +1,7 @@
 using HFHandyUtils;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,7 +30,7 @@ public class AbilitySlot : MonoBehaviour
     [SerializeField] public Color color = Color.white;
 
     [Header("Binding")]
-    [SerializeField] private Ability boundAbility;
+    [SerializeField] public Ability boundAbility;
     [SerializeField] private HFHandyUtils.Time.Cooldown abilityCooldown;
     [SerializeField] private AbilitySlot[] adjacentSlots = new AbilitySlot[6];
 
@@ -60,7 +61,7 @@ public class AbilitySlot : MonoBehaviour
     /// <summary>
     ///     Flag that dictates if we are showing gizmos
     /// </summary>
-    private static readonly bool s_ShowGizmos = true;
+    private static readonly bool s_ShowGizmos = false;
     #endregion
 
     #region Adjacent Settings
@@ -229,7 +230,7 @@ public class AbilitySlot : MonoBehaviour
         if (onCooldown) return;
         if (!trace.isAlive()) return;
 
-        DisableSlot(trace);
+        //DisableSlot(trace);
         abilityCooldown.SetReductionRate(trace.reductionRate);
         // Start cooldown
         abilityCooldown.Start();
@@ -256,12 +257,24 @@ public class AbilitySlot : MonoBehaviour
     private IEnumerator RunChain(AbilityTrace trace)
     {
         yield return new WaitForSecondsRealtime(s_ChainDelay);
+        List<AbilitySlot> slots = GetAllConnected();
+        foreach (AbilitySlot slot in slots) if (slot != null && trace.trackedSlots.Contains(slot)) slot.OnTriggerSlot(trace);
+    }
+
+    public List<AbilitySlot> GetAllConnected()
+    {
+        List<AbilitySlot> slots = new List<AbilitySlot>();
         foreach (AdjacentDirection direction in chainDirections)
         {
-            int index = (int)direction;
-            if (index < 0 || index >= adjacentSlots.Length) continue;
-            if (adjacentSlots[index] != null && (adjacentSlots[index].enabled || trace.trackedSlots.Contains(adjacentSlots[index]))) adjacentSlots[index].OnTriggerSlot(trace);
+            slots.Add(GetConnected(direction));
         }
+        return slots;
+    }
+    public AbilitySlot GetConnected(AdjacentDirection direction)
+    {
+        int index = (int)direction;
+        if (index < 0 || index >= adjacentSlots.Length) return null;
+        return adjacentSlots[index];
     }
     #endregion
     #region Ability

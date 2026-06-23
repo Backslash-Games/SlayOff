@@ -29,14 +29,10 @@ public class Ability : DraggableComponent
     }
 
     #region Interfaces
-    public virtual bool OnTriggerAbility(AbilityTrace trace)
+    public virtual void OnTriggerAbility(AbilityTrace trace)
     {
-        // Check if the ability can trigger
-        if (!trace.isAlive()) return false;
-
         // Add ability to execution information chain
         AbilityInformationHandler.Instance.executionLine.AddInformation(this, trace);
-        return true;
     }
     #endregion
     #region Overrides
