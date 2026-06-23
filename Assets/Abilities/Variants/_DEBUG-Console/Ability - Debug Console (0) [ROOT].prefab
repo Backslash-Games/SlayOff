@@ -135,5 +135,5 @@ MonoBehaviour:
   name: Debug Red
   icon: {fileID: 21300000, guid: 4f5a228583c51ad439a03702388e79d0, type: 3}
   color: {r: 1, g: 0.38823533, b: 0.38823533, a: 1}
-  cooldownTime: 1
+  cooldownTime: 0.7
   output: '[RED] Debug Ability Activated'

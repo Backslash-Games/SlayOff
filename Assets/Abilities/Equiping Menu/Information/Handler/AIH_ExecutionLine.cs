@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,14 @@ public class AIH_ExecutionLine : MonoBehaviour
     ///     Information prefab
     /// </summary>
     [SerializeField] private GameObject _informationContainer;
+    /// <summary>
+    ///     Read out for total execution time
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _totalTimeInformation;
+    /// <summary>
+    ///     Read out for total execution time
+    /// </summary>
+    [SerializeField] private TextMeshProUGUI _totalLengthInformation;
 
     /// <summary>
     ///     Tracks information requests
@@ -32,38 +41,56 @@ public class AIH_ExecutionLine : MonoBehaviour
     /// </summary>
     private Coroutine _additionRoutine = null;
 
+    /// <summary>
+    ///     Time stamp for last addition
+    /// </summary>
     private DateTime _additionTimeStamp = DateTime.Now;
+    /// <summary>
+    ///     Logged delay time spawn
+    /// </summary>
     private TimeSpan _delayTimeSpan = TimeSpan.Zero;
+    /// <summary>
+    ///     Total logged execution time
+    /// </summary>
+    private TimeSpan _totalExecutionTime = TimeSpan.Zero;
+
+    /// <summary>
+    ///     Tracks chain length
+    /// </summary>
+    private int _chainLength = 0;
 
     /// <summary>
     ///     Adds ability information to the execution line
     /// </summary>
     /// <param name="ability"></param>
-    public void AddInformation(Ability ability)
+    public void AddInformation(Ability ability, AbilityTrace trace)
     {
         // Add ability to active requests
         _informationRequests.Add(ability);
 
         // Check if we need to start up the coroutine
         if (_additionRoutine != null) return;
-        _additionRoutine = StartCoroutine(Enum_AddInformation());
+        _additionRoutine = StartCoroutine(Enum_AddInformation(trace));
     }
 
     /// <summary>
     ///     Scrolls to the end of the scroll rect
     /// </summary>
     /// <returns>Wait for end of frame</returns>
-    private IEnumerator Enum_AddInformation()
+    private IEnumerator Enum_AddInformation(AbilityTrace trace)
     {
         while (_informationRequests.Count > 0)
         {
             Ability ability = _informationRequests[0];
             // Spawn a new container
             AbilityInformation information = Instantiate(_informationContainer, _layout.transform).GetComponent<AbilityInformation>();
-            information.SetAbility(ability);
+            information.SetAbility(ability, trace.reductionRate);
             // Calculate timespan
             _delayTimeSpan = DateTime.Now - _additionTimeStamp;
             _additionTimeStamp = DateTime.Now;
+            _totalExecutionTime += _delayTimeSpan;
+            // Update chain length
+            _chainLength++;
 
             // WAIT
             yield return new WaitForEndOfFrame();
@@ -77,9 +104,12 @@ public class AIH_ExecutionLine : MonoBehaviour
 
             // Add ability information
             _activeInformation.Add(information);
-
             // Scroll to end
             _scrollRect.normalizedPosition = new Vector2(1, 0.5f);
+
+            // Update readouts
+            _totalTimeInformation.text = _totalExecutionTime.Seconds.ToString() + '.' + _totalExecutionTime.Milliseconds.ToString() + 's';
+            _totalLengthInformation.text = _chainLength.ToString();
 
             // Remove information request
             _informationRequests.RemoveAt(0);
@@ -97,5 +127,10 @@ public class AIH_ExecutionLine : MonoBehaviour
             Destroy(_activeInformation[0].gameObject);
             _activeInformation.RemoveAt(0);
         }
+
+        _additionTimeStamp = DateTime.Now;
+        _totalExecutionTime = TimeSpan.Zero;
+
+        _chainLength = 0;
     }
 }

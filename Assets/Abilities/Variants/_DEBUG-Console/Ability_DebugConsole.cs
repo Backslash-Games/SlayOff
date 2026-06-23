@@ -4,9 +4,11 @@ public class Ability_DebugConsole : Ability
 {
     public string output = "Debug Ability Activated";
 
-    public override void OnTrigger()
+    public override bool OnTriggerAbility(AbilityTrace trace)
     {
-        base.OnTrigger();
+        if(!base.OnTriggerAbility(trace)) return false;
+
         HFLogger.Log(output);
+        return true;
     }
 }

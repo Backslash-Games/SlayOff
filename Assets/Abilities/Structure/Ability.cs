@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class Ability : DraggableComponent, ITrigger
+public class Ability : DraggableComponent
 {
     [Header("Info")]
     public string name = string.Empty;
@@ -29,10 +29,14 @@ public class Ability : DraggableComponent, ITrigger
     }
 
     #region Interfaces
-    public virtual void OnTrigger()
+    public virtual bool OnTriggerAbility(AbilityTrace trace)
     {
+        // Check if the ability can trigger
+        if (!trace.isAlive()) return false;
+
         // Add ability to execution information chain
-        AbilityInformationHandler.Instance.executionLine.AddInformation(this);
+        AbilityInformationHandler.Instance.executionLine.AddInformation(this, trace);
+        return true;
     }
     #endregion
     #region Overrides

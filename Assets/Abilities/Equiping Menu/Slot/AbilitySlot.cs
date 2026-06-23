@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AbilitySlot : MonoBehaviour, ITrigger
+public class AbilitySlot : MonoBehaviour
 {
     public enum AdjacentDirection { Top_Right, Right, Bottom_Right, Top_Left, Left, Bottom_Left };
     public enum SlotType { Empty, Letter, Special, Function, Navigation, Arrow, Numpad };
@@ -16,7 +16,8 @@ public class AbilitySlot : MonoBehaviour, ITrigger
     [SerializeField] public SlotType slotType = SlotType.Empty;
     [Space]
     [SerializeField] public bool onCooldown = false;
-    [SerializeField] private bool locked = false;
+    [SerializeField] public bool locked = false;
+    [SerializeField] public bool enabled = true;
 
     [Header("Graphical")]
     [SerializeField] private TextMeshProUGUI displayName = null;
@@ -221,40 +222,45 @@ public class AbilitySlot : MonoBehaviour, ITrigger
     }
     #endregion
     #region Trigger
-    public void OnTrigger()
+    public void OnTriggerSlot(AbilityTrace trace)
     {
         // Check if the slot is locked
         if (locked) return;
         if (onCooldown) return;
+        if (!trace.isAlive()) return;
+
+        DisableSlot(trace);
+        abilityCooldown.SetReductionRate(trace.reductionRate);
+        // Start cooldown
         abilityCooldown.Start();
 
-        // Debug
-        //HFLogger.Log("Triggered " + bindingName);
+        // Add slot to trace
+        trace.Add(this);
 
         // Trigger ability
-        if (boundAbility != null) boundAbility.OnTrigger();
+        if (boundAbility != null) boundAbility.OnTriggerAbility(trace);
 
         // Run click visual
         StartClickAnimation(new List<AbilitySlot>(), s_ClickAnimationVerticalOffset);
         StartAbilityActivatedAnimation();
 
         // Chain
-        StartChain();
+        StartChain(trace);
     }
     Coroutine c_Cotrouine = null;
-    private void StartChain()
+    private void StartChain(AbilityTrace trace)
     {
         if(c_Cotrouine != null) StopCoroutine(c_Cotrouine);
-        c_Cotrouine = StartCoroutine(RunChain());
+        c_Cotrouine = StartCoroutine(RunChain(trace));
     }
-    private IEnumerator RunChain()
+    private IEnumerator RunChain(AbilityTrace trace)
     {
         yield return new WaitForSecondsRealtime(s_ChainDelay);
         foreach (AdjacentDirection direction in chainDirections)
         {
             int index = (int)direction;
             if (index < 0 || index >= adjacentSlots.Length) continue;
-            if (adjacentSlots[index] != null) adjacentSlots[index].OnTrigger();
+            if (adjacentSlots[index] != null && (adjacentSlots[index].enabled || trace.trackedSlots.Contains(adjacentSlots[index]))) adjacentSlots[index].OnTriggerSlot(trace);
         }
     }
     #endregion
@@ -465,11 +471,36 @@ public class AbilitySlot : MonoBehaviour, ITrigger
     }
     #endregion
 
-    #region Locking
+    #region State Handling
     public void LockSlot()
     {
         locked = true;
         SetColor(s_LockColor);
+    }
+
+    public void EnableSlot(AbilityTrace trace)
+    {
+        // Return early to ensure no repeat calls
+        if (enabled) return;
+
+        // Set base information
+        enabled = true;
+        SetColor(Color.white);
+
+        // Unbind events
+        abilityCooldown.OnEnd -= trace.CheckFinish;
+    }
+    public void DisableSlot(AbilityTrace trace)
+    {
+        // Return early to ensure no repeat calls
+        if (!enabled) return;
+
+        // Set base information
+        enabled = false;
+        SetColor(Color.red);
+
+        // Bind events
+        abilityCooldown.OnEnd += trace.CheckFinish;
     }
     #endregion
 

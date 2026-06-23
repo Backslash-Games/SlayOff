@@ -175,14 +175,15 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     /// <param name="identifier">Ability identifier</param>
     private void ActivateAbilityKey(string id)
     {
-        //HFLogger.Log("Attempting to trigger slot with id " + id);
-        AbilityInformationHandler.Instance.executionLine.ResetInformation();
-
         // Find ability
         int index = 0;
         foreach(string key in abilityKeys)
         {
-            if(id.Equals(key)) abilitySlots[index].OnTrigger();
+            if (id.Equals(key) && abilitySlots[index].enabled)
+            {
+                abilitySlots[index].OnTriggerSlot(new AbilityTrace("Key Pressed"));
+                AbilityInformationHandler.Instance.executionLine.ResetInformation();
+            }
             index++;
         }
     }
@@ -237,7 +238,7 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
             {
                 // Check if the result is an ability slot
                 AbilitySlot slot = result.gameObject.GetComponent<AbilitySlot>();
-                if (slot != null && slot.PointInClickRegion(eventData.position)) slot.OnTrigger();
+                if (slot != null && slot.PointInClickRegion(eventData.position)) slot.OnTriggerSlot(new AbilityTrace("Mouse Clicked"));
             }
     }
     #endregion

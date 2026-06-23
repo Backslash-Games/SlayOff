@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: color.r
       value: 0.38823533
       objectReference: {fileID: 0}
+    - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
+      propertyPath: cooldownTime
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 990997381195209500, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
       propertyPath: m_Name
       value: Ability - Debug Console (5)
