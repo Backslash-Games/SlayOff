@@ -1,9 +1,9 @@
 using HFHandyUtils;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+using VInspector.Libs;
 
-public class AbilityTrace : MonoBehaviour
+[System.Serializable]
+public class AbilityTrace
 {
     /// <summary>
     ///     Maximum size of a trace
@@ -31,12 +31,14 @@ public class AbilityTrace : MonoBehaviour
     /// </summary>
     public float reductionRate = 1;
 
-    #region Structs
+
+    #region Classes
     #region Trace Step
     /// <summary>
     ///     Container of all information contained in a single step of a trace - Displayed as column
     /// </summary>
-    public struct TraceStep
+    [System.Serializable]
+    public class TraceStep
     {
         /// <summary>
         ///     Step number
@@ -52,37 +54,63 @@ public class AbilityTrace : MonoBehaviour
         /// </summary>
         /// <param name="stepNumber">Step number</param>
         /// <param name="data">Input data</param>
-        public TraceStep(int stepNumber, List<TraceData> data)
+        public TraceStep(int stepNumber)
         {
             this.stepNumber = (byte)stepNumber;
-            this.data = data;
+
+            data = new List<TraceData>();
         }
+
+        /// <summary>
+        ///     Pulls trace data based on slot index
+        /// </summary>
+        /// <param name="slotIndex">Tracked slot index</param>
+        /// <returns>Associated trace data</returns>
+        public TraceData GetTraceData(int slotIndex)
+        {
+            foreach (TraceData value in data) if (value.slotIndex == slotIndex) return value;
+            return null;
+        }
+
+
+        /// <summary>
+        ///     Checks if the step is empty
+        /// </summary>
+        /// <returns>True if there is no contained information</returns>
+        public bool isEmpty() { return data.Count == 0; }
     }
     #endregion
     #region Trace Data
     /// <summary>
     ///     Container of all information contained in a single execution of a slot - Displayed as information blurb
     /// </summary>
-    public struct TraceData
+    [System.Serializable]
+    public class TraceData
     {
         /// <summary>
         ///     Trace data head point
         /// </summary>
         public byte slotIndex;
         /// <summary>
-        ///     Trace connections
+        ///     Trace connections out
         /// </summary>
-        public List<TraceConnection> connections;
+        public List<TraceConnection> connections_out;
+        /// <summary>
+        ///     Trace connections in
+        /// </summary>
+        public List<TraceConnection> connections_in;
 
         /// <summary>
         ///     Constructor for trace data
         /// </summary>
         /// <param name="slotIndex">Tracked slots index</param>
         /// <param name="connections">Tracked connections</param>
-        public TraceData(int slotIndex, List<TraceConnection> connections)
+        public TraceData(int slotIndex)
         {
             this.slotIndex = (byte)slotIndex;
-            this.connections = connections;
+            
+            connections_out = new List<TraceConnection>();
+            connections_in = new List<TraceConnection>();
         }
     }
     #endregion
@@ -90,16 +118,25 @@ public class AbilityTrace : MonoBehaviour
     /// <summary>
     ///     Conatiner of all connection information - Displayed as an arrow
     /// </summary>
-    public struct TraceConnection
+    [System.Serializable]
+    public class TraceConnection
     {
         /// <summary>
         ///     Trace Data connection index
         /// </summary>
-        public byte slotIndex;
+        public TraceData data;
+
+        /// <summary>
+        ///     Constructor for trace connection
+        /// </summary>
+        /// <param name="slotIndex">Tracked slot index</param>
+        public TraceConnection(TraceData data)
+        {
+            this.data = data;
+        }
     }
     #endregion
     #endregion
-
 
 
     public AbilityTrace(string source, AbilitySlot head)
@@ -148,7 +185,58 @@ public class AbilityTrace : MonoBehaviour
             errorCheck++;
         }
         if (errorCheck >= 255) HFLogger.LogError("ERROR CHECK OVERFLOWN");
+
+        // Trim empty steps
+        TrimSteps();
+
+        // Calculate step connections
+        CalculateConnections();
     }
+    /// <summary>
+    ///     Calculates step connections
+    /// </summary>
+    private void CalculateConnections()
+    {
+        for(int i = 0; i < trace.Count - 1; i++)
+        {
+            // Grab step and next
+            TraceStep step = trace[i];
+            TraceStep next = trace[i + 1];
+
+            // Roll through each data point in the step and establish connections
+            foreach (TraceData data in step.data)
+            {
+                // Get slot connections
+                List<AbilitySlot> slots = GetSlot(data.slotIndex).GetAllConnected();
+                foreach (AbilitySlot slot in slots)
+                {
+                    if (trackedSlots.Contains(slot))
+                    {
+                        TraceData nextData = next.GetTraceData(GetSlotIndex(slot));
+                        if (nextData == null) continue;
+
+                        data.connections_out.Add(new TraceConnection(nextData));
+                        nextData.connections_in.Add(new TraceConnection(data));
+                    }
+                }
+            }
+        }
+    }
+    /// <summary>
+    ///     Removes any empty steps
+    /// </summary>
+    private void TrimSteps()
+    {
+        for(int i = 0; i < trace.Count; i++)
+        {
+            if(trace[i].isEmpty())
+            {
+                trace.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+
     #region Trace data conversion
     /// <summary>
     ///     Converts a list of slots to a trace step
@@ -157,8 +245,17 @@ public class AbilityTrace : MonoBehaviour
     /// <returns>Trace step</returns>
     private TraceStep SlotsToStep(List<AbilitySlot> slots)
     {
-        TraceStep step = new TraceStep(trace.Count, new List<TraceData>());
-        foreach (AbilitySlot slot in slots) step.data.Add(SlotToData(slot));
+        TraceStep step = new TraceStep(trace.Count);
+        foreach (AbilitySlot slot in slots)
+        {
+            // Pull our current data and accessed data - Error check
+            TraceData data = SlotToData(slot);
+            if (data.slotIndex == 255) continue;
+            TraceData accessedData = step.GetTraceData(data.slotIndex);
+
+            // If we weren't able to access data, then add new data
+            if (accessedData == null) step.data.Add(data);
+        }
         return step;
     }
     /// <summary>
@@ -169,7 +266,7 @@ public class AbilityTrace : MonoBehaviour
     /// <returns>Trace data</returns>
     private TraceData SlotToData(AbilitySlot slot)
     {
-        TraceData data = new TraceData(GetSlotIndex(slot), new List<TraceConnection>());
+        TraceData data = new TraceData(GetSlotIndex(slot));
         return data;
     }
     #endregion

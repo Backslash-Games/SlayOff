@@ -49,6 +49,7 @@ public class AbilitySlotModifier : DraggableComponent
             if (slot != null && slot.PointInClickRegion(eventData.position))
             {
                 ApplyToSlot(slot);
+                slot.SetHighlightConnected(true);
                 return true;
             }
         }

@@ -1,12 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AIH_ExecutionTree : MonoBehaviour
 {
+    public AbilityTrace currentTrace = null;
+
     /// <summary>
     ///     Layout
     /// </summary>
     [SerializeField] private Transform _layout;
+    /// <summary>
+    ///     Scroll rect
+    /// </summary>
+    [SerializeField] private ScrollRect _scrollRect = null;
 
     /// <summary>
     ///     Column prefab
@@ -23,17 +30,24 @@ public class AIH_ExecutionTree : MonoBehaviour
     {
         ResetAll();
 
+        currentTrace = trace;
         List<AbilityTrace.TraceStep> steps = trace.trace;
+        // Build steps
         foreach (AbilityTrace.TraceStep step in steps)
         {
             AbilityInformationColumn column = Instantiate(_columnContainer, _layout).GetComponent<AbilityInformationColumn>();
+            column.Add(step, trace);
             _activeColumns.Add(column);
-            // -> Add data
-            foreach (AbilityTrace.TraceData data in step.data)
-            {
-                column.Add(data, trace);
-            }
         }
+        // Connect columns
+        for(int i = 0; i < _activeColumns.Count - 1; i++)
+        {
+            _activeColumns[i].Connect(_activeColumns[i + 1], trace);
+        }
+
+
+        // Center scroll region
+        _scrollRect.normalizedPosition = Vector2.one * 0.5f;
     }
 
     public void ResetAll()

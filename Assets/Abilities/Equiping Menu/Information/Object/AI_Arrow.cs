@@ -25,7 +25,6 @@ public class AI_Arrow : MonoBehaviour
     /// <param name="to">To ability information</param>
     public void Connect(AbilityInformation from, AbilityInformation to)
     {
-        if(from == null || to == null) return;
         // Set parent information
         this.from = from;
         this.to = to;

@@ -1,6 +1,6 @@
 using HFHandyUtils;
-using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -11,6 +11,7 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
 {
     private static readonly string s_AbilityPrefix = "Ability_";
     private static readonly string s_ActionMapId = "Ability Actions";
+    private static readonly string s_MouseActionMapId = "UI";
 
     [SerializeField] private bool buildOnAwake = true;
     [SerializeField] private bool allowClickTrigger = false;
@@ -27,6 +28,8 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField] public AbilitySlot.SlotType[] abilitySlotTypes = new AbilitySlot.SlotType[0];
     [Space]
     [SerializeField] public AbilitySlotData[] abilitySlotData = new AbilitySlotData[0];
+    [Space]
+    [SerializeField] private PointerEventData pointerEventData = null;
 
     public struct AbilitySlotData
     {
@@ -58,6 +61,19 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
         }
 
         BindAbilityKeys();
+        BindInput_Mouse();
+    }
+    #endregion
+    #region Mouse Binding
+    public delegate void OnMouseInput(InputAction.CallbackContext context);
+    public event OnMouseInput OnPointerMoved;
+    private void BindInput_Mouse()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+
+        InputActionMap mouseMap = InputSystem.actions.FindActionMap(s_MouseActionMapId);
+        InputAction point = mouseMap.FindAction("Point");
+        point.performed += context => OnPointerMoved?.Invoke(context);
     }
     #endregion
 
@@ -90,7 +106,7 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
             action.AddBinding(key);
 
             // Build the key
-            AbilitySlot cSlot = Instantiate(as_Prefab, as_Parent).GetComponent<AbilitySlot>();
+            AbilitySlot cSlot = ((GameObject)PrefabUtility.InstantiatePrefab(as_Prefab, as_Parent)).GetComponent<AbilitySlot>();
             cSlot.SetName(displayName, GetAbilityName(index));
             // -> Check for a logged position
             if(index >= 0 && index < abilityKeyPositions.Length) cSlot.transform.position = abilityKeyPositions[index];
@@ -110,6 +126,7 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
         foreach (AbilitySlot slot in abilitySlots)
         {
             slot.SetupAdjacents();
+            PrefabUtility.RecordPrefabInstancePropertyModifications(slot);
         }
     }
 

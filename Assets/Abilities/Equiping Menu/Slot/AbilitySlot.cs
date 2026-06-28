@@ -1,9 +1,9 @@
-using HFHandyUtils;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class AbilitySlot : MonoBehaviour
@@ -12,13 +12,15 @@ public class AbilitySlot : MonoBehaviour
     public enum SlotType { Empty, Letter, Special, Function, Navigation, Arrow, Numpad };
 
     [Header("Information")]
-    [SerializeField] private string bindingName = "";
+    [SerializeField] public string bindingName = "";
     [SerializeField] private string actionName = "";
     [SerializeField] public SlotType slotType = SlotType.Empty;
     [Space]
     [SerializeField] public bool onCooldown = false;
     [SerializeField] public bool locked = false;
     [SerializeField] public bool enabled = true;
+    [SerializeField] public bool hovering = false;
+    [SerializeField] public bool connectedHovering = false;
 
     [Header("Graphical")]
     [SerializeField] private TextMeshProUGUI displayName = null;
@@ -28,6 +30,8 @@ public class AbilitySlot : MonoBehaviour
     [SerializeField] private Image abilityIcon_shadow = null;
     [SerializeField] private Image abilityIcon_animation = null;
     [SerializeField] public Color color = Color.white;
+    [Space]
+    [SerializeField] private Image slotHighlight = null;
 
     [Header("Binding")]
     [SerializeField] public Ability boundAbility;
@@ -35,7 +39,7 @@ public class AbilitySlot : MonoBehaviour
     [SerializeField] private AbilitySlot[] adjacentSlots = new AbilitySlot[6];
 
     [Header("Modfiers")]
-    [SerializeField] private AbilitySlotModifier modifier = null;
+    [SerializeField] public AbilitySlotModifier modifier = null;
 
     [Header("Chaining")]
     [SerializeField] public List<AdjacentDirection> chainDirections = new List<AdjacentDirection>();
@@ -61,7 +65,7 @@ public class AbilitySlot : MonoBehaviour
     /// <summary>
     ///     Flag that dictates if we are showing gizmos
     /// </summary>
-    private static readonly bool s_ShowGizmos = false;
+    private static readonly bool s_ShowGizmos = true;
     #endregion
 
     #region Adjacent Settings
@@ -116,6 +120,11 @@ public class AbilitySlot : MonoBehaviour
     /// </summary>
     private static readonly Color s_LockColor = new Color(0.3f, 0.3f, 0.3f, 1);
     #endregion
+    #region Highlight
+    private static readonly float s_HighlightAlpha = 0.35f;
+    //private static readonly Color s_HighlightDefaultColor = new Color(1, 0.8480028f, 0);
+    private static readonly Color s_HighlightDefaultColor = new Color(1, 0, 0);
+    #endregion
 
     #region Cooldown
     /// <summary>
@@ -136,6 +145,10 @@ public class AbilitySlot : MonoBehaviour
     ///     Correction for ability interactions
     /// </summary>
     private static readonly Vector2 s_ClickOffset = Vector2.up * 2.5f;
+    /// <summary>
+    ///     Reference to the ability input handler
+    /// </summary>
+    private static AbilityInputHandler s_InputHandler = null;
     #endregion
 
     #endregion
@@ -145,6 +158,10 @@ public class AbilitySlot : MonoBehaviour
     #region Sequencing
     private void Start()
     {
+        // Check if our handler is null
+        if(s_InputHandler == null) s_InputHandler = FindAnyObjectByType<AbilityInputHandler>();
+        s_InputHandler.OnPointerMoved += TickHover;
+
         // Setup information
         // -> Transform
         _ObjectVerticalPosition = transform.localPosition.y;
@@ -287,6 +304,8 @@ public class AbilitySlot : MonoBehaviour
         boundAbility = ability;
         abilityIcon.sprite = abilityIcon_shadow.sprite = abilityIcon_animation.sprite = ability == null || ability.icon == null ? s_BlankAbilityIcon : ability.icon;
         abilityCooldown.SetBasicRate(ability == null ? s_DefaultCooldownTime : ability.cooldownTime);
+
+        SetHighlight(true);
     }
     #endregion
 
@@ -516,7 +535,65 @@ public class AbilitySlot : MonoBehaviour
         abilityCooldown.OnEnd += trace.CheckFinish;
     }
     #endregion
+    #region Highlighting
+    /// <summary>
+    ///     Sets the highlight state with a default color
+    /// </summary>
+    /// <param name="state">New state</param>
+    public void SetHighlight(bool state)
+    {
+        Color activeColor = boundAbility == null ? s_HighlightDefaultColor : boundAbility.color;
+        SetHighlight(state, activeColor);
+    }
+    /// <summary>
+    ///     Sets the highlight state
+    /// </summary>
+    /// <param name="state">New state</param>
+    /// <param name="color">Coloe</param>
+    public void SetHighlight(bool state, Color color)
+    {
+        slotHighlight.gameObject.SetActive(state);
 
+        slotHighlight.color = color;
+    }
+
+    public void SetHighlightConnected(bool state)
+    {
+        List<AbilitySlot> slots = GetAllConnected();
+        foreach(AbilitySlot slot in slots)
+        {
+            if (slot == null) continue;
+            slot.SetHighlight(state);
+            slot.connectedHovering = state;
+        }
+    }
+    #endregion
+
+    #region Hover Interface
+    private void TickHover(InputAction.CallbackContext context)
+    {
+        if (connectedHovering) return;
+
+        Vector2 position = context.ReadValue<Vector2>();
+        bool pointerInPosition = PointInClickRegion(position);
+        // Check to turn off connected values
+        if(!pointerInPosition && hovering)
+        {
+            SetHighlightConnected(false);
+        }
+        // If our pointer is not in position control self
+        if (!pointerInPosition)
+        {
+            SetHighlight(false);
+            hovering = false;
+            return;
+        }
+
+        SetHighlight(true);
+        SetHighlightConnected(true);
+        hovering = true;
+    }
+    #endregion
 
     #region Debug
     private void OnDrawGizmos()
