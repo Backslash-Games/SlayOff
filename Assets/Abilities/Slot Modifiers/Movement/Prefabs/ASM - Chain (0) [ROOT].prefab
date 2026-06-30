@@ -120,5 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ASM_Movement
   snapToOrigin: 1
   resetPosition: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 21300000, guid: cf03a8d532616bc478e729ee968efc7c, type: 3}
+  activationButtons: 00000000
+  _name: Single Chain
+  _description: Triggers the adjacent ability to applied keys <direction>.
+  icon: {fileID: 21300000, guid: cf03a8d532616bc478e729ee968efc7c, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  cooldownTime: 1
   chainDirections: 00000000

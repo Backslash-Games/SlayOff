@@ -9,6 +9,27 @@ using UnityEngine.InputSystem.Utilities;
 
 public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
 {
+    #region Singleton
+    // Singleton
+    private static AbilityInputHandler _instance;
+    public static AbilityInputHandler Instance { get { return _instance; } }
+    private void CreateSingleton()
+    {
+        // -> Pulled from Out on the Red Sea
+        // Checks if the instance of object is first of its type
+        // If object is not unique, destroy current instance
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        // Declares this script as current
+        else
+        {
+            _instance = this;
+        }
+    }
+    #endregion
+
     private static readonly string s_AbilityPrefix = "Ability_";
     private static readonly string s_ActionMapId = "Ability Actions";
     private static readonly string s_MouseActionMapId = "UI";
@@ -20,30 +41,26 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Transform as_Parent = null;
     [SerializeField] private GameObject as_Prefab = null;
     [Space]
-    [SerializeField] public string[] abilityKeys = new string[0];
     [SerializeField] public AbilitySlot[] abilitySlots = new AbilitySlot[0];
-    [SerializeField] public Vector3[] abilityKeyPositions = new Vector3[0];
-    [SerializeField] public Transform[] abilityKeyParents = new Transform[0];
-    [SerializeField] public Color[] abilityKeyColors = new Color[0];
-    [SerializeField] public AbilitySlot.SlotType[] abilitySlotTypes = new AbilitySlot.SlotType[0];
-    [Space]
     [SerializeField] public AbilitySlotData[] abilitySlotData = new AbilitySlotData[0];
     [Space]
-    [SerializeField] private PointerEventData pointerEventData = null;
+    [SerializeField] private Vector2 mousePosition = Vector2.zero;
+    public PointerEventData pointerEventData = null;
+    [Space]
+    public AbilitySlotPickupDummy pickupDummy;
 
+    [System.Serializable]
     public struct AbilitySlotData
     {
         public string key;
-        public AbilitySlot slot;
         public AbilitySlot.SlotType type;
         [Space]
         public Vector3 position;
         public Transform parent;
 
-        public AbilitySlotData(string key, AbilitySlot slot, AbilitySlot.SlotType type, Vector3 position, Transform parent)
+        public AbilitySlotData(string key, AbilitySlot.SlotType type, Vector3 position, Transform parent)
         {
             this.key = key;
-            this.slot = slot;
             this.type = type;
 
             this.position = position;
@@ -54,6 +71,7 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     #region Unity Methods
     private void Awake()
     {
+        CreateSingleton();
         // Check if we need to build
         if (!buildOnAwake)
         {
@@ -65,15 +83,30 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     }
     #endregion
     #region Mouse Binding
-    public delegate void OnMouseInput(InputAction.CallbackContext context);
+    public delegate void OnMouseInput(Vector2 position);
     public event OnMouseInput OnPointerMoved;
+    public event OnMouseInput OnRightClick;
+    public event OnMouseInput OnLeftClick;
+
     private void BindInput_Mouse()
     {
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
-
+        // Method variables
+        pointerEventData = new PointerEventData(EventSystem.current);
         InputActionMap mouseMap = InputSystem.actions.FindActionMap(s_MouseActionMapId);
+
+        // -> Movement
         InputAction point = mouseMap.FindAction("Point");
-        point.performed += context => OnPointerMoved?.Invoke(context);
+        point.performed += context => { mousePosition = context.ReadValue<Vector2>(); pointerEventData.position = mousePosition; };
+        point.performed += _ => OnPointerMoved?.Invoke(mousePosition);
+
+        // -> Right click
+        InputAction rightClick = mouseMap.FindAction("RightClick");
+        rightClick.performed += _ => OnRightClick?.Invoke(mousePosition);
+
+        // -> Right click
+        InputAction leftClick = mouseMap.FindAction("LeftClick");
+        leftClick.performed += _ => OnLeftClick?.Invoke(mousePosition);
+        leftClick.canceled += _ => { pickupDummy.ForceDrop(pointerEventData); };
     }
     #endregion
 
@@ -88,7 +121,6 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
         ReadOnlyArray<KeyControl> keys = Keyboard.current.allKeys;
 
         // Set up arrays
-        abilityKeys = new string[keys.Count];
         abilitySlots = new AbilitySlot[keys.Count];
 
         // Check if our action map already exists
@@ -105,17 +137,20 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
             InputAction action = actionMap.AddAction(GetAbilityName(index));
             action.AddBinding(key);
 
-            // Build the key
+            // Build the key'
+            #if UNITY_EDITOR
             AbilitySlot cSlot = ((GameObject)PrefabUtility.InstantiatePrefab(as_Prefab, as_Parent)).GetComponent<AbilitySlot>();
+            #else
+            AbilitySlot cSlot = Instantiate(as_Prefab, as_Parent).GetComponent<AbilitySlot>();
+            #endif
             cSlot.SetName(displayName, GetAbilityName(index));
             // -> Check for a logged position
-            if(index >= 0 && index < abilityKeyPositions.Length) cSlot.transform.position = abilityKeyPositions[index];
-            if (index >= 0 && index < abilityKeyParents.Length) cSlot.transform.parent = abilityKeyParents[index];
-            if (index >= 0 && index < abilityKeyColors.Length) cSlot.SetColor(abilityKeyColors[index]);
+            if(index >= 0 && index < abilitySlotData.Length) cSlot.transform.position = abilitySlotData[index].position;
+            if (index >= 0 && index < abilitySlotData.Length) cSlot.transform.parent = abilitySlotData[index].parent;
 
             // Add to serializable list
-            abilityKeys[index] = key.path;
             abilitySlots[index] = cSlot;
+            abilitySlots[index].path = key.path;
 
             index++;
         }
@@ -126,7 +161,9 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
         foreach (AbilitySlot slot in abilitySlots)
         {
             slot.SetupAdjacents();
+#if UNITY_EDITOR
             PrefabUtility.RecordPrefabInstancePropertyModifications(slot);
+#endif
         }
     }
 
@@ -195,9 +232,9 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     {
         // Find ability
         int index = 0;
-        foreach(string key in abilityKeys)
+        foreach(AbilitySlotData keyData in abilitySlotData)
         {
-            if (id.Equals(key) && abilitySlots[index].enabled)
+            if (id.Equals(keyData.key) && abilitySlots[index].enabled)
             {
                 AbilityTrace trace = new AbilityTrace("Key Pressed", abilitySlots[index]);
                 abilitySlots[index].OnTriggerSlot(trace);
@@ -218,9 +255,9 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
 
         // Find ability
         int index = 0;
-        foreach (string key in abilityKeys)
+        foreach (AbilitySlotData keyData in abilitySlotData)
         {
-            if (id.Equals(key)) abilitySlots[index].LockSlot();
+            if (id.Equals(keyData.key)) abilitySlots[index].LockSlot();
             index++;
         }
     }
@@ -230,41 +267,38 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     /// </summary>
     public void RecordKeyData()
     {
-        abilityKeyPositions = new Vector3[abilitySlots.Length];
-        abilityKeyParents = new Transform[abilitySlots.Length];
-        abilityKeyColors = new Color[abilitySlots.Length];
-
         abilitySlotData = new AbilitySlotData[abilitySlots.Length];
 
-        for (int i = 0; i < abilitySlots.Length; i++)
+        for (int i = 0; i < abilitySlotData.Length; i++)
         {
-            abilityKeyPositions[i] = abilitySlots[i].transform.position;
-            abilityKeyParents[i] = abilitySlots[i].transform.parent;
-            abilityKeyColors[i] = abilitySlots[i].color;
-            abilitySlots[i].SetColor(abilitySlots[i].color);
-
-            abilitySlotData[i] = new AbilitySlotData();
+            AbilitySlot slot = abilitySlots[i];
+            abilitySlotData[i] = new AbilitySlotData()
+            {
+                key = slot.path,
+                parent = slot.transform.parent,
+                position = slot.transform.position
+            };
         }
     }
-    #endregion
+#endregion
     #region Click Methods
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!allowClickTrigger) return;
         List<RaycastResult> results = new List<RaycastResult>();
 
         // -> Get all keys
         EventSystem.current.RaycastAll(eventData, results);
-        if (allowClickTrigger)
-            foreach (RaycastResult result in results) 
+        foreach (RaycastResult result in results)
+        {
+            // Check if the result is an ability slot
+            AbilitySlot slot = result.gameObject.GetComponent<AbilitySlot>();
+            if (slot != null && slot.PointInClickRegion(eventData.position))
             {
-                // Check if the result is an ability slot
-                AbilitySlot slot = result.gameObject.GetComponent<AbilitySlot>();
-                if (slot != null && slot.PointInClickRegion(eventData.position))
-                {
-                    AbilityTrace trace = new AbilityTrace("Mouse Clicked", slot);
-                    slot.OnTriggerSlot(trace);
-                }
+                AbilityTrace trace = new AbilityTrace("Mouse Clicked", slot);
+                slot.OnTriggerSlot(trace);
             }
+        }
     }
     #endregion
 
@@ -287,15 +321,13 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     {
         foreach(AbilitySlot slot in abilitySlots)
         {
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             DestroyImmediate(slot.gameObject);
-            #else
+#else
             Destroy(slot.gameObject);
-            #endif
+#endif
         }
         abilitySlots = new AbilitySlot[0];
-        abilityKeys = new string[0];
-
         actionMap = new InputActionMap(s_ActionMapId);
     }
     /// <summary>

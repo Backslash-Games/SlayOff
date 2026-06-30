@@ -13,6 +13,10 @@ PrefabInstance:
       value: ASM - Chain Dual (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2833257884947336874, guid: 03f80144d06fb7743a7593aec7859caf, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c53709c455464440a02d1c8730209f5, type: 3}
+    - target: {fileID: 2833257884947336874, guid: 03f80144d06fb7743a7593aec7859caf, type: 3}
       propertyPath: sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4c53709c455464440a02d1c8730209f5, type: 3}

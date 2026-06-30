@@ -1,33 +1,9 @@
-using HFHandyUtils;
-using HFHandyUtils.UI;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class Ability : DraggableComponent
+public class Ability : AbilitySlotEquipment
 {
-    [Header("Info")]
-    public string name = string.Empty;
-
-    [Header("Data")]
-    public Sprite icon;
-    public Color color = Color.white;
-    public float cooldownTime = 1f;
-
-    /// <summary>
-    ///     Image that renders the icon
-    /// </summary>
-    private Image _image = null;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        _image = GetComponent<Image>();
-        _image.sprite = icon;
-    }
-
     #region Interfaces
     public virtual void OnTriggerAbility(AbilityTrace trace)
     {
@@ -36,20 +12,22 @@ public class Ability : DraggableComponent
     }
     #endregion
     #region Overrides
-    protected override bool OnDrop(PointerEventData eventData)
+    public bool Equip(AbilitySlot slot)
     {
-        List<RaycastResult> results = GetHoveringResults(eventData);
-        foreach (RaycastResult result in results)
+        // Check if an ability already exists here
+        if (slot.boundAbility != null)
         {
-            // Check if the result is an ability slot
-            AbilitySlot slot = result.gameObject.GetComponent<AbilitySlot>();
-            if (slot != null && slot.PointInClickRegion(eventData.position))
-            {
-                slot.BindAbility(this);
-                return true;
-            }
+            CancelEquip();
+            return false;
         }
-        return false;
+        // Bind the ability
+        slot.BindAbility(this);
+        return true;
+    }
+    protected override bool OnEquip(AbilitySlot slot) { return Equip(slot); }
+    protected override void OnDisplayPopup()
+    {
+        AbilityInformationHandler.Instance.SetPopup(null, this, null, transform.position);
     }
     #endregion
 }

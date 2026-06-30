@@ -132,7 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ability_DebugConsole
   snapToOrigin: 1
   resetPosition: {x: 0, y: 0, z: 0}
-  name: Debug Red
+  activationButtons: 00000000
+  _name: '[RED] Debug Ability'
+  _description: On trigger, prints out RED to the console.
   icon: {fileID: 21300000, guid: 4f5a228583c51ad439a03702388e79d0, type: 3}
   color: {r: 1, g: 0.38823533, b: 0.38823533, a: 1}
   cooldownTime: 0.7

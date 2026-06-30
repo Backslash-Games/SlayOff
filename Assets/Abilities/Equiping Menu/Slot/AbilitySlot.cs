@@ -1,9 +1,8 @@
+using HFHandyUtils;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class AbilitySlot : MonoBehaviour
@@ -14,6 +13,7 @@ public class AbilitySlot : MonoBehaviour
     [Header("Information")]
     [SerializeField] public string bindingName = "";
     [SerializeField] private string actionName = "";
+    [SerializeField] public string path = "";
     [SerializeField] public SlotType slotType = SlotType.Empty;
     [Space]
     [SerializeField] public bool onCooldown = false;
@@ -142,6 +142,10 @@ public class AbilitySlot : MonoBehaviour
     /// </summary>
     private static readonly float s_ClickDistance = 30f;
     /// <summary>
+    ///     Ability interaction distance
+    /// </summary>
+    private static readonly float s_AbilityRange = 16.5f;
+    /// <summary>
     ///     Correction for ability interactions
     /// </summary>
     private static readonly Vector2 s_ClickOffset = Vector2.up * 2.5f;
@@ -160,7 +164,10 @@ public class AbilitySlot : MonoBehaviour
     {
         // Check if our handler is null
         if(s_InputHandler == null) s_InputHandler = FindAnyObjectByType<AbilityInputHandler>();
+        // -> Set mouse interactions
         s_InputHandler.OnPointerMoved += TickHover;
+        s_InputHandler.OnRightClick += DisplayInfoPopup;
+        s_InputHandler.OnLeftClick += AttemptPickup;
 
         // Setup information
         // -> Transform
@@ -490,6 +497,61 @@ public class AbilitySlot : MonoBehaviour
         _lastClick = point;
         return Vector2.Distance(cPoint, point) <= s_ClickDistance;
     }
+    /// <summary>
+    ///     Checks if a given point is in our click region
+    /// </summary>
+    /// <param name="point">Point</param>
+    /// <returns>True if in region</returns>
+    public bool PointInAbilityRegion(Vector2 point)
+    {
+        Vector2 cPoint = (Vector2)transform.position + s_ClickOffset;
+        _lastClick = point;
+        return Vector2.Distance(cPoint, point) <= s_AbilityRange;
+    }
+
+    /// <summary>
+    ///     Sets display information to this
+    /// </summary>
+    /// <param name="context">Input context</param>
+    private void DisplayInfoPopup(Vector2 position)
+    {
+        // Pull position & check
+        if (!PointInClickRegion(position)) return;
+
+        // Set popup
+        AbilityInformationHandler.Instance.SetPopup(this, transform.position);
+    }
+    /// <summary>
+    ///     Sets display information to this
+    /// </summary>
+    /// <param name="context">Input context</param>
+    private void AttemptPickup(Vector2 position)
+    {
+        // Pull position & check
+        if (!PointInClickRegion(position)) return;
+
+        // -> Set up pickup dummy
+        AbilityInformationHandler.Instance.ClosePopup();
+        s_InputHandler.pickupDummy.Pickup(s_InputHandler.pointerEventData, this);
+
+        // -> Clicked modifier ring
+        if (!PointInAbilityRegion(position))
+        {
+            s_InputHandler.pickupDummy.SetModifier(modifier);
+            if (modifier != null)
+            {
+                SetHighlightConnected(false);
+                modifier.RemoveFromSlot(this);
+                SetHighlight(false);
+            }
+        }
+        // -> Clicked ability
+        else
+        {
+            s_InputHandler.pickupDummy.SetAbility(boundAbility);
+            BindAbility(null);
+        }
+    }
     #endregion
     #region Modifiers
     /// <summary>
@@ -499,7 +561,7 @@ public class AbilitySlot : MonoBehaviour
     public void SetModifier(AbilitySlotModifier modifier)
     {
         this.modifier = modifier;
-        SetModifierIcon(modifier.sprite);
+        SetModifierIcon(modifier == null ? s_BlankAbilityIcon : modifier.icon);
     }
     #endregion
 
@@ -542,6 +604,7 @@ public class AbilitySlot : MonoBehaviour
     /// <param name="state">New state</param>
     public void SetHighlight(bool state)
     {
+        if (locked) return;
         Color activeColor = boundAbility == null ? s_HighlightDefaultColor : boundAbility.color;
         SetHighlight(state, activeColor);
     }
@@ -570,11 +633,14 @@ public class AbilitySlot : MonoBehaviour
     #endregion
 
     #region Hover Interface
-    private void TickHover(InputAction.CallbackContext context)
+    /// <summary>
+    ///     Updates hovering function
+    /// </summary>
+    /// <param name="context">Input context</param>
+    private void TickHover(Vector2 position)
     {
         if (connectedHovering) return;
 
-        Vector2 position = context.ReadValue<Vector2>();
         bool pointerInPosition = PointInClickRegion(position);
         // Check to turn off connected values
         if(!pointerInPosition && hovering)
@@ -600,13 +666,12 @@ public class AbilitySlot : MonoBehaviour
     {
         if (!s_ShowGizmos) return;
 
-        // Draw default click region
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, s_ClickDistance);
-
         // Draw click comparison
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere((Vector2)transform.position + s_ClickOffset, s_ClickDistance);
+        // Draw abiltiy click comparison
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere((Vector2)transform.position + s_ClickOffset, s_AbilityRange);
         // Draw last click
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(_lastClick, 5);

@@ -10,17 +10,17 @@ public class AbilityInputHandlerEditor : Editor
         AbilityInputHandler aih = (AbilityInputHandler)target;
 
         // Display information about 
-        GUILayout.TextField("Ability Slots: " + aih.abilityKeys.Length);
+        GUILayout.TextField("Ability Slots: " + aih.abilitySlotData.Length);
         // Display buttons
         if (GUILayout.Button("Build"))
         {
             aih.ResetAll();
             aih.BuildAbilityKeys();
-        }
-        if (GUILayout.Button("Record Key Data"))
             aih.RecordKeyData();
-        if (GUILayout.Button("Build Key Adjacents"))
             aih.BuildAdjacentConnections();
+        }
+        if (GUILayout.Button("Update Key Data"))
+            aih.RecordKeyData();
         if (GUILayout.Button("Reset"))
             aih.ResetAll();
 

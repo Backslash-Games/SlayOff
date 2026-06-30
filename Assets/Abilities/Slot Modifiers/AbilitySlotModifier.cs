@@ -1,32 +1,10 @@
-using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
-using HFHandyUtils.UI;
-using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Image))]
-public class AbilitySlotModifier : DraggableComponent
+public class AbilitySlotModifier : AbilitySlotEquipment
 {
-    /// <summary>
-    ///     Modifier sprite
-    /// </summary>
-    public Sprite sprite = null;
-
-    /// <summary>
-    ///     Object renderer
-    /// </summary>
-    private Image _image = null;
-
-
-    #region Unity Methods
-    protected override void Awake()
-    {
-        base.Awake();
-        _image = GetComponent<Image>();
-        _image.sprite = sprite;
-    }
-    #endregion
-
     #region Virtual
     /// <summary>
     ///     Applies information to a slot
@@ -37,23 +15,34 @@ public class AbilitySlotModifier : DraggableComponent
         slot.SetModifier(this);
         slot.chainDirections.Clear();
     }
+    /// <summary>
+    ///     Removes information from a slot
+    /// </summary>
+    /// <param name="slot">working slot</param>
+    public virtual void RemoveFromSlot(AbilitySlot slot)
+    {
+        slot.SetModifier(null);
+        slot.chainDirections.Clear();
+    }
     #endregion
     #region Overrides
-    protected override bool OnDrop(PointerEventData eventData)
+    public bool Equip(AbilitySlot slot)
     {
-        List<RaycastResult> results = GetHoveringResults(eventData);
-        foreach (RaycastResult result in results)
+        if (slot.modifier != null)
         {
-            // Check if the result is an ability slot
-            AbilitySlot slot = result.gameObject.GetComponent<AbilitySlot>();
-            if (slot != null && slot.PointInClickRegion(eventData.position))
-            {
-                ApplyToSlot(slot);
-                slot.SetHighlightConnected(true);
-                return true;
-            }
+            CancelEquip();
+            return false;
         }
-        return false;
+
+        slot.SetHighlightConnected(false);
+        ApplyToSlot(slot);
+        slot.SetHighlightConnected(true);
+        return true;
+    }
+    protected override bool OnEquip(AbilitySlot slot) { return Equip(slot); }
+    protected override void OnDisplayPopup()
+    {
+        AbilityInformationHandler.Instance.SetPopup(null, null, this, transform.position);
     }
     #endregion
 }

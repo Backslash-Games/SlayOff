@@ -1,6 +1,5 @@
 using HFHandyUtils;
 using System.Collections.Generic;
-using VInspector.Libs;
 
 [System.Serializable]
 public class AbilityTrace
@@ -176,6 +175,7 @@ public class AbilityTrace
             // Gather new queued information
             foreach(AbilitySlot slot in currentSlots)
             {
+                if (slot == null) continue;
                 List<AbilitySlot> nQueues = slot.GetAllConnected();
                 // Check if we are already tracked, if not add to queued
                 foreach (AbilitySlot queue in nQueues) if (!trackedSlots.Contains(queue)) queuedSlots.Add(queue);
@@ -277,6 +277,7 @@ public class AbilityTrace
     /// <param name="slot">Input slot</param>
     private void AddTracking(AbilitySlot slot)
     {
+        if (slot == null) return;
         // Return early if this slot isnt tracked yet
         if (trackedSlots.Contains(slot)) return;
         if (!slot.enabled) return;

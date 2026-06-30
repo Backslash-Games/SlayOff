@@ -17,12 +17,20 @@ PrefabInstance:
       value: Debug Yellow
       objectReference: {fileID: 0}
     - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
+      propertyPath: _name
+      value: '[YELLOW] Debug Ability'
+      objectReference: {fileID: 0}
+    - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
       propertyPath: output
       value: '[YELLOW] Debug Ability Activated'
       objectReference: {fileID: 0}
     - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
       propertyPath: color.g
       value: 0.98823535
+      objectReference: {fileID: 0}
+    - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
+      propertyPath: _description
+      value: On trigger, prints out YELLOW to the console.
       objectReference: {fileID: 0}
     - target: {fileID: 528780852484024570, guid: e45ba904720f4fa44af0a84d014cc670, type: 3}
       propertyPath: cooldownTime

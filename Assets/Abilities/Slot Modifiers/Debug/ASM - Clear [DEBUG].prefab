@@ -154,9 +154,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 1fed0e78ca584904b80ca804db9023b9, type: 3}
     - target: {fileID: 3009525054091109129, guid: 50d58f6f6c2945e4796c463ab94d9603, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1fed0e78ca584904b80ca804db9023b9, type: 3}
+    - target: {fileID: 3009525054091109129, guid: 50d58f6f6c2945e4796c463ab94d9603, type: 3}
+      propertyPath: _name
+      value: DEBUG - Clear Modifier
+      objectReference: {fileID: 0}
+    - target: {fileID: 3009525054091109129, guid: 50d58f6f6c2945e4796c463ab94d9603, type: 3}
       propertyPath: sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1fed0e78ca584904b80ca804db9023b9, type: 3}
+    - target: {fileID: 3009525054091109129, guid: 50d58f6f6c2945e4796c463ab94d9603, type: 3}
+      propertyPath: _description
+      value: 'Deletes modifier from a slot.
+
+        [UNITY EDITOR ONLY]'
+      objectReference: {fileID: 0}
     - target: {fileID: 6832836186699751938, guid: 50d58f6f6c2945e4796c463ab94d9603, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
-public class AbilityInformation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class AbilityInformation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     /// <summary>
     ///     Rect transform
@@ -113,7 +113,7 @@ public class AbilityInformation : MonoBehaviour, IPointerEnterHandler, IPointerE
         }
 
         _abilityIcon.sprite = ability.icon;
-        _name.text = ability.name;
+        _name.text = ability.GetName();
 
         _cooldownInformation.text = $"<color=grey><size=8>[{ability.cooldownTime}s]</size></color>\n{(ability.cooldownTime / trace.reductionRate).ToString("F2")}s";
     }
@@ -130,7 +130,7 @@ public class AbilityInformation : MonoBehaviour, IPointerEnterHandler, IPointerE
             return;
         }
 
-        _ringIcon.sprite = modifier.sprite;
+        _ringIcon.sprite = modifier.icon;
     }
     #endregion
 
@@ -171,5 +171,11 @@ public class AbilityInformation : MonoBehaviour, IPointerEnterHandler, IPointerE
     public void OnPointerExit(PointerEventData eventData)
     {
         SetConnectedSlotHighlight(false);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (eventData.button != PointerEventData.InputButton.Right) return;
+        AbilityInformationHandler.Instance.SetPopup(_connectedSlot, transform.position);
     }
 }
