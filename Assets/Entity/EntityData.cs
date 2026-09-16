@@ -1,19 +1,32 @@
-using System.Collections.Generic;
-using UnityEngine;
 using HFHandyUtils.Effects;
+using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.VFX;
 
 [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Collider))]
 public class EntityData : MonoBehaviour
 {
+    public enum Team { None = 0, Allied, Opposing, Prop };
+
     [Header("Entity Data")]
+    public Team team = 0;
+    public delegate void OnTeamModified(Team team);
+    public OnTeamModified OnTeamChanged;
+    [Space]
     [SerializeField] private float health = 0;
-    [SerializeField] private Statblock statblock = new Statblock();
+    public Statblock statblock = new Statblock();
     [Space]
     [SerializeField] private Collider collision = null;
     [SerializeField] private Rigidbody physicsBody = null;
-    private RigidbodyConstraints defaultConstraints = RigidbodyConstraints.None;
+    
+    private RigidbodyConstraints default_Constraints = RigidbodyConstraints.None;
+    private PhysicsMaterial default_PhysicsMaterial = null;
+    private float default_LinearDamping = 0;
+    private float default_Mass = 0;
+
+    public float controlScale = 1;
 
     [SerializeField] private bool awakeOnStart = true;
     
@@ -145,41 +158,39 @@ public class EntityData : MonoBehaviour
     #endregion
 
     #region Unity Methods
-    private void Awake()
+    protected virtual void Awake()
     {
         // Set defaut parameters
         SetDefaultConstraints();
+        SetDefaultPhysicsMaterial();
+        SetDefaultLinearDamping();
+        SetDefaultMass();
         // Set awake state
         SetRigidbodyAwake(awakeOnStart);
-        
-        // Run on awake
-        OnAwake();
     }
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         // Setup events
         BindEvents();
         // Setup statblock
         statblock.Recalculate();
 
+        // Enables team logic
+        EnableTeamLogic();
+
         // Heal full when enabled
         HealFull("Entity.OnEnable", false);
-        // Run on enable
-        OnEnabled();
     }
-    private void OnDisable()
+    public void Force_OnEnable() { OnEnable(); }
+    protected virtual void OnDisable()
     {
+        // Disables team logic
+        DisableTeamLogic();
+
         // Setup events
         UnbindEvents();
-
-        // Run on disable
-        OnDisabled();
     }
-    #endregion
-    #region Unity Passthroughs
-    public virtual void OnAwake() { }
-    public virtual void OnEnabled() { }
-    public virtual void OnDisabled() { }
+    public void Force_OnDisable() { OnDisable(); }
     #endregion
     #region Event Binding
     /// <summary>
@@ -333,7 +344,6 @@ public class EntityData : MonoBehaviour
             physicsBody = GetComponent<Rigidbody>();
         return physicsBody;
     }
-
     #region Velocity
     #region Get
     /// <summary>
@@ -403,11 +413,34 @@ public class EntityData : MonoBehaviour
     #endregion
     #endregion
     #region Constraints
-    private void SetDefaultConstraints() { defaultConstraints = GetRigidbody().constraints; }
-    public void ResetConstraints() { GetRigidbody().constraints = defaultConstraints; }
+    private void SetDefaultConstraints() { default_Constraints = GetRigidbody().constraints; }
+    public void ResetConstraints() { GetRigidbody().constraints = default_Constraints; }
     public void SetConstraints(RigidbodyConstraints constraints) { GetRigidbody().constraints = constraints; }
     #endregion
+    #region Material
+    private void SetDefaultPhysicsMaterial() { default_PhysicsMaterial = GetCollision().sharedMaterial; }
+    public void ResetPhysicsMaterial() { GetCollision().sharedMaterial = default_PhysicsMaterial; }
+    public void SetPhysicsMaterial(PhysicsMaterial material) { GetCollision().sharedMaterial = material; }
+    #endregion
+    #region Linear Drag
+    private float _lastLinearDampingSet = 0;
+    private void SetDefaultLinearDamping() { default_LinearDamping = GetRigidbody().linearDamping; }
+    public void ResetLinearDamping() { GetRigidbody().linearDamping = default_LinearDamping; }
+    public void SetLinearDamping(float damping) { GetRigidbody().linearDamping = _lastLinearDampingSet = damping; }
+    public void SetLinearDampingPercentage(float percentage) { GetRigidbody().linearDamping = Mathf.Lerp(_lastLinearDampingSet, default_LinearDamping, percentage); }
+    #endregion
+    #region Mass
+    private float _lastMassSet = 0;
+    private void SetDefaultMass() { default_Mass = GetRigidbody().mass; }
+    public void ResetMass() { GetRigidbody().mass = default_Mass; }
+    public void SetMass(float mass) { GetRigidbody().mass = _lastMassSet = mass; }
+    public void SetMassPercentage(float percentage) { GetRigidbody().mass = Mathf.Lerp(_lastMassSet, default_Mass, percentage); }
+    #endregion
 
+    #region Forces
+    private Cooldown knockbackCooldown = null;
+
+    private static readonly float s_KnockbackTime = 1;
     private static readonly bool WriteToConsole = false;
     /// <summary>
     ///     Runs whenever the entity has a force applied to them
@@ -415,18 +448,56 @@ public class EntityData : MonoBehaviour
     /// <param name="direction">Direction of force</param>
     /// <param name="strength">Strength of force</param>
     /// <param name="mode">Force mode - Unity</param>
-    public virtual void ApplyForce(Vector3 direction, float strength, ForceMode mode, string source = "Unknown")
+    /// <param name="source">Source of force</param>
+    public virtual void ApplyForce(Vector3 direction, float strength, ForceMode mode, string source = "Unknown", bool ignoreControlScale = false)
     {
         // Get the rigidbody
         Rigidbody lBody = GetRigidbody();
 
         // Apply the force
-        lBody.AddForce(direction.normalized * strength, mode);
+        float cScale = ignoreControlScale ? 1 : controlScale;
+        lBody.AddForce(direction.normalized * strength * cScale, mode);
 
         // Debug
         if(WriteToConsole)
             Debug.Log($"Force: {source} > {direction.normalized * strength} > {mode}\nLinear Velocity: {GetLinearVelocity()}\nLog from {name}");
     }
+    /// <summary>
+    ///     Applies knockback to the entity
+    /// </summary>
+    /// <param name="direction">Direction of force</param>
+    /// <param name="strength">Strength of force</param>
+    /// <param name="source">Source of force</param>
+    public virtual void ApplyKnockback(Vector3 direction, float strength, string source = "Unknown")
+    {
+        StartCoroutine(ie_ApplyKnockback(direction, strength, source));
+    }
+    protected virtual IEnumerator ie_ApplyKnockback(Vector3 direction, float strength, string source = "Unknown")
+    {
+        // Disable physics control
+        EnableRagdoll();
+        // Start cooldown
+        if (knockbackCooldown == null)
+        {
+            knockbackCooldown = new Cooldown(this, s_KnockbackTime, 1);
+            knockbackCooldown.OnCooldownUpdate += () => { SetRagdollPercentage(knockbackCooldown.GetPercentComplete()); };
+            knockbackCooldown.OnCooldownEnded += () => { DisableRagdoll(); };
+        }
+        if (knockbackCooldown.Active()) knockbackCooldown.ResetTimer();
+        knockbackCooldown.Start();
+
+        yield return new WaitForEndOfFrame();
+
+        // Apply force
+        ApplyForce(direction, strength, ForceMode.Impulse, source, true);
+    }
+    /// <summary>
+    ///     Applies torque to the entity
+    /// </summary>
+    /// <param name="direction">Direction of force</param>
+    /// <param name="strength">Strength of force</param>
+    /// <param name="mode">Force mode - Unity</param>
+    /// <param name="source">Source of force</param>
     public virtual void ApplyTorque(Vector3 direction, float strength, ForceMode mode, string source = "Unknown")
     {
         // Get the rigidbody
@@ -439,6 +510,37 @@ public class EntityData : MonoBehaviour
         if (WriteToConsole)
             Debug.Log($"Torque: {source} > {direction.normalized * strength} > {mode}\nAngular Velocity: {GetAngularVelocity()}\nLog from {name}");
     }
+    #endregion
+    #region Ragdolling
+    /// <summary>
+    ///     Removes resistance from the rigid body
+    /// </summary>
+    protected virtual void EnableRagdoll()
+    {
+        controlScale = 0;
+        SetLinearDamping(0);
+        SetMass(1);
+    }
+    /// <summary>
+    ///     Adds back resistance to the rigid body
+    /// </summary>
+    protected virtual void DisableRagdoll()
+    {
+        controlScale = 1;
+        ResetLinearDamping();
+        ResetMass();
+    }
+    /// <summary>
+    ///     Drip feeds control back to the entity
+    /// </summary>
+    /// <param name="percent">Current percentage</param>
+    protected virtual void SetRagdollPercentage(float percent)
+    {
+        controlScale = percent;
+        SetLinearDampingPercentage(percent);
+        SetMassPercentage(percent);
+    }
+    #endregion
     #endregion
 
     #region Positions
@@ -494,6 +596,79 @@ public class EntityData : MonoBehaviour
         // Play audio
         EffectManager.Instance.Play(audioLibrary, type);
     }
+    #endregion
+
+    #region Teams
+    /// <summary>
+    ///     Binds methods to team events
+    /// </summary>
+    private void EnableTeamLogic()
+    {
+        // Add this to the entity manager
+        AddToEntityManager();
+
+        // Bind events
+        OnTeamChanged += _ => UpdateEntityManagerPlacement();
+    }
+    /// <summary>
+    ///     Unbinds methods to team events
+    /// </summary>
+    private void DisableTeamLogic()
+    {
+        // Remove this from the entity manager
+        RemoveFromEntityManager();
+
+        // Unbind events
+        OnTeamChanged -= _ => UpdateEntityManagerPlacement();
+    }
+
+    /// <summary>
+    ///     Adds this to the entity manager
+    /// </summary>
+    private void AddToEntityManager()
+    {
+        if (EntityManager.Instance == null) FindAnyObjectByType<EntityManager>().AddToActive(this);
+        else EntityManager.Instance.AddToActive(this);
+    }
+    /// <summary>
+    ///     Removes this from the entity manager
+    /// </summary>
+    private void RemoveFromEntityManager()
+    {
+        EntityManager.Instance.RemoveFromActive(this);
+    }
+    /// <summary>
+    ///     Updates this entities placement in the entity manager
+    /// </summary>
+    private void UpdateEntityManagerPlacement()
+    {
+        RemoveFromEntityManager();
+        AddToEntityManager();
+    }
+
+    /// <summary>
+    ///     Changes the entity team
+    /// </summary>
+    /// <param name="team">New team</param>
+    public void ChangeTeam(Team team)
+    {
+        this.team = team;
+        OnTeamChanged?.Invoke(team);
+    }
+
+
+    /// <summary>
+    ///     Checks if this entity is on other entities team
+    /// </summary>
+    /// <param name="other">Other entity</param>
+    /// <returns>True if on team</returns>
+    public bool isOnTeam(EntityData other) { return isOnTeam(other.team); }
+    /// <summary>
+    ///     Checks if this entity is on a team
+    /// </summary>
+    /// <param name="tTest">Test team</param>
+    /// <returns>True if on team</returns>
+    public bool isOnTeam(Team tTest) { return team.Equals(tTest); }
     #endregion
 
     #region Debug

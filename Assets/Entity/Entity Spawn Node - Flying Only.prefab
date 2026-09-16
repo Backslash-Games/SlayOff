@@ -54,15 +54,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8175338266520944664, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
       propertyPath: 'possible_spawns.Array.data[0]'
-      value: 
-      objectReference: {fileID: 4182673380092842002, guid: af1a3cccf6c3cfd43b6560884a232fed, type: 3}
+      value: Gnat
+      objectReference: {fileID: 0}
     - target: {fileID: 8175338266520944664, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
       propertyPath: 'possible_spawns.Array.data[1]'
-      value: 
-      objectReference: {fileID: 5169160842347327544, guid: 07c75d7a14474b540bcf3867230e4dae, type: 3}
+      value: Skull
+      objectReference: {fileID: 0}
     - target: {fileID: 8260048182997292116, guid: 35c0845f3b8d7de42b77c2d981e4d241, type: 3}
       propertyPath: m_Name
-      value: Entity Spawn Node - Flying Only Variant
+      value: Entity Spawn Node - Flying Only
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

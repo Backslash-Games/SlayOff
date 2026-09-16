@@ -12,17 +12,16 @@ public class Corpse : MonoBehaviour
         break_timer = new Cooldown(this, bt_time, 1);
 
         break_timer.OnCooldownSuccess += BreakCorpse;
-
         break_timer.Start();
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         break_timer.OnCooldownSuccess -= BreakCorpse;
     }
 
     private void BreakCorpse()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void SetEyes(Transform other)

@@ -4,9 +4,14 @@ public class CardboardBox_Corpse : CardboardBox
 {
     [SerializeField] private float fling_strength;
 
-    public override void OnEnabled()
+    protected override void OnEnable()
     {
-        base.OnEnabled();
-        ApplyForce(transform.position - Camera.main.transform.position, fling_strength, ForceMode.Impulse, "CardboardBox.Corpse.Enabled");
+        base.OnEnable();
+        ApplyForce(Camera.main.transform.forward, fling_strength, ForceMode.Impulse, "CardboardBox.Corpse.Enabled");
+    }
+    protected override void OnDisable()
+    {
+        GetRigidbody().linearVelocity = Vector3.zero;
+        base.OnDisable();
     }
 }

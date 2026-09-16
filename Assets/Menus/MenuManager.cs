@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    public enum Type { Pause, Option, GameOver_Results, LayOff }
+    public enum Type { Pause, Option, GameOver_Results, LayOff, Ability }
     [SerializeField] private MenuContainer[] menus = new MenuContainer[0];
     
     #region Singleton
@@ -26,6 +26,9 @@ public class MenuManager : MonoBehaviour
     }
     #endregion
     #region Unity Events
+    /// <summary>
+    ///     Run when the menu manager wakes up
+    /// </summary>
     private void Awake()
     {
         CreateSingleton();
@@ -33,6 +36,9 @@ public class MenuManager : MonoBehaviour
         foreach (MenuContainer menu in menus)
             menu.Initialize(this);
     }
+    /// <summary>
+    ///     Run when the menu manager is destroyed
+    /// </summary>
     private void OnDestroy()
     {
         foreach (MenuContainer menu in menus)

@@ -233,7 +233,6 @@ public class AbilityInformationPopup : MonoBehaviour
     {
         // Grab the expected minimum height
         float expectedMinimum = _regionSpawnLocation.y + _defaultHeight - _parent.sizeDelta.y - _bottomPosition;
-        HFLogger.Log($"{_regionSpawnLocation.y} + {_defaultHeight} - {_parent.sizeDelta.y} = {expectedMinimum}");
         float height = _defaultHeight;
         if (expectedMinimum < 0) height -= expectedMinimum;
 

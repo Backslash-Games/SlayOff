@@ -1,5 +1,7 @@
 using HFHandyUtils;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -31,8 +33,9 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     #endregion
 
     private static readonly string s_AbilityPrefix = "Ability_";
+    private static readonly string s_PlayerActionMapID = "Control";
+    private static readonly string s_UIActionMapID = "UI";
     private static readonly string s_ActionMapId = "Ability Actions";
-    private static readonly string s_MouseActionMapId = "UI";
 
     [SerializeField] private bool buildOnAwake = true;
     [SerializeField] private bool allowClickTrigger = false;
@@ -48,6 +51,10 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     public PointerEventData pointerEventData = null;
     [Space]
     public AbilitySlotPickupDummy pickupDummy;
+    [Header("Parent Control")]
+    [SerializeField] private bool _inventoryOpen = false;
+    [SerializeField] private float _parentGroupFadeSpeed = 1;
+    [SerializeField] private CanvasGroup _parentGroup = null;
 
     [System.Serializable]
     public struct AbilitySlotData
@@ -80,6 +87,7 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
 
         BindAbilityKeys();
         BindInput_Mouse();
+        BindInventoryOpen();
     }
     #endregion
     #region Mouse Binding
@@ -92,7 +100,7 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
     {
         // Method variables
         pointerEventData = new PointerEventData(EventSystem.current);
-        InputActionMap mouseMap = InputSystem.actions.FindActionMap(s_MouseActionMapId);
+        InputActionMap mouseMap = InputSystem.actions.FindActionMap(s_UIActionMapID);
 
         // -> Movement
         InputAction point = mouseMap.FindAction("Point");
@@ -107,6 +115,17 @@ public class AbilityInputHandler : MonoBehaviour, IPointerClickHandler
         InputAction leftClick = mouseMap.FindAction("LeftClick");
         leftClick.performed += _ => OnLeftClick?.Invoke(mousePosition);
         leftClick.canceled += _ => { pickupDummy.ForceDrop(pointerEventData); };
+    }
+    #endregion
+    #region Open/Close Menu
+    /// <summary>
+    ///     Binds information required to open the inventory
+    /// </summary>
+    private void BindInventoryOpen()
+    {
+        InputActionMap uiActionMap = InputSystem.actions.FindActionMap(s_UIActionMapID);
+        InputAction inventoryToggle = uiActionMap.FindAction("Inventory");
+        //inventoryToggle.performed += _ => SetParentActive(!_inventoryOpen);
     }
     #endregion
 

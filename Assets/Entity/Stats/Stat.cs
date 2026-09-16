@@ -5,18 +5,33 @@ using UnityEngine;
 [System.Serializable]
 public class Stat
 {
-    public enum Tag { attackLower, attackHigher, fireRate, shotSpeed, speed, luck, currentHealth, maxHealth, defense, reloadSpeed };
+    public enum Tag 
+    { 
+        maxHealth = 0, 
+        size = 1, 
+        weight = 2, 
+        balance = 3, 
+        
+        attackLower = 4, 
+        attackHigher = 5, 
+        fireRate = 6, 
+        reloadSpeed = 7, 
+        speed = 8, 
+        
+        luck = 9, 
+        entropy = 10
+    };
+    [SerializeField] private string title;
     // Stat Tag
     [SerializeField] private Tag tag;
     // Allowed range for stat
     private Vector2 range;
     [Space]
+
     // Basic - Impacts the base value of the stat block. Used for things like equipment
-    [SerializeField] private float basic;
-    // Additive - Impacts the flat additive of the stat
-    [SerializeField] private float additive;
-    // Percentage - Impacts the percentage additive of the stat
-    [SerializeField] private float percentage;
+    // Additive - Impacts the flat BAP.y of the stat
+    // Percentage - Impacts the BAP.z BAP.y of the stat
+    [SerializeField] private Vector3 BAP;
     // Current - Impacts the current value of the stat block. Used for things like ailments
     [SerializeField] private float current;
 
@@ -27,13 +42,15 @@ public class Stat
     public Stat() { }
 
     // Tag defintiion
-    public Stat(Tag tag) 
+    public Stat(string title, Tag tag) 
     {
+        this.title = title;
         SetTag(tag);
     }
     // Tag and Range defintiion
-    public Stat(Tag tag, Vector2 range)
+    public Stat(string title, Tag tag, Vector2 range)
     {
+        this.title = title;
         SetTag(tag);
         SetRange(range);
     }
@@ -59,22 +76,22 @@ public class Stat
     }
 
 
-    // Gets the basic value
+    // Gets the BAP.x value
     public float GetBasic()
     {
-        return basic;
+        return BAP.x;
     }
-    // Gets the additive value
+    // Gets the BAP.y value
     public float GetAdditive()
     {
-        return additive;
+        return BAP.y;
     }
-    // Gets the percentage value
+    // Gets the BAP.z value
     public float GetPercentage()
     {
-        return percentage;
+        return BAP.z;
     }
-    // Gets the percentage value
+    // Gets the BAP.z value
     public float GetCurrent()
     {
         return current;
@@ -97,9 +114,9 @@ public class Stat
 
 
     /// <summary>
-    ///     Sets the basic value
+    ///     Sets the BAP.x value
     /// </summary>
-    /// <param name="cleanExtras"> When set to true, runs reset before setting basic </param>
+    /// <param name="cleanExtras"> When set to true, runs reset before setting BAP.x </param>
     public void SetBasic(float value, bool cleanExtras = false)
     {
         // Check for clean extras
@@ -107,23 +124,23 @@ public class Stat
             Reset();
 
 
-        // Set basic
-        basic = value;
+        // Set BAP.x
+        BAP.x = value;
         Recalculate();
     }
-    // Sets the basic value
+    // Sets the BAP.x value
     public void SetAdditive(float value)
     {
-        additive = value;
+        BAP.y = value;
         Recalculate();
     }
-    // Sets the basic value
+    // Sets the BAP.x value
     public void SetPercentage(float value)
     {
-        percentage = value;
+        BAP.z = value;
         Recalculate();
     }
-    // Sets the basic value
+    // Sets the BAP.x value
     public void SetCurrent(float value)
     {
         current = value;
@@ -140,41 +157,41 @@ public class Stat
     }
     #endregion
 
-    // Methods used in basic math
+    // Methods used in BAP.x math
     #region Math Methods
     #region Basic
     public void AddBasic(float value)
     {
-        basic += value;
+        BAP.x += value;
         Recalculate();
     }
     public void SubtractBasic(float value)
     {
-        basic -= value;
+        BAP.x -= value;
         Recalculate();
     }
     #endregion
     #region Additive
     public void AddAdditive(float value)
     {
-        additive += value;
+        BAP.y += value;
         Recalculate();
     }
     public void SubtractAdditive(float value)
     {
-        additive -= value;
+        BAP.y -= value;
         Recalculate();
     }
     #endregion
     #region Percentage
     public void AddPercentage(float value)
     {
-        percentage += value;
+        BAP.z += value;
         Recalculate();
     }
     public void SubtractPercentage(float value)
     {
-        percentage -= value;
+        BAP.z -= value;
         Recalculate();
     }
     #endregion
@@ -197,8 +214,8 @@ public class Stat
     // Calculates the current stat based on the given value
     public void Recalculate()
     {
-        // Basic + additive * (1 + percentage)
-        current = (basic + additive) * (1 + percentage);
+        // Basic + BAP.y * (1 + BAP.z)
+        current = (BAP.x + BAP.y) * (1 + BAP.z);
         Validate();
     }
     
@@ -215,9 +232,9 @@ public class Stat
     // Resets the Stat Values
     public void Reset()
     {
-        basic = 0;
-        additive = 0;
-        percentage = 0;
+        BAP.x = 0;
+        BAP.y = 0;
+        BAP.z = 0;
         current = 0;
     }
     // Hard Resets EVERYTHING
@@ -235,7 +252,7 @@ public class Stat
     {
         string output = "";
 
-        output += $"{tag} > {current} ... {range} ... basic: {basic} > add: {additive} > percentage: {percentage}";
+        output += $"{title}::{tag}: {current} [BAP:{BAP}]";
 
         return output;
     }

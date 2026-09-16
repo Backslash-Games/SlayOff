@@ -7,22 +7,22 @@ public class Statblock
 {
     [SerializeField] private string blockName;
     [Space]
-    [SerializeField] private Stat attackLower = new Stat(Stat.Tag.attackLower, new Vector2(0.1f, 9999));
-    [SerializeField] private Stat attackHigher = new Stat(Stat.Tag.attackHigher, new Vector2(0.1f, 9999));
-    [SerializeField] private Stat fireRate = new Stat(Stat.Tag.fireRate, new Vector2(0.01f, 9999));
-    [SerializeField] private Stat shotSpeed = new Stat(Stat.Tag.shotSpeed, new Vector2(.01f, 9999));
-    [Space]
-    [SerializeField] private Stat speed = new Stat(Stat.Tag.speed, new Vector2(-9999, 9999));
-    [Space]
-    [SerializeField] private Stat luck = new Stat(Stat.Tag.luck, new Vector2(-9999, 9999));
-    [Space]
-    [SerializeField] private Stat maxHealth = new Stat(Stat.Tag.maxHealth, new Vector2(1, 9999));
-    [SerializeField] private Stat defense = new Stat(Stat.Tag.defense, new Vector2(0, 9999));
-    [Space]
-    [SerializeField] private Stat reloadSpeed = new Stat(Stat.Tag.reloadSpeed, new Vector2(0.01f, 9999)); // Reload speed impacts the percent speed in which the player can reload.
+    [SerializeField] private Stat[] stats = new Stat[]
+    {
+        new Stat("Health", Stat.Tag.maxHealth, new Vector2(1, 9999)),
+        new Stat("Size", Stat.Tag.size, new Vector2(0.25f, 9999)),
+        new Stat("Weight", Stat.Tag.weight, new Vector2(-9999, 9999)),
+        new Stat("Balance", Stat.Tag.balance, new Vector2(-9999, 9999)),
 
-    private Dictionary<Stat.Tag, Stat> statIndex = null;
+        new Stat("Attack - Lower", Stat.Tag.attackLower, new Vector2(0.1f, 9999)),
+        new Stat("Attack - Higher", Stat.Tag.attackHigher, new Vector2(0.1f, 9999)),
+        new Stat("Fire Rate", Stat.Tag.fireRate, new Vector2(0.01f, 9999)),
+        new Stat("Reload Speed", Stat.Tag.reloadSpeed, new Vector2(0.01f, 9999)),
 
+        new Stat("Speed", Stat.Tag.speed, new Vector2(-9999, 9999)),
+        new Stat("Luck", Stat.Tag.luck, new Vector2(-9999, 9999)),
+        new Stat("Entropy", Stat.Tag.entropy, new Vector2(-9999, 9999))
+    };
 
     #region Constructors
     // Constructor for blank stat block
@@ -34,141 +34,29 @@ public class Statblock
     public Statblock(Statblock other)
     {
         blockName = other.blockName;
-        attackLower = other.attackLower;
-        attackHigher = other.attackHigher;
-        fireRate = other.fireRate;
-        shotSpeed = other.shotSpeed;
-        speed = other.speed;
-        luck = other.luck;
-        maxHealth = other.maxHealth;
-        defense = other.defense;
-        reloadSpeed = other.reloadSpeed;
+        stats = other.stats;
     }
-    // Constructor for bullet stat block
-    public Statblock(string blockName, Vector2 attack, float shotSpeed) : this(blockName, attack, 0, shotSpeed, 0, 0, 0, 0, 0)
-    {
-        this.blockName = blockName;
-
-        attackLower.SetBasic(attack.x, true);
-        attackHigher.SetBasic(attack.y, true);
-        this.shotSpeed.SetBasic(shotSpeed, true);
-    }
-    // Constructor for full stat block using basic variables
-    public Statblock(string blockName, Vector2 attack, float fireRate, float shotSpeed, float speed, float luck, float health, float defense, float reloadSpeed)
-    {
-        this.blockName = blockName;
-
-        this.maxHealth.SetBasic(health);
-        this.defense.SetBasic(defense, true);
-
-        attackLower.SetBasic(attack.x, true);
-        attackHigher.SetBasic(attack.y, true);
-
-        this.speed.SetBasic(speed, true);
-        this.luck.SetBasic(luck, true);
-
-        this.fireRate.SetBasic(fireRate, true);
-        this.shotSpeed.SetBasic(shotSpeed, true);
-        this.reloadSpeed.SetBasic(reloadSpeed, true);
-    }
-    // Constructor for full stat block using stats
     #endregion
 
     #region Data Handling
     // Resets the stat block
     public void Reset()
     {
-        attackLower.Reset();
-        attackHigher.Reset();
-        fireRate.Reset();
-        shotSpeed.Reset();
-        speed.Reset();
-        luck.Reset();
-        maxHealth.Reset();
-        defense.Reset();
-        reloadSpeed.Reset();
+        foreach (Stat stat in stats) stat.Reset();
     }
 
     // Method for ensuring that stats are set properly
     public void Validate()
     {
-        maxHealth.Validate();
-        defense.Validate();
-
-        speed.Validate();
-
-        luck.Validate();
-
-        attackLower.Validate();
-        attackHigher.Validate();
-
-        fireRate.Validate();
-        reloadSpeed.Validate();
-        shotSpeed.Validate();
+        foreach (Stat stat in stats) stat.Validate();
     }
 
     // Method for ensuring that stats are calculated properly
     public void Recalculate()
     {
-        maxHealth.Recalculate();
-        defense.Recalculate();
-
-        speed.Recalculate();
-
-        luck.Recalculate();
-
-        attackLower.Recalculate();
-        attackHigher.Recalculate();
-
-        fireRate.Recalculate();
-        reloadSpeed.Recalculate();
-        shotSpeed.Recalculate();
+        foreach (Stat stat in stats) stat.Recalculate();
     }
 
-    // Method for creating the stat dictionary for quick calls
-    private void CreateDictionary()
-    {
-        // If the stat index has already been created then end early
-        if (statIndex != null)
-            return;
-        // Initialize the dictionary
-        statIndex = new Dictionary<Stat.Tag, Stat>();
-
-        // Index all elements
-        statIndex.Add(attackLower.GetTag(), attackLower);
-        statIndex.Add(attackHigher.GetTag(), attackHigher);
-        statIndex.Add(fireRate.GetTag(), fireRate);
-        statIndex.Add(shotSpeed.GetTag(), shotSpeed);
-        statIndex.Add(speed.GetTag(), speed);
-        statIndex.Add(luck.GetTag(), luck);
-        statIndex.Add(maxHealth.GetTag(), maxHealth);
-        statIndex.Add(defense.GetTag(), defense);
-        statIndex.Add(reloadSpeed.GetTag(), reloadSpeed);
-    }
-
-    #region Copy
-    /// <summary>
-    ///     Copies only the basic values from another statblock
-    /// </summary>
-    /// <param name="other">The other stat block</param>
-    /// <param name="cleanExtras"> When set to true, runs reset before setting basic </param>
-    public void CopyBasic(Statblock other, bool cleanExtras = false)
-    {
-        attackLower.SetBasic(other.attackLower.GetBasic(), cleanExtras);
-        attackHigher.SetBasic(other.attackHigher.GetBasic(), cleanExtras);
-        fireRate.SetBasic(other.fireRate.GetBasic(), cleanExtras);
-        shotSpeed.SetBasic(other.shotSpeed.GetBasic(), cleanExtras);
-
-        speed.SetBasic(other.speed.GetBasic(), cleanExtras);
-
-        luck.SetBasic(other.luck.GetBasic(), cleanExtras);
-
-        maxHealth.SetBasic(other.maxHealth.GetBasic(), cleanExtras);
-        defense.SetBasic(other.defense.GetBasic(), cleanExtras);
-
-        reloadSpeed.SetBasic(other.reloadSpeed.GetBasic(), cleanExtras);
-    }
-    #endregion
     #region Set
     public void SetBasic(Stat.Tag tag, float value)
     {
@@ -238,24 +126,11 @@ public class Statblock
     #endregion
 
     #region Get Methods
-
-    /// <summary>
-    ///     Checks if the current reload speed is the minmum
-    /// </summary>
-    /// <returns>True if current reload speed is at its minimum</returns>
-    public bool isMinimumReloadSpeed()
-    {
-        return reloadSpeed.Value() <= reloadSpeed.GetRange().x;
-    }
-
     // Returns a stat that contains a tag
     public Stat GetStatWithTag(Stat.Tag tag)
     {
-        // Check if dictionary has been made
-        CreateDictionary();
-
         // Access the dictionary and spit out the proper stat
-        return statIndex[tag];
+        return stats[(int)tag];
     }
 
     #region Basic Get Methods
@@ -277,79 +152,43 @@ public class Statblock
         // Get the stat with tag
         return GetStatWithTag(tag).GetPercentage();
     }
+
+
     // Gets the current value
-    public float GetCurrent(Stat.Tag tag)
+    public float GetValue(Stat.Tag tag)
     {
         // Get the stat with tag
         return GetStatWithTag(tag).Value();
     }
-    #endregion
-    #region Current Value Calls
-    // Get attack
-    public float GetAttack()
+    // Gets the current value range
+    public float GetValueRange(Stat.Tag lowerTag,  Stat.Tag upperTag)
     {
-        if (attackLower.Value() == attackHigher.Value())
-            return attackLower.Value();
+        Stat lower = GetStatWithTag(lowerTag);
+        Stat upper = GetStatWithTag(upperTag);
 
-        return Random.Range(attackLower.Value(), attackHigher.Value());
-    }
-    // Returns specific attack values
-    public float GetAttackLower()
-    {
-        return attackLower.Value();
-    }
-    // Returns specific attack values
-    public float GetAttackHigher()
-    {
-        return attackHigher.Value();
-    }
-    // Returns the attack range
-    public Vector2 GetAttackRange()
-    {
-        return new Vector2(attackLower.Value(), attackHigher.Value());
-    }
-
-    // Get fire rate
-    public float GetFireRate()
-    {
-        return fireRate.Value();
-    }
-    // Get Shot Speed
-    public float GetShotSpeed()
-    {
-        return shotSpeed.Value();
-    }
-
-    // Get Speed
-    public float GetSpeed()
-    {
-        return speed.Value();
-    }
-
-    // Get Luck
-    public float GetLuck()
-    {
-        return luck.Value();
-    }
-
-    // Get Max Health
-    public float GetHealth()
-    {
-        return maxHealth.Value();
-    }
-
-    // Get Defense
-    public float GetDefense()
-    {
-        return defense.Value();
-    }
-
-    // Get Reload Speed
-    public float GetReloadSpeed()
-    {
-        return reloadSpeed.Value();
+        if (lower.Value() == upper.Value())
+            return lower.Value();
+        return Random.Range(lower.Value(), upper.Value());
     }
     #endregion
+    #endregion
+    #region Quick Get Methods
+    public float GetHealth() { return GetValue(Stat.Tag.maxHealth); }
+    public float GetSize() { return GetValue(Stat.Tag.size); }
+    public float GetWeight() { return GetValue(Stat.Tag.weight); }
+    public float GetBalance() { return GetValue(Stat.Tag.balance); }
+
+
+
+    public float GetAttack() { return GetValueRange(Stat.Tag.attackLower, Stat.Tag.attackHigher); }
+    public float GetFireRate() { return GetValue(Stat.Tag.fireRate); }
+    public float GetReloadSpeed() { return GetValue(Stat.Tag.reloadSpeed); }
+
+
+
+    public float GetSpeed() { return GetValue(Stat.Tag.speed); }
+    public float GetLuck() { return GetValue(Stat.Tag.luck); }
+    public float GetEntropy() { return GetValue(Stat.Tag.entropy); }
     #endregion
 
     #region Set Methods
@@ -395,20 +234,11 @@ public class Statblock
     // String output
     public override string ToString()
     {
-        string retStr = "";
+        string retStr = $"<b>Statblock: {blockName}</b>";
 
-        retStr += $"----- {blockName} -----\n";
-
-        retStr += $". > {attackLower}\n" +
-                  $". > {attackHigher}\n";
-        retStr += $". > {fireRate}\n";
-        retStr += $". > {shotSpeed}\n";
-        retStr += $". > {speed}\n";
-        retStr += $". > {luck}\n";
-        retStr += $". > {maxHealth}\n";
-        retStr += $". > {defense}\n";
-        retStr += $". > {reloadSpeed}";
+        foreach (var stat in stats) retStr += $"- {stat}";
 
         return retStr;
     }
 }
+ 

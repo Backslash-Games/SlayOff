@@ -182,7 +182,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 6410755370775488694, guid: add230eca45e72f4790124075f4b7239, type: 3}
@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b98b784d51e1144a6bb088609de832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+  team: 0
   health: 0
   statblock:
     blockName: 
@@ -330,12 +331,25 @@ MonoBehaviour:
   collision: {fileID: 3343367029755230457}
   physicsBody: {fileID: 627542441760889512}
   awakeOnStart: 0
+  particleLibrary:
+    parameters:
+      origin: {fileID: 0}
+      sticky: 1
+      length: 1
+    entries: []
   op_HealthBar: {fileID: 0}
+  audioLibrary:
+    parameters:
+      origin: {fileID: 0}
+      sticky: 1
+      output: {fileID: 0}
+      randomizePitch: 1
+      spatial: 1
+      volume: 1
+    entries: []
   audio_Muted: 0
   audio_spatial: 1
   audio_random_pitch: 1
-  e_audio: []
-  e_vfx: []
   active: 1
   hasReward: 1
   speedDeathThreshold: 0.8
@@ -455,7 +469,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 6410755370775488694, guid: add230eca45e72f4790124075f4b7239, type: 3}

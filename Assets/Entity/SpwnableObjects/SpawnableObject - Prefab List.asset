@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c26b1c8a7956841ac78145f9de5034, type: 3}
+  m_Name: SpawnableObject - Prefab List
+  m_EditorClassIdentifier: HalfhandStudios.Hfhandyutils::HFHandyUtils.Data.Spawning.ObjectPoolerPrefabList
+  listName: SpawnableObject - Prefab List
+  spawns:
+  - dictionary_id: Spawnable Object
+    spawn_object: {fileID: 6127493580797684250, guid: 0e7b3e107dbbd9d4891b4bbb77fa6ecc, type: 3}
+    amount: 500

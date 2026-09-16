@@ -65,7 +65,7 @@ public class AbilitySlot : MonoBehaviour
     /// <summary>
     ///     Flag that dictates if we are showing gizmos
     /// </summary>
-    private static readonly bool s_ShowGizmos = true;
+    private static readonly bool s_ShowGizmos = false;
     #endregion
 
     #region Adjacent Settings
@@ -282,7 +282,7 @@ public class AbilitySlot : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(s_ChainDelay);
         List<AbilitySlot> slots = GetAllConnected();
-        foreach (AbilitySlot slot in slots) if (slot != null && trace.trackedSlots.Contains(slot)) slot.OnTriggerSlot(trace);
+        foreach (AbilitySlot slot in slots) if (slot != null && !slot.locked && trace.trackedSlots.Contains(slot)) slot.OnTriggerSlot(trace);
     }
 
     public List<AbilitySlot> GetAllConnected()
@@ -588,6 +588,7 @@ public class AbilitySlot : MonoBehaviour
     {
         // Return early to ensure no repeat calls
         if (!enabled) return;
+        if (locked) return;
 
         // Set base information
         enabled = false;
