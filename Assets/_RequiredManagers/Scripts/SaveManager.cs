@@ -1,6 +1,6 @@
 using UnityEngine;
 using HFHandyUtils.Effects;
-using HFHandyUtils.Math;
+using HFHandyUtils.Data;
 
 public class SaveManager : MonoSave
 {

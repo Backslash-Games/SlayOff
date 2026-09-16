@@ -1,3 +1,4 @@
+using HFHandyUtils.Data.Spawning;
 using UnityEngine;
 using HFHandyUtils;
 
@@ -6,7 +7,7 @@ public class EntitySpawnNode : MonoBehaviour, IActivatable
     [SerializeField] private EntityData node_entity = null;
     [SerializeField] private EntityData spawn_entity = null;
     [Space]
-    [SerializeField] private GameObject[] possible_spawns = new GameObject[3];
+    [SerializeField] private string[] possible_spawns = new string[3];
     [SerializeField] private Transform spawn_point;
     [Space]
     [SerializeField] private float spawnForce = 5;
@@ -32,7 +33,7 @@ public class EntitySpawnNode : MonoBehaviour, IActivatable
         node_entity.Kill("Spawn Node");
         node_entity.ResetConstraints();
         // Spawn the entity
-        GameObject spawned = Instantiate(GetSpawn(), spawn_point.transform.position, Quaternion.identity, transform);
+        GameObject spawned = ObjectPooler.Instance.Spawn(GetSpawn(), spawn_point.transform.position, Vector3.zero, true);
         spawn_entity = spawned.GetComponent<EntityData>();
 
         // Make sure entities are set properly
@@ -78,7 +79,7 @@ public class EntitySpawnNode : MonoBehaviour, IActivatable
         return spawn_entity;
     }
 
-    public GameObject GetSpawn()
+    public string GetSpawn()
     {
         // Pull a random number
         int rng = Random.Range(0, possible_spawns.Length);
@@ -104,10 +105,11 @@ public class EntitySpawnNode : MonoBehaviour, IActivatable
     /// <summary>
     ///     IActivatable implementation
     /// </summary>
-    public void Activate()
+    public void OnActivate()
     {
         Spawn();
     }
+    public void OnDeactivate() { }
     #endregion
 
     #region Debug

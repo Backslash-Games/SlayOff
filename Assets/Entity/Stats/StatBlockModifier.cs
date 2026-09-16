@@ -29,6 +29,14 @@ public class StatBlockModifier
         // Reference to the influence
         public float value;
 
+        // Constructor
+        public Entry(Stat.Tag tag, Attribute attribute, float value)
+        {
+            this.tag = tag;
+            this.attribute = attribute;
+            this.value = value;
+        }
+
         // Pull the primary value
         public float GetValue()
         {

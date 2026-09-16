@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c26b1c8a7956841ac78145f9de5034, type: 3}
+  m_Name: Corpses - Prefab List
+  m_EditorClassIdentifier: HalfhandStudios.Hfhandyutils::HFHandyUtils.Data.Spawning.ObjectPoolerPrefabList
+  listName: Corpses - Prefab List
+  spawns:
+  - dictionary_id: Corpse_Boxer
+    spawn_object: {fileID: 7416879460484418503, guid: 966d79f7039033a459dab3fd0c0d6953, type: 3}
+    amount: 10
+  - dictionary_id: Corpse_Gnat
+    spawn_object: {fileID: 6461290523642570747, guid: 90d8f2c629c575c41987e0ba32e61b7a, type: 3}
+    amount: 10
+  - dictionary_id: Corpse_Skull
+    spawn_object: {fileID: 8860802262748790544, guid: 56ca120d74a1da8438347b4d71f6aa69, type: 3}
+    amount: 10

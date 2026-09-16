@@ -1,5 +1,15 @@
 {
   "dependencies": {
+    "com.halfhandstudios.hfhandyutils": {
+      "version": "https://github.com/Backslash-Games/hfHandyUtils-Release.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.test-framework": "1.6.0",
+        "com.unity.ugui": "2.0.0"
+      },
+      "hash": "68ad27b7859d8e186a1b19efd4a6fcb72992b868"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

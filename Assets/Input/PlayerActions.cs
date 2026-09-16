@@ -272,6 +272,42 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""5dafdb87-d8cc-4b6b-a30d-b8b5765fe914"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Point"",
+                    ""type"": ""Value"",
+                    ""id"": ""e2184678-5f40-4a97-81cd-94ef2745debb"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RightClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""d502771f-0653-4cfe-a0d4-7a3bda692b41"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""9439bda6-199d-497d-86d2-05a391a8db3d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -283,6 +319,2578 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55e72449-4ac5-445d-b49c-9c0d327e13d3"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90c48bb4-c766-4645-8c8c-88685b07c77f"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18fb59b5-e23a-4007-81b7-114c22f94a2c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""371cb705-0ad5-4405-8aed-2b2bed9c41f2"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Ability Actions"",
+            ""id"": ""34c4f678-8221-4324-b7fa-bcbd5542c995"",
+            ""actions"": [
+                {
+                    ""name"": ""Ability_0"",
+                    ""type"": ""Value"",
+                    ""id"": ""b735bbef-526b-4a03-9803-4fc681481008"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_1"",
+                    ""type"": ""Value"",
+                    ""id"": ""c8106099-76f9-4cca-85a0-c77651ff22f9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_2"",
+                    ""type"": ""Value"",
+                    ""id"": ""335095b9-677d-47bf-bb79-abc2c6694e0a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_3"",
+                    ""type"": ""Value"",
+                    ""id"": ""4bf9c2f9-25ab-41aa-9230-7896eb8dec0c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_4"",
+                    ""type"": ""Value"",
+                    ""id"": ""192c6d42-fafe-45bb-ae45-9b305bfe014f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_5"",
+                    ""type"": ""Value"",
+                    ""id"": ""567f9e23-db92-4e24-b375-e3bb3ff5487a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_6"",
+                    ""type"": ""Value"",
+                    ""id"": ""af9ef002-ba16-4d5f-9b7f-873317e59789"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_7"",
+                    ""type"": ""Value"",
+                    ""id"": ""53946073-2d36-46ab-a6ff-ea97e5820608"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_8"",
+                    ""type"": ""Value"",
+                    ""id"": ""ad55a812-bdea-4e89-8006-3c93072bb119"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_9"",
+                    ""type"": ""Value"",
+                    ""id"": ""301e4456-f34e-44a3-b9e6-7cf5e5e42196"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_10"",
+                    ""type"": ""Value"",
+                    ""id"": ""0d7aee8b-a93c-4742-99a4-a5c2a7650999"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_11"",
+                    ""type"": ""Value"",
+                    ""id"": ""20040538-b116-4cdb-822e-ac2aebecfdf7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_12"",
+                    ""type"": ""Value"",
+                    ""id"": ""f7670498-03e6-4673-8770-9e8e02aa128b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_13"",
+                    ""type"": ""Value"",
+                    ""id"": ""944171a7-318d-415b-a12c-2cdf148bc559"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_14"",
+                    ""type"": ""Value"",
+                    ""id"": ""f52c598d-9ecc-4f21-96bb-5f8a8bffd00a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_15"",
+                    ""type"": ""Value"",
+                    ""id"": ""d1d20da5-efc7-4ebd-a061-b2c443852105"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_16"",
+                    ""type"": ""Value"",
+                    ""id"": ""f1df39e1-4064-47d0-9243-5bba14113335"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_17"",
+                    ""type"": ""Value"",
+                    ""id"": ""902b8e61-7296-46f8-844c-e9137d178e50"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_18"",
+                    ""type"": ""Value"",
+                    ""id"": ""e1a13d6b-bb17-4b2f-8719-9805b3a7383b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_19"",
+                    ""type"": ""Value"",
+                    ""id"": ""2b521339-9f41-4cc4-a93a-1ab3d38e36ea"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_20"",
+                    ""type"": ""Value"",
+                    ""id"": ""549d4abd-2d20-4dba-acbc-69ef9240ca7a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_21"",
+                    ""type"": ""Value"",
+                    ""id"": ""4364b200-1899-4f54-a0d7-6a53e8fe0841"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_22"",
+                    ""type"": ""Value"",
+                    ""id"": ""8359f3aa-6d3d-488a-926f-451454816edb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_23"",
+                    ""type"": ""Value"",
+                    ""id"": ""98ba8616-4b2b-4463-9cf5-18472c3364d4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_24"",
+                    ""type"": ""Value"",
+                    ""id"": ""fc084447-8aad-4ac6-8034-2b45c4e7c85f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_25"",
+                    ""type"": ""Value"",
+                    ""id"": ""175cd60e-650f-4b2f-9c05-334d3c3404dc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_26"",
+                    ""type"": ""Value"",
+                    ""id"": ""ef6338c4-ba7d-4a1d-865e-a55aa286072f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_27"",
+                    ""type"": ""Value"",
+                    ""id"": ""afef4a3a-f922-499b-a118-4ae5354277a8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_28"",
+                    ""type"": ""Value"",
+                    ""id"": ""3c2fa021-e8d6-4af5-ad2a-21023ea210b1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_29"",
+                    ""type"": ""Value"",
+                    ""id"": ""360823dd-1d2a-4bb0-8f3d-0f78116d244a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_30"",
+                    ""type"": ""Value"",
+                    ""id"": ""4220bb54-eca0-42ba-bf7b-2ec093d4e92d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_31"",
+                    ""type"": ""Value"",
+                    ""id"": ""bbea7059-9ee5-437c-a16b-1bf3dafb41f9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_32"",
+                    ""type"": ""Value"",
+                    ""id"": ""c35bd6d1-a976-4e2b-ba26-7b848ce7beca"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_33"",
+                    ""type"": ""Value"",
+                    ""id"": ""72a65e37-35d0-4359-949f-2c55b0e2920c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_34"",
+                    ""type"": ""Value"",
+                    ""id"": ""886f9563-cecc-446c-a477-f46b1842a96f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_35"",
+                    ""type"": ""Value"",
+                    ""id"": ""a3d242e2-62ae-447a-8955-e7952c066225"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_36"",
+                    ""type"": ""Value"",
+                    ""id"": ""3071199e-be09-4227-b56e-e38f263d3c1b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_37"",
+                    ""type"": ""Value"",
+                    ""id"": ""6ced3d58-282d-4dfb-a105-7f8ac46efb56"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_38"",
+                    ""type"": ""Value"",
+                    ""id"": ""11d3bddc-218f-4502-aaef-5734a6c2a9e1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_39"",
+                    ""type"": ""Value"",
+                    ""id"": ""af613d6d-aeff-4169-a9b3-41ddb62c1a21"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_40"",
+                    ""type"": ""Value"",
+                    ""id"": ""f45d7817-32ee-4638-bbb9-a29f01b0ddc7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_41"",
+                    ""type"": ""Value"",
+                    ""id"": ""583d5541-d4e4-4e3b-acb5-93a9a72cb542"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_42"",
+                    ""type"": ""Value"",
+                    ""id"": ""e07d084f-5f0a-41c9-be86-3cdd0b7331ed"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_43"",
+                    ""type"": ""Value"",
+                    ""id"": ""7d996e8d-82a6-4a1c-9572-218053493734"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_44"",
+                    ""type"": ""Value"",
+                    ""id"": ""333ae83b-7820-4d7d-a436-bd0c34c4fc64"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_45"",
+                    ""type"": ""Value"",
+                    ""id"": ""d1863f7d-27f9-4196-b464-9818ea7001f8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_46"",
+                    ""type"": ""Value"",
+                    ""id"": ""aacfde6c-f6fb-4c3d-b849-44dab1f666d5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_47"",
+                    ""type"": ""Value"",
+                    ""id"": ""6aaeffb8-86e2-4103-b8a0-d871922f6b7c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_48"",
+                    ""type"": ""Value"",
+                    ""id"": ""8dc59c30-4a13-4882-902f-7c1642776e2d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_49"",
+                    ""type"": ""Value"",
+                    ""id"": ""0c3e9a06-9056-43ff-914f-e5bc8bb60d65"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_50"",
+                    ""type"": ""Value"",
+                    ""id"": ""776af7e1-d16f-402c-9bca-24e9f511f745"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_51"",
+                    ""type"": ""Value"",
+                    ""id"": ""c9766288-3591-4848-94f5-85176780445f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_52"",
+                    ""type"": ""Value"",
+                    ""id"": ""1e9622b8-0aca-412b-a94c-ed926363324b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_53"",
+                    ""type"": ""Value"",
+                    ""id"": ""97c3ad02-dc24-41d2-9951-265c06da924f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_54"",
+                    ""type"": ""Value"",
+                    ""id"": ""f4e4247d-bd5d-49b6-9a94-1475a8760bed"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_55"",
+                    ""type"": ""Value"",
+                    ""id"": ""7a0dd805-73b6-47ed-b522-ce29b025d69f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_56"",
+                    ""type"": ""Value"",
+                    ""id"": ""993a5188-6915-4855-8399-4b6ec310c075"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_57"",
+                    ""type"": ""Value"",
+                    ""id"": ""93f07313-a3e8-4694-89d8-1260a5b17a3c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_58"",
+                    ""type"": ""Value"",
+                    ""id"": ""010fdd0a-e22d-4b61-86f0-88fe22d2a797"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_59"",
+                    ""type"": ""Value"",
+                    ""id"": ""08dd24cf-8347-4523-b4b9-1e0b5b459f3d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_60"",
+                    ""type"": ""Value"",
+                    ""id"": ""3ceac599-ce67-4d0e-a1ca-ac94bc98ac22"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_61"",
+                    ""type"": ""Value"",
+                    ""id"": ""e4f3d872-8f39-4671-b906-22d42b8300e8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_62"",
+                    ""type"": ""Value"",
+                    ""id"": ""47bdef89-7e30-4c54-b130-8a5965268b3c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_63"",
+                    ""type"": ""Value"",
+                    ""id"": ""d0f14c62-ed91-44c6-94d8-d26048f2aa93"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_64"",
+                    ""type"": ""Value"",
+                    ""id"": ""647430f0-0098-4265-8e1e-283bbfb6c98d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_65"",
+                    ""type"": ""Value"",
+                    ""id"": ""fa23c2d3-ade3-4b76-bcf6-1815216ac0eb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_66"",
+                    ""type"": ""Value"",
+                    ""id"": ""4dfa92b3-62e3-4c47-bdef-c64a80318141"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_67"",
+                    ""type"": ""Value"",
+                    ""id"": ""9c8ec6cf-7ff6-457d-b443-927895cce511"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_68"",
+                    ""type"": ""Value"",
+                    ""id"": ""a3ae9e4e-dbaf-45a5-8082-91870760b41b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_69"",
+                    ""type"": ""Value"",
+                    ""id"": ""71604ab3-18df-4278-b257-7d4c4bd64632"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_70"",
+                    ""type"": ""Value"",
+                    ""id"": ""4e415c5c-bfcf-4ffd-9873-4a5d20c8e957"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_71"",
+                    ""type"": ""Value"",
+                    ""id"": ""97ed6d03-6224-467b-847e-db3dc9680d7c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_72"",
+                    ""type"": ""Value"",
+                    ""id"": ""43e1d842-0ee2-4a54-9641-d432d319d118"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_73"",
+                    ""type"": ""Value"",
+                    ""id"": ""833e32c3-7433-467d-9cc5-347a75082f93"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_74"",
+                    ""type"": ""Value"",
+                    ""id"": ""83698a10-36aa-40b6-83c6-d8da6189d0b2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_75"",
+                    ""type"": ""Value"",
+                    ""id"": ""2f9e71b9-cfa8-4eae-adf9-357ff5ff1635"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_76"",
+                    ""type"": ""Value"",
+                    ""id"": ""b49af266-d932-45f1-9723-d3ddb8097b8b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_77"",
+                    ""type"": ""Value"",
+                    ""id"": ""a81e95e2-2a07-4644-ac96-76c874aad730"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_78"",
+                    ""type"": ""Value"",
+                    ""id"": ""8afeef42-09e0-4e22-96b9-f2e83b32d56d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_79"",
+                    ""type"": ""Value"",
+                    ""id"": ""c44c0ae3-6b1d-4324-a6f9-960afe2ee162"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_80"",
+                    ""type"": ""Value"",
+                    ""id"": ""a8b42945-8719-4ee1-9078-80d5f987e313"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_81"",
+                    ""type"": ""Value"",
+                    ""id"": ""928146e2-3308-44f9-a29b-010dd571e721"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_82"",
+                    ""type"": ""Value"",
+                    ""id"": ""05d7008a-0963-4caa-99a4-2c8794eaabf6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_83"",
+                    ""type"": ""Value"",
+                    ""id"": ""c9dba618-8267-4842-8b2e-5fd3a3905ae4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_84"",
+                    ""type"": ""Value"",
+                    ""id"": ""a948990e-08c9-42e2-aa24-ac85710effee"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_85"",
+                    ""type"": ""Value"",
+                    ""id"": ""8e7e8eb1-e6ce-448f-93d4-7e59dab9583c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_86"",
+                    ""type"": ""Value"",
+                    ""id"": ""26bf6c15-cd6d-45cb-8249-57abe8f268b2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_87"",
+                    ""type"": ""Value"",
+                    ""id"": ""7a2d7715-fb2d-4caf-930f-5b913f7547e4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_88"",
+                    ""type"": ""Value"",
+                    ""id"": ""771f570e-7ecc-43de-9045-6073cd76aaf3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_89"",
+                    ""type"": ""Value"",
+                    ""id"": ""f3d8f69f-900b-4f09-a90c-4b9546373b22"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_90"",
+                    ""type"": ""Value"",
+                    ""id"": ""a6c91921-aa2a-4b5b-8fdb-6e7fa7baf7f6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_91"",
+                    ""type"": ""Value"",
+                    ""id"": ""50b93cb7-2292-48cc-901c-b00ac433b507"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_92"",
+                    ""type"": ""Value"",
+                    ""id"": ""dca8f617-3dd6-4029-99a7-76ebf56dcc6d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_93"",
+                    ""type"": ""Value"",
+                    ""id"": ""92062758-bcc1-471a-9ff2-86e690f38698"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_94"",
+                    ""type"": ""Value"",
+                    ""id"": ""83a2a268-dd69-4f6c-9df5-c09f42c61519"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_95"",
+                    ""type"": ""Value"",
+                    ""id"": ""a0481d44-b939-4f23-8559-5ddec274319a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_96"",
+                    ""type"": ""Value"",
+                    ""id"": ""f843ac45-47f8-471b-8bd7-0d9fde43f380"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_97"",
+                    ""type"": ""Value"",
+                    ""id"": ""9eed0cbc-f6b4-43ca-b499-1da41f242189"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_98"",
+                    ""type"": ""Value"",
+                    ""id"": ""3b36004c-92d1-4a4d-8154-761e91ccf5cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_99"",
+                    ""type"": ""Value"",
+                    ""id"": ""9d684992-fa3b-41c6-9427-6fe22c0c2cd5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_100"",
+                    ""type"": ""Value"",
+                    ""id"": ""86016843-1ea8-4340-864d-0df89c4ad153"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_101"",
+                    ""type"": ""Value"",
+                    ""id"": ""74fae516-de2c-4b23-966b-a6b829f89afc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_102"",
+                    ""type"": ""Value"",
+                    ""id"": ""5ee48469-da5d-454b-b65b-38f8eecb0afc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_103"",
+                    ""type"": ""Value"",
+                    ""id"": ""198073d8-6401-4245-97cf-787d07d5d49d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_104"",
+                    ""type"": ""Value"",
+                    ""id"": ""6521cc4b-208d-4a63-84dd-6564592501fe"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_105"",
+                    ""type"": ""Value"",
+                    ""id"": ""840989c0-2322-4bbd-9bb9-e5028e0ef125"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_106"",
+                    ""type"": ""Value"",
+                    ""id"": ""e45f0a51-2e41-46bd-9222-9048aca938d6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_107"",
+                    ""type"": ""Value"",
+                    ""id"": ""5bd4f066-590a-4f5f-bbf8-adfac6420c92"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_108"",
+                    ""type"": ""Value"",
+                    ""id"": ""22f85e2f-027b-4a04-82b5-8fef3e4841b3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_109"",
+                    ""type"": ""Value"",
+                    ""id"": ""6cc6b600-7ef2-4118-86f0-6d95a3078755"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_110"",
+                    ""type"": ""Value"",
+                    ""id"": ""fafca28d-00fb-4a8e-b018-4a68f58b2293"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_111"",
+                    ""type"": ""Value"",
+                    ""id"": ""fdd6eb40-ea12-45e3-a836-35e217cbdff8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_112"",
+                    ""type"": ""Value"",
+                    ""id"": ""8c285a3f-197e-4f14-af5a-28c20340469f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_113"",
+                    ""type"": ""Value"",
+                    ""id"": ""8df73c23-856f-4c52-8d88-f1b9510b69d0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_114"",
+                    ""type"": ""Value"",
+                    ""id"": ""fad849dc-894f-49ab-94b8-d10e5b5ef76e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_115"",
+                    ""type"": ""Value"",
+                    ""id"": ""5829fe92-ef7f-45f9-8af8-6c3c28a56eeb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_116"",
+                    ""type"": ""Value"",
+                    ""id"": ""e9673aeb-bfa1-4f29-9059-aa9071fc0466"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_117"",
+                    ""type"": ""Value"",
+                    ""id"": ""257bef1c-a3cb-4345-a827-72c6f76e524a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_118"",
+                    ""type"": ""Value"",
+                    ""id"": ""41bca679-7923-4dca-b64d-237283cfc3fd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_119"",
+                    ""type"": ""Value"",
+                    ""id"": ""be781099-08e1-48a1-806e-3e7a91fce1e8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_120"",
+                    ""type"": ""Value"",
+                    ""id"": ""ad581c0c-4bd8-4d1f-80da-2e3e635d22fe"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_121"",
+                    ""type"": ""Value"",
+                    ""id"": ""c4831159-ee71-469d-adb7-397db340327d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_122"",
+                    ""type"": ""Value"",
+                    ""id"": ""8dc4669e-0157-483b-a4db-02de8066b4e3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_123"",
+                    ""type"": ""Value"",
+                    ""id"": ""19ddcfb5-0ed4-4cdf-9bef-bbb94a8c44c8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_124"",
+                    ""type"": ""Value"",
+                    ""id"": ""47edfcb1-493c-485e-a20f-02322fb75e3c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Ability_125"",
+                    ""type"": ""Value"",
+                    ""id"": ""6bc510c9-3dc6-47a7-a386-d0b101dd7123"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""ecf1b8af-97a6-4ee9-8f12-c1893bbb5677"",
+                    ""path"": ""/Keyboard/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_0"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b314c3c-b8d2-4fce-bd1c-32924b7f4fa1"",
+                    ""path"": ""/Keyboard/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6db87bb3-b375-4ccc-87ed-669c1e19db1b"",
+                    ""path"": ""/Keyboard/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e767bfe-1a57-4406-9f9f-02dc84142f60"",
+                    ""path"": ""/Keyboard/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44d725d4-5727-4680-b740-fafc5fc73eec"",
+                    ""path"": ""/Keyboard/quote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48320e4b-f99e-4bf6-ba68-4c0512fa28cf"",
+                    ""path"": ""/Keyboard/semicolon"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e99fed5-18f8-4316-8eee-bfbd5468620e"",
+                    ""path"": ""/Keyboard/comma"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_6"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8c2e9b88-f513-4550-8bc3-f6039368d8d6"",
+                    ""path"": ""/Keyboard/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_7"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49fbea3e-8e20-4645-bc8d-f08375e6f3db"",
+                    ""path"": ""/Keyboard/slash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_8"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4860f007-a8f2-4d84-b1db-20c50bb0f77f"",
+                    ""path"": ""/Keyboard/backslash"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_9"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e99ed58-6f06-499f-871e-02f57fe6ba48"",
+                    ""path"": ""/Keyboard/leftBracket"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_10"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3aa8c63-36ff-4ecf-85a5-f0599ec38f51"",
+                    ""path"": ""/Keyboard/rightBracket"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_11"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""699cb1d5-bd13-4a34-8208-6ad674499b1f"",
+                    ""path"": ""/Keyboard/minus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_12"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""439a0cbc-273e-4907-bed7-69d77ade8711"",
+                    ""path"": ""/Keyboard/equals"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_13"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a92114aa-4fbb-4a4f-8a15-35ade64d95dc"",
+                    ""path"": ""/Keyboard/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_14"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a62b040c-1481-4a35-b2f8-77df928b5b23"",
+                    ""path"": ""/Keyboard/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_15"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""91ea4d8a-9841-4db0-b98b-12949b11a159"",
+                    ""path"": ""/Keyboard/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_16"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9071b883-8625-4f31-9b37-7d6a6feaac64"",
+                    ""path"": ""/Keyboard/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_17"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f366d2c9-9fa6-4297-8734-043a9a8d3120"",
+                    ""path"": ""/Keyboard/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_18"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57983804-29e7-4e92-8fa8-390c6d404b1e"",
+                    ""path"": ""/Keyboard/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_19"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c9fe03a-4403-4f4e-a516-808b3c099e89"",
+                    ""path"": ""/Keyboard/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_20"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2050b20-0a87-4665-9525-3a880193a569"",
+                    ""path"": ""/Keyboard/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_21"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""98dbf4b5-3ae3-40ca-977e-e0dd69ec7986"",
+                    ""path"": ""/Keyboard/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_22"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b36a2a0b-e4dc-4b66-a913-9b57001f70be"",
+                    ""path"": ""/Keyboard/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_23"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af066dd9-9080-4482-b623-377632dec076"",
+                    ""path"": ""/Keyboard/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_24"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""205dca44-abb7-4c70-99b3-7c1413ce81c0"",
+                    ""path"": ""/Keyboard/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_25"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e28737d3-7a21-4b32-bfc5-82733fae71c4"",
+                    ""path"": ""/Keyboard/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_26"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53e07ec4-de35-4b07-96f7-265e9b3bf68c"",
+                    ""path"": ""/Keyboard/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_27"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27056246-f332-49dc-bb68-cd06874da0b4"",
+                    ""path"": ""/Keyboard/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_28"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2bf9fac-e769-4324-b567-078d8c5fd997"",
+                    ""path"": ""/Keyboard/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_29"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a12cd8f7-879a-4d01-bf05-dbefb8fef4be"",
+                    ""path"": ""/Keyboard/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_30"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81e4b1f0-3cc3-45e5-9da9-abf7ddf81037"",
+                    ""path"": ""/Keyboard/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_31"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86fbedd7-120e-4496-8cc8-14b673449e7f"",
+                    ""path"": ""/Keyboard/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_32"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7be2c629-13cc-4b4e-b6eb-ab866ba2dc5f"",
+                    ""path"": ""/Keyboard/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_33"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd6bba07-ca02-4a71-9eda-4f8dbbb6c0d4"",
+                    ""path"": ""/Keyboard/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_34"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c093c878-9e76-476d-a8ea-aed578ef1ad7"",
+                    ""path"": ""/Keyboard/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_35"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5a69322-8149-4af5-9d58-944dc9a06e78"",
+                    ""path"": ""/Keyboard/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_36"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3792b4c1-ba9e-4ae1-aba5-f4b15bccdc8b"",
+                    ""path"": ""/Keyboard/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_37"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1972f046-9ea7-473a-9e7b-3a5206999188"",
+                    ""path"": ""/Keyboard/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_38"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""994ebbef-92fb-4575-8241-e9079566ea11"",
+                    ""path"": ""/Keyboard/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_39"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bd7f1af-be60-4ba0-bab6-e4296df456b5"",
+                    ""path"": ""/Keyboard/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_40"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c25daff-7e02-40d0-ad12-71e3d82bb2ed"",
+                    ""path"": ""/Keyboard/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_41"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a66be3d-f69b-4979-8988-e583a332b475"",
+                    ""path"": ""/Keyboard/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_42"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""01be34b0-930c-4b84-97fd-986b78333c6d"",
+                    ""path"": ""/Keyboard/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_43"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03a7ea7f-41b2-4a06-9d3e-d49114fbc3e4"",
+                    ""path"": ""/Keyboard/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_44"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""62d847ed-0436-4135-a3ed-f8324750842c"",
+                    ""path"": ""/Keyboard/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_45"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75f37a58-14f2-4d50-af4e-e2ff1b0d0cdb"",
+                    ""path"": ""/Keyboard/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_46"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7ca0538-0dd0-4bbd-8aa5-01a1245979cd"",
+                    ""path"": ""/Keyboard/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_47"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86460353-c9f5-4ea5-b510-9e68467b46fa"",
+                    ""path"": ""/Keyboard/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_48"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d96253c-eb38-483b-9afa-242cb3ada63e"",
+                    ""path"": ""/Keyboard/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_49"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5468bf9-4da6-4059-8ed3-de9c493ab278"",
+                    ""path"": ""/Keyboard/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_50"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e142fd9-97c3-4c63-a742-7862b8decfdc"",
+                    ""path"": ""/Keyboard/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_51"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d38264b-4b5d-4a33-aeae-f0e28fc26ad4"",
+                    ""path"": ""/Keyboard/leftAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_52"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dbb17ec0-bb24-4795-b3f3-82a1b462eb74"",
+                    ""path"": ""/Keyboard/rightAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_53"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5643b8cd-0d2a-4a59-a8de-bbf0e0ef7b89"",
+                    ""path"": ""/Keyboard/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_54"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ddb0d42-33d5-4afb-a430-1206b7721d18"",
+                    ""path"": ""/Keyboard/rightCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_55"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66358a75-a6bf-4d01-8739-e8ee5cfdb0c7"",
+                    ""path"": ""/Keyboard/leftMeta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_56"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e966ac2-16a6-498c-a000-3177ef1bf958"",
+                    ""path"": ""/Keyboard/rightMeta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_57"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""14b2c54d-7444-43bf-9ca2-135b32afb4e1"",
+                    ""path"": ""/Keyboard/contextMenu"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_58"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b2a9b97-1b28-4beb-bd99-fabc7f19832d"",
+                    ""path"": ""/Keyboard/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_59"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""972fface-6fe8-47d9-9d1d-5bbeff39a241"",
+                    ""path"": ""/Keyboard/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_60"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c97e2c01-477c-43d5-b745-c7c71f087c4c"",
+                    ""path"": ""/Keyboard/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_61"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""583ecaa8-8765-48cf-a980-addce167d257"",
+                    ""path"": ""/Keyboard/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_62"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d3bc743-6753-4357-88d0-b9466f886164"",
+                    ""path"": ""/Keyboard/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_63"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b957cfa-a7bd-40e7-943a-62212a36570f"",
+                    ""path"": ""/Keyboard/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_64"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8218d9e8-b74d-469d-b904-bd97e05c8ea1"",
+                    ""path"": ""/Keyboard/pageDown"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_65"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6608d18f-4e95-4c3a-bcda-4155f569635d"",
+                    ""path"": ""/Keyboard/pageUp"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_66"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5f3348b-b25f-422c-a876-7529b639a690"",
+                    ""path"": ""/Keyboard/home"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_67"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""894c9812-bbe1-4534-aae0-ee208439fd72"",
+                    ""path"": ""/Keyboard/end"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_68"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c6e5ae7-7274-469c-bad0-0f86b105b7f0"",
+                    ""path"": ""/Keyboard/insert"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_69"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2655f524-9c0c-4fdf-be7d-cc05bee37730"",
+                    ""path"": ""/Keyboard/delete"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_70"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f363f68-9f60-4db2-a1a1-d11ea3e6c1a2"",
+                    ""path"": ""/Keyboard/capsLock"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_71"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""187ccb80-f6c7-40c1-b251-267c5fd9b5b4"",
+                    ""path"": ""/Keyboard/numLock"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_72"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fe27cef-e686-4794-9424-9d227f2bd3ae"",
+                    ""path"": ""/Keyboard/printScreen"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_73"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""979a6999-7a90-4fad-b354-24a976b8cc23"",
+                    ""path"": ""/Keyboard/scrollLock"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_74"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""623cd656-5a51-4ea7-af75-97a6cd60da98"",
+                    ""path"": ""/Keyboard/pause"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_75"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efb2532e-efc3-4a67-a7be-2e564577c68f"",
+                    ""path"": ""/Keyboard/numpadEnter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_76"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""395144e2-3b47-4e73-b5a0-7dd29f7c6d41"",
+                    ""path"": ""/Keyboard/numpadDivide"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_77"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb62be11-a327-4aea-b367-c8434cdd1de4"",
+                    ""path"": ""/Keyboard/numpadMultiply"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_78"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67a7010f-c79e-4881-b746-db2c97e4d778"",
+                    ""path"": ""/Keyboard/numpadPlus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_79"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f74ff5c2-224d-4485-a3ac-ad9498be051b"",
+                    ""path"": ""/Keyboard/numpadMinus"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_80"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""602702af-bfcc-4f08-8f53-04293d0ea503"",
+                    ""path"": ""/Keyboard/numpadPeriod"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_81"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee5219a3-98e4-4e86-8614-ed04289f05a0"",
+                    ""path"": ""/Keyboard/numpadEquals"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_82"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99786d93-5b43-4fc3-8ab2-44952ea1eb0f"",
+                    ""path"": ""/Keyboard/numpad0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_83"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19053623-aaba-4814-b00e-829543afcd84"",
+                    ""path"": ""/Keyboard/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_84"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9ddccb42-2b46-4f85-87c3-5635d0ca2191"",
+                    ""path"": ""/Keyboard/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_85"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4f2099a-4993-41fb-86e1-f7eb4f3096fd"",
+                    ""path"": ""/Keyboard/numpad3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_86"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79f3de1a-75ee-4026-bfa6-01a800723791"",
+                    ""path"": ""/Keyboard/numpad4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_87"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab9a8f0a-e349-4441-880c-c1b35ea4bf80"",
+                    ""path"": ""/Keyboard/numpad5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_88"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ba5f04b-c03e-4fa6-8ed3-667fb4d3204a"",
+                    ""path"": ""/Keyboard/numpad6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_89"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""856da7ae-aa8a-4f4b-9fc3-b602b1516c76"",
+                    ""path"": ""/Keyboard/numpad7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_90"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16a1db52-ba87-4375-a194-1bb14df6bd2c"",
+                    ""path"": ""/Keyboard/numpad8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_91"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c636298-9776-4679-8910-bf16ea7b1c67"",
+                    ""path"": ""/Keyboard/numpad9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_92"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ca6074e-5f97-45c2-96fd-c716d148a50e"",
+                    ""path"": ""/Keyboard/f1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_93"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fea08167-c03b-4717-bf57-88c7cf3e685e"",
+                    ""path"": ""/Keyboard/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_94"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c45303ff-3c7b-4490-ab9f-1265dc45bcd0"",
+                    ""path"": ""/Keyboard/f3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_95"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""019f09f7-1f88-4a59-bbdd-761f66fa2a0b"",
+                    ""path"": ""/Keyboard/f4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_96"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32d5654b-7419-4cd9-9276-701cc3b357a0"",
+                    ""path"": ""/Keyboard/f5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_97"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2950621d-e8a1-48d4-a0fe-8a5247e7faf3"",
+                    ""path"": ""/Keyboard/f6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_98"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc6c7dce-a8d3-41ca-9106-8c0100203c44"",
+                    ""path"": ""/Keyboard/f7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_99"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b230ee9b-c165-4d06-a9cc-6c2c8c353734"",
+                    ""path"": ""/Keyboard/f8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_100"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de9c0ec0-7728-4bd8-a02b-94fbf565c945"",
+                    ""path"": ""/Keyboard/f9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_101"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cb359bd-aad7-4f43-8d66-bb4f352ef5d0"",
+                    ""path"": ""/Keyboard/f10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_102"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1418e9c5-4bda-4357-83df-f1f600e10bcf"",
+                    ""path"": ""/Keyboard/f11"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_103"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da0feb8b-19ba-4c40-b33c-2de2652bc38e"",
+                    ""path"": ""/Keyboard/f12"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_104"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""76851ea8-59e6-46a6-97d1-117800a8c1f3"",
+                    ""path"": ""/Keyboard/OEM1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_105"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9850cc3-0202-4665-b07b-6633a285e19b"",
+                    ""path"": ""/Keyboard/OEM2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_106"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6292d42a-12ba-4a02-9290-1e99d4b85d15"",
+                    ""path"": ""/Keyboard/OEM3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_107"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da4150db-0db0-4e26-be2d-84488f12c69f"",
+                    ""path"": ""/Keyboard/OEM4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_108"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""386e7e35-fe3f-4182-a06e-1c1123b86218"",
+                    ""path"": ""/Keyboard/OEM5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_109"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af3c487e-3563-4767-8bb2-6a4104fb1600"",
+                    ""path"": ""/Keyboard/IMESelectedObsoleteKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_110"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8aaf9df3-7bc7-4d29-9f17-8aa201a84fa0"",
+                    ""path"": ""/Keyboard/f13"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_111"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e2a2701-8d5d-4605-8a7f-378732a7cc0b"",
+                    ""path"": ""/Keyboard/f14"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_112"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a08e835f-fa3f-4b60-b0de-037b422acc9e"",
+                    ""path"": ""/Keyboard/f15"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_113"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""473e6907-ba84-4cc0-af97-b1a485c6cad9"",
+                    ""path"": ""/Keyboard/f16"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_114"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dd38753d-7c18-4fe6-a7be-b302715cb95a"",
+                    ""path"": ""/Keyboard/f17"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_115"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9c49f17-8328-47cc-ac40-2f7dd51ab59f"",
+                    ""path"": ""/Keyboard/f18"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_116"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e58f2570-600b-4ca5-99f8-e231c98a9218"",
+                    ""path"": ""/Keyboard/f19"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_117"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc0eae69-b24c-42f8-a10a-4790ced66272"",
+                    ""path"": ""/Keyboard/f20"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_118"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""449774a1-de24-4354-9726-fe1c7894e35c"",
+                    ""path"": ""/Keyboard/f21"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_119"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c736eeca-a1ca-4198-90a2-b36cbea2932f"",
+                    ""path"": ""/Keyboard/f22"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_120"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8384b8f7-16e9-49c4-9f68-eaca6a5b31dd"",
+                    ""path"": ""/Keyboard/f23"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_121"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2285e1e2-e54e-4efc-943d-2c4d5d8ab457"",
+                    ""path"": ""/Keyboard/f24"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_122"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""59f7d548-4db0-460d-8e9d-f2cf8bb7058d"",
+                    ""path"": ""/Keyboard/mediaPlayPause"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_123"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56935253-b2a1-4a9b-8691-3cdd3f6dcebe"",
+                    ""path"": ""/Keyboard/mediaRewind"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_124"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6734bb1-29e9-46d5-a954-b0d0f12a7e24"",
+                    ""path"": ""/Keyboard/mediaForward"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability_125"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -302,12 +2910,145 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        m_UI_Inventory = m_UI.FindAction("Inventory", throwIfNotFound: true);
+        m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
+        m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
+        m_UI_LeftClick = m_UI.FindAction("LeftClick", throwIfNotFound: true);
+        // Ability Actions
+        m_AbilityActions = asset.FindActionMap("Ability Actions", throwIfNotFound: true);
+        m_AbilityActions_Ability_0 = m_AbilityActions.FindAction("Ability_0", throwIfNotFound: true);
+        m_AbilityActions_Ability_1 = m_AbilityActions.FindAction("Ability_1", throwIfNotFound: true);
+        m_AbilityActions_Ability_2 = m_AbilityActions.FindAction("Ability_2", throwIfNotFound: true);
+        m_AbilityActions_Ability_3 = m_AbilityActions.FindAction("Ability_3", throwIfNotFound: true);
+        m_AbilityActions_Ability_4 = m_AbilityActions.FindAction("Ability_4", throwIfNotFound: true);
+        m_AbilityActions_Ability_5 = m_AbilityActions.FindAction("Ability_5", throwIfNotFound: true);
+        m_AbilityActions_Ability_6 = m_AbilityActions.FindAction("Ability_6", throwIfNotFound: true);
+        m_AbilityActions_Ability_7 = m_AbilityActions.FindAction("Ability_7", throwIfNotFound: true);
+        m_AbilityActions_Ability_8 = m_AbilityActions.FindAction("Ability_8", throwIfNotFound: true);
+        m_AbilityActions_Ability_9 = m_AbilityActions.FindAction("Ability_9", throwIfNotFound: true);
+        m_AbilityActions_Ability_10 = m_AbilityActions.FindAction("Ability_10", throwIfNotFound: true);
+        m_AbilityActions_Ability_11 = m_AbilityActions.FindAction("Ability_11", throwIfNotFound: true);
+        m_AbilityActions_Ability_12 = m_AbilityActions.FindAction("Ability_12", throwIfNotFound: true);
+        m_AbilityActions_Ability_13 = m_AbilityActions.FindAction("Ability_13", throwIfNotFound: true);
+        m_AbilityActions_Ability_14 = m_AbilityActions.FindAction("Ability_14", throwIfNotFound: true);
+        m_AbilityActions_Ability_15 = m_AbilityActions.FindAction("Ability_15", throwIfNotFound: true);
+        m_AbilityActions_Ability_16 = m_AbilityActions.FindAction("Ability_16", throwIfNotFound: true);
+        m_AbilityActions_Ability_17 = m_AbilityActions.FindAction("Ability_17", throwIfNotFound: true);
+        m_AbilityActions_Ability_18 = m_AbilityActions.FindAction("Ability_18", throwIfNotFound: true);
+        m_AbilityActions_Ability_19 = m_AbilityActions.FindAction("Ability_19", throwIfNotFound: true);
+        m_AbilityActions_Ability_20 = m_AbilityActions.FindAction("Ability_20", throwIfNotFound: true);
+        m_AbilityActions_Ability_21 = m_AbilityActions.FindAction("Ability_21", throwIfNotFound: true);
+        m_AbilityActions_Ability_22 = m_AbilityActions.FindAction("Ability_22", throwIfNotFound: true);
+        m_AbilityActions_Ability_23 = m_AbilityActions.FindAction("Ability_23", throwIfNotFound: true);
+        m_AbilityActions_Ability_24 = m_AbilityActions.FindAction("Ability_24", throwIfNotFound: true);
+        m_AbilityActions_Ability_25 = m_AbilityActions.FindAction("Ability_25", throwIfNotFound: true);
+        m_AbilityActions_Ability_26 = m_AbilityActions.FindAction("Ability_26", throwIfNotFound: true);
+        m_AbilityActions_Ability_27 = m_AbilityActions.FindAction("Ability_27", throwIfNotFound: true);
+        m_AbilityActions_Ability_28 = m_AbilityActions.FindAction("Ability_28", throwIfNotFound: true);
+        m_AbilityActions_Ability_29 = m_AbilityActions.FindAction("Ability_29", throwIfNotFound: true);
+        m_AbilityActions_Ability_30 = m_AbilityActions.FindAction("Ability_30", throwIfNotFound: true);
+        m_AbilityActions_Ability_31 = m_AbilityActions.FindAction("Ability_31", throwIfNotFound: true);
+        m_AbilityActions_Ability_32 = m_AbilityActions.FindAction("Ability_32", throwIfNotFound: true);
+        m_AbilityActions_Ability_33 = m_AbilityActions.FindAction("Ability_33", throwIfNotFound: true);
+        m_AbilityActions_Ability_34 = m_AbilityActions.FindAction("Ability_34", throwIfNotFound: true);
+        m_AbilityActions_Ability_35 = m_AbilityActions.FindAction("Ability_35", throwIfNotFound: true);
+        m_AbilityActions_Ability_36 = m_AbilityActions.FindAction("Ability_36", throwIfNotFound: true);
+        m_AbilityActions_Ability_37 = m_AbilityActions.FindAction("Ability_37", throwIfNotFound: true);
+        m_AbilityActions_Ability_38 = m_AbilityActions.FindAction("Ability_38", throwIfNotFound: true);
+        m_AbilityActions_Ability_39 = m_AbilityActions.FindAction("Ability_39", throwIfNotFound: true);
+        m_AbilityActions_Ability_40 = m_AbilityActions.FindAction("Ability_40", throwIfNotFound: true);
+        m_AbilityActions_Ability_41 = m_AbilityActions.FindAction("Ability_41", throwIfNotFound: true);
+        m_AbilityActions_Ability_42 = m_AbilityActions.FindAction("Ability_42", throwIfNotFound: true);
+        m_AbilityActions_Ability_43 = m_AbilityActions.FindAction("Ability_43", throwIfNotFound: true);
+        m_AbilityActions_Ability_44 = m_AbilityActions.FindAction("Ability_44", throwIfNotFound: true);
+        m_AbilityActions_Ability_45 = m_AbilityActions.FindAction("Ability_45", throwIfNotFound: true);
+        m_AbilityActions_Ability_46 = m_AbilityActions.FindAction("Ability_46", throwIfNotFound: true);
+        m_AbilityActions_Ability_47 = m_AbilityActions.FindAction("Ability_47", throwIfNotFound: true);
+        m_AbilityActions_Ability_48 = m_AbilityActions.FindAction("Ability_48", throwIfNotFound: true);
+        m_AbilityActions_Ability_49 = m_AbilityActions.FindAction("Ability_49", throwIfNotFound: true);
+        m_AbilityActions_Ability_50 = m_AbilityActions.FindAction("Ability_50", throwIfNotFound: true);
+        m_AbilityActions_Ability_51 = m_AbilityActions.FindAction("Ability_51", throwIfNotFound: true);
+        m_AbilityActions_Ability_52 = m_AbilityActions.FindAction("Ability_52", throwIfNotFound: true);
+        m_AbilityActions_Ability_53 = m_AbilityActions.FindAction("Ability_53", throwIfNotFound: true);
+        m_AbilityActions_Ability_54 = m_AbilityActions.FindAction("Ability_54", throwIfNotFound: true);
+        m_AbilityActions_Ability_55 = m_AbilityActions.FindAction("Ability_55", throwIfNotFound: true);
+        m_AbilityActions_Ability_56 = m_AbilityActions.FindAction("Ability_56", throwIfNotFound: true);
+        m_AbilityActions_Ability_57 = m_AbilityActions.FindAction("Ability_57", throwIfNotFound: true);
+        m_AbilityActions_Ability_58 = m_AbilityActions.FindAction("Ability_58", throwIfNotFound: true);
+        m_AbilityActions_Ability_59 = m_AbilityActions.FindAction("Ability_59", throwIfNotFound: true);
+        m_AbilityActions_Ability_60 = m_AbilityActions.FindAction("Ability_60", throwIfNotFound: true);
+        m_AbilityActions_Ability_61 = m_AbilityActions.FindAction("Ability_61", throwIfNotFound: true);
+        m_AbilityActions_Ability_62 = m_AbilityActions.FindAction("Ability_62", throwIfNotFound: true);
+        m_AbilityActions_Ability_63 = m_AbilityActions.FindAction("Ability_63", throwIfNotFound: true);
+        m_AbilityActions_Ability_64 = m_AbilityActions.FindAction("Ability_64", throwIfNotFound: true);
+        m_AbilityActions_Ability_65 = m_AbilityActions.FindAction("Ability_65", throwIfNotFound: true);
+        m_AbilityActions_Ability_66 = m_AbilityActions.FindAction("Ability_66", throwIfNotFound: true);
+        m_AbilityActions_Ability_67 = m_AbilityActions.FindAction("Ability_67", throwIfNotFound: true);
+        m_AbilityActions_Ability_68 = m_AbilityActions.FindAction("Ability_68", throwIfNotFound: true);
+        m_AbilityActions_Ability_69 = m_AbilityActions.FindAction("Ability_69", throwIfNotFound: true);
+        m_AbilityActions_Ability_70 = m_AbilityActions.FindAction("Ability_70", throwIfNotFound: true);
+        m_AbilityActions_Ability_71 = m_AbilityActions.FindAction("Ability_71", throwIfNotFound: true);
+        m_AbilityActions_Ability_72 = m_AbilityActions.FindAction("Ability_72", throwIfNotFound: true);
+        m_AbilityActions_Ability_73 = m_AbilityActions.FindAction("Ability_73", throwIfNotFound: true);
+        m_AbilityActions_Ability_74 = m_AbilityActions.FindAction("Ability_74", throwIfNotFound: true);
+        m_AbilityActions_Ability_75 = m_AbilityActions.FindAction("Ability_75", throwIfNotFound: true);
+        m_AbilityActions_Ability_76 = m_AbilityActions.FindAction("Ability_76", throwIfNotFound: true);
+        m_AbilityActions_Ability_77 = m_AbilityActions.FindAction("Ability_77", throwIfNotFound: true);
+        m_AbilityActions_Ability_78 = m_AbilityActions.FindAction("Ability_78", throwIfNotFound: true);
+        m_AbilityActions_Ability_79 = m_AbilityActions.FindAction("Ability_79", throwIfNotFound: true);
+        m_AbilityActions_Ability_80 = m_AbilityActions.FindAction("Ability_80", throwIfNotFound: true);
+        m_AbilityActions_Ability_81 = m_AbilityActions.FindAction("Ability_81", throwIfNotFound: true);
+        m_AbilityActions_Ability_82 = m_AbilityActions.FindAction("Ability_82", throwIfNotFound: true);
+        m_AbilityActions_Ability_83 = m_AbilityActions.FindAction("Ability_83", throwIfNotFound: true);
+        m_AbilityActions_Ability_84 = m_AbilityActions.FindAction("Ability_84", throwIfNotFound: true);
+        m_AbilityActions_Ability_85 = m_AbilityActions.FindAction("Ability_85", throwIfNotFound: true);
+        m_AbilityActions_Ability_86 = m_AbilityActions.FindAction("Ability_86", throwIfNotFound: true);
+        m_AbilityActions_Ability_87 = m_AbilityActions.FindAction("Ability_87", throwIfNotFound: true);
+        m_AbilityActions_Ability_88 = m_AbilityActions.FindAction("Ability_88", throwIfNotFound: true);
+        m_AbilityActions_Ability_89 = m_AbilityActions.FindAction("Ability_89", throwIfNotFound: true);
+        m_AbilityActions_Ability_90 = m_AbilityActions.FindAction("Ability_90", throwIfNotFound: true);
+        m_AbilityActions_Ability_91 = m_AbilityActions.FindAction("Ability_91", throwIfNotFound: true);
+        m_AbilityActions_Ability_92 = m_AbilityActions.FindAction("Ability_92", throwIfNotFound: true);
+        m_AbilityActions_Ability_93 = m_AbilityActions.FindAction("Ability_93", throwIfNotFound: true);
+        m_AbilityActions_Ability_94 = m_AbilityActions.FindAction("Ability_94", throwIfNotFound: true);
+        m_AbilityActions_Ability_95 = m_AbilityActions.FindAction("Ability_95", throwIfNotFound: true);
+        m_AbilityActions_Ability_96 = m_AbilityActions.FindAction("Ability_96", throwIfNotFound: true);
+        m_AbilityActions_Ability_97 = m_AbilityActions.FindAction("Ability_97", throwIfNotFound: true);
+        m_AbilityActions_Ability_98 = m_AbilityActions.FindAction("Ability_98", throwIfNotFound: true);
+        m_AbilityActions_Ability_99 = m_AbilityActions.FindAction("Ability_99", throwIfNotFound: true);
+        m_AbilityActions_Ability_100 = m_AbilityActions.FindAction("Ability_100", throwIfNotFound: true);
+        m_AbilityActions_Ability_101 = m_AbilityActions.FindAction("Ability_101", throwIfNotFound: true);
+        m_AbilityActions_Ability_102 = m_AbilityActions.FindAction("Ability_102", throwIfNotFound: true);
+        m_AbilityActions_Ability_103 = m_AbilityActions.FindAction("Ability_103", throwIfNotFound: true);
+        m_AbilityActions_Ability_104 = m_AbilityActions.FindAction("Ability_104", throwIfNotFound: true);
+        m_AbilityActions_Ability_105 = m_AbilityActions.FindAction("Ability_105", throwIfNotFound: true);
+        m_AbilityActions_Ability_106 = m_AbilityActions.FindAction("Ability_106", throwIfNotFound: true);
+        m_AbilityActions_Ability_107 = m_AbilityActions.FindAction("Ability_107", throwIfNotFound: true);
+        m_AbilityActions_Ability_108 = m_AbilityActions.FindAction("Ability_108", throwIfNotFound: true);
+        m_AbilityActions_Ability_109 = m_AbilityActions.FindAction("Ability_109", throwIfNotFound: true);
+        m_AbilityActions_Ability_110 = m_AbilityActions.FindAction("Ability_110", throwIfNotFound: true);
+        m_AbilityActions_Ability_111 = m_AbilityActions.FindAction("Ability_111", throwIfNotFound: true);
+        m_AbilityActions_Ability_112 = m_AbilityActions.FindAction("Ability_112", throwIfNotFound: true);
+        m_AbilityActions_Ability_113 = m_AbilityActions.FindAction("Ability_113", throwIfNotFound: true);
+        m_AbilityActions_Ability_114 = m_AbilityActions.FindAction("Ability_114", throwIfNotFound: true);
+        m_AbilityActions_Ability_115 = m_AbilityActions.FindAction("Ability_115", throwIfNotFound: true);
+        m_AbilityActions_Ability_116 = m_AbilityActions.FindAction("Ability_116", throwIfNotFound: true);
+        m_AbilityActions_Ability_117 = m_AbilityActions.FindAction("Ability_117", throwIfNotFound: true);
+        m_AbilityActions_Ability_118 = m_AbilityActions.FindAction("Ability_118", throwIfNotFound: true);
+        m_AbilityActions_Ability_119 = m_AbilityActions.FindAction("Ability_119", throwIfNotFound: true);
+        m_AbilityActions_Ability_120 = m_AbilityActions.FindAction("Ability_120", throwIfNotFound: true);
+        m_AbilityActions_Ability_121 = m_AbilityActions.FindAction("Ability_121", throwIfNotFound: true);
+        m_AbilityActions_Ability_122 = m_AbilityActions.FindAction("Ability_122", throwIfNotFound: true);
+        m_AbilityActions_Ability_123 = m_AbilityActions.FindAction("Ability_123", throwIfNotFound: true);
+        m_AbilityActions_Ability_124 = m_AbilityActions.FindAction("Ability_124", throwIfNotFound: true);
+        m_AbilityActions_Ability_125 = m_AbilityActions.FindAction("Ability_125", throwIfNotFound: true);
     }
 
     ~@PlayerActions()
     {
         UnityEngine.Debug.Assert(!m_Control.enabled, "This will cause a leak and performance issues, PlayerActions.Control.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerActions.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_AbilityActions.enabled, "This will cause a leak and performance issues, PlayerActions.AbilityActions.Disable() has not been called.");
     }
 
     /// <summary>
@@ -535,6 +3276,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Pause;
+    private readonly InputAction m_UI_Inventory;
+    private readonly InputAction m_UI_Point;
+    private readonly InputAction m_UI_RightClick;
+    private readonly InputAction m_UI_LeftClick;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -550,6 +3295,22 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Pause".
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Inventory".
+        /// </summary>
+        public InputAction @Inventory => m_Wrapper.m_UI_Inventory;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Point".
+        /// </summary>
+        public InputAction @Point => m_Wrapper.m_UI_Point;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/RightClick".
+        /// </summary>
+        public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/LeftClick".
+        /// </summary>
+        public InputAction @LeftClick => m_Wrapper.m_UI_LeftClick;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -579,6 +3340,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
+            @Point.started += instance.OnPoint;
+            @Point.performed += instance.OnPoint;
+            @Point.canceled += instance.OnPoint;
+            @RightClick.started += instance.OnRightClick;
+            @RightClick.performed += instance.OnRightClick;
+            @RightClick.canceled += instance.OnRightClick;
+            @LeftClick.started += instance.OnLeftClick;
+            @LeftClick.performed += instance.OnLeftClick;
+            @LeftClick.canceled += instance.OnLeftClick;
         }
 
         /// <summary>
@@ -593,6 +3366,18 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
+            @Point.started -= instance.OnPoint;
+            @Point.performed -= instance.OnPoint;
+            @Point.canceled -= instance.OnPoint;
+            @RightClick.started -= instance.OnRightClick;
+            @RightClick.performed -= instance.OnRightClick;
+            @RightClick.canceled -= instance.OnRightClick;
+            @LeftClick.started -= instance.OnLeftClick;
+            @LeftClick.performed -= instance.OnLeftClick;
+            @LeftClick.canceled -= instance.OnLeftClick;
         }
 
         /// <summary>
@@ -626,6 +3411,1477 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // Ability Actions
+    private readonly InputActionMap m_AbilityActions;
+    private List<IAbilityActionsActions> m_AbilityActionsActionsCallbackInterfaces = new List<IAbilityActionsActions>();
+    private readonly InputAction m_AbilityActions_Ability_0;
+    private readonly InputAction m_AbilityActions_Ability_1;
+    private readonly InputAction m_AbilityActions_Ability_2;
+    private readonly InputAction m_AbilityActions_Ability_3;
+    private readonly InputAction m_AbilityActions_Ability_4;
+    private readonly InputAction m_AbilityActions_Ability_5;
+    private readonly InputAction m_AbilityActions_Ability_6;
+    private readonly InputAction m_AbilityActions_Ability_7;
+    private readonly InputAction m_AbilityActions_Ability_8;
+    private readonly InputAction m_AbilityActions_Ability_9;
+    private readonly InputAction m_AbilityActions_Ability_10;
+    private readonly InputAction m_AbilityActions_Ability_11;
+    private readonly InputAction m_AbilityActions_Ability_12;
+    private readonly InputAction m_AbilityActions_Ability_13;
+    private readonly InputAction m_AbilityActions_Ability_14;
+    private readonly InputAction m_AbilityActions_Ability_15;
+    private readonly InputAction m_AbilityActions_Ability_16;
+    private readonly InputAction m_AbilityActions_Ability_17;
+    private readonly InputAction m_AbilityActions_Ability_18;
+    private readonly InputAction m_AbilityActions_Ability_19;
+    private readonly InputAction m_AbilityActions_Ability_20;
+    private readonly InputAction m_AbilityActions_Ability_21;
+    private readonly InputAction m_AbilityActions_Ability_22;
+    private readonly InputAction m_AbilityActions_Ability_23;
+    private readonly InputAction m_AbilityActions_Ability_24;
+    private readonly InputAction m_AbilityActions_Ability_25;
+    private readonly InputAction m_AbilityActions_Ability_26;
+    private readonly InputAction m_AbilityActions_Ability_27;
+    private readonly InputAction m_AbilityActions_Ability_28;
+    private readonly InputAction m_AbilityActions_Ability_29;
+    private readonly InputAction m_AbilityActions_Ability_30;
+    private readonly InputAction m_AbilityActions_Ability_31;
+    private readonly InputAction m_AbilityActions_Ability_32;
+    private readonly InputAction m_AbilityActions_Ability_33;
+    private readonly InputAction m_AbilityActions_Ability_34;
+    private readonly InputAction m_AbilityActions_Ability_35;
+    private readonly InputAction m_AbilityActions_Ability_36;
+    private readonly InputAction m_AbilityActions_Ability_37;
+    private readonly InputAction m_AbilityActions_Ability_38;
+    private readonly InputAction m_AbilityActions_Ability_39;
+    private readonly InputAction m_AbilityActions_Ability_40;
+    private readonly InputAction m_AbilityActions_Ability_41;
+    private readonly InputAction m_AbilityActions_Ability_42;
+    private readonly InputAction m_AbilityActions_Ability_43;
+    private readonly InputAction m_AbilityActions_Ability_44;
+    private readonly InputAction m_AbilityActions_Ability_45;
+    private readonly InputAction m_AbilityActions_Ability_46;
+    private readonly InputAction m_AbilityActions_Ability_47;
+    private readonly InputAction m_AbilityActions_Ability_48;
+    private readonly InputAction m_AbilityActions_Ability_49;
+    private readonly InputAction m_AbilityActions_Ability_50;
+    private readonly InputAction m_AbilityActions_Ability_51;
+    private readonly InputAction m_AbilityActions_Ability_52;
+    private readonly InputAction m_AbilityActions_Ability_53;
+    private readonly InputAction m_AbilityActions_Ability_54;
+    private readonly InputAction m_AbilityActions_Ability_55;
+    private readonly InputAction m_AbilityActions_Ability_56;
+    private readonly InputAction m_AbilityActions_Ability_57;
+    private readonly InputAction m_AbilityActions_Ability_58;
+    private readonly InputAction m_AbilityActions_Ability_59;
+    private readonly InputAction m_AbilityActions_Ability_60;
+    private readonly InputAction m_AbilityActions_Ability_61;
+    private readonly InputAction m_AbilityActions_Ability_62;
+    private readonly InputAction m_AbilityActions_Ability_63;
+    private readonly InputAction m_AbilityActions_Ability_64;
+    private readonly InputAction m_AbilityActions_Ability_65;
+    private readonly InputAction m_AbilityActions_Ability_66;
+    private readonly InputAction m_AbilityActions_Ability_67;
+    private readonly InputAction m_AbilityActions_Ability_68;
+    private readonly InputAction m_AbilityActions_Ability_69;
+    private readonly InputAction m_AbilityActions_Ability_70;
+    private readonly InputAction m_AbilityActions_Ability_71;
+    private readonly InputAction m_AbilityActions_Ability_72;
+    private readonly InputAction m_AbilityActions_Ability_73;
+    private readonly InputAction m_AbilityActions_Ability_74;
+    private readonly InputAction m_AbilityActions_Ability_75;
+    private readonly InputAction m_AbilityActions_Ability_76;
+    private readonly InputAction m_AbilityActions_Ability_77;
+    private readonly InputAction m_AbilityActions_Ability_78;
+    private readonly InputAction m_AbilityActions_Ability_79;
+    private readonly InputAction m_AbilityActions_Ability_80;
+    private readonly InputAction m_AbilityActions_Ability_81;
+    private readonly InputAction m_AbilityActions_Ability_82;
+    private readonly InputAction m_AbilityActions_Ability_83;
+    private readonly InputAction m_AbilityActions_Ability_84;
+    private readonly InputAction m_AbilityActions_Ability_85;
+    private readonly InputAction m_AbilityActions_Ability_86;
+    private readonly InputAction m_AbilityActions_Ability_87;
+    private readonly InputAction m_AbilityActions_Ability_88;
+    private readonly InputAction m_AbilityActions_Ability_89;
+    private readonly InputAction m_AbilityActions_Ability_90;
+    private readonly InputAction m_AbilityActions_Ability_91;
+    private readonly InputAction m_AbilityActions_Ability_92;
+    private readonly InputAction m_AbilityActions_Ability_93;
+    private readonly InputAction m_AbilityActions_Ability_94;
+    private readonly InputAction m_AbilityActions_Ability_95;
+    private readonly InputAction m_AbilityActions_Ability_96;
+    private readonly InputAction m_AbilityActions_Ability_97;
+    private readonly InputAction m_AbilityActions_Ability_98;
+    private readonly InputAction m_AbilityActions_Ability_99;
+    private readonly InputAction m_AbilityActions_Ability_100;
+    private readonly InputAction m_AbilityActions_Ability_101;
+    private readonly InputAction m_AbilityActions_Ability_102;
+    private readonly InputAction m_AbilityActions_Ability_103;
+    private readonly InputAction m_AbilityActions_Ability_104;
+    private readonly InputAction m_AbilityActions_Ability_105;
+    private readonly InputAction m_AbilityActions_Ability_106;
+    private readonly InputAction m_AbilityActions_Ability_107;
+    private readonly InputAction m_AbilityActions_Ability_108;
+    private readonly InputAction m_AbilityActions_Ability_109;
+    private readonly InputAction m_AbilityActions_Ability_110;
+    private readonly InputAction m_AbilityActions_Ability_111;
+    private readonly InputAction m_AbilityActions_Ability_112;
+    private readonly InputAction m_AbilityActions_Ability_113;
+    private readonly InputAction m_AbilityActions_Ability_114;
+    private readonly InputAction m_AbilityActions_Ability_115;
+    private readonly InputAction m_AbilityActions_Ability_116;
+    private readonly InputAction m_AbilityActions_Ability_117;
+    private readonly InputAction m_AbilityActions_Ability_118;
+    private readonly InputAction m_AbilityActions_Ability_119;
+    private readonly InputAction m_AbilityActions_Ability_120;
+    private readonly InputAction m_AbilityActions_Ability_121;
+    private readonly InputAction m_AbilityActions_Ability_122;
+    private readonly InputAction m_AbilityActions_Ability_123;
+    private readonly InputAction m_AbilityActions_Ability_124;
+    private readonly InputAction m_AbilityActions_Ability_125;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Ability Actions".
+    /// </summary>
+    public struct AbilityActionsActions
+    {
+        private @PlayerActions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public AbilityActionsActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_0".
+        /// </summary>
+        public InputAction @Ability_0 => m_Wrapper.m_AbilityActions_Ability_0;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_1".
+        /// </summary>
+        public InputAction @Ability_1 => m_Wrapper.m_AbilityActions_Ability_1;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_2".
+        /// </summary>
+        public InputAction @Ability_2 => m_Wrapper.m_AbilityActions_Ability_2;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_3".
+        /// </summary>
+        public InputAction @Ability_3 => m_Wrapper.m_AbilityActions_Ability_3;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_4".
+        /// </summary>
+        public InputAction @Ability_4 => m_Wrapper.m_AbilityActions_Ability_4;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_5".
+        /// </summary>
+        public InputAction @Ability_5 => m_Wrapper.m_AbilityActions_Ability_5;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_6".
+        /// </summary>
+        public InputAction @Ability_6 => m_Wrapper.m_AbilityActions_Ability_6;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_7".
+        /// </summary>
+        public InputAction @Ability_7 => m_Wrapper.m_AbilityActions_Ability_7;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_8".
+        /// </summary>
+        public InputAction @Ability_8 => m_Wrapper.m_AbilityActions_Ability_8;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_9".
+        /// </summary>
+        public InputAction @Ability_9 => m_Wrapper.m_AbilityActions_Ability_9;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_10".
+        /// </summary>
+        public InputAction @Ability_10 => m_Wrapper.m_AbilityActions_Ability_10;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_11".
+        /// </summary>
+        public InputAction @Ability_11 => m_Wrapper.m_AbilityActions_Ability_11;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_12".
+        /// </summary>
+        public InputAction @Ability_12 => m_Wrapper.m_AbilityActions_Ability_12;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_13".
+        /// </summary>
+        public InputAction @Ability_13 => m_Wrapper.m_AbilityActions_Ability_13;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_14".
+        /// </summary>
+        public InputAction @Ability_14 => m_Wrapper.m_AbilityActions_Ability_14;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_15".
+        /// </summary>
+        public InputAction @Ability_15 => m_Wrapper.m_AbilityActions_Ability_15;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_16".
+        /// </summary>
+        public InputAction @Ability_16 => m_Wrapper.m_AbilityActions_Ability_16;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_17".
+        /// </summary>
+        public InputAction @Ability_17 => m_Wrapper.m_AbilityActions_Ability_17;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_18".
+        /// </summary>
+        public InputAction @Ability_18 => m_Wrapper.m_AbilityActions_Ability_18;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_19".
+        /// </summary>
+        public InputAction @Ability_19 => m_Wrapper.m_AbilityActions_Ability_19;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_20".
+        /// </summary>
+        public InputAction @Ability_20 => m_Wrapper.m_AbilityActions_Ability_20;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_21".
+        /// </summary>
+        public InputAction @Ability_21 => m_Wrapper.m_AbilityActions_Ability_21;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_22".
+        /// </summary>
+        public InputAction @Ability_22 => m_Wrapper.m_AbilityActions_Ability_22;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_23".
+        /// </summary>
+        public InputAction @Ability_23 => m_Wrapper.m_AbilityActions_Ability_23;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_24".
+        /// </summary>
+        public InputAction @Ability_24 => m_Wrapper.m_AbilityActions_Ability_24;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_25".
+        /// </summary>
+        public InputAction @Ability_25 => m_Wrapper.m_AbilityActions_Ability_25;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_26".
+        /// </summary>
+        public InputAction @Ability_26 => m_Wrapper.m_AbilityActions_Ability_26;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_27".
+        /// </summary>
+        public InputAction @Ability_27 => m_Wrapper.m_AbilityActions_Ability_27;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_28".
+        /// </summary>
+        public InputAction @Ability_28 => m_Wrapper.m_AbilityActions_Ability_28;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_29".
+        /// </summary>
+        public InputAction @Ability_29 => m_Wrapper.m_AbilityActions_Ability_29;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_30".
+        /// </summary>
+        public InputAction @Ability_30 => m_Wrapper.m_AbilityActions_Ability_30;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_31".
+        /// </summary>
+        public InputAction @Ability_31 => m_Wrapper.m_AbilityActions_Ability_31;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_32".
+        /// </summary>
+        public InputAction @Ability_32 => m_Wrapper.m_AbilityActions_Ability_32;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_33".
+        /// </summary>
+        public InputAction @Ability_33 => m_Wrapper.m_AbilityActions_Ability_33;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_34".
+        /// </summary>
+        public InputAction @Ability_34 => m_Wrapper.m_AbilityActions_Ability_34;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_35".
+        /// </summary>
+        public InputAction @Ability_35 => m_Wrapper.m_AbilityActions_Ability_35;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_36".
+        /// </summary>
+        public InputAction @Ability_36 => m_Wrapper.m_AbilityActions_Ability_36;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_37".
+        /// </summary>
+        public InputAction @Ability_37 => m_Wrapper.m_AbilityActions_Ability_37;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_38".
+        /// </summary>
+        public InputAction @Ability_38 => m_Wrapper.m_AbilityActions_Ability_38;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_39".
+        /// </summary>
+        public InputAction @Ability_39 => m_Wrapper.m_AbilityActions_Ability_39;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_40".
+        /// </summary>
+        public InputAction @Ability_40 => m_Wrapper.m_AbilityActions_Ability_40;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_41".
+        /// </summary>
+        public InputAction @Ability_41 => m_Wrapper.m_AbilityActions_Ability_41;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_42".
+        /// </summary>
+        public InputAction @Ability_42 => m_Wrapper.m_AbilityActions_Ability_42;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_43".
+        /// </summary>
+        public InputAction @Ability_43 => m_Wrapper.m_AbilityActions_Ability_43;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_44".
+        /// </summary>
+        public InputAction @Ability_44 => m_Wrapper.m_AbilityActions_Ability_44;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_45".
+        /// </summary>
+        public InputAction @Ability_45 => m_Wrapper.m_AbilityActions_Ability_45;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_46".
+        /// </summary>
+        public InputAction @Ability_46 => m_Wrapper.m_AbilityActions_Ability_46;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_47".
+        /// </summary>
+        public InputAction @Ability_47 => m_Wrapper.m_AbilityActions_Ability_47;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_48".
+        /// </summary>
+        public InputAction @Ability_48 => m_Wrapper.m_AbilityActions_Ability_48;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_49".
+        /// </summary>
+        public InputAction @Ability_49 => m_Wrapper.m_AbilityActions_Ability_49;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_50".
+        /// </summary>
+        public InputAction @Ability_50 => m_Wrapper.m_AbilityActions_Ability_50;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_51".
+        /// </summary>
+        public InputAction @Ability_51 => m_Wrapper.m_AbilityActions_Ability_51;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_52".
+        /// </summary>
+        public InputAction @Ability_52 => m_Wrapper.m_AbilityActions_Ability_52;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_53".
+        /// </summary>
+        public InputAction @Ability_53 => m_Wrapper.m_AbilityActions_Ability_53;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_54".
+        /// </summary>
+        public InputAction @Ability_54 => m_Wrapper.m_AbilityActions_Ability_54;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_55".
+        /// </summary>
+        public InputAction @Ability_55 => m_Wrapper.m_AbilityActions_Ability_55;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_56".
+        /// </summary>
+        public InputAction @Ability_56 => m_Wrapper.m_AbilityActions_Ability_56;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_57".
+        /// </summary>
+        public InputAction @Ability_57 => m_Wrapper.m_AbilityActions_Ability_57;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_58".
+        /// </summary>
+        public InputAction @Ability_58 => m_Wrapper.m_AbilityActions_Ability_58;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_59".
+        /// </summary>
+        public InputAction @Ability_59 => m_Wrapper.m_AbilityActions_Ability_59;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_60".
+        /// </summary>
+        public InputAction @Ability_60 => m_Wrapper.m_AbilityActions_Ability_60;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_61".
+        /// </summary>
+        public InputAction @Ability_61 => m_Wrapper.m_AbilityActions_Ability_61;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_62".
+        /// </summary>
+        public InputAction @Ability_62 => m_Wrapper.m_AbilityActions_Ability_62;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_63".
+        /// </summary>
+        public InputAction @Ability_63 => m_Wrapper.m_AbilityActions_Ability_63;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_64".
+        /// </summary>
+        public InputAction @Ability_64 => m_Wrapper.m_AbilityActions_Ability_64;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_65".
+        /// </summary>
+        public InputAction @Ability_65 => m_Wrapper.m_AbilityActions_Ability_65;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_66".
+        /// </summary>
+        public InputAction @Ability_66 => m_Wrapper.m_AbilityActions_Ability_66;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_67".
+        /// </summary>
+        public InputAction @Ability_67 => m_Wrapper.m_AbilityActions_Ability_67;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_68".
+        /// </summary>
+        public InputAction @Ability_68 => m_Wrapper.m_AbilityActions_Ability_68;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_69".
+        /// </summary>
+        public InputAction @Ability_69 => m_Wrapper.m_AbilityActions_Ability_69;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_70".
+        /// </summary>
+        public InputAction @Ability_70 => m_Wrapper.m_AbilityActions_Ability_70;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_71".
+        /// </summary>
+        public InputAction @Ability_71 => m_Wrapper.m_AbilityActions_Ability_71;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_72".
+        /// </summary>
+        public InputAction @Ability_72 => m_Wrapper.m_AbilityActions_Ability_72;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_73".
+        /// </summary>
+        public InputAction @Ability_73 => m_Wrapper.m_AbilityActions_Ability_73;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_74".
+        /// </summary>
+        public InputAction @Ability_74 => m_Wrapper.m_AbilityActions_Ability_74;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_75".
+        /// </summary>
+        public InputAction @Ability_75 => m_Wrapper.m_AbilityActions_Ability_75;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_76".
+        /// </summary>
+        public InputAction @Ability_76 => m_Wrapper.m_AbilityActions_Ability_76;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_77".
+        /// </summary>
+        public InputAction @Ability_77 => m_Wrapper.m_AbilityActions_Ability_77;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_78".
+        /// </summary>
+        public InputAction @Ability_78 => m_Wrapper.m_AbilityActions_Ability_78;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_79".
+        /// </summary>
+        public InputAction @Ability_79 => m_Wrapper.m_AbilityActions_Ability_79;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_80".
+        /// </summary>
+        public InputAction @Ability_80 => m_Wrapper.m_AbilityActions_Ability_80;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_81".
+        /// </summary>
+        public InputAction @Ability_81 => m_Wrapper.m_AbilityActions_Ability_81;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_82".
+        /// </summary>
+        public InputAction @Ability_82 => m_Wrapper.m_AbilityActions_Ability_82;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_83".
+        /// </summary>
+        public InputAction @Ability_83 => m_Wrapper.m_AbilityActions_Ability_83;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_84".
+        /// </summary>
+        public InputAction @Ability_84 => m_Wrapper.m_AbilityActions_Ability_84;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_85".
+        /// </summary>
+        public InputAction @Ability_85 => m_Wrapper.m_AbilityActions_Ability_85;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_86".
+        /// </summary>
+        public InputAction @Ability_86 => m_Wrapper.m_AbilityActions_Ability_86;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_87".
+        /// </summary>
+        public InputAction @Ability_87 => m_Wrapper.m_AbilityActions_Ability_87;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_88".
+        /// </summary>
+        public InputAction @Ability_88 => m_Wrapper.m_AbilityActions_Ability_88;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_89".
+        /// </summary>
+        public InputAction @Ability_89 => m_Wrapper.m_AbilityActions_Ability_89;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_90".
+        /// </summary>
+        public InputAction @Ability_90 => m_Wrapper.m_AbilityActions_Ability_90;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_91".
+        /// </summary>
+        public InputAction @Ability_91 => m_Wrapper.m_AbilityActions_Ability_91;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_92".
+        /// </summary>
+        public InputAction @Ability_92 => m_Wrapper.m_AbilityActions_Ability_92;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_93".
+        /// </summary>
+        public InputAction @Ability_93 => m_Wrapper.m_AbilityActions_Ability_93;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_94".
+        /// </summary>
+        public InputAction @Ability_94 => m_Wrapper.m_AbilityActions_Ability_94;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_95".
+        /// </summary>
+        public InputAction @Ability_95 => m_Wrapper.m_AbilityActions_Ability_95;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_96".
+        /// </summary>
+        public InputAction @Ability_96 => m_Wrapper.m_AbilityActions_Ability_96;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_97".
+        /// </summary>
+        public InputAction @Ability_97 => m_Wrapper.m_AbilityActions_Ability_97;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_98".
+        /// </summary>
+        public InputAction @Ability_98 => m_Wrapper.m_AbilityActions_Ability_98;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_99".
+        /// </summary>
+        public InputAction @Ability_99 => m_Wrapper.m_AbilityActions_Ability_99;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_100".
+        /// </summary>
+        public InputAction @Ability_100 => m_Wrapper.m_AbilityActions_Ability_100;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_101".
+        /// </summary>
+        public InputAction @Ability_101 => m_Wrapper.m_AbilityActions_Ability_101;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_102".
+        /// </summary>
+        public InputAction @Ability_102 => m_Wrapper.m_AbilityActions_Ability_102;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_103".
+        /// </summary>
+        public InputAction @Ability_103 => m_Wrapper.m_AbilityActions_Ability_103;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_104".
+        /// </summary>
+        public InputAction @Ability_104 => m_Wrapper.m_AbilityActions_Ability_104;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_105".
+        /// </summary>
+        public InputAction @Ability_105 => m_Wrapper.m_AbilityActions_Ability_105;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_106".
+        /// </summary>
+        public InputAction @Ability_106 => m_Wrapper.m_AbilityActions_Ability_106;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_107".
+        /// </summary>
+        public InputAction @Ability_107 => m_Wrapper.m_AbilityActions_Ability_107;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_108".
+        /// </summary>
+        public InputAction @Ability_108 => m_Wrapper.m_AbilityActions_Ability_108;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_109".
+        /// </summary>
+        public InputAction @Ability_109 => m_Wrapper.m_AbilityActions_Ability_109;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_110".
+        /// </summary>
+        public InputAction @Ability_110 => m_Wrapper.m_AbilityActions_Ability_110;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_111".
+        /// </summary>
+        public InputAction @Ability_111 => m_Wrapper.m_AbilityActions_Ability_111;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_112".
+        /// </summary>
+        public InputAction @Ability_112 => m_Wrapper.m_AbilityActions_Ability_112;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_113".
+        /// </summary>
+        public InputAction @Ability_113 => m_Wrapper.m_AbilityActions_Ability_113;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_114".
+        /// </summary>
+        public InputAction @Ability_114 => m_Wrapper.m_AbilityActions_Ability_114;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_115".
+        /// </summary>
+        public InputAction @Ability_115 => m_Wrapper.m_AbilityActions_Ability_115;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_116".
+        /// </summary>
+        public InputAction @Ability_116 => m_Wrapper.m_AbilityActions_Ability_116;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_117".
+        /// </summary>
+        public InputAction @Ability_117 => m_Wrapper.m_AbilityActions_Ability_117;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_118".
+        /// </summary>
+        public InputAction @Ability_118 => m_Wrapper.m_AbilityActions_Ability_118;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_119".
+        /// </summary>
+        public InputAction @Ability_119 => m_Wrapper.m_AbilityActions_Ability_119;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_120".
+        /// </summary>
+        public InputAction @Ability_120 => m_Wrapper.m_AbilityActions_Ability_120;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_121".
+        /// </summary>
+        public InputAction @Ability_121 => m_Wrapper.m_AbilityActions_Ability_121;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_122".
+        /// </summary>
+        public InputAction @Ability_122 => m_Wrapper.m_AbilityActions_Ability_122;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_123".
+        /// </summary>
+        public InputAction @Ability_123 => m_Wrapper.m_AbilityActions_Ability_123;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_124".
+        /// </summary>
+        public InputAction @Ability_124 => m_Wrapper.m_AbilityActions_Ability_124;
+        /// <summary>
+        /// Provides access to the underlying input action "AbilityActions/Ability_125".
+        /// </summary>
+        public InputAction @Ability_125 => m_Wrapper.m_AbilityActions_Ability_125;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_AbilityActions; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="AbilityActionsActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(AbilityActionsActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="AbilityActionsActions" />
+        public void AddCallbacks(IAbilityActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AbilityActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AbilityActionsActionsCallbackInterfaces.Add(instance);
+            @Ability_0.started += instance.OnAbility_0;
+            @Ability_0.performed += instance.OnAbility_0;
+            @Ability_0.canceled += instance.OnAbility_0;
+            @Ability_1.started += instance.OnAbility_1;
+            @Ability_1.performed += instance.OnAbility_1;
+            @Ability_1.canceled += instance.OnAbility_1;
+            @Ability_2.started += instance.OnAbility_2;
+            @Ability_2.performed += instance.OnAbility_2;
+            @Ability_2.canceled += instance.OnAbility_2;
+            @Ability_3.started += instance.OnAbility_3;
+            @Ability_3.performed += instance.OnAbility_3;
+            @Ability_3.canceled += instance.OnAbility_3;
+            @Ability_4.started += instance.OnAbility_4;
+            @Ability_4.performed += instance.OnAbility_4;
+            @Ability_4.canceled += instance.OnAbility_4;
+            @Ability_5.started += instance.OnAbility_5;
+            @Ability_5.performed += instance.OnAbility_5;
+            @Ability_5.canceled += instance.OnAbility_5;
+            @Ability_6.started += instance.OnAbility_6;
+            @Ability_6.performed += instance.OnAbility_6;
+            @Ability_6.canceled += instance.OnAbility_6;
+            @Ability_7.started += instance.OnAbility_7;
+            @Ability_7.performed += instance.OnAbility_7;
+            @Ability_7.canceled += instance.OnAbility_7;
+            @Ability_8.started += instance.OnAbility_8;
+            @Ability_8.performed += instance.OnAbility_8;
+            @Ability_8.canceled += instance.OnAbility_8;
+            @Ability_9.started += instance.OnAbility_9;
+            @Ability_9.performed += instance.OnAbility_9;
+            @Ability_9.canceled += instance.OnAbility_9;
+            @Ability_10.started += instance.OnAbility_10;
+            @Ability_10.performed += instance.OnAbility_10;
+            @Ability_10.canceled += instance.OnAbility_10;
+            @Ability_11.started += instance.OnAbility_11;
+            @Ability_11.performed += instance.OnAbility_11;
+            @Ability_11.canceled += instance.OnAbility_11;
+            @Ability_12.started += instance.OnAbility_12;
+            @Ability_12.performed += instance.OnAbility_12;
+            @Ability_12.canceled += instance.OnAbility_12;
+            @Ability_13.started += instance.OnAbility_13;
+            @Ability_13.performed += instance.OnAbility_13;
+            @Ability_13.canceled += instance.OnAbility_13;
+            @Ability_14.started += instance.OnAbility_14;
+            @Ability_14.performed += instance.OnAbility_14;
+            @Ability_14.canceled += instance.OnAbility_14;
+            @Ability_15.started += instance.OnAbility_15;
+            @Ability_15.performed += instance.OnAbility_15;
+            @Ability_15.canceled += instance.OnAbility_15;
+            @Ability_16.started += instance.OnAbility_16;
+            @Ability_16.performed += instance.OnAbility_16;
+            @Ability_16.canceled += instance.OnAbility_16;
+            @Ability_17.started += instance.OnAbility_17;
+            @Ability_17.performed += instance.OnAbility_17;
+            @Ability_17.canceled += instance.OnAbility_17;
+            @Ability_18.started += instance.OnAbility_18;
+            @Ability_18.performed += instance.OnAbility_18;
+            @Ability_18.canceled += instance.OnAbility_18;
+            @Ability_19.started += instance.OnAbility_19;
+            @Ability_19.performed += instance.OnAbility_19;
+            @Ability_19.canceled += instance.OnAbility_19;
+            @Ability_20.started += instance.OnAbility_20;
+            @Ability_20.performed += instance.OnAbility_20;
+            @Ability_20.canceled += instance.OnAbility_20;
+            @Ability_21.started += instance.OnAbility_21;
+            @Ability_21.performed += instance.OnAbility_21;
+            @Ability_21.canceled += instance.OnAbility_21;
+            @Ability_22.started += instance.OnAbility_22;
+            @Ability_22.performed += instance.OnAbility_22;
+            @Ability_22.canceled += instance.OnAbility_22;
+            @Ability_23.started += instance.OnAbility_23;
+            @Ability_23.performed += instance.OnAbility_23;
+            @Ability_23.canceled += instance.OnAbility_23;
+            @Ability_24.started += instance.OnAbility_24;
+            @Ability_24.performed += instance.OnAbility_24;
+            @Ability_24.canceled += instance.OnAbility_24;
+            @Ability_25.started += instance.OnAbility_25;
+            @Ability_25.performed += instance.OnAbility_25;
+            @Ability_25.canceled += instance.OnAbility_25;
+            @Ability_26.started += instance.OnAbility_26;
+            @Ability_26.performed += instance.OnAbility_26;
+            @Ability_26.canceled += instance.OnAbility_26;
+            @Ability_27.started += instance.OnAbility_27;
+            @Ability_27.performed += instance.OnAbility_27;
+            @Ability_27.canceled += instance.OnAbility_27;
+            @Ability_28.started += instance.OnAbility_28;
+            @Ability_28.performed += instance.OnAbility_28;
+            @Ability_28.canceled += instance.OnAbility_28;
+            @Ability_29.started += instance.OnAbility_29;
+            @Ability_29.performed += instance.OnAbility_29;
+            @Ability_29.canceled += instance.OnAbility_29;
+            @Ability_30.started += instance.OnAbility_30;
+            @Ability_30.performed += instance.OnAbility_30;
+            @Ability_30.canceled += instance.OnAbility_30;
+            @Ability_31.started += instance.OnAbility_31;
+            @Ability_31.performed += instance.OnAbility_31;
+            @Ability_31.canceled += instance.OnAbility_31;
+            @Ability_32.started += instance.OnAbility_32;
+            @Ability_32.performed += instance.OnAbility_32;
+            @Ability_32.canceled += instance.OnAbility_32;
+            @Ability_33.started += instance.OnAbility_33;
+            @Ability_33.performed += instance.OnAbility_33;
+            @Ability_33.canceled += instance.OnAbility_33;
+            @Ability_34.started += instance.OnAbility_34;
+            @Ability_34.performed += instance.OnAbility_34;
+            @Ability_34.canceled += instance.OnAbility_34;
+            @Ability_35.started += instance.OnAbility_35;
+            @Ability_35.performed += instance.OnAbility_35;
+            @Ability_35.canceled += instance.OnAbility_35;
+            @Ability_36.started += instance.OnAbility_36;
+            @Ability_36.performed += instance.OnAbility_36;
+            @Ability_36.canceled += instance.OnAbility_36;
+            @Ability_37.started += instance.OnAbility_37;
+            @Ability_37.performed += instance.OnAbility_37;
+            @Ability_37.canceled += instance.OnAbility_37;
+            @Ability_38.started += instance.OnAbility_38;
+            @Ability_38.performed += instance.OnAbility_38;
+            @Ability_38.canceled += instance.OnAbility_38;
+            @Ability_39.started += instance.OnAbility_39;
+            @Ability_39.performed += instance.OnAbility_39;
+            @Ability_39.canceled += instance.OnAbility_39;
+            @Ability_40.started += instance.OnAbility_40;
+            @Ability_40.performed += instance.OnAbility_40;
+            @Ability_40.canceled += instance.OnAbility_40;
+            @Ability_41.started += instance.OnAbility_41;
+            @Ability_41.performed += instance.OnAbility_41;
+            @Ability_41.canceled += instance.OnAbility_41;
+            @Ability_42.started += instance.OnAbility_42;
+            @Ability_42.performed += instance.OnAbility_42;
+            @Ability_42.canceled += instance.OnAbility_42;
+            @Ability_43.started += instance.OnAbility_43;
+            @Ability_43.performed += instance.OnAbility_43;
+            @Ability_43.canceled += instance.OnAbility_43;
+            @Ability_44.started += instance.OnAbility_44;
+            @Ability_44.performed += instance.OnAbility_44;
+            @Ability_44.canceled += instance.OnAbility_44;
+            @Ability_45.started += instance.OnAbility_45;
+            @Ability_45.performed += instance.OnAbility_45;
+            @Ability_45.canceled += instance.OnAbility_45;
+            @Ability_46.started += instance.OnAbility_46;
+            @Ability_46.performed += instance.OnAbility_46;
+            @Ability_46.canceled += instance.OnAbility_46;
+            @Ability_47.started += instance.OnAbility_47;
+            @Ability_47.performed += instance.OnAbility_47;
+            @Ability_47.canceled += instance.OnAbility_47;
+            @Ability_48.started += instance.OnAbility_48;
+            @Ability_48.performed += instance.OnAbility_48;
+            @Ability_48.canceled += instance.OnAbility_48;
+            @Ability_49.started += instance.OnAbility_49;
+            @Ability_49.performed += instance.OnAbility_49;
+            @Ability_49.canceled += instance.OnAbility_49;
+            @Ability_50.started += instance.OnAbility_50;
+            @Ability_50.performed += instance.OnAbility_50;
+            @Ability_50.canceled += instance.OnAbility_50;
+            @Ability_51.started += instance.OnAbility_51;
+            @Ability_51.performed += instance.OnAbility_51;
+            @Ability_51.canceled += instance.OnAbility_51;
+            @Ability_52.started += instance.OnAbility_52;
+            @Ability_52.performed += instance.OnAbility_52;
+            @Ability_52.canceled += instance.OnAbility_52;
+            @Ability_53.started += instance.OnAbility_53;
+            @Ability_53.performed += instance.OnAbility_53;
+            @Ability_53.canceled += instance.OnAbility_53;
+            @Ability_54.started += instance.OnAbility_54;
+            @Ability_54.performed += instance.OnAbility_54;
+            @Ability_54.canceled += instance.OnAbility_54;
+            @Ability_55.started += instance.OnAbility_55;
+            @Ability_55.performed += instance.OnAbility_55;
+            @Ability_55.canceled += instance.OnAbility_55;
+            @Ability_56.started += instance.OnAbility_56;
+            @Ability_56.performed += instance.OnAbility_56;
+            @Ability_56.canceled += instance.OnAbility_56;
+            @Ability_57.started += instance.OnAbility_57;
+            @Ability_57.performed += instance.OnAbility_57;
+            @Ability_57.canceled += instance.OnAbility_57;
+            @Ability_58.started += instance.OnAbility_58;
+            @Ability_58.performed += instance.OnAbility_58;
+            @Ability_58.canceled += instance.OnAbility_58;
+            @Ability_59.started += instance.OnAbility_59;
+            @Ability_59.performed += instance.OnAbility_59;
+            @Ability_59.canceled += instance.OnAbility_59;
+            @Ability_60.started += instance.OnAbility_60;
+            @Ability_60.performed += instance.OnAbility_60;
+            @Ability_60.canceled += instance.OnAbility_60;
+            @Ability_61.started += instance.OnAbility_61;
+            @Ability_61.performed += instance.OnAbility_61;
+            @Ability_61.canceled += instance.OnAbility_61;
+            @Ability_62.started += instance.OnAbility_62;
+            @Ability_62.performed += instance.OnAbility_62;
+            @Ability_62.canceled += instance.OnAbility_62;
+            @Ability_63.started += instance.OnAbility_63;
+            @Ability_63.performed += instance.OnAbility_63;
+            @Ability_63.canceled += instance.OnAbility_63;
+            @Ability_64.started += instance.OnAbility_64;
+            @Ability_64.performed += instance.OnAbility_64;
+            @Ability_64.canceled += instance.OnAbility_64;
+            @Ability_65.started += instance.OnAbility_65;
+            @Ability_65.performed += instance.OnAbility_65;
+            @Ability_65.canceled += instance.OnAbility_65;
+            @Ability_66.started += instance.OnAbility_66;
+            @Ability_66.performed += instance.OnAbility_66;
+            @Ability_66.canceled += instance.OnAbility_66;
+            @Ability_67.started += instance.OnAbility_67;
+            @Ability_67.performed += instance.OnAbility_67;
+            @Ability_67.canceled += instance.OnAbility_67;
+            @Ability_68.started += instance.OnAbility_68;
+            @Ability_68.performed += instance.OnAbility_68;
+            @Ability_68.canceled += instance.OnAbility_68;
+            @Ability_69.started += instance.OnAbility_69;
+            @Ability_69.performed += instance.OnAbility_69;
+            @Ability_69.canceled += instance.OnAbility_69;
+            @Ability_70.started += instance.OnAbility_70;
+            @Ability_70.performed += instance.OnAbility_70;
+            @Ability_70.canceled += instance.OnAbility_70;
+            @Ability_71.started += instance.OnAbility_71;
+            @Ability_71.performed += instance.OnAbility_71;
+            @Ability_71.canceled += instance.OnAbility_71;
+            @Ability_72.started += instance.OnAbility_72;
+            @Ability_72.performed += instance.OnAbility_72;
+            @Ability_72.canceled += instance.OnAbility_72;
+            @Ability_73.started += instance.OnAbility_73;
+            @Ability_73.performed += instance.OnAbility_73;
+            @Ability_73.canceled += instance.OnAbility_73;
+            @Ability_74.started += instance.OnAbility_74;
+            @Ability_74.performed += instance.OnAbility_74;
+            @Ability_74.canceled += instance.OnAbility_74;
+            @Ability_75.started += instance.OnAbility_75;
+            @Ability_75.performed += instance.OnAbility_75;
+            @Ability_75.canceled += instance.OnAbility_75;
+            @Ability_76.started += instance.OnAbility_76;
+            @Ability_76.performed += instance.OnAbility_76;
+            @Ability_76.canceled += instance.OnAbility_76;
+            @Ability_77.started += instance.OnAbility_77;
+            @Ability_77.performed += instance.OnAbility_77;
+            @Ability_77.canceled += instance.OnAbility_77;
+            @Ability_78.started += instance.OnAbility_78;
+            @Ability_78.performed += instance.OnAbility_78;
+            @Ability_78.canceled += instance.OnAbility_78;
+            @Ability_79.started += instance.OnAbility_79;
+            @Ability_79.performed += instance.OnAbility_79;
+            @Ability_79.canceled += instance.OnAbility_79;
+            @Ability_80.started += instance.OnAbility_80;
+            @Ability_80.performed += instance.OnAbility_80;
+            @Ability_80.canceled += instance.OnAbility_80;
+            @Ability_81.started += instance.OnAbility_81;
+            @Ability_81.performed += instance.OnAbility_81;
+            @Ability_81.canceled += instance.OnAbility_81;
+            @Ability_82.started += instance.OnAbility_82;
+            @Ability_82.performed += instance.OnAbility_82;
+            @Ability_82.canceled += instance.OnAbility_82;
+            @Ability_83.started += instance.OnAbility_83;
+            @Ability_83.performed += instance.OnAbility_83;
+            @Ability_83.canceled += instance.OnAbility_83;
+            @Ability_84.started += instance.OnAbility_84;
+            @Ability_84.performed += instance.OnAbility_84;
+            @Ability_84.canceled += instance.OnAbility_84;
+            @Ability_85.started += instance.OnAbility_85;
+            @Ability_85.performed += instance.OnAbility_85;
+            @Ability_85.canceled += instance.OnAbility_85;
+            @Ability_86.started += instance.OnAbility_86;
+            @Ability_86.performed += instance.OnAbility_86;
+            @Ability_86.canceled += instance.OnAbility_86;
+            @Ability_87.started += instance.OnAbility_87;
+            @Ability_87.performed += instance.OnAbility_87;
+            @Ability_87.canceled += instance.OnAbility_87;
+            @Ability_88.started += instance.OnAbility_88;
+            @Ability_88.performed += instance.OnAbility_88;
+            @Ability_88.canceled += instance.OnAbility_88;
+            @Ability_89.started += instance.OnAbility_89;
+            @Ability_89.performed += instance.OnAbility_89;
+            @Ability_89.canceled += instance.OnAbility_89;
+            @Ability_90.started += instance.OnAbility_90;
+            @Ability_90.performed += instance.OnAbility_90;
+            @Ability_90.canceled += instance.OnAbility_90;
+            @Ability_91.started += instance.OnAbility_91;
+            @Ability_91.performed += instance.OnAbility_91;
+            @Ability_91.canceled += instance.OnAbility_91;
+            @Ability_92.started += instance.OnAbility_92;
+            @Ability_92.performed += instance.OnAbility_92;
+            @Ability_92.canceled += instance.OnAbility_92;
+            @Ability_93.started += instance.OnAbility_93;
+            @Ability_93.performed += instance.OnAbility_93;
+            @Ability_93.canceled += instance.OnAbility_93;
+            @Ability_94.started += instance.OnAbility_94;
+            @Ability_94.performed += instance.OnAbility_94;
+            @Ability_94.canceled += instance.OnAbility_94;
+            @Ability_95.started += instance.OnAbility_95;
+            @Ability_95.performed += instance.OnAbility_95;
+            @Ability_95.canceled += instance.OnAbility_95;
+            @Ability_96.started += instance.OnAbility_96;
+            @Ability_96.performed += instance.OnAbility_96;
+            @Ability_96.canceled += instance.OnAbility_96;
+            @Ability_97.started += instance.OnAbility_97;
+            @Ability_97.performed += instance.OnAbility_97;
+            @Ability_97.canceled += instance.OnAbility_97;
+            @Ability_98.started += instance.OnAbility_98;
+            @Ability_98.performed += instance.OnAbility_98;
+            @Ability_98.canceled += instance.OnAbility_98;
+            @Ability_99.started += instance.OnAbility_99;
+            @Ability_99.performed += instance.OnAbility_99;
+            @Ability_99.canceled += instance.OnAbility_99;
+            @Ability_100.started += instance.OnAbility_100;
+            @Ability_100.performed += instance.OnAbility_100;
+            @Ability_100.canceled += instance.OnAbility_100;
+            @Ability_101.started += instance.OnAbility_101;
+            @Ability_101.performed += instance.OnAbility_101;
+            @Ability_101.canceled += instance.OnAbility_101;
+            @Ability_102.started += instance.OnAbility_102;
+            @Ability_102.performed += instance.OnAbility_102;
+            @Ability_102.canceled += instance.OnAbility_102;
+            @Ability_103.started += instance.OnAbility_103;
+            @Ability_103.performed += instance.OnAbility_103;
+            @Ability_103.canceled += instance.OnAbility_103;
+            @Ability_104.started += instance.OnAbility_104;
+            @Ability_104.performed += instance.OnAbility_104;
+            @Ability_104.canceled += instance.OnAbility_104;
+            @Ability_105.started += instance.OnAbility_105;
+            @Ability_105.performed += instance.OnAbility_105;
+            @Ability_105.canceled += instance.OnAbility_105;
+            @Ability_106.started += instance.OnAbility_106;
+            @Ability_106.performed += instance.OnAbility_106;
+            @Ability_106.canceled += instance.OnAbility_106;
+            @Ability_107.started += instance.OnAbility_107;
+            @Ability_107.performed += instance.OnAbility_107;
+            @Ability_107.canceled += instance.OnAbility_107;
+            @Ability_108.started += instance.OnAbility_108;
+            @Ability_108.performed += instance.OnAbility_108;
+            @Ability_108.canceled += instance.OnAbility_108;
+            @Ability_109.started += instance.OnAbility_109;
+            @Ability_109.performed += instance.OnAbility_109;
+            @Ability_109.canceled += instance.OnAbility_109;
+            @Ability_110.started += instance.OnAbility_110;
+            @Ability_110.performed += instance.OnAbility_110;
+            @Ability_110.canceled += instance.OnAbility_110;
+            @Ability_111.started += instance.OnAbility_111;
+            @Ability_111.performed += instance.OnAbility_111;
+            @Ability_111.canceled += instance.OnAbility_111;
+            @Ability_112.started += instance.OnAbility_112;
+            @Ability_112.performed += instance.OnAbility_112;
+            @Ability_112.canceled += instance.OnAbility_112;
+            @Ability_113.started += instance.OnAbility_113;
+            @Ability_113.performed += instance.OnAbility_113;
+            @Ability_113.canceled += instance.OnAbility_113;
+            @Ability_114.started += instance.OnAbility_114;
+            @Ability_114.performed += instance.OnAbility_114;
+            @Ability_114.canceled += instance.OnAbility_114;
+            @Ability_115.started += instance.OnAbility_115;
+            @Ability_115.performed += instance.OnAbility_115;
+            @Ability_115.canceled += instance.OnAbility_115;
+            @Ability_116.started += instance.OnAbility_116;
+            @Ability_116.performed += instance.OnAbility_116;
+            @Ability_116.canceled += instance.OnAbility_116;
+            @Ability_117.started += instance.OnAbility_117;
+            @Ability_117.performed += instance.OnAbility_117;
+            @Ability_117.canceled += instance.OnAbility_117;
+            @Ability_118.started += instance.OnAbility_118;
+            @Ability_118.performed += instance.OnAbility_118;
+            @Ability_118.canceled += instance.OnAbility_118;
+            @Ability_119.started += instance.OnAbility_119;
+            @Ability_119.performed += instance.OnAbility_119;
+            @Ability_119.canceled += instance.OnAbility_119;
+            @Ability_120.started += instance.OnAbility_120;
+            @Ability_120.performed += instance.OnAbility_120;
+            @Ability_120.canceled += instance.OnAbility_120;
+            @Ability_121.started += instance.OnAbility_121;
+            @Ability_121.performed += instance.OnAbility_121;
+            @Ability_121.canceled += instance.OnAbility_121;
+            @Ability_122.started += instance.OnAbility_122;
+            @Ability_122.performed += instance.OnAbility_122;
+            @Ability_122.canceled += instance.OnAbility_122;
+            @Ability_123.started += instance.OnAbility_123;
+            @Ability_123.performed += instance.OnAbility_123;
+            @Ability_123.canceled += instance.OnAbility_123;
+            @Ability_124.started += instance.OnAbility_124;
+            @Ability_124.performed += instance.OnAbility_124;
+            @Ability_124.canceled += instance.OnAbility_124;
+            @Ability_125.started += instance.OnAbility_125;
+            @Ability_125.performed += instance.OnAbility_125;
+            @Ability_125.canceled += instance.OnAbility_125;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="AbilityActionsActions" />
+        private void UnregisterCallbacks(IAbilityActionsActions instance)
+        {
+            @Ability_0.started -= instance.OnAbility_0;
+            @Ability_0.performed -= instance.OnAbility_0;
+            @Ability_0.canceled -= instance.OnAbility_0;
+            @Ability_1.started -= instance.OnAbility_1;
+            @Ability_1.performed -= instance.OnAbility_1;
+            @Ability_1.canceled -= instance.OnAbility_1;
+            @Ability_2.started -= instance.OnAbility_2;
+            @Ability_2.performed -= instance.OnAbility_2;
+            @Ability_2.canceled -= instance.OnAbility_2;
+            @Ability_3.started -= instance.OnAbility_3;
+            @Ability_3.performed -= instance.OnAbility_3;
+            @Ability_3.canceled -= instance.OnAbility_3;
+            @Ability_4.started -= instance.OnAbility_4;
+            @Ability_4.performed -= instance.OnAbility_4;
+            @Ability_4.canceled -= instance.OnAbility_4;
+            @Ability_5.started -= instance.OnAbility_5;
+            @Ability_5.performed -= instance.OnAbility_5;
+            @Ability_5.canceled -= instance.OnAbility_5;
+            @Ability_6.started -= instance.OnAbility_6;
+            @Ability_6.performed -= instance.OnAbility_6;
+            @Ability_6.canceled -= instance.OnAbility_6;
+            @Ability_7.started -= instance.OnAbility_7;
+            @Ability_7.performed -= instance.OnAbility_7;
+            @Ability_7.canceled -= instance.OnAbility_7;
+            @Ability_8.started -= instance.OnAbility_8;
+            @Ability_8.performed -= instance.OnAbility_8;
+            @Ability_8.canceled -= instance.OnAbility_8;
+            @Ability_9.started -= instance.OnAbility_9;
+            @Ability_9.performed -= instance.OnAbility_9;
+            @Ability_9.canceled -= instance.OnAbility_9;
+            @Ability_10.started -= instance.OnAbility_10;
+            @Ability_10.performed -= instance.OnAbility_10;
+            @Ability_10.canceled -= instance.OnAbility_10;
+            @Ability_11.started -= instance.OnAbility_11;
+            @Ability_11.performed -= instance.OnAbility_11;
+            @Ability_11.canceled -= instance.OnAbility_11;
+            @Ability_12.started -= instance.OnAbility_12;
+            @Ability_12.performed -= instance.OnAbility_12;
+            @Ability_12.canceled -= instance.OnAbility_12;
+            @Ability_13.started -= instance.OnAbility_13;
+            @Ability_13.performed -= instance.OnAbility_13;
+            @Ability_13.canceled -= instance.OnAbility_13;
+            @Ability_14.started -= instance.OnAbility_14;
+            @Ability_14.performed -= instance.OnAbility_14;
+            @Ability_14.canceled -= instance.OnAbility_14;
+            @Ability_15.started -= instance.OnAbility_15;
+            @Ability_15.performed -= instance.OnAbility_15;
+            @Ability_15.canceled -= instance.OnAbility_15;
+            @Ability_16.started -= instance.OnAbility_16;
+            @Ability_16.performed -= instance.OnAbility_16;
+            @Ability_16.canceled -= instance.OnAbility_16;
+            @Ability_17.started -= instance.OnAbility_17;
+            @Ability_17.performed -= instance.OnAbility_17;
+            @Ability_17.canceled -= instance.OnAbility_17;
+            @Ability_18.started -= instance.OnAbility_18;
+            @Ability_18.performed -= instance.OnAbility_18;
+            @Ability_18.canceled -= instance.OnAbility_18;
+            @Ability_19.started -= instance.OnAbility_19;
+            @Ability_19.performed -= instance.OnAbility_19;
+            @Ability_19.canceled -= instance.OnAbility_19;
+            @Ability_20.started -= instance.OnAbility_20;
+            @Ability_20.performed -= instance.OnAbility_20;
+            @Ability_20.canceled -= instance.OnAbility_20;
+            @Ability_21.started -= instance.OnAbility_21;
+            @Ability_21.performed -= instance.OnAbility_21;
+            @Ability_21.canceled -= instance.OnAbility_21;
+            @Ability_22.started -= instance.OnAbility_22;
+            @Ability_22.performed -= instance.OnAbility_22;
+            @Ability_22.canceled -= instance.OnAbility_22;
+            @Ability_23.started -= instance.OnAbility_23;
+            @Ability_23.performed -= instance.OnAbility_23;
+            @Ability_23.canceled -= instance.OnAbility_23;
+            @Ability_24.started -= instance.OnAbility_24;
+            @Ability_24.performed -= instance.OnAbility_24;
+            @Ability_24.canceled -= instance.OnAbility_24;
+            @Ability_25.started -= instance.OnAbility_25;
+            @Ability_25.performed -= instance.OnAbility_25;
+            @Ability_25.canceled -= instance.OnAbility_25;
+            @Ability_26.started -= instance.OnAbility_26;
+            @Ability_26.performed -= instance.OnAbility_26;
+            @Ability_26.canceled -= instance.OnAbility_26;
+            @Ability_27.started -= instance.OnAbility_27;
+            @Ability_27.performed -= instance.OnAbility_27;
+            @Ability_27.canceled -= instance.OnAbility_27;
+            @Ability_28.started -= instance.OnAbility_28;
+            @Ability_28.performed -= instance.OnAbility_28;
+            @Ability_28.canceled -= instance.OnAbility_28;
+            @Ability_29.started -= instance.OnAbility_29;
+            @Ability_29.performed -= instance.OnAbility_29;
+            @Ability_29.canceled -= instance.OnAbility_29;
+            @Ability_30.started -= instance.OnAbility_30;
+            @Ability_30.performed -= instance.OnAbility_30;
+            @Ability_30.canceled -= instance.OnAbility_30;
+            @Ability_31.started -= instance.OnAbility_31;
+            @Ability_31.performed -= instance.OnAbility_31;
+            @Ability_31.canceled -= instance.OnAbility_31;
+            @Ability_32.started -= instance.OnAbility_32;
+            @Ability_32.performed -= instance.OnAbility_32;
+            @Ability_32.canceled -= instance.OnAbility_32;
+            @Ability_33.started -= instance.OnAbility_33;
+            @Ability_33.performed -= instance.OnAbility_33;
+            @Ability_33.canceled -= instance.OnAbility_33;
+            @Ability_34.started -= instance.OnAbility_34;
+            @Ability_34.performed -= instance.OnAbility_34;
+            @Ability_34.canceled -= instance.OnAbility_34;
+            @Ability_35.started -= instance.OnAbility_35;
+            @Ability_35.performed -= instance.OnAbility_35;
+            @Ability_35.canceled -= instance.OnAbility_35;
+            @Ability_36.started -= instance.OnAbility_36;
+            @Ability_36.performed -= instance.OnAbility_36;
+            @Ability_36.canceled -= instance.OnAbility_36;
+            @Ability_37.started -= instance.OnAbility_37;
+            @Ability_37.performed -= instance.OnAbility_37;
+            @Ability_37.canceled -= instance.OnAbility_37;
+            @Ability_38.started -= instance.OnAbility_38;
+            @Ability_38.performed -= instance.OnAbility_38;
+            @Ability_38.canceled -= instance.OnAbility_38;
+            @Ability_39.started -= instance.OnAbility_39;
+            @Ability_39.performed -= instance.OnAbility_39;
+            @Ability_39.canceled -= instance.OnAbility_39;
+            @Ability_40.started -= instance.OnAbility_40;
+            @Ability_40.performed -= instance.OnAbility_40;
+            @Ability_40.canceled -= instance.OnAbility_40;
+            @Ability_41.started -= instance.OnAbility_41;
+            @Ability_41.performed -= instance.OnAbility_41;
+            @Ability_41.canceled -= instance.OnAbility_41;
+            @Ability_42.started -= instance.OnAbility_42;
+            @Ability_42.performed -= instance.OnAbility_42;
+            @Ability_42.canceled -= instance.OnAbility_42;
+            @Ability_43.started -= instance.OnAbility_43;
+            @Ability_43.performed -= instance.OnAbility_43;
+            @Ability_43.canceled -= instance.OnAbility_43;
+            @Ability_44.started -= instance.OnAbility_44;
+            @Ability_44.performed -= instance.OnAbility_44;
+            @Ability_44.canceled -= instance.OnAbility_44;
+            @Ability_45.started -= instance.OnAbility_45;
+            @Ability_45.performed -= instance.OnAbility_45;
+            @Ability_45.canceled -= instance.OnAbility_45;
+            @Ability_46.started -= instance.OnAbility_46;
+            @Ability_46.performed -= instance.OnAbility_46;
+            @Ability_46.canceled -= instance.OnAbility_46;
+            @Ability_47.started -= instance.OnAbility_47;
+            @Ability_47.performed -= instance.OnAbility_47;
+            @Ability_47.canceled -= instance.OnAbility_47;
+            @Ability_48.started -= instance.OnAbility_48;
+            @Ability_48.performed -= instance.OnAbility_48;
+            @Ability_48.canceled -= instance.OnAbility_48;
+            @Ability_49.started -= instance.OnAbility_49;
+            @Ability_49.performed -= instance.OnAbility_49;
+            @Ability_49.canceled -= instance.OnAbility_49;
+            @Ability_50.started -= instance.OnAbility_50;
+            @Ability_50.performed -= instance.OnAbility_50;
+            @Ability_50.canceled -= instance.OnAbility_50;
+            @Ability_51.started -= instance.OnAbility_51;
+            @Ability_51.performed -= instance.OnAbility_51;
+            @Ability_51.canceled -= instance.OnAbility_51;
+            @Ability_52.started -= instance.OnAbility_52;
+            @Ability_52.performed -= instance.OnAbility_52;
+            @Ability_52.canceled -= instance.OnAbility_52;
+            @Ability_53.started -= instance.OnAbility_53;
+            @Ability_53.performed -= instance.OnAbility_53;
+            @Ability_53.canceled -= instance.OnAbility_53;
+            @Ability_54.started -= instance.OnAbility_54;
+            @Ability_54.performed -= instance.OnAbility_54;
+            @Ability_54.canceled -= instance.OnAbility_54;
+            @Ability_55.started -= instance.OnAbility_55;
+            @Ability_55.performed -= instance.OnAbility_55;
+            @Ability_55.canceled -= instance.OnAbility_55;
+            @Ability_56.started -= instance.OnAbility_56;
+            @Ability_56.performed -= instance.OnAbility_56;
+            @Ability_56.canceled -= instance.OnAbility_56;
+            @Ability_57.started -= instance.OnAbility_57;
+            @Ability_57.performed -= instance.OnAbility_57;
+            @Ability_57.canceled -= instance.OnAbility_57;
+            @Ability_58.started -= instance.OnAbility_58;
+            @Ability_58.performed -= instance.OnAbility_58;
+            @Ability_58.canceled -= instance.OnAbility_58;
+            @Ability_59.started -= instance.OnAbility_59;
+            @Ability_59.performed -= instance.OnAbility_59;
+            @Ability_59.canceled -= instance.OnAbility_59;
+            @Ability_60.started -= instance.OnAbility_60;
+            @Ability_60.performed -= instance.OnAbility_60;
+            @Ability_60.canceled -= instance.OnAbility_60;
+            @Ability_61.started -= instance.OnAbility_61;
+            @Ability_61.performed -= instance.OnAbility_61;
+            @Ability_61.canceled -= instance.OnAbility_61;
+            @Ability_62.started -= instance.OnAbility_62;
+            @Ability_62.performed -= instance.OnAbility_62;
+            @Ability_62.canceled -= instance.OnAbility_62;
+            @Ability_63.started -= instance.OnAbility_63;
+            @Ability_63.performed -= instance.OnAbility_63;
+            @Ability_63.canceled -= instance.OnAbility_63;
+            @Ability_64.started -= instance.OnAbility_64;
+            @Ability_64.performed -= instance.OnAbility_64;
+            @Ability_64.canceled -= instance.OnAbility_64;
+            @Ability_65.started -= instance.OnAbility_65;
+            @Ability_65.performed -= instance.OnAbility_65;
+            @Ability_65.canceled -= instance.OnAbility_65;
+            @Ability_66.started -= instance.OnAbility_66;
+            @Ability_66.performed -= instance.OnAbility_66;
+            @Ability_66.canceled -= instance.OnAbility_66;
+            @Ability_67.started -= instance.OnAbility_67;
+            @Ability_67.performed -= instance.OnAbility_67;
+            @Ability_67.canceled -= instance.OnAbility_67;
+            @Ability_68.started -= instance.OnAbility_68;
+            @Ability_68.performed -= instance.OnAbility_68;
+            @Ability_68.canceled -= instance.OnAbility_68;
+            @Ability_69.started -= instance.OnAbility_69;
+            @Ability_69.performed -= instance.OnAbility_69;
+            @Ability_69.canceled -= instance.OnAbility_69;
+            @Ability_70.started -= instance.OnAbility_70;
+            @Ability_70.performed -= instance.OnAbility_70;
+            @Ability_70.canceled -= instance.OnAbility_70;
+            @Ability_71.started -= instance.OnAbility_71;
+            @Ability_71.performed -= instance.OnAbility_71;
+            @Ability_71.canceled -= instance.OnAbility_71;
+            @Ability_72.started -= instance.OnAbility_72;
+            @Ability_72.performed -= instance.OnAbility_72;
+            @Ability_72.canceled -= instance.OnAbility_72;
+            @Ability_73.started -= instance.OnAbility_73;
+            @Ability_73.performed -= instance.OnAbility_73;
+            @Ability_73.canceled -= instance.OnAbility_73;
+            @Ability_74.started -= instance.OnAbility_74;
+            @Ability_74.performed -= instance.OnAbility_74;
+            @Ability_74.canceled -= instance.OnAbility_74;
+            @Ability_75.started -= instance.OnAbility_75;
+            @Ability_75.performed -= instance.OnAbility_75;
+            @Ability_75.canceled -= instance.OnAbility_75;
+            @Ability_76.started -= instance.OnAbility_76;
+            @Ability_76.performed -= instance.OnAbility_76;
+            @Ability_76.canceled -= instance.OnAbility_76;
+            @Ability_77.started -= instance.OnAbility_77;
+            @Ability_77.performed -= instance.OnAbility_77;
+            @Ability_77.canceled -= instance.OnAbility_77;
+            @Ability_78.started -= instance.OnAbility_78;
+            @Ability_78.performed -= instance.OnAbility_78;
+            @Ability_78.canceled -= instance.OnAbility_78;
+            @Ability_79.started -= instance.OnAbility_79;
+            @Ability_79.performed -= instance.OnAbility_79;
+            @Ability_79.canceled -= instance.OnAbility_79;
+            @Ability_80.started -= instance.OnAbility_80;
+            @Ability_80.performed -= instance.OnAbility_80;
+            @Ability_80.canceled -= instance.OnAbility_80;
+            @Ability_81.started -= instance.OnAbility_81;
+            @Ability_81.performed -= instance.OnAbility_81;
+            @Ability_81.canceled -= instance.OnAbility_81;
+            @Ability_82.started -= instance.OnAbility_82;
+            @Ability_82.performed -= instance.OnAbility_82;
+            @Ability_82.canceled -= instance.OnAbility_82;
+            @Ability_83.started -= instance.OnAbility_83;
+            @Ability_83.performed -= instance.OnAbility_83;
+            @Ability_83.canceled -= instance.OnAbility_83;
+            @Ability_84.started -= instance.OnAbility_84;
+            @Ability_84.performed -= instance.OnAbility_84;
+            @Ability_84.canceled -= instance.OnAbility_84;
+            @Ability_85.started -= instance.OnAbility_85;
+            @Ability_85.performed -= instance.OnAbility_85;
+            @Ability_85.canceled -= instance.OnAbility_85;
+            @Ability_86.started -= instance.OnAbility_86;
+            @Ability_86.performed -= instance.OnAbility_86;
+            @Ability_86.canceled -= instance.OnAbility_86;
+            @Ability_87.started -= instance.OnAbility_87;
+            @Ability_87.performed -= instance.OnAbility_87;
+            @Ability_87.canceled -= instance.OnAbility_87;
+            @Ability_88.started -= instance.OnAbility_88;
+            @Ability_88.performed -= instance.OnAbility_88;
+            @Ability_88.canceled -= instance.OnAbility_88;
+            @Ability_89.started -= instance.OnAbility_89;
+            @Ability_89.performed -= instance.OnAbility_89;
+            @Ability_89.canceled -= instance.OnAbility_89;
+            @Ability_90.started -= instance.OnAbility_90;
+            @Ability_90.performed -= instance.OnAbility_90;
+            @Ability_90.canceled -= instance.OnAbility_90;
+            @Ability_91.started -= instance.OnAbility_91;
+            @Ability_91.performed -= instance.OnAbility_91;
+            @Ability_91.canceled -= instance.OnAbility_91;
+            @Ability_92.started -= instance.OnAbility_92;
+            @Ability_92.performed -= instance.OnAbility_92;
+            @Ability_92.canceled -= instance.OnAbility_92;
+            @Ability_93.started -= instance.OnAbility_93;
+            @Ability_93.performed -= instance.OnAbility_93;
+            @Ability_93.canceled -= instance.OnAbility_93;
+            @Ability_94.started -= instance.OnAbility_94;
+            @Ability_94.performed -= instance.OnAbility_94;
+            @Ability_94.canceled -= instance.OnAbility_94;
+            @Ability_95.started -= instance.OnAbility_95;
+            @Ability_95.performed -= instance.OnAbility_95;
+            @Ability_95.canceled -= instance.OnAbility_95;
+            @Ability_96.started -= instance.OnAbility_96;
+            @Ability_96.performed -= instance.OnAbility_96;
+            @Ability_96.canceled -= instance.OnAbility_96;
+            @Ability_97.started -= instance.OnAbility_97;
+            @Ability_97.performed -= instance.OnAbility_97;
+            @Ability_97.canceled -= instance.OnAbility_97;
+            @Ability_98.started -= instance.OnAbility_98;
+            @Ability_98.performed -= instance.OnAbility_98;
+            @Ability_98.canceled -= instance.OnAbility_98;
+            @Ability_99.started -= instance.OnAbility_99;
+            @Ability_99.performed -= instance.OnAbility_99;
+            @Ability_99.canceled -= instance.OnAbility_99;
+            @Ability_100.started -= instance.OnAbility_100;
+            @Ability_100.performed -= instance.OnAbility_100;
+            @Ability_100.canceled -= instance.OnAbility_100;
+            @Ability_101.started -= instance.OnAbility_101;
+            @Ability_101.performed -= instance.OnAbility_101;
+            @Ability_101.canceled -= instance.OnAbility_101;
+            @Ability_102.started -= instance.OnAbility_102;
+            @Ability_102.performed -= instance.OnAbility_102;
+            @Ability_102.canceled -= instance.OnAbility_102;
+            @Ability_103.started -= instance.OnAbility_103;
+            @Ability_103.performed -= instance.OnAbility_103;
+            @Ability_103.canceled -= instance.OnAbility_103;
+            @Ability_104.started -= instance.OnAbility_104;
+            @Ability_104.performed -= instance.OnAbility_104;
+            @Ability_104.canceled -= instance.OnAbility_104;
+            @Ability_105.started -= instance.OnAbility_105;
+            @Ability_105.performed -= instance.OnAbility_105;
+            @Ability_105.canceled -= instance.OnAbility_105;
+            @Ability_106.started -= instance.OnAbility_106;
+            @Ability_106.performed -= instance.OnAbility_106;
+            @Ability_106.canceled -= instance.OnAbility_106;
+            @Ability_107.started -= instance.OnAbility_107;
+            @Ability_107.performed -= instance.OnAbility_107;
+            @Ability_107.canceled -= instance.OnAbility_107;
+            @Ability_108.started -= instance.OnAbility_108;
+            @Ability_108.performed -= instance.OnAbility_108;
+            @Ability_108.canceled -= instance.OnAbility_108;
+            @Ability_109.started -= instance.OnAbility_109;
+            @Ability_109.performed -= instance.OnAbility_109;
+            @Ability_109.canceled -= instance.OnAbility_109;
+            @Ability_110.started -= instance.OnAbility_110;
+            @Ability_110.performed -= instance.OnAbility_110;
+            @Ability_110.canceled -= instance.OnAbility_110;
+            @Ability_111.started -= instance.OnAbility_111;
+            @Ability_111.performed -= instance.OnAbility_111;
+            @Ability_111.canceled -= instance.OnAbility_111;
+            @Ability_112.started -= instance.OnAbility_112;
+            @Ability_112.performed -= instance.OnAbility_112;
+            @Ability_112.canceled -= instance.OnAbility_112;
+            @Ability_113.started -= instance.OnAbility_113;
+            @Ability_113.performed -= instance.OnAbility_113;
+            @Ability_113.canceled -= instance.OnAbility_113;
+            @Ability_114.started -= instance.OnAbility_114;
+            @Ability_114.performed -= instance.OnAbility_114;
+            @Ability_114.canceled -= instance.OnAbility_114;
+            @Ability_115.started -= instance.OnAbility_115;
+            @Ability_115.performed -= instance.OnAbility_115;
+            @Ability_115.canceled -= instance.OnAbility_115;
+            @Ability_116.started -= instance.OnAbility_116;
+            @Ability_116.performed -= instance.OnAbility_116;
+            @Ability_116.canceled -= instance.OnAbility_116;
+            @Ability_117.started -= instance.OnAbility_117;
+            @Ability_117.performed -= instance.OnAbility_117;
+            @Ability_117.canceled -= instance.OnAbility_117;
+            @Ability_118.started -= instance.OnAbility_118;
+            @Ability_118.performed -= instance.OnAbility_118;
+            @Ability_118.canceled -= instance.OnAbility_118;
+            @Ability_119.started -= instance.OnAbility_119;
+            @Ability_119.performed -= instance.OnAbility_119;
+            @Ability_119.canceled -= instance.OnAbility_119;
+            @Ability_120.started -= instance.OnAbility_120;
+            @Ability_120.performed -= instance.OnAbility_120;
+            @Ability_120.canceled -= instance.OnAbility_120;
+            @Ability_121.started -= instance.OnAbility_121;
+            @Ability_121.performed -= instance.OnAbility_121;
+            @Ability_121.canceled -= instance.OnAbility_121;
+            @Ability_122.started -= instance.OnAbility_122;
+            @Ability_122.performed -= instance.OnAbility_122;
+            @Ability_122.canceled -= instance.OnAbility_122;
+            @Ability_123.started -= instance.OnAbility_123;
+            @Ability_123.performed -= instance.OnAbility_123;
+            @Ability_123.canceled -= instance.OnAbility_123;
+            @Ability_124.started -= instance.OnAbility_124;
+            @Ability_124.performed -= instance.OnAbility_124;
+            @Ability_124.canceled -= instance.OnAbility_124;
+            @Ability_125.started -= instance.OnAbility_125;
+            @Ability_125.performed -= instance.OnAbility_125;
+            @Ability_125.canceled -= instance.OnAbility_125;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="AbilityActionsActions.UnregisterCallbacks(IAbilityActionsActions)" />.
+        /// </summary>
+        /// <seealso cref="AbilityActionsActions.UnregisterCallbacks(IAbilityActionsActions)" />
+        public void RemoveCallbacks(IAbilityActionsActions instance)
+        {
+            if (m_Wrapper.m_AbilityActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="AbilityActionsActions.AddCallbacks(IAbilityActionsActions)" />
+        /// <seealso cref="AbilityActionsActions.RemoveCallbacks(IAbilityActionsActions)" />
+        /// <seealso cref="AbilityActionsActions.UnregisterCallbacks(IAbilityActionsActions)" />
+        public void SetCallbacks(IAbilityActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AbilityActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AbilityActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="AbilityActionsActions" /> instance referencing this action map.
+    /// </summary>
+    public AbilityActionsActions @AbilityActions => new AbilityActionsActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Control" which allows adding and removing callbacks.
     /// </summary>
@@ -690,5 +4946,923 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Inventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInventory(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Point" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPoint(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RightClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRightClick(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LeftClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeftClick(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Ability Actions" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="AbilityActionsActions.AddCallbacks(IAbilityActionsActions)" />
+    /// <seealso cref="AbilityActionsActions.RemoveCallbacks(IAbilityActionsActions)" />
+    public interface IAbilityActionsActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Ability_0" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_0(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_4" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_4(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_5" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_5(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_6" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_6(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_7" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_7(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_8" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_8(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_9" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_9(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_10" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_10(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_11" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_11(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_12" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_12(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_13" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_13(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_14" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_14(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_15" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_15(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_16" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_16(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_17" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_17(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_18" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_18(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_19" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_19(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_20" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_20(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_21" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_21(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_22" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_22(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_23" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_23(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_24" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_24(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_25" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_25(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_26" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_26(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_27" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_27(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_28" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_28(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_29" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_29(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_30" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_30(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_31" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_31(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_32" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_32(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_33" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_33(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_34" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_34(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_35" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_35(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_36" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_36(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_37" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_37(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_38" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_38(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_39" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_39(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_40" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_40(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_41" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_41(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_42" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_42(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_43" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_43(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_44" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_44(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_45" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_45(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_46" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_46(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_47" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_47(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_48" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_48(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_49" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_49(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_50" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_50(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_51" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_51(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_52" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_52(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_53" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_53(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_54" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_54(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_55" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_55(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_56" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_56(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_57" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_57(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_58" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_58(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_59" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_59(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_60" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_60(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_61" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_61(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_62" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_62(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_63" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_63(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_64" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_64(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_65" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_65(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_66" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_66(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_67" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_67(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_68" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_68(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_69" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_69(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_70" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_70(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_71" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_71(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_72" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_72(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_73" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_73(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_74" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_74(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_75" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_75(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_76" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_76(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_77" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_77(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_78" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_78(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_79" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_79(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_80" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_80(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_81" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_81(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_82" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_82(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_83" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_83(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_84" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_84(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_85" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_85(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_86" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_86(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_87" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_87(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_88" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_88(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_89" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_89(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_90" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_90(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_91" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_91(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_92" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_92(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_93" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_93(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_94" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_94(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_95" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_95(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_96" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_96(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_97" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_97(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_98" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_98(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_99" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_99(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_100" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_100(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_101" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_101(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_102" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_102(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_103" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_103(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_104" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_104(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_105" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_105(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_106" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_106(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_107" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_107(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_108" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_108(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_109" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_109(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_110" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_110(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_111" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_111(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_112" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_112(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_113" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_113(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_114" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_114(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_115" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_115(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_116" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_116(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_117" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_117(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_118" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_118(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_119" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_119(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_120" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_120(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_121" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_121(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_122" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_122(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_123" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_123(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_124" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_124(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Ability_125" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAbility_125(InputAction.CallbackContext context);
     }
 }

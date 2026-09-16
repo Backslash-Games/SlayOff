@@ -79,6 +79,7 @@ public class PlayerController : EntityData
     private InputAction in_jump;
     private InputAction in_crouch;
     private InputAction in_pause;
+    private InputAction in_inventory;
 
     private bool is_dead = false;
 
@@ -99,14 +100,14 @@ public class PlayerController : EntityData
         // Run collision start
         CollisionStart();
     }
-    public override void OnEnabled()
+    protected override void OnEnable()
     {
         // Runs the base on enabled method
-        base.OnEnabled();
+        base.OnEnable();
         // Binds player inputs
         BindEvents();
     }
-    public override void OnDisabled()
+    protected override void OnDisable()
     {
         // Unbinds player inputs
         UnbindEvents();
@@ -187,12 +188,14 @@ public class PlayerController : EntityData
         in_jump = PlayerActions.FindAction("Jump");
         in_crouch = PlayerActions.FindAction("Crouch");
         in_pause = PlayerActions.FindAction("Pause");
+        in_inventory = PlayerActions.FindAction("Inventory");
 
         // Set up events
         OnHurt += PlayerController_OnHurt;
         OnHeal += PlayerController_OnHeal;
 
         in_pause.performed += OnPausePerformed;
+        in_inventory.performed += OnInventoryPerformed;
 
         // External bind methods
         BindCrouch();
@@ -570,6 +573,10 @@ public class PlayerController : EntityData
         else
             MenuManager.Instance.OpenPauseMenu();
     }
+    private void OnInventoryPerformed(InputAction.CallbackContext context)
+    {
+        MenuManager.Instance.ToggleMenu(MenuManager.Type.Ability);
+    }
     #endregion
     #region Control State
     public void SetControlMapActive(bool state)
@@ -595,7 +602,7 @@ public class PlayerController : EntityData
     /// </summary>
     private void PhysicsUpdate()
     {
-        if (!usePhysics)
+        if (!usePhysics && controlScale >= 1)
             return;
 
         GravityCorrection();
@@ -609,7 +616,7 @@ public class PlayerController : EntityData
     {
         // Check if the player is on the ground
         if (groundCheck.GetState() && currentGravityScale != 0)
-            currentGravityScale = 1;
+            ResetGravityScale();
         // Apply an additional doward force to the player. This is our gravity correction
         else
             currentGravityScale += gravityStrength;
@@ -666,6 +673,12 @@ public class PlayerController : EntityData
         ApplyForce(directionVelocity, breakingSpeed, ForceMode.Force, $"Player.Breaking.{direction}");
     }
 
+
+    protected override void EnableRagdoll()
+    {
+        base.EnableRagdoll();
+        ResetGravityScale();
+    }
     #endregion
     #region Collision
     /// <summary>
@@ -788,6 +801,18 @@ public class PlayerController : EntityData
     }
     #endregion
 
+    #region Gravity Scale
+    /// <summary>
+    ///     Gets the current gravity scale
+    /// </summary>
+    /// <returns>Current gravity scale</returns>
+    public float GetCurrentGravityScale() { return currentGravityScale; }
+
+    /// <summary>
+    ///     Resets the current gravity scale
+    /// </summary>
+    public void ResetGravityScale() { currentGravityScale = 1; }
+    #endregion
     #region String Processing
     public override string ToString()
     {

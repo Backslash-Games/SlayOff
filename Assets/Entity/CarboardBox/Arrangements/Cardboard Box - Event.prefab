@@ -64,7 +64,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b0d14ca9be29a524ab72d30dd68b5bba, type: 2}
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6de515c2cdc0c94691ffded2fa3700f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardboardBox
+  team: 0
   health: 0
   statblock:
     blockName: 
@@ -246,13 +247,19 @@ MonoBehaviour:
   boxRenderer: {fileID: 5996476458413018323}
   flattenedRenderer: {fileID: 8733879731198345342}
   peanutEffect: {fileID: 376651333547918295}
+  respawn: 0
   UE_OnHurt:
+    m_PersistentCalls:
+      m_Calls: []
+  UE_OnDeath:
     m_PersistentCalls:
       m_Calls: []
   UE_OnHeal:
     m_PersistentCalls:
       m_Calls: []
-  respawn: 0
+  UE_OnSpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &3907137402122494990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -365,7 +372,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 256
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b0d14ca9be29a524ab72d30dd68b5bba, type: 2}

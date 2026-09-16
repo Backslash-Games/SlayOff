@@ -7,6 +7,7 @@ TagManager:
   - Elevator_Start
   - Elevator_Results
   - Elevator_End
+  - AbilityKey
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - Hands
   - Projectile
   - Node
-  - 
-  - 
+  - SpawnableObject
+  - SpawnableEffect
   - 
   - 
   - 
@@ -47,6 +48,12 @@ TagManager:
   - name: CollectibleFeedEntries
     uniqueID: 869507259
     locked: 0
+  - name: KeyboardUI
+    uniqueID: 1239627011
+    locked: 0
+  - name: DraggableUI_Object
+    uniqueID: 742482357
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
@@ -56,3 +63,4 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
+  - Entity

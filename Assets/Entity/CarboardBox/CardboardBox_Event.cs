@@ -75,7 +75,7 @@ public class CardboardBox_Event : CardboardBox
             return;
 
         // Activate
-        _activatable.Activate();
+        _activatable.OnActivate();
     }
     #endregion
 

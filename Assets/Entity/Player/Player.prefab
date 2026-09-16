@@ -2026,7 +2026,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4997146045835840966}
-  - component: {fileID: 4540107012553779526}
   m_Layer: 11
   m_Name: Animation Event
   m_TagString: Untagged
@@ -2049,20 +2048,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3011930610081351949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4540107012553779526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4317134071744235834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d023cee143ab3ae4d85457b86c0b8507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimationEvent
-  id: Ranged Weapon Execution Event
-  flag: 0
 --- !u!1 &4331819548052269687
 GameObject:
   m_ObjectHideFlags: 0
@@ -2908,7 +2893,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3412193161495693098}
   - component: {fileID: 3917062023035192557}
-  - component: {fileID: 8454057949058142206}
   - component: {fileID: 1386863633208035142}
   - component: {fileID: 158697010785547216}
   - component: {fileID: 4617844969571709243}
@@ -2952,65 +2936,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d3fe31f18071044853472ac34c9ba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  team: 1
   health: 0
   statblock:
     blockName: Player Stats
-    attackLower:
+    stats:
+    - title: Health
       tag: 0
-      basic: 0
-      additive: 0
-      percentage: 0
+      BAP: {x: 100, y: 0, z: 0}
       current: 0
-    attackHigher:
+    - title: Size
       tag: 1
-      basic: 0
-      additive: 0
-      percentage: 0
+      BAP: {x: 1, y: 0, z: 0}
       current: 0
-    fireRate:
+    - title: Weight
       tag: 2
-      basic: 0
-      additive: 0
-      percentage: 0
+      BAP: {x: 0, y: 0, z: 0}
       current: 0
-    shotSpeed:
+    - title: Balance
       tag: 3
-      basic: 0
-      additive: 0
-      percentage: 0
+      BAP: {x: 0, y: 0, z: 0}
       current: 0
-    speed:
+    - title: Attack - Lower
       tag: 4
-      basic: 45
-      additive: 0
-      percentage: 0
+      BAP: {x: 10, y: 0, z: 0}
       current: 0
-    luck:
+    - title: Attack - Higher
       tag: 5
-      basic: 0
-      additive: 0
-      percentage: 0
+      BAP: {x: 10, y: 0, z: 0}
       current: 0
-    maxHealth:
+    - title: Fire Rate
+      tag: 6
+      BAP: {x: 0, y: 0, z: 0}
+      current: 0
+    - title: Reload Speed
       tag: 7
-      basic: 100
-      additive: 0
-      percentage: 0
+      BAP: {x: 0, y: 0, z: 0}
       current: 0
-    defense:
+    - title: Speed
       tag: 8
-      basic: 0
-      additive: 0
-      percentage: 0
+      BAP: {x: 45, y: 0, z: 0}
       current: 0
-    reloadSpeed:
+    - title: Luck
       tag: 9
-      basic: 0
-      additive: 0
-      percentage: 0
+      BAP: {x: 0, y: 0, z: 0}
+      current: 0
+    - title: Entropy
+      tag: 10
+      BAP: {x: 0, y: 0, z: 0}
       current: 0
   collision: {fileID: 4617844969571709243}
   physicsBody: {fileID: 1403528512543417202}
+  controlScale: 1
   awakeOnStart: 1
   particleLibrary:
     parameters:
@@ -3075,25 +3052,6 @@ MonoBehaviour:
   whiplashStrength: 0.7
   whiplashReduction: 7
   PlayerActions: {fileID: -944628639613478452, guid: 8d57450c8a21e0941bcb9e1e21f31d38, type: 3}
---- !u!114 &8454057949058142206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5507550070429211380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fae24d59cc254d4d8674e5b53b0672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonoDebug
-  suppressAllMonoDebug: 0
-  suppressLocalMonoDebug: 1
-  offset: {x: 0, y: 0, z: 0}
-  textColor: {r: 1, g: 1, b: 1, a: 1}
-  debugStyle: 0
-  canvas_allignment: 257
-  source: {fileID: 3917062023035192557}
 --- !u!33 &1386863633208035142
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4388,7 +4346,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8934965064059549387}
-  - component: {fileID: 227607207244163699}
   m_Layer: 11
   m_Name: Animation Event
   m_TagString: Untagged
@@ -4411,20 +4368,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3086221862721315164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &227607207244163699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7579899331827350879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d023cee143ab3ae4d85457b86c0b8507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimationEvent
-  id: Melee Weapon Execution Event
-  flag: 0
 --- !u!1 &7614845766762819433
 GameObject:
   m_ObjectHideFlags: 0
@@ -4545,7 +4488,6 @@ GameObject:
   - component: {fileID: 6030174982312892107}
   - component: {fileID: 3227360067082761481}
   - component: {fileID: 1214002400303046494}
-  - component: {fileID: 2429097184195976646}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4608,7 +4550,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 14327
+    m_Bits: 30711
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4725,25 +4667,6 @@ MonoBehaviour:
   horizontalSensitivity: 5.5
   verticalSensitivity: 5.5
   modifiers: []
---- !u!114 &2429097184195976646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7901945610079814669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fae24d59cc254d4d8674e5b53b0672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonoDebug
-  suppressAllMonoDebug: 0
-  suppressLocalMonoDebug: 1
-  offset: {x: 0, y: 0, z: 0}
-  textColor: {r: 1, g: 1, b: 1, a: 1}
-  debugStyle: 0
-  canvas_allignment: 260
-  source: {fileID: 1214002400303046494}
 --- !u!1 &8005572861820015704
 GameObject:
   m_ObjectHideFlags: 0
@@ -4896,7 +4819,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4312110141930194563}
   - component: {fileID: 8796987022444690613}
-  - component: {fileID: 2364983672265374041}
   m_Layer: 11
   m_Name: Hands
   m_TagString: Untagged
@@ -4968,7 +4890,7 @@ MonoBehaviour:
     a_AttackIDs:
     - MeleeStrike_1
     - MeleeStrike_2
-    a_Event: {fileID: 227607207244163699}
+    a_Event: {fileID: 0}
     weapon_visual: {fileID: 0}
     wv_nozzle: {fileID: 0}
     wv_hitmask:
@@ -5019,7 +4941,7 @@ MonoBehaviour:
     a_InitialAttackID: RangedShoot
     a_AttackIDs:
     - RangedHold
-    a_Event: {fileID: 4540107012553779526}
+    a_Event: {fileID: 0}
     weapon_visual: {fileID: 8051822870431934072, guid: 42643a5c3b5a58948a3972875cb5a2bc, type: 3}
     wv_nozzle: {fileID: 8385954369640210967}
     wv_hitmask:
@@ -5076,7 +4998,7 @@ MonoBehaviour:
     a_InitialAttackID: RangedShoot
     a_AttackIDs:
     - RangedShoot
-    a_Event: {fileID: 8915914079024554609}
+    a_Event: {fileID: 0}
     weapon_visual: {fileID: 4724072272159141168, guid: 0531cbd1441fc5546b09fd020be6d598, type: 3}
     wv_nozzle: {fileID: 6986476596976811732}
     wv_hitmask:
@@ -5104,25 +5026,6 @@ MonoBehaviour:
     cancelAllowed: 0
   drawRangedHitbox: 1
   PlayerActions: {fileID: -944628639613478452, guid: 8d57450c8a21e0941bcb9e1e21f31d38, type: 3}
---- !u!114 &2364983672265374041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8095816851285075711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fae24d59cc254d4d8674e5b53b0672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonoDebug
-  suppressAllMonoDebug: 0
-  suppressLocalMonoDebug: 1
-  offset: {x: 0, y: 0, z: 0}
-  textColor: {r: 1, g: 1, b: 1, a: 1}
-  debugStyle: 0
-  canvas_allignment: 513
-  source: {fileID: 8796987022444690613}
 --- !u!1 &8157676967118245883
 GameObject:
   m_ObjectHideFlags: 0
@@ -5434,7 +5337,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037286142553971626}
-  - component: {fileID: 8915914079024554609}
   m_Layer: 11
   m_Name: Animation Event
   m_TagString: Untagged
@@ -5457,20 +5359,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7946703604428827547}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8915914079024554609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8495733197022430375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d023cee143ab3ae4d85457b86c0b8507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimationEvent
-  id: Ranged Weapon Execution Event
-  flag: 0
 --- !u!1 &8520021898208758695
 GameObject:
   m_ObjectHideFlags: 0

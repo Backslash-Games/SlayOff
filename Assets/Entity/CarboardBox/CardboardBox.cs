@@ -33,9 +33,9 @@ public class CardboardBox : EntityData
     }
     #endregion
     #region EntityData Events
-    public override void OnEnabled()
+    protected override void OnEnable()
     {
-        base.OnEnabled();
+        base.OnEnable();
     }
     public override void Death(bool play_audio = true)
     {

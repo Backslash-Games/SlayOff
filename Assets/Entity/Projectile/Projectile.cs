@@ -16,7 +16,7 @@ public class Projectile : EntityData
     private static PlayerController player = null;
 
     #region Unity Methods
-    public override void OnEnabled()
+    protected override void OnEnable()
     {
         aliveTimer = new Cooldown(this, aliveTime, 1);
         aliveTimer.OnCooldownSuccess += () => Kill("TimedDeath");
@@ -24,7 +24,7 @@ public class Projectile : EntityData
 
         aliveTimer.Start();
     }
-    public override void OnDisabled()
+    protected override void OnDisable()
     {
         aliveTimer.OnCooldownSuccess -= () => Kill("TimedDeath");
         //OnHurt -= (_, _, _) => ReflectBullet();
